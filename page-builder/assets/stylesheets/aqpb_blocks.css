@@ -1,0 +1,186 @@
+/**
+Blocks styling
+
+Styles for the individual blocks in the Aqua Page Builder
+
+DO NOT EDIT THIS
+
+*/
+
+/** BASIC FORM ELEMENTS **/
+.block-settings .description,
+.block-settings p {
+	margin: 5px 0 7px;
+}
+	.block-settings > p.description:last-child,
+	.block-settings > p:last-child {
+		margin-bottom: 0;
+	}
+.block-settings .description.half {
+	width: 49%;
+	margin-right: 2%;
+	float: left;
+}
+.block-settings .description.third {
+	width: 32%;
+	margin-right: 2%;
+	float: left;
+}
+	.block-settings .description.two-third {
+		width: 64%;
+		margin-right: 2%;
+		float: left;
+	}
+.block-settings .description.fourth {
+	width: 23.5%;
+	margin-right: 2%;
+	float: left;
+}	
+	.block-settings .description.half.last,
+	.block-settings .description.third.last,
+	.block-settings .description.two-third.last,
+	.block-settings .description.fourth.last {
+		margin-right: 0;
+	}
+	.span2 .block-settings .description.half,
+	.span3 .block-settings .description.half,
+	.span4 .block-settings .description.half,
+	.span5 .block-settings .description.half,
+	.span6 .block-settings .description.half,
+	.span7 .block-settings .description.half,
+	.span2 .block-settings .description.third,
+	.span3 .block-settings .description.third,
+	.span4 .block-settings .description.third,
+	.span5 .block-settings .description.third,
+	.span6 .block-settings .description.third,
+	.span7 .block-settings .description.third,
+	.span2 .block-settings .description.two-third,
+	.span3 .block-settings .description.two-third,
+	.span4 .block-settings .description.two-third,
+	.span5 .block-settings .description.two-third,
+	.span6 .block-settings .description.two-third,
+	.span7 .block-settings .description.two-third,
+	.span3 .block-settings .description.fourth,
+	.span4 .block-settings .description.fourth,
+	.span5 .block-settings .description.fourth,
+	.span6 .block-settings .description.fourth,
+	.span7 .block-settings .description.fourth {
+		width: 100%;
+		margin-right: 0;
+		float: none;
+	}
+
+.block-settings .description.note {
+	font-style: normal;
+}
+
+/** BASIC FORM INPUTS **/
+	
+/* Inputs */
+.block-settings input[type="text"], .block-settings textarea { 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+	.block-settings .input-min { width: 50px; }
+	.block-settings .input-small { width: 150px; }
+	.block-settings .input-full { width: 100%; }
+
+	.block-settings .textarea-full { width: 100%; }
+	.block-settings select { width: 100%; }
+	
+.block-settings .description-float { 
+	margin-right: 10px;
+	float: left;
+}
+
+/* Columns */
+#blocks-to-edit .block-container {
+	padding: 4px;
+	margin: 8px -5px -5px 15px;
+	border: 1px dashed #dfdfdf;
+	max-width: 734px;
+}
+#blocks-to-edit .block-container ul.blocks { 
+	min-height: 50px;
+	padding: 0;
+	margin: 0 0 0 -20px;
+	width: 110%;
+}
+#blocks-to-edit .empty-column { 
+	margin: 0;
+	padding: 8px 10px 0;
+	color: #888;
+}
+
+/* Color Picker */
+.aqpb-color-picker {
+	position: relative;
+	margin-bottom: 5px;
+}
+	.block-settings .input-color-picker {
+		width: 70px;
+	}
+	
+
+/** Sortable list field **/
+.aq-sortable-list { position: relative; }
+	.aq-sortable-list .sortable-item {
+		background: #fff;
+		border: 1px solid #d8d8d8;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+	}
+	.aq-sortable-list .sortable-head,
+	.aq-sortable-list .sortable-body {
+		padding: 10px;
+		position: relative;
+	}
+	.aq-sortable-list .sortable-title {
+		margin-right: 20px;
+		float: left;
+	}
+	.aq-sortable-list .sortable-body {
+		padding-top: 0;
+		display: none;
+	}
+	.aq-sortable-list .sortable-handle { float: right; }
+	.aq-sortable-list .sortable-handle a { 
+		position: absolute;
+		right: 0px;
+		top: 0;
+		display: block;
+		width: 30px;
+		height: 30px;
+		text-indent: -999em;
+		background: transparent url(../images/tab-arrows.png) no-repeat 8px -64px;
+		border-bottom-color: #eee;
+	}
+	.aq-sortable-list .sortable-delete { font-style: normal; }
+	.aq-sortable-add-new { margin-top: 10px; }
+	#page-builder .aq-sortable-list .ui-state-highlight { 
+		height: 38px;
+		margin: 0 0 6px;
+		float: none;
+	}
+	
+
+/* Upload */
+#TB_window {
+	z-index: 9999;
+}
+.screenshot {
+	float: left;
+	padding: 7px;
+	background: #fff;
+	border: 1px solid #dedede;
+	line-height: 0;
+	margin: 0 0 10px;
+}
+.screenshot img { max-width: 100% }
+.input-upload { margin: 0 0 8px; }
+
+/** Customs
+Insert your own custom CSS below this line **/
+#blocks-archive .block-featured_portfolio .block-title { font-size: 11px; }
