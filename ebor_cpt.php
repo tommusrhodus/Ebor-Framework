@@ -103,6 +103,47 @@ function ebor_framework_cpt_validate_display_options($input) {
 	
 }
 
+function ebor_framework_register_mega_menu() {
+
+    $labels = array( 
+        'name' => __( 'Ebor Mega Menu', 'zonya' ),
+        'singular_name' => __( 'Ebor Mega Menu Item', 'zonya' ),
+        'add_new' => __( 'Add New', 'zonya' ),
+        'add_new_item' => __( 'Add New Ebor Mega Menu Item', 'zonya' ),
+        'edit_item' => __( 'Edit Ebor Mega Menu Item', 'zonya' ),
+        'new_item' => __( 'New Ebor Mega Menu Item', 'zonya' ),
+        'view_item' => __( 'View Ebor Mega Menu Item', 'zonya' ),
+        'search_items' => __( 'Search Ebor Mega Menu Items', 'zonya' ),
+        'not_found' => __( 'No Ebor Mega Menu Items found', 'zonya' ),
+        'not_found_in_trash' => __( 'No Ebor Mega Menu Items found in Trash', 'zonya' ),
+        'parent_item_colon' => __( 'Parent Ebor Mega Menu Item:', 'zonya' ),
+        'menu_name' => __( 'Ebor Mega Menu', 'zonya' ),
+    );
+
+    $args = array( 
+        'labels' => $labels,
+        'hierarchical' => false,
+        'menu_icon' => 'dashicons-menu',
+        'description' => __('Mega Menus entries for Slowave.', 'zonya'),
+        'supports' => array( 'title', 'editor' ),
+        'public' => false,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 40,
+        
+        'show_in_nav_menus' => true,
+        'publicly_queryable' => false,
+        'exclude_from_search' => true,
+        'has_archive' => false,
+        'query_var' => true,
+        'can_export' => true,
+        'rewrite' => false,
+        'capability_type' => 'post'
+    );
+
+    register_post_type( 'mega_menu', $args );
+}
+
 function ebor_framework_register_portfolio() {
 
 $displays = get_option('ebor_framework_cpt_display_options');

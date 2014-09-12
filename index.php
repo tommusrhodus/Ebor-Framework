@@ -67,7 +67,7 @@ require_once( EBOR_FRAMEWORK_PATH . 'ebor_functions.php' );
 if(!( function_exists('ebor_framework_theme_support') )){
 	function ebor_framework_theme_support(){
 		
-		( current_theme_supports('ebor-framework') ) ? $supported = true : $supported = false;
+		$supported = ( current_theme_supports('ebor-framework') ) ? true : false;
 		
 		/**
 		 * Hook CPT registers to init
@@ -93,6 +93,9 @@ if(!( function_exists('ebor_framework_theme_support') )){
 			add_action( 'init', 'ebor_framework_register_testimonial' );
 			add_action( 'init', 'ebor_framework_create_testimonial_taxonomies' );
 		}
+		
+		if( current_theme_supports('ebor-framework-mega-menu') || $supported == false )
+			add_action( 'init', 'ebor_framework_register_mega_menu' );
 
 	}
 	add_action('after_setup_theme', 'ebor_framework_theme_support', 15);

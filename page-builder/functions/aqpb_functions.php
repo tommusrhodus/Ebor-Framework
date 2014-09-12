@@ -199,6 +199,17 @@ if(class_exists('AQ_Page_Builder')) {
 		return $output;
 	}
 	
+	/* Select field */
+	function ebor_portfolio_field_select($field_id, $block_id, $options, $selected) {
+		$output = '<select id="'. $block_id .'_'.$field_id.'" name="aq_blocks['.$block_id.']['.$field_id.']">';
+		$output .= '<option value="all" '.selected( $selected, 'all', false ).'>Show All</option>';
+		foreach($options as $option) {
+			$output .= '<option value="'.$option->term_id.'" '.selected( $selected, $option->term_id, false ).'>'.htmlspecialchars($option->name).'</option>';
+		}
+		$output .= '</select>';
+		return $output;
+	}
+	
 	/** 
 	 * Misc Helper Functions
 	**************************/

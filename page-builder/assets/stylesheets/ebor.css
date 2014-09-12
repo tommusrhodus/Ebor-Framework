@@ -113,9 +113,37 @@
 .blocks .block-aq_section_block.new-on-the-block {
 	background: none !important;
 }
+.ebor-wpeditor {
+	margin: 20px 0 30px;
+	padding: 20px 0 30px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+.ebor-modal-inner p.description {
+	margin-bottom: 10px;
+	font-size: 15px;
+}
+.ebor-checkbox input {
+	float: left;
+	margin: 0;
+}
+.ebor-checkbox p.description {
+	overflow: hidden;
+	padding-left: 10px;
+	margin-top: 0;
+}
+.ebor-modal-inner select {
+	margin-bottom: 10px;
+}
+.ebor-modal-inner hr {
+	margin-bottom: 10px;
+}
 /* END BLOCK STYLES */
 
 /* MISC STYLES */
+.text-center {
+	text-align: center;
+}
 table.cmb_metabox .attach_list li {
 	width: auto;	
 }
@@ -132,7 +160,10 @@ table.cmb_metabox .attach_list li {
 .two_thirds {
     width: 65.33%
 }
-.one_third, .two_thirds {
+.one_half {
+	width: 47.8%;
+}
+.one_third, .two_thirds, .one_half {
     position: relative;
     margin-right: 4%;
     margin-bottom: 20px;

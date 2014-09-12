@@ -1,7 +1,173 @@
 <?php 
 
 /**
+ * Portfolio taxonomy terms output.
+ *
+ * Checks that terms exist in the portfolio-category taxonomy, then returns a comma seperated string of results.
+ * @todo Allow for taxonomy input for differing taxonmoies through the same function.
+ * @since 1.0.0
+ * @return string
+ */
+if(!( function_exists('ebor_the_simple_terms') )){
+	function ebor_the_simple_terms() {
+	global $post;
+		if( get_the_terms($post->ID,'portfolio-category') !='' ) {
+			$terms = get_the_terms($post->ID,'portfolio-category','',', ','');
+			$terms = array_map('_simple_cb', $terms);
+			return implode(', ', $terms);
+		}
+	}
+}
+
+/**
+ * Term name return
+ *
+ * Returns the Pretty Name of a term array
+ * @param $t - the term array object
+ * @since 1.0.0
+ * @return string
+ */
+if(!( function_exists('_simple_cb') )){
+	function _simple_cb($t) {  return $t->name; }
+}
+
+/**
+ * Portfolio taxonomy terms output.
+ *
+ * Checks that terms exist in the portfolio-category taxonomy, then returns a space seperated string of results.
+ * @todo Allow for taxonomy input for differing taxonmoies through the same function.
+ * @since 1.0.0
+ * @return string
+ */
+if(!( function_exists('ebor_the_isotope_terms') )){
+	function ebor_the_isotope_terms() {
+	global $post;
+		if( get_the_terms($post->ID,'portfolio-category') ) {
+			$terms = get_the_terms($post->ID,'portfolio-category','','','');
+			$terms = array_map('_isotope_cb', $terms);
+			return implode(' ', $terms);
+		}
+	}
+}
+
+/**
+ * Term Slug Return
+ *
+ * Returns the slug of a term array
+ * @param $t - the term array object
+ * @since 1.0.0
+ * @return string
+ */
+if(!( function_exists('_isotope_cb') )){
+	function _isotope_cb($t) {  return $t->slug; }
+}
+
+
+/**
+ * Portfolio taxonomy terms output.
+ *
+ * Checks that terms exist in the portfolio-category taxonomy, then returns a comma seperated string of results.
+ * @todo Allow for taxonomy input for differing taxonmoies through the same function.
+ * @since 1.0.0
+ * @return string
+ */
+if(!( function_exists('ebor_the_simple_terms_links') )){
+	function ebor_the_simple_terms_links() {
+	global $post;
+		if( get_the_terms($post->ID,'portfolio-category') ) {
+			$terms = get_the_terms($post->ID,'portfolio-category','',', ','');
+			$terms = array_map('_simple_link', $terms);
+			return implode(', ', $terms);
+		}
+	}
+}
+
+add_action('login_head','ebor_custom_admin');
+function ebor_custom_admin(){
+	if( get_option('custom_login_logo') )
+		echo '<style type="text/css">
+				.login h1 a { 
+					background-image: url("'.get_option('custom_login_logo').'"); 
+					background-size: auto 80px;
+					width: 100%; 
+				} 
+			</style>';
+}
+
+if(!( function_exists('ebor_framework_custom_css') )){
+	function ebor_framework_custom_css(){
+		echo '<style type="text/css">'. get_option('custom_css') .'</style>';
+	}
+	add_action('wp_head','ebor_framework_custom_css', 200);
+}
+
+/**
+ * Term name return
+ *
+ * Returns the Pretty Name of a term array
+ * @param $t - the term array object
+ * @since 1.0.0
+ * @return string
+ */
+if(!( function_exists('_simple_link') )){
+	function _simple_link($t) {  return '<a href="'.get_term_link( $t, 'portfolio-category' ).'">'.$t->name.'</a>'; }
+}
+
+if(!( function_exists('ebor_add_post_thumbnail_column') )){
+	function ebor_add_post_thumbnail_column($cols){
+		$cols['ebor_post_thumb'] = __('Featured Image','ebor');
+		return $cols;
+	}
+	add_filter('manage_posts_columns', 'ebor_add_post_thumbnail_column', 5);
+	add_filter('manage_pages_columns', 'ebor_add_post_thumbnail_column', 5);
+}
+
+if(!( function_exists('ebor_display_post_thumbnail_column') )){
+	function ebor_display_post_thumbnail_column($col, $id){
+		if( $col == 'ebor_post_thumb' ){
+			if( function_exists('the_post_thumbnail') )
+				echo the_post_thumbnail( 'admin-list-thumb' );
+		} else {
+			echo 'Not supported in theme';
+		}
+	}
+	add_action('manage_posts_custom_column', 'ebor_display_post_thumbnail_column', 5, 2);
+	add_action('manage_pages_custom_column', 'ebor_display_post_thumbnail_column', 5, 2);
+}
+
+/**
+ * HEX to RGB Converter
+ *
+ * Converts a HEX input to an RGB array.
+ * @param $hex - the inputted HEX code, can be full or shorthand, #ffffff or #fff
+ * @since 1.0.0
+ * @return string
+ * @author tommusrhodus
+ */
+if(!( function_exists('ebor_hex2rgb') )){
+	function ebor_hex2rgb($hex) {
+	   $hex = str_replace("#", "", $hex);
+	
+	   if(strlen($hex) == 3) {
+	      $r = hexdec(substr($hex,0,1).substr($hex,0,1));
+	      $g = hexdec(substr($hex,1,1).substr($hex,1,1));
+	      $b = hexdec(substr($hex,2,1).substr($hex,2,1));
+	   } else {
+	      $r = hexdec(substr($hex,0,2));
+	      $g = hexdec(substr($hex,2,2));
+	      $b = hexdec(substr($hex,4,2));
+	   }
+	   $rgb = array($r, $g, $b);
+	   return implode(",", $rgb); // returns the rgb values separated by commas
+	   return $rgb; // returns an array with the rgb values
+	}
+}
+
+/**
  * Add an additional link to the theme options on the dashboard
+ * 
+ * @since 1.0.0
+ * @author tommusrhodus
  */
 if(!( function_exists('ebor_framework_add_customize_page_link') )){
 	function ebor_framework_add_customize_page_link() {
