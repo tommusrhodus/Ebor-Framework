@@ -239,7 +239,7 @@ jQuery(document).ready(function($){
 		    ui.item.attr("id", block_archive.replace("__i__", block_number));
 		    
 		    //if column, remove handle bar
-		    if(ui.item.hasClass('block-container')) {
+		    if(ui.item.hasClass('block-container') ) {
 		    	ui.item.find('.block-bar').remove();
 		    	ui.item.find('.block-settings').removeClass('block-settings').addClass('block-settings-column');
 		    }

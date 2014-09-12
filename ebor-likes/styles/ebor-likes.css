@@ -1,0 +1,23 @@
+.ebor-likes {
+	background: url(../images/heart.png) no-repeat 0 49%;
+	border: 0 !important;
+	display: inline-block;
+	margin-bottom: 10px;
+	min-height: 14px;
+	padding-left: 18px;
+	text-decoration: none;
+}
+.ebor-likes:hover,
+.ebor-likes.active {
+	background: url(../images/heart_active.png) no-repeat 0 49%;
+	border: 0 !important;
+	margin: 0 0 10px 0 !important;
+	padding-left: 18px !important;
+	text-decoration: none;
+}
+
+.ebor-blog-widget .ebor-likes,
+.tz_recentwork_widget .ebor-likes,
+.tz_blog_widget .ebor-likes,
+.home div#the_body #slider .excerpt .ebor-likes,
+.archive div#the_body #slider .excerpt .ebor-likes { display: none; } /* Hide ebor Share in custom post widget and sliders in themes */

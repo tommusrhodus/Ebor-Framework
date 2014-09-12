@@ -23,9 +23,11 @@ function ebor_framework_cpt_init(){
 }
 
 // Add menu page
-function ebor_framework_cpt_add_options_page() {
-	$theme = wp_get_theme();
-	add_dashboard_page( $theme->get( 'Name' ) . ' Post Type Options', $theme->get( 'Name' ) . ' Post Type Options', 'manage_options', __FILE__, 'ebor_framework_cpt_render_form');
+if(!( function_exists('ebor_framework_cpt_add_options_page') )){
+	function ebor_framework_cpt_add_options_page(){
+		$theme = wp_get_theme();
+		add_options_page( $theme->get( 'Name' ) . ' Post Type Options', $theme->get( 'Name' ) . ' Post Type Options', 'manage_options', __FILE__, 'ebor_framework_cpt_render_form');
+	}
 }
 
 // Render the Plugin options form

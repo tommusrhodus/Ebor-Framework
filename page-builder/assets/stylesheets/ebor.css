@@ -38,9 +38,6 @@
 	border-color: #e74c3c;
 	color: #e74c3c;
 }
-.block-control-actions {
-	text-align: right;
-}
 .ebor-options-wrapper > a {
 	display: block;
 	width: 100%;
@@ -49,6 +46,26 @@
 /* END ICON MODAL STYLES */
 
 /* BLOCK STYLES */
+.block-icon {
+	float: left;
+	font-size: 24px;
+	margin-right: 6px;
+}
+.block-icon i {
+	position: relative;
+	top: 3px;
+}
+.block-details {
+	overflow: hidden;
+}
+#blocks-archive .block-handle {
+	white-space: normal;
+	padding: 10px;
+	line-height: 14px;
+}
+#blocks-archive .block-title small {
+	font-weight: normal;
+}
 .blocks .block-aq_column_block,
 .blocks .block-aq_section_block {
 	margin-bottom: 0px !important;
@@ -73,6 +90,28 @@
 }
 .isotope-filter.active {
 	color: #0074a2;
+}
+.block-aq_section_block .block-handle {
+	background: #fff !important;
+}
+.block-aq_section_block .block-settings {
+	background: #f9f9f9 !important;
+}
+.ebor-modal-launcher {
+	margin: 10px 0 !important;
+}
+#blocks-to-edit .block-icon {
+	display: none;
+}
+#blocks-to-edit .block-aq_section_block.new-on-the-block.block-edit-active .block-bar {
+	margin-top: 0;
+	background: #f5f5f5 !important;
+}
+#blocks-to-edit .block-aq_section_block.new-on-the-block.block-edit-active {
+	margin-top: 13px;
+}
+.blocks .block-aq_section_block.new-on-the-block {
+	background: none !important;
 }
 /* END BLOCK STYLES */
 
