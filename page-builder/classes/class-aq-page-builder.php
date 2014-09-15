@@ -132,9 +132,6 @@ if(!class_exists('AQ_Page_Builder')) {
 	        wp_enqueue_script('media-upload');
 	        wp_enqueue_media();
 			
-			// Hook to register custom style/scripts
-			do_action('aq-page-builder-admin-enqueue');
-			
 		}
 		
 		/**
@@ -248,7 +245,7 @@ if(!class_exists('AQ_Page_Builder')) {
 				$categories[] = $block->block_options['block_category'];
 			}	
 			$categories = array_unique($categories);
-			echo '<p>Block Categories: ';
+			echo '<p>';
 			foreach( $categories as $key => $cat ){
 				echo '<a href="#" class="isotope-filter" data-filter=.'. strtolower($cat) .'>'. ucwords($cat) .'</a> ';
 			}
@@ -565,8 +562,13 @@ if(!class_exists('AQ_Page_Builder')) {
 				//template wrapper
 				echo aq_template_wrapper_start($template_id);
 				
-				$overgrid = 0; $span = 0; $first = false;
-				
+				$overgrid = 0; 
+				$span = 0; 
+				$first = false; 
+				$next_block_size= 0; 
+				$next_overgrid = 0 ;  
+				$block_count = count($blocks); // Add block counts to help detect last block
+								
 				//outputs the blocks
 				foreach($blocks as $key => $instance) {
 					global $aq_registered_blocks;
@@ -595,10 +597,21 @@ if(!class_exists('AQ_Page_Builder')) {
 								$instance['first'] = true;
 							}
 							
+							$span = $span + $col_size; // Move here
+
+							$next_block_size = $blocks['aq_block_'.($number+1)]['size']; // Get next block size
+							$next_block_size  = absint(preg_replace("/[^0-9]/", '', $next_block_size )); //Convert to int
+							$next_overgrid = $span + $next_block_size ; // Workout over grid for next block
+
+							if($next_overgrid  > 12 || $span == 12 || $number == $block_count)
+							{
+								$instance['last'] = true;
+							}
+
 							$block->block_callback($instance);
 							
-							$span = $span + $col_size;
-							
+							$next_block_size = 0 ; // Reset $next_block_size;
+							$next_overgrid = 0 ; //$next_overgrid
 							$overgrid = 0; //reset $overgrid
 							$first = false; //reset $first
 						}

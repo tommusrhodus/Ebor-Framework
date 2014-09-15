@@ -107,6 +107,7 @@ if(class_exists('AQ_Page_Builder')) {
 				$clearfix = ( aq_css_clearfix() ) ? 'clearfix' : '';
 				
 				$column_class = $first ? 'aq-first' : '';
+				$column_class = $last ? $column_class.' aq-last' : $column_class;
 				
 				echo '<div id="aq-block-'.$template_id.'-'.$number.'" class="aq-block aq-block-'.$id_base.' '.$size.' '.$column_class.' '. $clearfix.'">';
 			}
@@ -139,7 +140,7 @@ if(class_exists('AQ_Page_Builder')) {
 	
 	/* Textarea field */
 	function aq_field_textarea($field_id, $block_id, $text, $size = 'full') {
-		$output = '<textarea id="'. $block_id .'_'.$field_id.'" class="textarea-'.$size.'" name="aq_blocks['.$block_id.']['.$field_id.']" rows="5">'.$text.'</textarea>';
+		$output = '<textarea id="'. $block_id .'_'.$field_id.'" class="remove-mce textarea-'.$size.'" name="aq_blocks['.$block_id.']['.$field_id.']" rows="5">'.$text.'</textarea>';
 		
 		return $output;
 	}

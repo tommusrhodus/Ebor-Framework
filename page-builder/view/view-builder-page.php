@@ -201,9 +201,8 @@ $disabled = $selected_template_id === 0 ? 'metabox-holder-disabled' : '';
 	
 		<div id="page-builder-column" class="metabox-holder <?php echo $disabled ?>">
 			<div id="page-builder-archive" class="postbox">
-				<h3 class="hndle"><span><?php _e('Available Blocks', 'ebor-framework') ?></span><span id="removing-block"><?php _e('Deleting', 'ebor-framework') ?></span></h3>
+				<h3 class="hndle"><span><?php _e('All Available Blocks', 'ebor-framework') ?><small>Drag blocks into the right hand column to add content to your page.</small></span><span id="removing-block"><?php _e('Deleting', 'ebor-framework') ?></span><hr /><?php $this->blocks_filters(); ?></h3>
 				<div class="inside">
-					<?php $this->blocks_filters(); ?>
 					<ul id="blocks-archive" class="cf">
 						<?php $this->blocks_archive() ?>
 					</ul>
