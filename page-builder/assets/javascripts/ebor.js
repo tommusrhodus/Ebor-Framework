@@ -10,6 +10,26 @@ var e=this.getItems(t);e=e.length?e:this.items,this._updateItemsSortData(e)},d.p
 jQuery(document).ready(function($) {
 	
 	/**
+	 * Gallery Manager
+	 */
+	$('.ebor-page-builder-gallery').each(function() {
+		var instance = this;
+	
+		$('input[type="button"].manage', instance).click(function() {
+			var gallerysc = '[gallery ids="' + $('input[type=hidden]', instance).val() + '"]';
+			wp.media.gallery.edit(gallerysc).on('update', function(g) {
+				var id_array = [];
+				$.each(g.models, function(id, img) { id_array.push(img.id); });
+				$('input[type=hidden]', instance).val(id_array.join(","));
+			});
+		});
+		$('input[type=button].ebor-gallery-remove', instance).click(function() {
+			$('input[type=hidden]', instance).val('');
+			alert('All Gallery Items Removed, Save Template to Update');
+		});
+	});
+	
+	/**
 	 * Quick fix for stopping nested page sections
 	 */
 	$( "ul.blocks" ).bind( "sortstop", function(event, ui) {

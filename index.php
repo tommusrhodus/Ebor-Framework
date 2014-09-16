@@ -21,6 +21,8 @@ define( 'EBOR_FRAMEWORK_VERSION', '1.0.0');
 if(!( function_exists('ebor_framework_admin_load_scripts') )){
 	function ebor_framework_admin_load_scripts(){
 		wp_enqueue_style('ebor_framework_font_awesome', plugins_url( '/css/font-awesome.min.css' , __FILE__ ) );
+		wp_enqueue_style('ebor_framework_admin_css', plugins_url( '/css/ebor-framework-admin.css' , __FILE__ ) );
+		wp_enqueue_script('ebor_framework_admin_js', plugins_url( '/js/ebor-framework-admin.js' , __FILE__ ) );
 	}
 	add_action('admin_enqueue_scripts', 'ebor_framework_admin_load_scripts', 200);
 }
@@ -56,6 +58,11 @@ require_once( EBOR_FRAMEWORK_PATH . 'ebor_cpt.php' );
 require_once( EBOR_FRAMEWORK_PATH . 'ebor_functions.php' );
 
 /**
+ * Grab our custom metaboxes class
+ */
+require_once( EBOR_FRAMEWORK_PATH . 'metaboxes/init.php' );
+
+/**
  * ebor_framework_theme_support
  * 
  * The framework supports a number of custom posts types and features, all of these are initialised from within a theme by using add_theme_support()
@@ -75,27 +82,27 @@ if(!( function_exists('ebor_framework_theme_support') )){
 		 * If this isn't an ebor-framework theme (register is false) then we'll just enable everything.
 		 */
 		if( current_theme_supports('ebor-framework-portfolio') || $supported == false ){
-			add_action( 'init', 'ebor_framework_register_portfolio' );
-			add_action( 'init', 'ebor_framework_create_portfolio_taxonomies' );
+			add_action( 'init', 'ebor_framework_register_portfolio', 10 );
+			add_action( 'init', 'ebor_framework_create_portfolio_taxonomies', 10  );
 		}
 		
 		if( current_theme_supports('ebor-framework-team') || $supported == false ){
-			add_action( 'init', 'ebor_framework_register_team' );
-			add_action( 'init', 'ebor_framework_create_team_taxonomies' );
+			add_action( 'init', 'ebor_framework_register_team', 10  );
+			add_action( 'init', 'ebor_framework_create_team_taxonomies', 10  );
 		}
 		
 		if( current_theme_supports('ebor-framework-client') || $supported == false ){
-			add_action( 'init', 'ebor_framework_register_client' );
-			add_action( 'init', 'ebor_framework_create_client_taxonomies' );
+			add_action( 'init', 'ebor_framework_register_client', 10  );
+			add_action( 'init', 'ebor_framework_create_client_taxonomies', 10  );
 		}
 		
 		if( current_theme_supports('ebor-framework-testimonial') || $supported == false ){
-			add_action( 'init', 'ebor_framework_register_testimonial' );
-			add_action( 'init', 'ebor_framework_create_testimonial_taxonomies' );
+			add_action( 'init', 'ebor_framework_register_testimonial', 10  );
+			add_action( 'init', 'ebor_framework_create_testimonial_taxonomies', 10  );
 		}
 		
 		if( current_theme_supports('ebor-framework-mega-menu') || $supported == false )
-			add_action( 'init', 'ebor_framework_register_mega_menu' );
+			add_action( 'init', 'ebor_framework_register_mega_menu', 10  );
 
 	}
 	add_action('after_setup_theme', 'ebor_framework_theme_support', 15);

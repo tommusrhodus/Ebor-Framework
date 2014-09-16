@@ -194,8 +194,16 @@ if(class_exists('AQ_Page_Builder')) {
 	
 	/* Media Uploader */
 	function aq_field_upload($field_id, $block_id, $media, $media_type = 'image') {
-		$output = '<input type="text" id="'. $block_id .'_'.$field_id.'" class="input-full input-upload" value="'.$media.'" name="aq_blocks['.$block_id.']['.$field_id.']">';
-		$output .= '<a href="#" class="aq_upload_button button" rel="'.$media_type.'">Upload</a><p></p>';
+		if( 'gallery' == $media_type ){
+			$output = '<div class="ebor-page-builder-gallery">';
+			$output .= '<input type="hidden" id="'. $block_id .'_'.$field_id.'" name="aq_blocks['.$block_id.']['.$field_id.']" value="'.$media.'" />';
+			$output .= '<input type="button" class="button button-primary manage" value="Manage Images" />';
+			$output .= '<input type="button" class="button ebor-gallery-remove" value="Delete All Gallery Items" />';
+			$output .= '</div>';
+		} else {
+			$output = '<input type="text" id="'. $block_id .'_'.$field_id.'" class="input-full input-upload" value="'.$media.'" name="aq_blocks['.$block_id.']['.$field_id.']">';
+			$output .= '<a href="#" class="aq_upload_button button" rel="'.$media_type.'">Upload</a><p></p>';
+		}
 		
 		return $output;
 	}
@@ -206,6 +214,15 @@ if(class_exists('AQ_Page_Builder')) {
 		$output .= '<option value="all" '.selected( $selected, 'all', false ).'>Show All</option>';
 		foreach($options as $option) {
 			$output .= '<option value="'.$option->term_id.'" '.selected( $selected, $option->term_id, false ).'>'.htmlspecialchars($option->name).'</option>';
+		}
+		$output .= '</select>';
+		return $output;
+	}
+	
+	function ebor_post_select($field_id, $block_id, $options, $selected) {
+		$output = '<select id="'. $block_id .'_'.$field_id.'" name="aq_blocks['.$block_id.']['.$field_id.']">';
+		foreach($options as $option) {
+			$output .= '<option value="'.$option->ID.'" '.selected( $selected, $option->ID, false ).'>'.htmlspecialchars($option->post_title).'</option>';
 		}
 		$output .= '</select>';
 		return $output;

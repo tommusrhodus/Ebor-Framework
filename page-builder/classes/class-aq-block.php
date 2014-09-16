@@ -110,6 +110,7 @@ if(!class_exists('AQ_Block')) {
 	 			'parent' => 0,					//block parent (for blocks inside columns)
 	 			'number' => '__i__',			//block consecutive numbering
 	 			'first' => false,				//column first
+	 			'last' => false,
 	 			'resizable' => 1,				//whether block is resizable/not
 	 			'block_icon' => '',
 	 			'block_description' => '',

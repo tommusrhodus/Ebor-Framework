@@ -167,6 +167,13 @@ html {
 /* END BLOCK STYLES */
 
 /* MISC STYLES */
+.ebor-page-builder-gallery .manage {
+	display: block;
+	width: 100%;
+	margin-bottom: 25px;
+	font-weight: 700;
+	font-size: 16px;
+}
 .text-center {
 	text-align: center;
 }
