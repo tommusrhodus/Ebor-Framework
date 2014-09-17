@@ -598,14 +598,15 @@ if(!class_exists('AQ_Page_Builder')) {
 							}
 							
 							$span = $span + $col_size; // Move here
-
-							$next_block_size = $blocks['aq_block_'.($number+1)]['size']; // Get next block size
-							$next_block_size  = absint(preg_replace("/[^0-9]/", '', $next_block_size )); //Convert to int
-							$next_overgrid = $span + $next_block_size ; // Workout over grid for next block
-
-							if($next_overgrid  > 12 || $span == 12 || $number == $block_count)
-							{
-								$instance['last'] = true;
+							
+							if( isset($blocks['aq_block_'.($number+1)]) ){
+								$next_block_size = $blocks['aq_block_'.($number+1)]['size']; // Get next block size
+								$next_block_size  = absint(preg_replace("/[^0-9]/", '', $next_block_size )); //Convert to int
+								$next_overgrid = $span + $next_block_size ; // Workout over grid for next block
+	
+								if($next_overgrid  > 12 || $span == 12 || $number == $block_count){
+									$instance['last'] = true;
+								}
 							}
 
 							$block->block_callback($instance);

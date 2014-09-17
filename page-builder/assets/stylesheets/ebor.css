@@ -13,25 +13,19 @@ html {
 	bottom: 0;
 	background: rgba(0,0,0,0.75);
 	z-index: 9999;
-	overflow: hidden;
 }
 .icon-modal-inner,
 .ebor-modal-inner {
 	background: #fff;
 	margin: 60px;
 	box-shadow: 0px 0px 14px #444;
-	padding: 10px 20px 20px;
 	position: relative;
 	z-index: 10000;
-	max-width: 700px;
+	max-width: 960px;
 	margin: 60px auto 0;
-	overflow-y: scroll;
-	height: 80%;
 }
 .icon-modal-inner {
 	z-index: 10001;
-	overflow-y: scroll;
-	width: 500px;
 }
 .icon-modal .ebor-modal-icon {
 	display: inline-block;
@@ -50,6 +44,39 @@ html {
 	display: block;
 	width: 100%;
 	text-align: center;
+}
+.ebor-modal-content {
+	padding: 20px;
+	max-height: 700px;
+	overflow-y: scroll;
+}
+.ebor-modal-title,
+.icon-modal-title {
+	background: #f5f5f5;
+	border-bottom: 1px solid #e5e5e5;
+}
+.ebor-modal-title a,
+.icon-modal-title a {
+	float: right;
+	padding: 15px 13px;
+	border-left: 1px solid #e5e5e5;
+}
+.ebor-modal-title a i,
+.icon-modal-title a i {
+	font-size: 22px;
+	color: #3c3c3c;
+}
+.ebor-modal-title a:hover,
+.icon-modal-title a:hover {
+	background: #eee;
+}
+.ebor-modal-title a:hover i,
+.icon-modal-title a:hover i {
+	color: #1c1c1c;
+}
+.ebor-modal-title h3,
+.icon-modal-title h3 {
+	padding: 17px 0 0 20px;
 }
 /* END ICON MODAL STYLES */
 
@@ -168,11 +195,7 @@ html {
 
 /* MISC STYLES */
 .ebor-page-builder-gallery .manage {
-	display: block;
-	width: 100%;
-	margin-bottom: 25px;
-	font-weight: 700;
-	font-size: 16px;
+	margin-right: 20px;
 }
 .text-center {
 	text-align: center;

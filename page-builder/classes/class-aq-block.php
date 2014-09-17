@@ -145,9 +145,13 @@ if(!class_exists('AQ_Block')) {
 	 				'<div class="block-settings clearfix" id="block-settings-'.$number.'">',
 	 				'<div class="ebor-options-wrapper">',
 	 					'<div class="ebor-modal">',
-	 						'<div class="ebor-modal-inner">',
-	 							'<h3 class="floatleft">' . $name, $title . '</h3>',
-	 							'<a href="#" class="ebor-modal-closer button button-primary floatright">Close Window</a><div class="cf"></div>';
+	 						'<div class="ebor-modal-inner">
+	 						<div class="ebor-modal-title">
+	 							<a href="#" class="ebor-modal-closer"><i class="fa fa-times"></i></a>
+	 							<h3>' . $name, $title . '</h3>
+	 							<div class="cf"></div>
+	 						</div>
+	 						<div class="ebor-modal-content">';
 	 	}
 	 	
 	 	//form footer
@@ -156,7 +160,7 @@ if(!class_exists('AQ_Block')) {
 	 		
 	 		$block_saving_id = 'aq_blocks[aq_block_'.$number.']';
 	 			
-	 			echo '</div></div>',
+	 			echo '</div></div></div>',
 	 				 '<a href="#" class="ebor-modal-launcher button button-primary">Edit Settings & Content</a>',
 	 				 '</div>';
 	 			echo '<div class="block-control-actions clearfix"><a href="#" class="delete">'. __('Delete', 'ebor-framework') .'</a> | <a href="#" class="close">'. __('Close', 'ebor-framework') .'</a></div>';

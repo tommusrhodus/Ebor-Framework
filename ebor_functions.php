@@ -312,7 +312,7 @@ class ebor_framework_medium_rare_bootstrap_navwalker extends Walker_Nav_Menu {
 			 * Otherwise render elements as normal
 			 */
 			if( $item->object == 'mega_menu' ) {
-				$output .= '<div class="yamm-content row">' . do_shortcode(get_post_field('post_content', $item->object_id)) . '</div>';
+				$output .= '<div class="subnav subnav-fullwidth">' . do_shortcode(get_post_field('post_content', $item->object_id)) . '</div>';
 			} else {
 				$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 			}

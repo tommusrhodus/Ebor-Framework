@@ -201,8 +201,8 @@ if(class_exists('AQ_Page_Builder')) {
 			$output .= '<input type="button" class="button ebor-gallery-remove" value="Delete All Gallery Items" />';
 			$output .= '</div>';
 		} else {
-			$output = '<input type="text" id="'. $block_id .'_'.$field_id.'" class="input-full input-upload" value="'.$media.'" name="aq_blocks['.$block_id.']['.$field_id.']">';
-			$output .= '<a href="#" class="aq_upload_button button" rel="'.$media_type.'">Upload</a><p></p>';
+			$output = '<input type="text" id="'. $block_id .'_'.$field_id.'" class="input-upload" value="'.$media.'" name="aq_blocks['.$block_id.']['.$field_id.']">';
+			$output .= '<a href="#" class="aq_upload_button button button-primary" rel="'.$media_type.'">Upload</a><p></p>';
 		}
 		
 		return $output;

@@ -12,21 +12,19 @@ jQuery(document).ready(function($) {
 	/**
 	 * Gallery Manager
 	 */
-	$('.ebor-page-builder-gallery').each(function() {
-		var instance = this;
-	
-		$('input[type="button"].manage', instance).click(function() {
-			var gallerysc = '[gallery ids="' + $('input[type=hidden]', instance).val() + '"]';
-			wp.media.gallery.edit(gallerysc).on('update', function(g) {
-				var id_array = [];
-				$.each(g.models, function(id, img) { id_array.push(img.id); });
-				$('input[type=hidden]', instance).val(id_array.join(","));
-			});
+	$('body').on('click', 'input[type="button"].manage', function(){
+		var instance = $(this).parents('.ebor-page-builder-gallery');
+		var gallerysc = '[gallery ids="' + $('input[type=hidden]', instance).val() + '"]';
+		wp.media.gallery.edit(gallerysc).on('update', function(g) {
+			var id_array = [];
+			$.each(g.models, function(id, img) { id_array.push(img.id); });
+			$('input[type=hidden]', instance).val(id_array.join(","));
 		});
-		$('input[type=button].ebor-gallery-remove', instance).click(function() {
-			$('input[type=hidden]', instance).val('');
-			alert('All Gallery Items Removed, Save Template to Update');
-		});
+	});
+	$('body').on('click', 'input[type=button].ebor-gallery-remove', function(){
+		var instance = $(this).parents('.ebor-page-builder-gallery');
+		$('input[type=hidden]', instance).val('');
+		alert('All Gallery Items Removed, Save Template to Update');
 	});
 	
 	/**
@@ -62,6 +60,10 @@ jQuery(document).ready(function($) {
 	});
 	$('body').on('click', '.ebor-modal-closer', function(){
 		$(this).parents('.ebor-modal').hide();
+		return false;
+	});
+	$('body').on('click', '.icon-modal-closer', function(){
+		$(this).parents('.icon-modal').hide();
 		return false;
 	});
 
