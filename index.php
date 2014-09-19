@@ -27,6 +27,19 @@ if(!( function_exists('ebor_framework_admin_load_scripts') )){
 	add_action('admin_enqueue_scripts', 'ebor_framework_admin_load_scripts', 200);
 }
 
+/**
+ * Turn on the image resizer.
+ * The resizer file has a class exists check to avoid conflicts
+ * 
+ * @since 1.0.0
+ * @author tommusrhodus
+ */
+if(!( function_exists('ebor_framework_load_aq_resize') )){
+	function ebor_framework_load_aq_resize(){
+		require_once( EBOR_FRAMEWORK_PATH . 'aq_resizer.php' );	
+	}
+	add_action('after_setup_theme', 'ebor_framework_load_aq_resize', 10);	
+}
 
 /**
  * Grab page builder, ensure that aqua page builder isn't installed seperately

@@ -607,6 +607,9 @@ if(!class_exists('AQ_Page_Builder')) {
 								if($next_overgrid  > 12 || $span == 12 || $number == $block_count){
 									$instance['last'] = true;
 								}
+							} else {
+								if( $span == 12 || $number == $block_count)
+									$child['last'] = true;
 							}
 
 							$block->block_callback($instance);

@@ -53,7 +53,7 @@ class Ebor_Options {
 	/**
 	 * This function adds customization settings
 	 */
-	public function add_setting($type, $name, $title, $section, $default = '', $priority = ''){
+	public function add_setting($type, $name, $title, $section, $default = '', $priority = '', $options = array()){
 		$this->settings[] = array(
 			'type' => $type,
 			'name' => $name,
@@ -61,6 +61,7 @@ class Ebor_Options {
 			'section' => $section,
 			'default' => $default,
 			'priority' => $priority,
+			'options' => $options
 		);
 	}
 	
@@ -137,6 +138,17 @@ class Ebor_Options {
 						)
 					);
 					
+				} elseif( 'checkbox' == $type ){
+					
+					$wp_customize->add_control( 
+						$name, array(
+							'type'     => 'checkbox',
+				    		'label'    => $title,
+				    		'section'  => $section,
+				    		'priority' => $priority
+						)
+					);
+					
 				} elseif( 'number' == $type ){
 					
 					$wp_customize->add_control( 
@@ -158,6 +170,18 @@ class Ebor_Options {
 					    		'section'  => $section,
 					    		'priority' => $priority
 							)
+						)
+					);
+					
+				} elseif( 'select' == $type ){
+					
+					$wp_customize->add_control( 
+						$name, array(
+							'type'     => 'select',
+				    		'label'    => $title,
+				    		'section'  => $section,
+				    		'priority' => $priority,
+				    		'choices' => $options
 						)
 					);
 					
