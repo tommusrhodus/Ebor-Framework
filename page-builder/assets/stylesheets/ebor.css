@@ -81,6 +81,9 @@ html {
 /* END ICON MODAL STYLES */
 
 /* BLOCK STYLES */
+#blocks-archive .block-handle {
+	background: #fafafa !important;
+}
 .remove-mce {
 	display: block !important;
 }

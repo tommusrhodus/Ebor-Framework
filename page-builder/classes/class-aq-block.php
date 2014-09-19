@@ -147,7 +147,7 @@ if(!class_exists('AQ_Block')) {
 	 					'<div class="ebor-modal">',
 	 						'<div class="ebor-modal-inner">
 	 						<div class="ebor-modal-title">
-	 							<a href="#" class="ebor-modal-closer"><i class="fa fa-times"></i></a>
+	 							<a href="#" class="ebor-modal-closer"><i class="fa fa-times fa-fw"></i></a>
 	 							<h3>' . $name, $title . '</h3>
 	 							<div class="cf"></div>
 	 						</div>
