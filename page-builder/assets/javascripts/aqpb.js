@@ -196,6 +196,7 @@ jQuery(document).ready(function($){
 			connectToSortable: "#blocks-to-edit",
 			helper: 'clone',
 			revert: 'invalid',
+			scroll: true,
 			start: function(event, ui) {
 				block_archive = $(this).attr('id');
 			}

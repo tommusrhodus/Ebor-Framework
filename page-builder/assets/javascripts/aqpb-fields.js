@@ -155,16 +155,13 @@ jQuery(document).ready(function($){
 	
 	// Visual Editor Block
 	$('ul.blocks').bind('sortstart', function(event, ui) {
-
 			textareaID = $(ui.item).find('.wp-editor-area').attr('id');
 			try { tinyMCE.execCommand('mceRemoveEditor', false, textareaID); } catch(e){
 				console.log(e);
 			}
-
 	});
 
 	$('ul.blocks').bind('sortstop', function(event, ui) {
-
 			textareaID = $(ui.item).find('.wp-editor-area').attr('id');
 			try { 
 				tinyMCE.execCommand('mceAddEditor', false, textareaID); 
@@ -172,18 +169,13 @@ jQuery(document).ready(function($){
 			} catch(e){
 				console.log(e);
 			}
-
 	});
 
 	$('ul.blocks .ui-resizable').bind('resizestart', function(event, ui) {
-
 			textareaID = $(ui.item).find('.wp-editor-area').attr('id');
 			try { tinyMCE.execCommand('mceRemoveEditor', false, textareaID); } catch(e){
 				console.log(e);
 			}
-
 	});
-
-
-		
+	
 });

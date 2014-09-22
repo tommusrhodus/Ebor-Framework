@@ -308,7 +308,7 @@ if(!class_exists('AQ_Page_Builder')) {
 				'nopaging' => true,
 				'post_type' => 'template',
 				'status' => 'publish',
-				'orderby' => 'menu_order',
+				'orderby' => 'title',
 				'order' => 'ASC',
 			);
 			
@@ -716,7 +716,8 @@ if(!class_exists('AQ_Page_Builder')) {
 				?>
 				<script type="text/javascript">
 					function insertTemplate() {
-						var id = jQuery( '#select-aqpb-template' ).val();
+						var id = jQuery( '#select-aqpb-template' ).val(),
+							name = jQuery( '#select-aqpb-template :selected' ).text();
 
 						/** Alert user if there is no template selected */
 						if ( '' == id ) {
@@ -725,7 +726,7 @@ if(!class_exists('AQ_Page_Builder')) {
 						}
 
 						/** Send shortcode to editor */
-						window.send_to_editor('[template id="' + id + '" '+name+']');
+						window.send_to_editor('[template id="' + id + '" '+ name +']');
 					}
 				</script>
 

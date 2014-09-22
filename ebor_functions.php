@@ -28,6 +28,21 @@ if(!( function_exists('ebor_the_terms') )){
 }
 
 /**
+ * ebor sanitize title
+ * A replacement function for WordPress santize_title which breaks in Russian and other languages.
+ * 
+ * @since 1.0.0
+ * @author tommusrhodus
+ */
+if(!( function_exists('ebor_sanitize_title') )){
+	function ebor_sanitize_title($string){
+		$string = strtolower(str_replace(' ', '-', $string)); // Replaces all spaces with hyphens.
+		$string = preg_replace('/[^A-Za-z\-]/', '', $string); // Removes special chars.
+		return preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
+	}
+}
+
+/**
  * Term name return
  *
  * Returns the Pretty Name of a term array
