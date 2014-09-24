@@ -4,7 +4,8 @@ html {
 	overflow-x: hidden;
 }
 .icon-modal, 
-.ebor-modal {
+.ebor-modal,
+.editor-wrap {
 	display: none;
 	position: fixed;
 	top: 0;
@@ -15,7 +16,8 @@ html {
 	z-index: 9999;
 }
 .icon-modal-inner,
-.ebor-modal-inner {
+.ebor-modal-inner,
+.editor-inner {
 	background: #fff;
 	margin: 60px;
 	box-shadow: 0px 0px 14px #444;
@@ -24,8 +26,12 @@ html {
 	max-width: 960px;
 	margin: 60px auto 0;
 }
-.icon-modal-inner {
+.icon-modal-inner,
+.editor-wrap {
 	z-index: 10001;
+}
+.ebor-editor-content {
+	padding: 60px 50px;
 }
 .icon-modal .ebor-modal-icon {
 	display: inline-block;
@@ -46,9 +52,12 @@ html {
 	text-align: center;
 }
 .ebor-modal-content {
-	padding: 20px;
+	padding: 30px 40px 70px;
 	max-height: 700px;
 	overflow-y: scroll;
+}
+.ebor-modal-content hr {
+	margin: 30px 0 40px;
 }
 .ebor-modal-title,
 .icon-modal-title {
@@ -79,6 +88,11 @@ html {
 	padding: 17px 0 0 20px;
 }
 /* END ICON MODAL STYLES */
+
+/* EDITOR STYLES */
+.editor-wrap {
+	
+}
 
 /* BLOCK STYLES */
 #blocks-archive .block-handle {
@@ -186,9 +200,6 @@ html {
 	margin-top: 0;
 }
 .ebor-modal-inner select {
-	margin-bottom: 10px;
-}
-.ebor-modal-inner hr {
 	margin-bottom: 10px;
 }
 .wp-admin select {

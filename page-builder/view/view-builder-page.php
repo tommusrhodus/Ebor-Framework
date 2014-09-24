@@ -133,6 +133,22 @@ $disabled = $selected_template_id === 0 ? 'metabox-holder-disabled' : '';
 
 ?>
 
+<div class="editor-wrap">
+	<div class="editor-inner">
+		
+		<div class="ebor-modal-title">
+			<a href="#" class="ebor-editor-closer"><i class="fa fa-times fa-fw"></i></a>
+			<h3 id="block-title-replace">Howdy!</h3>
+			<div class="cf"></div>
+		</div>
+		
+		<div class="ebor-editor-content">
+			<?php wp_editor('','ebor-editor', array('textarea_rows' => 20, 'wpautop' => true)); ?>
+		</div>
+		
+	</div>
+</div>
+
 <div class="wrap">
 	<div id="icon-themes" class="icon32"><br/></div>
 	<h2><?php echo $this->args['page_title'] ?></h2>

@@ -15,11 +15,10 @@ if(!( function_exists('ebor_the_terms') )){
 		
 		$terms = get_the_terms($post->ID, $cat, '', $sep, '');
 		
-		foreach( $terms as $term ){
-			$args[] = $value;	
-		}
-		
 		if( is_array($terms) ) {
+			foreach( $terms as $term ){
+				$args[] = $value;	
+			}
 			$terms = array_map('_simple_cb', $terms, $args);
 			return implode( $sep, $terms);
 		}

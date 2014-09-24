@@ -229,9 +229,6 @@ jQuery(document).ready(function($){
 			//remove draggable class
 		    ui.item.removeClass('ui-draggable').addClass('new-on-the-block');
 		    
-		    //remove tinymce from textarea
-		    ui.item.find('.remove-mce').prev('.mce-tinymce').remove();
-		    
 		    //set random block id
 		    block_number = makeid();
 		    

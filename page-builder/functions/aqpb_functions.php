@@ -140,7 +140,7 @@ if(class_exists('AQ_Page_Builder')) {
 	
 	/* Textarea field */
 	function aq_field_textarea($field_id, $block_id, $text, $size = 'full') {
-		$output = '<textarea id="'. $block_id .'_'.$field_id.'" class="remove-mce textarea-'.$size.'" name="aq_blocks['.$block_id.']['.$field_id.']" rows="5">'.$text.'</textarea>';
+		$output = '<textarea id="'. $block_id .'_'.$field_id.'" class="textarea-'.$size.'" name="aq_blocks['.$block_id.']['.$field_id.']" rows="5">'.$text.'</textarea>';
 		
 		return $output;
 	}
@@ -187,9 +187,9 @@ if(class_exists('AQ_Page_Builder')) {
 		return $output;
 	}
 	
-	/* Multi Checkbox */
-	function aq_field_multicheck($field_id, $block_id, $fields = array(), $selected = array()) {
-	
+	function aq_field_editor($field_id, $block_id, $text, $size = 'full'){
+		$output = '<div class="ebor-editor-launch-wrap"><a href="#'. $block_id .'_'.$field_id.'" class="button button-primary ebor-editor-launch">Edit Block Content</a><div class="hidden"><textarea id="'. $block_id .'_'.$field_id.'" class="textarea-'.$size.'" name="aq_blocks['.$block_id.']['.$field_id.']" rows="5">'.$text.'</textarea></div></div>';
+		return $output;	
 	}
 	
 	/* Media Uploader */
