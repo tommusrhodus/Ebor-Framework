@@ -1,0 +1,12 @@
+input[type="range"] {
+	width: 75%;
+	float: left;
+}
+input[type="range"] + input[type="text"] {
+	float: right;
+	width: 22%;
+	color: #333;
+}
+.cmb-repeatable-grouping {
+	background: #fff;
+}

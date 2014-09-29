@@ -1,3 +1,6 @@
+.aq-sortable-list li {
+	display: block !important;
+}
 /* ICON MODAL STYLES */
 body,
 html {

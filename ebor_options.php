@@ -66,7 +66,7 @@ class Ebor_Options {
 	}
 	
 	/**
-	 * Finally, run through our array and build them options!
+	 * Finally, run through our array and build theme options!
 	 */
 	public function build_options($wp_customize){
 		
@@ -138,6 +138,18 @@ class Ebor_Options {
 						)
 					);
 					
+				} elseif( 'color' == $type || 'colour' == $type ){
+					
+					$wp_customize->add_control( 
+						new WP_Customize_Color_Control(
+							$wp_customize, $name, array(
+					    		'label'    => $title,
+					    		'section'  => $section,
+					    		'priority' => $priority
+							)
+						)
+					);
+					
 				} elseif( 'checkbox' == $type ){
 					
 					$wp_customize->add_control( 
@@ -185,6 +197,19 @@ class Ebor_Options {
 						)
 					);
 					
+				} elseif( 'range' == $type ){
+					
+					$wp_customize->add_control( 
+						new Ebor_Customizer_Range_Control(
+							$wp_customize, $name, array(
+					    		'label'    => $title,
+					    		'section'  => $section,
+					    		'priority' => $priority,
+					    		'choices' => $options
+							)
+						)
+					);
+					
 				} else {
 					
 					$wp_customize->add_control( 
@@ -207,6 +232,19 @@ class Ebor_Options {
 
 if(!( function_exists('ebor_additional_classes') )){
 	function ebor_additional_classes(){
+		
+		class Ebor_Customizer_Range_Control extends WP_Customize_Control {
+		    public $type = 'range';
+		    public function render_content() {
+		    ?>
+		        <label>
+		        	<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+		        	<input <?php $this->link(); ?> name="<?php echo esc_html( ebor_sanitize_title($this->label) ); ?>" type="range" min="<?php echo $this->choices['min']; ?>" max="<?php echo $this->choices['max']; ?>" step="<?php echo $this->choices['step']; ?>" value="<?php echo intval( $this->value() ); ?>" class="ebor-range" onchange="printValue('<?php echo esc_html( ebor_sanitize_title($this->label) ); ?>')" />
+		        	<input type="text" name="<?php echo esc_html( ebor_sanitize_title($this->label) ); ?>" class="ebor-range-output" value="<?php echo intval( $this->value() ); ?>" disabled/>
+		        </label>
+		    <?php
+		    }
+		}
 		
 		class Ebor_Customizer_Textarea_Control extends WP_Customize_Control {
 		    public $type = 'textarea';
