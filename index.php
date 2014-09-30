@@ -76,47 +76,47 @@ require_once( EBOR_FRAMEWORK_PATH . 'ebor_functions.php' );
 require_once( EBOR_FRAMEWORK_PATH . 'metaboxes/init.php' );
 
 /**
- * ebor_framework_theme_support
- * 
- * The framework supports a number of custom posts types and features, all of these are initialised from within a theme by using add_theme_support()
- * If a theme does not declare ebor-framework support then all features are loaded to avoid data loss.
- * 
- * @since 1.0.0
- * @author tommusrhodus
+ * Register appropriate shortcodes
  */
-if(!( function_exists('ebor_framework_theme_support') )){
-	function ebor_framework_theme_support(){
-		
-		$supported = ( current_theme_supports('ebor-framework') ) ? true : false;
-		
-		/**
-		 * Hook CPT registers to init
-		 * Check that we're using an ebor-framework theme and register functions accordingly.
-		 * If this isn't an ebor-framework theme (register is false) then we'll just enable everything.
-		 */
-		if( current_theme_supports('ebor-framework-portfolio') || $supported == false ){
-			add_action( 'init', 'ebor_framework_register_portfolio', 10 );
-			add_action( 'init', 'ebor_framework_create_portfolio_taxonomies', 10  );
-		}
-		
-		if( current_theme_supports('ebor-framework-team') || $supported == false ){
-			add_action( 'init', 'ebor_framework_register_team', 10  );
-			add_action( 'init', 'ebor_framework_create_team_taxonomies', 10  );
-		}
-		
-		if( current_theme_supports('ebor-framework-client') || $supported == false ){
-			add_action( 'init', 'ebor_framework_register_client', 10  );
-			add_action( 'init', 'ebor_framework_create_client_taxonomies', 10  );
-		}
-		
-		if( current_theme_supports('ebor-framework-testimonial') || $supported == false ){
-			add_action( 'init', 'ebor_framework_register_testimonial', 10  );
-			add_action( 'init', 'ebor_framework_create_testimonial_taxonomies', 10  );
-		}
-		
-		if( current_theme_supports('ebor-framework-mega-menu') || $supported == false )
-			add_action( 'init', 'ebor_framework_register_mega_menu', 10  );
+if( '1' == get_option('ebor_framework_pivot_shortcodes') ){
+	require_once( EBOR_FRAMEWORK_PATH . 'shortcodes/pivot-shortcodes.php' );	
+}
 
-	}
-	add_action('after_setup_theme', 'ebor_framework_theme_support', 15);
+/**
+ * Register Portfolio Post Type
+ */
+if( '1' == get_option('ebor_framework_portfolio_post_type') ){
+	add_action( 'init', 'ebor_framework_register_portfolio', 10 );
+	add_action( 'init', 'ebor_framework_create_portfolio_taxonomies', 10  );
+}
+
+/**
+ * Register Team Post Type
+ */
+if( '1' == get_option('ebor_framework_team_post_type') ){
+	add_action( 'init', 'ebor_framework_register_team', 10  );
+	add_action( 'init', 'ebor_framework_create_team_taxonomies', 10  );
+}
+
+/**
+ * Register Client Post Type
+ */
+if( '1' == get_option('ebor_framework_client_post_type') ){
+	add_action( 'init', 'ebor_framework_register_client', 10  );
+	add_action( 'init', 'ebor_framework_create_client_taxonomies', 10  );
+}
+
+/**
+ * Register Testimonial Post Type
+ */
+if( '1' == get_option('ebor_framework_testimonial_post_type') ){
+	add_action( 'init', 'ebor_framework_register_testimonial', 10  );
+	add_action( 'init', 'ebor_framework_create_testimonial_taxonomies', 10  );
+}
+
+/**
+ * Register Mega Menu Post Type
+ */
+if( '1' == get_option('ebor_framework_mega_menu') ){
+	add_action( 'init', 'ebor_framework_register_mega_menu', 10  );
 }

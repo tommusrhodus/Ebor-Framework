@@ -61,19 +61,6 @@ if(!( function_exists('_simple_cb') )){
 	}
 }
 
-function ebor_custom_admin(){
-	if( get_option('wp_login_logo') ){
-		echo '<style type="text/css">
-				.login h1 a { 
-					background-image: url("'.get_option('wp_login_logo').'"); 
-					background-size: auto 80px;
-					width: 100%; 
-				} 
-			</style>';
-	}
-}
-add_action('login_enqueue_scripts','ebor_custom_admin');
-
 if(!( function_exists('ebor_framework_custom_css') )){
 	function ebor_framework_custom_css(){
 		echo '<style type="text/css">'. get_option('custom_css') .'</style>';
