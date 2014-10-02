@@ -41,13 +41,24 @@ class Ebor_Options {
 	 * This function adds customizations sections
 	 */
 	public function add_section($name, $title, $priority, $panel = '', $description = ''){
-		$this->sections[] = array(
-			'name' => $name,
-			'title' => $title,
-			'priority' => $priority,
-			'description'=> $description,
-			'panel' => $panel
-		);
+		global $wp_version;
+		
+		if( $wp_version >= 4.0 ){
+			$this->sections[] = array(
+				'name' => $name,
+				'title' => $title,
+				'priority' => $priority,
+				'description'=> $description,
+				'panel' => $panel
+			);
+		} else {
+			$this->sections[] = array(
+				'name' => $name,
+				'title' => $title,
+				'priority' => $priority,
+				'description'=> $description
+			);
+		}
 	}
 	
 	/**

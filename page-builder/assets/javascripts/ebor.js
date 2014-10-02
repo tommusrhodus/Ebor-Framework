@@ -46,7 +46,11 @@ jQuery(document).ready(function($) {
 		$(this).parents('.description').find('input').attr({ 'value' : icon });
 	});
 	$('body').on('click', '.ebor-modal-launcher', function(){
-		$(this).parent().find('.ebor-modal').show();
+		if($(this).hasClass('section-launcher')){
+			$(this).parent().parent().next().show().find('.ebor-modal').show();
+		} else {
+			$(this).parent().find('.ebor-modal').show();
+		}
 		return false;
 	});
 	$('body').on('click', '.ebor-modal-closer', function(){
@@ -99,7 +103,7 @@ jQuery(document).ready(function($) {
 	jQuery('.ebor-column-content').slideUp();
 	
 	jQuery('.column-close').click(function(){
-		jQuery(this).parent().next().slideToggle();
+		jQuery(this).parent().parent().next().slideToggle();
 		return false;
 	});
 	

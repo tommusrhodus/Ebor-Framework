@@ -101,9 +101,6 @@ html {
 #blocks-archive .block-handle {
 	background: #fafafa !important;
 }
-.remove-mce {
-	display: block !important;
-}
 .hndle small {
 	display: block;
 	font-size: 12px;
@@ -172,6 +169,9 @@ html {
 }
 .ebor-modal-launcher {
 	margin: 10px 0 !important;
+}
+.ebor-column-header .ebor-modal-launcher {
+	margin: 0 0 0 10px !important;
 }
 #blocks-to-edit .block-icon {
 	display: none;
@@ -250,4 +250,12 @@ table.cmb_metabox .attach_list li {
 }
 .floatleft {
 	float: left;
+}
+.ebor-column-header .floatleft i {
+	opacity: 0.2;
+}
+.ebor-column-header .floatleft span {
+	position: relative;
+	top: -4px;
+	margin-left: 8px;
 }

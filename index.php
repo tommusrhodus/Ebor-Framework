@@ -28,38 +28,8 @@ if(!( function_exists('ebor_framework_admin_load_scripts') )){
 }
 
 /**
- * Turn on the image resizer.
- * The resizer file has a class exists check to avoid conflicts
- * 
- * @since 1.0.0
- * @author tommusrhodus
+ * Some items are definitely always loaded, these are those.
  */
-if(!( function_exists('ebor_framework_load_aq_resize') )){
-	function ebor_framework_load_aq_resize(){
-		require_once( EBOR_FRAMEWORK_PATH . 'aq_resizer.php' );	
-	}
-	add_action('after_setup_theme', 'ebor_framework_load_aq_resize', 10);	
-}
-
-/**
- * Grab page builder, ensure that aqua page builder isn't installed seperately
- */
-if(!( class_exists( 'AQ_Page_Builder' ) )){
-	require_once( EBOR_FRAMEWORK_PATH . 'page-builder/aqua-page-builder.php' );	
-}
-
-/**
- * Grab ebor likes, make sure Zilla likes isn't installed though
- */
-if(!( class_exists( 'eborLikes' ) || class_exists( 'ZillaLikes' ) )){
-	require_once( EBOR_FRAMEWORK_PATH . 'ebor-likes/likes.php' );
-}
-
-/**
- * Grab simple options class
- */
-require_once( EBOR_FRAMEWORK_PATH . 'ebor_options.php' );
-
 /**
  * Grab all custom post type functions
  */
@@ -71,52 +41,7 @@ require_once( EBOR_FRAMEWORK_PATH . 'ebor_cpt.php' );
 require_once( EBOR_FRAMEWORK_PATH . 'ebor_functions.php' );
 
 /**
- * Grab our custom metaboxes class
+ * Everything else in the framework is conditionally loaded depending on theme options.
+ * Let's include all of that now.
  */
-require_once( EBOR_FRAMEWORK_PATH . 'metaboxes/init.php' );
-
-/**
- * Register appropriate shortcodes
- */
-if( '1' == get_option('ebor_framework_pivot_shortcodes') ){
-	require_once( EBOR_FRAMEWORK_PATH . 'shortcodes/pivot-shortcodes.php' );	
-}
-
-/**
- * Register Portfolio Post Type
- */
-if( '1' == get_option('ebor_framework_portfolio_post_type') ){
-	add_action( 'init', 'ebor_framework_register_portfolio', 10 );
-	add_action( 'init', 'ebor_framework_create_portfolio_taxonomies', 10  );
-}
-
-/**
- * Register Team Post Type
- */
-if( '1' == get_option('ebor_framework_team_post_type') ){
-	add_action( 'init', 'ebor_framework_register_team', 10  );
-	add_action( 'init', 'ebor_framework_create_team_taxonomies', 10  );
-}
-
-/**
- * Register Client Post Type
- */
-if( '1' == get_option('ebor_framework_client_post_type') ){
-	add_action( 'init', 'ebor_framework_register_client', 10  );
-	add_action( 'init', 'ebor_framework_create_client_taxonomies', 10  );
-}
-
-/**
- * Register Testimonial Post Type
- */
-if( '1' == get_option('ebor_framework_testimonial_post_type') ){
-	add_action( 'init', 'ebor_framework_register_testimonial', 10  );
-	add_action( 'init', 'ebor_framework_create_testimonial_taxonomies', 10  );
-}
-
-/**
- * Register Mega Menu Post Type
- */
-if( '1' == get_option('ebor_framework_mega_menu') ){
-	add_action( 'init', 'ebor_framework_register_mega_menu', 10  );
-}
+require_once( EBOR_FRAMEWORK_PATH . 'init.php' );
