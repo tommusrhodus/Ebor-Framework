@@ -174,7 +174,9 @@ html {
 	margin: 0 0 0 10px !important;
 }
 #blocks-to-edit .block-icon {
-	display: none;
+	font-size: 18px;
+	opacity: 0.3;
+	margin-right: 3px;
 }
 #blocks-to-edit .block-aq_section_block.new-on-the-block.block-edit-active .block-bar {
 	margin-top: 0;

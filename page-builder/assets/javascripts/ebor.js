@@ -4,13 +4,21 @@ jQuery(document).ready(function($) {
 	 * Gallery Manager
 	 */
 	$('body').on('click', 'input[type="button"].manage', function(){
-		var instance = $(this).parents('.ebor-page-builder-gallery');
-		var gallerysc = '[gallery ids="' + $('input[type=hidden]', instance).val() + '"]';
+		
+		var instance = $(this).parents('.ebor-page-builder-gallery'),
+			val = $('input[type=hidden]', instance).val(),
+			id_array = [];
+			
+		if(!( val ))
+			val = ' ';
+			
+		var gallerysc = '[gallery ids="' + val + '"]';
+			
 		wp.media.gallery.edit(gallerysc).on('update', function(g) {
-			var id_array = [];
 			$.each(g.models, function(id, img) { id_array.push(img.id); });
 			$('input[type=hidden]', instance).val(id_array.join(","));
 		});
+		
 	});
 	$('body').on('click', 'input[type=button].ebor-gallery-remove', function(){
 		var instance = $(this).parents('.ebor-page-builder-gallery');
