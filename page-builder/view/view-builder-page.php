@@ -138,7 +138,7 @@ $disabled = $selected_template_id === 0 ? 'metabox-holder-disabled' : '';
 		
 		<div class="ebor-modal-title">
 			<a href="#" class="ebor-editor-closer"><i class="fa fa-times fa-fw"></i></a>
-			<h3 id="block-title-replace">Howdy!</h3>
+			<h3 id="block-title-replace">Edit Text Content</h3>
 			<div class="cf"></div>
 		</div>
 		

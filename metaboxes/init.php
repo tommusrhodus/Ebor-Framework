@@ -1,47 +1,4 @@
 <?php
-/**
- * Plugin Name:  CMB2 (beta)
- * Plugin URI:   https://github.com/WebDevStudios/CMB2
- * Description:  CMB2 will create metaboxes and forms with custom fields that will blow your mind.
- * Author:       WebDevStudios
- * Author URI:   http://webdevstudios.com
- * Contributors: WebDevStudios (@webdevstudios / webdevstudios.com)
- *               Justin Sternberg (@jtsternberg / dsgnwrks.pro)
- *               Jared Atchison (@jaredatch / jaredatchison.com)
- *               Bill Erickson (@billerickson / billerickson.net)
- *               Andrew Norcross (@norcross / andrewnorcross.com)
- *
- * Version:      2.0.0
- *
- * Text Domain:  cmb2
- * Domain Path:  languages
- */
-
-/**
- * Released under the GPL license
- * http://www.opensource.org/licenses/gpl-license.php
- *
- * This is an add-on for WordPress
- * http://wordpress.org/
- *
- * **********************************************************************
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * **********************************************************************
- */
-
-/************************************************************************
-                  You should not edit the code below
-                  (or any code in the included files)
-                  or things might explode!
-*************************************************************************/
 
 if ( ! class_exists( 'cmb2_bootstrap_200beta' ) ) {
 

@@ -38,7 +38,7 @@ if(!( function_exists('ebor_pivot_skill') )){
 if(!( function_exists('ebor_pivot_countdown') )){
 	function ebor_pivot_countdown( $atts ){
 		extract(shortcode_atts(array(
-			'date' => '2016, 02, 02',
+			'date' => '2016/02/02',
 		), $atts ));
 		return '<div class="countdown" data-date="'. $date .'"></div>';
 	}

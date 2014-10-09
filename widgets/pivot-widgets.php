@@ -132,7 +132,9 @@ if(!( class_exists('Pivot_Twitter_Widget') )){
 			</p>
 			
 			<p>
-				<label for="<?php echo $this->get_field_id( 'username' ); ?>"><?php _e( 'Widget ID:' ); ?></label> 
+				<label for="<?php echo $this->get_field_id( 'username' ); ?>">Twitter Widget ID <code>e.g: 492085717044981760</code>
+				<p class="description">
+				<strong>Note!</strong> You need to generate this ID from your account, do this by going to the 'Settings' page of your Twitter account and clicking 'Widgets'. Click 'Create New' and then 'Create Widget'. One done, go back to the 'Widgets' page and click 'Edit' on your newly created widget. From here you need to copy the widget id out of the url bar. The widget id is the long numerical string after /widgets/ and before /edit.</p></label> 
 				<input class="widefat" id="<?php echo $this->get_field_id( 'username' ); ?>" name="<?php echo $this->get_field_name( 'username' ); ?>" type="text" value="<?php echo esc_attr( $username ); ?>">
 			</p>
 			
