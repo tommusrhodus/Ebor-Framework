@@ -3,10 +3,6 @@
 /*-----------------------------------------------------------------------------------*/
 /*	POPULAR POSTS WIDGET
 /*-----------------------------------------------------------------------------------*/
-function ebor_popular_load_widgets(){
-	register_widget('ebor_popular_Widget');
-}
-
 class ebor_popular_Widget extends WP_Widget {
 	
 	function ebor_popular_Widget()
@@ -87,14 +83,13 @@ class ebor_popular_Widget extends WP_Widget {
 	<?php
 	}
 }
+add_action( 'widgets_init', function(){
+     register_widget( 'ebor_popular_Widget' );
+});
 
 /*-----------------------------------------------------------------------------------*/
 /*	CONTACT WIDGET
 /*-----------------------------------------------------------------------------------*/
-function ebor_contact_load_widgets(){
-	register_widget('ebor_contact_Widget');
-}
-
 class ebor_contact_Widget extends WP_Widget {
 	
 	function ebor_contact_Widget()
@@ -276,3 +271,6 @@ class ebor_contact_Widget extends WP_Widget {
 	<?php
 	}
 }
+add_action( 'widgets_init', function(){
+     register_widget( 'ebor_contact_Widget' );
+});
