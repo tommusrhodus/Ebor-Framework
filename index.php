@@ -45,3 +45,31 @@ require_once( EBOR_FRAMEWORK_PATH . 'ebor_functions.php' );
  * Let's include all of that now.
  */
 require_once( EBOR_FRAMEWORK_PATH . 'init.php' );
+
+/**
+ * ebor_ajax_import_data
+ * 
+ * Use this to auto import a demo-data.xml for the theme.
+ * demo-data.xml must be in your active theme root folder, you should also copy this into a child theme if you supply one.
+ * 
+ * @author TommusRhodus
+ * @since v1.0.0
+ */
+if(!( function_exists('ebor_ajax_import_data') )){
+	function ebor_ajax_import_data() {				
+		require_once( EBOR_FRAMEWORK_PATH . 'wordpress-importer/demo_import.php' );
+		die('ebor_import');
+	}
+	add_action('wp_ajax_ebor_ajax_import_data', 'ebor_ajax_import_data');
+}
+
+/**
+ * Plugin Updates
+ * This plugin updates from wp-updates.com
+ * I've tried various github updaters, but they all seem to break very simply, this should be quite reliable.
+ * 
+ * @author TommusRhodus
+ * @since v1.0.0
+ */
+require_once( EBOR_FRAMEWORK_PATH . 'wp-updates-plugin.php' );
+new WPUpdatesPluginUpdater_614( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__));
