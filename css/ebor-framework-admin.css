@@ -10,3 +10,11 @@ input[type="range"] + input[type="text"] {
 .cmb-repeatable-grouping {
 	background: #fff;
 }
+.btn.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

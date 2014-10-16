@@ -221,6 +221,18 @@ class Ebor_Options {
 						)
 					);
 					
+				} elseif( 'demo_import' == $type ){
+					
+					$wp_customize->add_control( 
+						new Ebor_Customizer_Demo_Import_control( 
+							$wp_customize, $name, array(
+							    'label'    => $title,
+							    'section'  => $section,
+							    'priority' => $priority
+							) 
+						) 
+					);
+					
 				} else {
 					
 					$wp_customize->add_control( 
@@ -287,9 +299,7 @@ if(!( function_exists('ebor_additional_classes') )){
 			?>
 				<label>
 					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-					<p>This will import all demo data. If this is not a fresh WordPress install (existing content) please make site & database backups before importing demo content.</p>
-					<p><strong>The import process will take up to 15 minutes depening on your server, start it & go grab a cup of tea!<br />Do not leave this page until you have confirmation of the import.</strong></p>
-					<a href="#" id="demo-import" class="btn">Import Demo Data</a>
+					<a href="#" id="demo-import" class="btn button button-primary">Import Demo Data</a>
 				</label>
 			<?php
 			}

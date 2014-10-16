@@ -18,7 +18,8 @@ $defaults = array(
 	'likes'                 => '0',
 	'options'               => '0',
 	'metaboxes'             => '0',
-	'elemis_widgets'        => '0'
+	'elemis_widgets'        => '0',
+	'elemis_shortcodes'     => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -64,6 +65,9 @@ if( '1' == $framework_options['options'] ){
 if( '1' == $framework_options['pivot_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'shortcodes/pivot-shortcodes.php' );	
 }
+if( '1' == $framework_options['elemis_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'shortcodes/elemis-shortcodes.php' );	
+}
 
 /**
  * Register appropriate widgets
@@ -71,10 +75,6 @@ if( '1' == $framework_options['pivot_shortcodes'] ){
 if( '1' == $framework_options['pivot_widgets'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'widgets/pivot-widgets.php' );	
 }
-
-/**
- * Register appropriate widgets
- */
 if( '1' == $framework_options['elemis_widgets'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'widgets/elemis-widgets.php' );	
 }
