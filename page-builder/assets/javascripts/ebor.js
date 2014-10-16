@@ -46,29 +46,38 @@ jQuery(document).ready(function($) {
 		$(this).parent().find('.icon-modal').show();
 		return false;
 	});
-	$('body').on('click', '.icon-modal', function(){
-		$(this).hide();
-	});
 	$('body').on('click', '.icon-modal .ebor-modal-icon', function(){
 		var icon = $(this).attr('data-ebor-icon');
 		$(this).parents('.description').find('input').attr({ 'value' : icon });
 	});
+	
+	/**
+	 * Launch the page builder modals
+	 */
 	$('body').on('click', '.ebor-modal-launcher', function(){
 		if($(this).hasClass('section-launcher')){
-			$(this).parent().parent().next().show().find('.ebor-modal').show();
+			$(this).parents('.ebor-column-header').next('.ebor-column-content').slideDown().find('.ebor-modal').eq(0).show();
 		} else {
 			$(this).parent().find('.ebor-modal').show();
 		}
 		return false;
 	});
+	
+	/**
+	 * Close Modals
+	 */
 	$('body').on('click', '.ebor-modal-closer', function(){
-		$(this).parent().parent().parent().hide();
+		$(this).parents('.ebor-modal').hide();
 		return false;
 	});
 	$('body').on('click', '.icon-modal-closer', function(){
 		$(this).parents('.icon-modal').hide();
 		return false;
 	});
+	
+	/**
+	 * Handle the WP WYSIWYG Editor
+	 */
 	$('body').on('click', '.ebor-editor-launch', function(){
 		
 		var href = $(this).attr('href'),
@@ -94,7 +103,6 @@ jQuery(document).ready(function($) {
 		return false;
 		
 	});
-	
 	$('.ebor-editor-closer').click(function(){
 		$(this).parent().parent().parent().hide();
 		if( typeof tinymce != "undefined" ) {
@@ -107,14 +115,23 @@ jQuery(document).ready(function($) {
 		    }
 		}
 	});
-
+	
+	/**
+	 * Slideup column content
+	 */
 	jQuery('.ebor-column-content').slideUp();
 	
+	/**
+	 * Toggle Column Content
+	 */
 	jQuery('.column-close').click(function(){
-		jQuery(this).parent().parent().next().slideToggle();
+		jQuery(this).parents('.ebor-column-header').next('.ebor-column-content').slideToggle();
 		return false;
 	});
 	
+	/**
+	 * Sort page builder blocks by category
+	 */
 	$('a.isotope-filter').eq(0).addClass('active');
 	$('a.isotope-filter').click(function(){
 		var filter = $(this).attr('data-filter');
