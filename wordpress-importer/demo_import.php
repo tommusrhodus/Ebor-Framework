@@ -22,7 +22,7 @@ if ( !class_exists( 'WP_Importer' ) ) {
 //check if the wp import class is available, this class handles the wordpress XML files. If not include it
 //make sure to exclude the init function at the end of the file in kriesi_importer
 if ( !class_exists( 'WP_Import' ) ) {
-	require_once('wordpress-importer/wordpress-importer.php');
+	require_once('wordpress-importer.php');
 }
 
 if($ebor_error !== false) {
@@ -41,6 +41,6 @@ if($ebor_error !== false) {
 	} else {
 		$wp_import = new ebor_wp_import();
 		$wp_import->fetch_attachments = true;
-		$wp_import->import($import_filepath . '.xml');
+		$wp_import->import($import_filepath);
 	}
 }
