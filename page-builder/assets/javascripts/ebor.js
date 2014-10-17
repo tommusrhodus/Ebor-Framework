@@ -49,6 +49,7 @@ jQuery(document).ready(function($) {
 	$('body').on('click', '.icon-modal .ebor-modal-icon', function(){
 		var icon = $(this).attr('data-ebor-icon');
 		$(this).parents('.description').find('input').attr({ 'value' : icon });
+		$(this).parents('.icon-modal').hide();
 	});
 	
 	/**
