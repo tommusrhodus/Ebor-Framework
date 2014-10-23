@@ -72,9 +72,10 @@ if(!( class_exists('Pivot_Instagram_Widget') )){
 			return $new_instance;
 		}
 	}
-	add_action( 'widgets_init', function(){
+	function ebor_framework_register_pivot_instagram(){
 	     register_widget( 'Pivot_Instagram_Widget' );
-	});
+	}
+	add_action( 'widgets_init', 'ebor_framework_register_pivot_instagram');
 }
 /*-----------------------------------------------------------------------------------*/
 /*	TWITTER WIDGET
@@ -151,7 +152,8 @@ if(!( class_exists('Pivot_Twitter_Widget') )){
 			return $new_instance;
 		}
 	}
-	add_action( 'widgets_init', function(){
+	function ebor_framework_register_pivot_twitter(){
 	     register_widget( 'Pivot_Twitter_Widget' );
-	});
+	}
+	add_action( 'widgets_init', 'ebor_framework_register_pivot_twitter');
 }
