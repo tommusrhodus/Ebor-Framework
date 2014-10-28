@@ -19,7 +19,7 @@ if(!( function_exists('ebor_button') )){
 		extract(shortcode_atts(array(
 			'link' => '',
 			'size' => '',
-			'color' => 'blue',
+			'color' => 'green',
 			'target' => ''
 		), $atts));
 		if($size == 'large') $size = 'btn-large';
