@@ -1,5 +1,6 @@
 jQuery(document).ready(function($) {
 	
+	$('head').append('<style>.ebor-modal-content { max-height:'+ ( $(window).height() - 280 ) +'px !important; }</style>');
 	/**
 	 * Gallery Manager
 	 */
