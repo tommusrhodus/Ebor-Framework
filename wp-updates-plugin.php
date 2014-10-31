@@ -6,14 +6,14 @@ v2.0
 
 Example Usage:
 require_once('wp-updates-plugin.php');
-new WPUpdatesPluginUpdater_614( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__) );
+new WPUpdatesPluginUpdater_745( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__) );
 */
 
-if( !class_exists('WPUpdatesPluginUpdater_614') ) {
-    class WPUpdatesPluginUpdater_614 {
+if( !class_exists('WPUpdatesPluginUpdater_745') ) {
+    class WPUpdatesPluginUpdater_745 {
     
     	var $api_url;
-    	var $plugin_id = 614;
+    	var $plugin_id = 745;
     	var $plugin_path;
     	var $plugin_slug;
     	var $license_key;

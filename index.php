@@ -71,5 +71,5 @@ if(!( function_exists('ebor_ajax_import_data') )){
  * @author TommusRhodus
  * @since v1.0.0
  */
-require_once( EBOR_FRAMEWORK_PATH . 'wp-updates-plugin.php' );
-new WPUpdatesPluginUpdater_614( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__));
+require_once(EBOR_FRAMEWORK_PATH . 'wp-updates-plugin.php');
+new WPUpdatesPluginUpdater_745( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__));
