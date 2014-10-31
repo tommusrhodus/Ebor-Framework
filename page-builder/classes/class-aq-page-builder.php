@@ -608,8 +608,7 @@ if(!class_exists('AQ_Page_Builder')) {
 									$instance['last'] = true;
 								}
 							} else {
-								if( $span == 12 || $number == $block_count)
-									$child['last'] = true;
+								$instance['last'] = true;
 							}
 
 							$block->block_callback($instance);
