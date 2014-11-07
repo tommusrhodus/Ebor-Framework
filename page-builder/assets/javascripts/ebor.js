@@ -28,19 +28,6 @@ jQuery(document).ready(function($) {
 	});
 	
 	/**
-	 * Quick fix for stopping nested page sections
-	 */
-	$( "ul.blocks" ).bind( "sortstop", function(event, ui) {
-		if(ui.item.hasClass('block-container')) {
-			$parent = ui.item.parent()
-			if( $parent.hasClass('block-container') || $parent.hasClass("column-blocks") ) { 
-				$(this).sortable('cancel');
-				return false;
-			}
-		}
-	});
-	
-	/**
 	 * Icon Selector
 	 */
 	$('body').on('click', '.ebor-icon-modal-launcher', function(){

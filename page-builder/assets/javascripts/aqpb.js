@@ -226,6 +226,14 @@ jQuery(document).ready(function($){
 		//if coming from archive
 		if (ui.item.hasClass('ui-draggable')) {
 			
+			if(
+				ui.item.hasClass('block-container') && ui.item.parent().hasClass('column-blocks') ||
+				ui.item.hasClass('block-container') && ui.item.parent().hasClass('block-container')
+			) {
+				ui.item.remove();
+				alert('Nested columns are not allowed!');
+			} else {
+			
 			//remove draggable class
 		    ui.item.removeClass('ui-draggable').addClass('new-on-the-block');
 		    
@@ -267,6 +275,8 @@ jQuery(document).ready(function($){
 		    
 		    //disable resizable on .not-resizable blocks
 		    $(".ui-resizable.not-resizable").resizable("destroy");
+		    
+			}
 		    
 		}
 		
