@@ -5,9 +5,13 @@ if(!( function_exists('ebor_pivot_button') )){
 		extract(shortcode_atts(array(
 			'url' => '#',
 		    'appearance' => 'btn-primary',
-		    'target' => 'default',
+		    'target' => '_self',
 		    'text' => 'Default Button Text'
 		), $atts ));
+		
+		if( 'default' == $target )
+			$target = '_self';
+			
 		return '<a href="'. esc_url($url) .'" class="btn '. $appearance .'" target="'. $target .'">'. htmlspecialchars_decode($text) .'</a>';
 	}
 	add_shortcode('pivot_button','ebor_pivot_button');

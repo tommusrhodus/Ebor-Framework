@@ -36,6 +36,8 @@ class CMB2_Types {
 	 * @param  array  $arguments All arguments passed to the method
 	 */
 	public function __call( $name, $arguments ) {
+		$this->field->peform_param_cb( 'before_field' );
+
 		/**
 		 * Pass non-existent field types through an action
 		 *
@@ -53,6 +55,8 @@ class CMB2_Types {
 		 * @param object $field_type_object  This `CMB2_Types` object
 		 */
 		do_action( "cmb2_render_$name", $this->field, $this->field->escaped_value(), $this->field->object_id, $this->field->object_type, $this );
+
+		$this->field->peform_param_cb( 'after_field' );
 	}
 
 	/**
@@ -115,8 +119,8 @@ class CMB2_Types {
 	 * @return string              Text
 	 */
 	public function _text( $option_key, $fallback ) {
-		$options = (array) $this->field->args( 'options' );
-		return isset( $options[ $option_key ] ) ? $options[ $option_key ] : $fallback;
+		$has_string_param = $this->field->options( $option_key );
+		return $has_string_param ? $has_string_param : $fallback;
 	}
 
 	/**
@@ -169,7 +173,9 @@ class CMB2_Types {
 		$attributes = '';
 		foreach ( $attrs as $attr => $val ) {
 			if ( ! in_array( $attr, (array) $attr_exclude, true ) ) {
-				$attributes .= sprintf( ' %s="%s"', $attr, $val );
+				// if data attribute, use single quote wraps, else double
+				$quotes = false !== stripos( $attr, 'data-' ) ? "'" : '"';
+				$attributes .= sprintf( ' %1$s=%3$s%2$s%3$s', $attr, $val, $quotes );
 			}
 		}
 		return $attributes;
@@ -196,7 +202,7 @@ class CMB2_Types {
 	 */
 	public function concat_options( $args = array(), $method = 'list_input' ) {
 
-		$options     = (array) $this->field->args( 'options' );
+		$options     = (array) $this->field->options();
 		$saved_value = $this->field->escaped_value();
 		$value       = $saved_value ? $saved_value : $this->field->args( 'default' );
 
@@ -330,7 +336,7 @@ class CMB2_Types {
 	 * @param  string  $class Repeatable table row's class
 	 */
 	protected function repeat_row( $disable_remover = false, $class = 'cmb-repeat-row' ) {
-		$disabled = $disable_remover ? 'disabled="disabled"' : '';
+		$disabled = $disable_remover ? ' button-disabled' : '';
 		?>
 
 		<div class="cmb-row <?php echo $class; ?>">
@@ -338,7 +344,7 @@ class CMB2_Types {
 				<?php $this->_render(); ?>
 			</div>
 			<div class="cmb-td cmb-remove-row">
-				<a class="button cmb-remove-row-button" <?php echo $disabled; ?> href="#"><?php echo esc_html( $this->_text( 'remove_row_text', __( 'Remove', 'cmb2' ) ) ); ?></a>
+				<a class="button cmb-remove-row-button<?php echo $disabled; ?>" href="#"><?php echo esc_html( $this->_text( 'remove_row_text', __( 'Remove', 'cmb2' ) ) ); ?></a>
 			</div>
 		</div>
 
@@ -458,11 +464,15 @@ class CMB2_Types {
 	}
 
 	public function text_date() {
-		return $this->input( array( 'class' => 'cmb2-text-small cmb2-datepicker', 'desc' => $this->_desc() ) );
+		$meta_value = $this->field->escaped_value();
+		$value = ! empty( $meta_value ) ? date( $this->field->args( 'date_format' ), strtotime( $meta_value ) ) : '';
+		return $this->input( array( 'class' => 'cmb2-text-small cmb2-datepicker', 'desc' => $this->_desc(), 'value' => $value ) );
 	}
 
 	public function text_time() {
-		return $this->input( array( 'class' => 'cmb2-timepicker text-time', 'desc' => $this->_desc() ) );
+		$meta_value = $this->field->escaped_value();
+		$value = ! empty( $meta_value ) ? date( $this->field->args( 'time_format' ), strtotime( $meta_value ) ) : '';
+		return $this->input( array( 'class' => 'cmb2-timepicker text-time', 'desc' => $this->_desc(), 'value' => $value ) );
 	}
 
 	public function text_money() {
@@ -482,7 +492,7 @@ class CMB2_Types {
 			'id'      => $this->_id(),
 			'value'   => $this->field->escaped_value( 'stripslashes' ),
 			'desc'    => $this->_desc( true ),
-			'options' => $this->field->args( 'options' ),
+			'options' => $this->field->options(),
 		) ) );
 
 		wp_editor( $value, $id, $options );
@@ -797,7 +807,7 @@ class CMB2_Types {
 
 	public function file() {
 		$meta_value = $this->field->escaped_value();
-		$options    = (array) $this->field->args( 'options' );
+		$options    = (array) $this->field->options();
 		$img_size   = $this->field->args( 'preview_size' );
 
 		// if options array and 'url' => false, then hide the url field
@@ -816,15 +826,15 @@ class CMB2_Types {
 		$cached_id = $this->_id();
 		// Reset field args for attachment ID
 		$args = $this->field->args();
-		$args['id'] = $args['_id'] . '_id';
+		$args['id'] = $cached_id . '_id';
 		unset( $args['_id'], $args['_name'] );
 
 		// And get new field object
 		$this->field = new CMB2_Field( array(
 			'field_args'  => $args,
 			'group_field' => $this->field->group,
-			'object_type' => $this->field->object_type(),
-			'object_id'   => $this->field->object_id(),
+			'object_type' => $this->field->object_type,
+			'object_id'   => $this->field->object_id,
 		) );
 
 		// Get ID value
@@ -877,7 +887,7 @@ class CMB2_Types {
 			'data-objectid'   => $this->field->object_id,
 			'data-objecttype' => $this->field->object_type
 		) ),
-		'<p class="cmb-spinner spinner" style="display:none;"><img src="'. admin_url( '/images/wpspin_light.gif' ) .'" alt="spinner"/></p>',
+		'<p class="cmb-spinner spinner" style="display:none;"></p>',
 		'<div id="',$this->_id( '-status' ) ,'" class="cmb2-media-status ui-helper-clearfix embed_wrap">';
 
 			if ( $meta_value = $this->field->escaped_value() ) {

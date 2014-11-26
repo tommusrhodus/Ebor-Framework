@@ -1,6 +1,6 @@
 <?php
 
-if ( ! class_exists( 'cmb2_bootstrap_200beta' ) ) {
+if ( ! class_exists( 'cmb2_bootstrap_200beta', false ) ) {
 
 	/**
 	 * Check for newest version of CMB
@@ -12,7 +12,7 @@ if ( ! class_exists( 'cmb2_bootstrap_200beta' ) ) {
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		const VERSION = '2.0.0';
+		const VERSION = '2.0.0.2';
 
 		/**
 		 * Current version hook priority
@@ -37,7 +37,7 @@ if ( ! class_exists( 'cmb2_bootstrap_200beta' ) ) {
 		}
 
 		public function include_cmb() {
-			if ( ! class_exists( 'CMB2' ) ) {
+			if ( ! class_exists( 'CMB2', false ) ) {
 				if ( ! defined( 'CMB2_VERSION' ) ) {
 					define( 'CMB2_VERSION', self::VERSION );
 				}
@@ -51,9 +51,19 @@ if ( ! class_exists( 'cmb2_bootstrap_200beta' ) ) {
 		 * @since  2.0.0
 		 */
 		public function l10ni18n() {
-			$locale = apply_filters( 'plugin_locale', get_locale(), 'cmb2' );
-			load_textdomain( 'cmb2', WP_LANG_DIR . '/cmb2/cmb2-' . $locale . '.mo' );
-			load_plugin_textdomain( 'cmb2', false, dirname( __FILE__ ) . '/languages/' );
+			$loaded = load_plugin_textdomain( 'cmb2', false, '/languages/' );
+			if ( ! $loaded ) {
+				$loaded = load_muplugin_textdomain( 'cmb2', '/languages/' );
+			}
+			if ( ! $loaded ) {
+				$loaded = load_theme_textdomain( 'cmb2', '/languages/' );
+			}
+
+			if ( ! $loaded ) {
+				$locale = apply_filters( 'plugin_locale', get_locale(), 'cmb2' );
+				$mofile = dirname( __FILE__ ) . '/languages/cmb2-'. $locale .'.mo';
+				load_textdomain( 'cmb2', $mofile );
+			}
 		}
 
 	}

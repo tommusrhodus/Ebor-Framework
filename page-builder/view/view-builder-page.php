@@ -143,7 +143,7 @@ $disabled = $selected_template_id === 0 ? 'metabox-holder-disabled' : '';
 		</div>
 		
 		<div class="ebor-editor-content">
-			<?php wp_editor('','ebor-editor', array('textarea_rows' => 20, 'wpautop' => true)); ?>
+			<?php wp_editor('','ebor-editor', array('textarea_rows' => 20, 'wpautop' => true, 'quicktags' => false)); ?>
 		</div>
 		
 	</div>

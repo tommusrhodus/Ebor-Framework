@@ -7,7 +7,24 @@
  * @return string        Directory with optional path appended
  */
 function cmb2_dir( $path = '' ) {
-	return trailingslashit( dirname( __FILE__ ) ) . $path;
+	return wp_normalize_path( trailingslashit( dirname( __FILE__ ) ) . $path );
+}
+
+if ( ! function_exists( 'wp_normalize_path' ) ) {
+	/**
+	 * Normalize a filesystem path.
+	 *
+	 * Replaces backslashes with forward slashes for Windows systems, and ensures
+	 * no duplicate slashes exist.
+	 * Available in WordPress 3.9.0
+	 *
+	 * @since  2.0.0
+	 * @param  string $path Path to normalize.
+	 * @return string       Normalized path.
+	 */
+	function wp_normalize_path( $path ) {
+		return preg_replace( '|/+|','/', str_replace( '\\', '/', $path ) );
+	}
 }
 
 require_once cmb2_dir( 'includes/helper-functions.php' );
@@ -117,6 +134,7 @@ class CMB2 {
 		$this->nonce_field();
 
 		echo "\n<!-- Begin CMB Fields -->\n";
+
 		/**
 		 * Hook before form table begins
 		 *
@@ -128,6 +146,24 @@ class CMB2 {
 		 * @param array  $cmb         This CMB2 object
 		 */
 		do_action( 'cmb2_before_form', $this->cmb_id, $object_id, $object_type, $this );
+
+		/**
+		 * Hook before form table begins
+		 *
+		 * The first dynamic portion of the hook name, $object_type, is the type of object
+		 * you are working with. Usually `post` (this applies to all post-types).
+		 * Could also be `comment`, `user` or `options-page`.
+		 *
+		 * The second dynamic portion of the hook name, $this->cmb_id, is the meta_box id.
+		 *
+		 * @param array  $cmb_id      The current box ID
+		 * @param int    $object_id   The ID of the current object
+		 * @param array  $cmb         This CMB2 object
+		 * @param string $object_type The type of object you are working with.
+		 *	                           Usually `post` (this applies to all post-types).
+		 *	                           Could also be `comment`, `user` or `options-page`.
+		 */
+		do_action( "cmb2_before_{$object_type}_form_{$this->cmb_id}", $object_id, $this, $object_type );
 
 		echo '<div class="cmb2-wrap form-table"><div id="cmb2-metabox-'. sanitize_html_class( $this->cmb_id ) .'" class="cmb2-metabox cmb-field-list">';
 
@@ -180,6 +216,24 @@ class CMB2 {
 		 * @param array  $cmb         This CMB2 object
 		 */
 		do_action( 'cmb2_after_form', $this->cmb_id, $object_id, $object_type, $this );
+
+		/**
+		 * Hook after form form has been rendered
+		 *
+		 * The dynamic portion of the hook name, $this->cmb_id, is the meta_box id.
+		 *
+		 * The first dynamic portion of the hook name, $object_type, is the type of object
+		 * you are working with. Usually `post` (this applies to all post-types).
+		 * Could also be `comment`, `user` or `options-page`.
+		 *
+		 * @param int    $object_id   The ID of the current object
+		 * @param array  $cmb         This CMB2 object
+		 * @param string $object_type The type of object you are working with.
+		 *	                           Usually `post` (this applies to all post-types).
+		 *	                           Could also be `comment`, `user` or `options-page`.
+		 */
+		do_action( "cmb2_after_{$object_type}_form_{$this->cmb_id}", $object_id, $this );
+
 		echo "\n<!-- End CMB Fields -->\n";
 
 	}
@@ -599,6 +653,38 @@ class CMB2 {
 		} elseif ( $fallback ) {
 			return $this->meta_box[ $property ] = $fallback;
 		}
+	}
+
+	/**
+	 * Add a field to the metabox
+	 * @since 2.0.0
+	 * @param  array $args Metabox field config array
+	 * @return bool        True if field was added
+	 */
+	public function add_field( array $field ) {
+		if ( ! is_array( $field ) || ! array_key_exists( 'id', $field ) ) {
+			return false;
+		}
+
+		$this->meta_box['fields'][ $field['id'] ] = $field;
+		return true;
+	}
+
+	/**
+	 * Update or add a property to a field
+	 * @since  2.0.0
+	 * @param  string  $field_id Field id
+	 * @param  string  $property Field property to set/update
+	 * @param  mixed   $value    Value to set the field property
+	 * @return bool              True if field was updated
+	 */
+	public function update_field_property( $field_id, $property, $value ) {
+		if ( ! array_key_exists( $field_id, $this->meta_box['fields'] ) ) {
+			return false;
+		}
+
+		$this->meta_box['fields'][ $field_id ][ $property ] = $value;
+		return true;
 	}
 
 	/**
