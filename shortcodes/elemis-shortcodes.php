@@ -24,7 +24,7 @@ if(!( function_exists('ebor_button') )){
 		), $atts));
 		if($size == 'large') $size = 'btn-large';
 		if($target == 'blank') $target = 'target="_blank"';
-	    return '<a href="' . esc_url($link) . '" '.$target.' class="btn '.$size.' btn-'.$color.'">' . $content . '</a>';
+	    return '<a href="' . esc_url($link) . '" '.$target.' class="btn '.$size.' btn-'.$color.'">' . htmlspecialchars_decode($content) . '</a>';
 	}
 	add_shortcode('button', 'ebor_button');
 }

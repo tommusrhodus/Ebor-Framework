@@ -25,8 +25,8 @@ class Ebor_Options {
 	 * build_options runs through all of our added options and turns them into proper customization API options
 	 */
 	public function __construct(){
-		add_action('customize_register', 'ebor_additional_classes' );
-		add_action('customize_register', array( $this, 'build_options' ) );
+		add_action('customize_register', 'ebor_additional_classes', 10 );
+		add_action('customize_register', array( $this, 'build_options' ), 15 );
 	}
 	
 	public function add_panel($title, $priority, $description = ''){

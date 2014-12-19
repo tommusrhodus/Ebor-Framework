@@ -129,9 +129,7 @@ $ebor_likes = new eborLikes();
 /**
  * Template Tag
  */
-function ebor_likes()
-{
+function ebor_likes(){
 	global $ebor_likes;
     echo $ebor_likes->do_likes(); 
-	
 }
