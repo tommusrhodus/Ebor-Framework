@@ -2,10 +2,6 @@
 	display: block !important;
 }
 /* ICON MODAL STYLES */
-body,
-html {
-	overflow-x: hidden;
-}
 .icon-modal, 
 .ebor-modal,
 .editor-wrap {

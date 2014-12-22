@@ -261,9 +261,7 @@ jQuery(document).ready(function($){
 		    
 		    //remove isotope stuff
 		    ui.item.css({
-		    	'position' : '',
-		    	'top' : '',
-		    	'left' : ''
+		    	'height' : ''
 		    });
 		    
 		    //trigger resize

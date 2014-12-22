@@ -18,6 +18,3 @@ input[type="range"] + input[type="text"] {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-#customize-theme-controls li {
-	display: block !important;
-}
