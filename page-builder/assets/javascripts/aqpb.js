@@ -259,7 +259,7 @@ jQuery(document).ready(function($){
 		    //set dynamic width for blocks inside columns
 		    resizable_dynamic_width(ui.item.attr('id'));
 		    
-		    //remove isotope stuff
+		    //remove fixed item height
 		    ui.item.css({
 		    	'height' : ''
 		    });
