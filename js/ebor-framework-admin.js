@@ -22,7 +22,7 @@ jQuery(document).ready(function($){
 	 */
 	ebor_hide_metaboxes();
 	
-	$('#post-formats-select input').click(function(){
+	jQuery('#post-formats-select input').click(function(){
 		ebor_hide_metaboxes();
 	});
 
@@ -31,12 +31,14 @@ jQuery(document).ready(function($){
 /*	DEMO DATA IMPORT
 /*-----------------------------------------------------------------------------------*/
 jQuery(document).ready(function($){
-	$('#demo-import').click(function(){
+	jQuery('body').on('click', '#demo-import', function(){
 		
-		activate = confirm('Have you installed all required plugins? Before installing demo data be sure to do a full backup incase anything goes wrong, or data is overwritten. Proceed if you have done this.')
-		if(activate == false) return false;
+		var activate = confirm('Have you installed all required plugins? Before installing demo data be sure to do a full backup incase anything goes wrong, or data is overwritten. Proceed if you have done this.');
 		
-		$.ajax({
+		if(activate == false) 
+			return false;
+		
+		jQuery.ajax({
 			type: "POST",
 			url: ajaxurl,
 			data: {
@@ -44,12 +46,12 @@ jQuery(document).ready(function($){
 			},
 			beforeSend: function() {
 				//show loader
-				$('.btn').addClass('disabled').text('Loading, Please Wait.');
+				jQuery('.btn').addClass('disabled').text('Loading, Please Wait.');
 			},
 			error: function() {
 				//script error occured
-				$('body').alert( 'Importing didnt work! <br/> You might want to try reloading the page and then try again' );
-				$('.btn').removeClass('disabled');
+				jQuery('body').alert( 'Importing didnt work! <br/> You might want to try reloading the page and then try again' );
+				jQuery('.btn').removeClass('disabled');
 				
 			},
 			success: function(response) {
@@ -61,7 +63,7 @@ jQuery(document).ready(function($){
 				}
 			},
 			complete: function(response) {	
-				$('.btn').text('All Data Imported, Have Fun!');
+				jQuery('.btn').text('All Data Imported, Have Fun!');
 			}
 		});
 				
