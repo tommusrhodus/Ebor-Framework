@@ -418,3 +418,70 @@ function ebor_framework_create_testimonial_taxonomies(){
 	));
   
 }
+
+function ebor_framework_register_faq() {
+
+    $labels = array( 
+        'name' => __( 'faqs', 'ebor' ),
+        'singular_name' => __( 'faq', 'ebor' ),
+        'add_new' => __( 'Add New', 'ebor' ),
+        'add_new_item' => __( 'Add New faq', 'ebor' ),
+        'edit_item' => __( 'Edit faq', 'ebor' ),
+        'new_item' => __( 'New faq', 'ebor' ),
+        'view_item' => __( 'View faq', 'ebor' ),
+        'search_items' => __( 'Search faqs', 'ebor' ),
+        'not_found' => __( 'No faqs found', 'ebor' ),
+        'not_found_in_trash' => __( 'No faqs found in Trash', 'ebor' ),
+        'parent_item_colon' => __( 'Parent faq:', 'ebor' ),
+        'menu_name' => __( 'faqs', 'ebor' ),
+    );
+
+    $args = array( 
+        'labels' => $labels,
+        'hierarchical' => false,
+        'description' => __('faq entries.', 'ebor'),
+        'supports' => array( 'title', 'editor' ),
+        'public' => false,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-editor-quote',
+        'show_in_nav_menus' => true,
+        'publicly_queryable' => false,
+        'exclude_from_search' => true,
+        'has_archive' => false,
+        'query_var' => false,
+        'can_export' => true,
+        'rewrite' => true,
+        'capability_type' => 'post'
+    );
+
+    register_post_type( 'faq', $args );
+}
+
+function ebor_framework_create_faq_taxonomies(){
+	
+	$labels = array(
+		'name' => _x( 'faq Categories','ebor' ),
+		'singular_name' => _x( 'faq Category','ebor' ),
+		'search_items' =>  __( 'Search faq Categories','ebor' ),
+		'all_items' => __( 'All faq Categories','ebor' ),
+		'parent_item' => __( 'Parent faq Category','ebor' ),
+		'parent_item_colon' => __( 'Parent faq Category:','ebor' ),
+		'edit_item' => __( 'Edit faq Category','ebor' ), 
+		'update_item' => __( 'Update faq Category','ebor' ),
+		'add_new_item' => __( 'Add New faq Category','ebor' ),
+		'new_item_name' => __( 'New faq Category Name','ebor' ),
+		'menu_name' => __( 'faq Categories','ebor' ),
+	); 
+		
+	register_taxonomy('faq_category', array('faq'), array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => true,
+	));
+  
+}

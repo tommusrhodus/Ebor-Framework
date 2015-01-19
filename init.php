@@ -12,6 +12,7 @@ $defaults = array(
 	'team_post_type'        => '0',
 	'client_post_type'      => '0',
 	'testimonial_post_type' => '0',
+	'faq_post_type'         => '0',
 	'mega_menu'             => '0',
 	'aq_resizer'            => '0',
 	'page_builder'          => '0',
@@ -20,7 +21,8 @@ $defaults = array(
 	'metaboxes'             => '0',
 	'elemis_widgets'        => '0',
 	'elemis_shortcodes'     => '0',
-	'keepsake_widgets'      => '0'
+	'keepsake_widgets'      => '0',
+	'meetup_widgets'        => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -82,6 +84,9 @@ if( '1' == $framework_options['elemis_widgets'] ){
 if( '1' == $framework_options['keepsake_widgets'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'widgets/keepsake-widgets.php' );	
 }
+if( '1' == $framework_options['meetup_widgets'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'widgets/meetup-widgets.php' );	
+}
 
 /**
  * Register Portfolio Post Type
@@ -113,6 +118,14 @@ if( '1' == $framework_options['client_post_type'] ){
 if( '1' == $framework_options['testimonial_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_testimonial', 10  );
 	add_action( 'init', 'ebor_framework_create_testimonial_taxonomies', 10  );
+}
+
+/**
+ * Register faq Post Type
+ */
+if( '1' == $framework_options['faq_post_type'] ){
+	add_action( 'init', 'ebor_framework_register_faq', 10  );
+	add_action( 'init', 'ebor_framework_create_faq_taxonomies', 10  );
 }
 
 /**
