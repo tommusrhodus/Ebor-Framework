@@ -24,8 +24,8 @@ if(!( class_exists('ebor_meetup_popular_Widget') )){
 	
 		    	<ul>
 			    	<?php 
-			    		$query = new WP_Query('post_type=post&posts_per_page=' . $instance['amount']); 
-			    		if( $query->have_posts() ) : $query->while ( have_posts() ): $query->the_post(); 
+			    		query_posts('post_type=post&posts_per_page=' . $instance['amount']); 
+			    		if( have_posts() ) : while ( have_posts() ): the_post(); 
 			    	?>
 			    	
 				    	 <li>
