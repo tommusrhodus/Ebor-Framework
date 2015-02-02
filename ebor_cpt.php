@@ -422,24 +422,24 @@ function ebor_framework_create_testimonial_taxonomies(){
 function ebor_framework_register_faq() {
 
     $labels = array( 
-        'name' => __( 'faqs', 'ebor' ),
-        'singular_name' => __( 'faq', 'ebor' ),
+        'name' => __( 'FAQs', 'ebor' ),
+        'singular_name' => __( 'FAQ', 'ebor' ),
         'add_new' => __( 'Add New', 'ebor' ),
-        'add_new_item' => __( 'Add New faq', 'ebor' ),
-        'edit_item' => __( 'Edit faq', 'ebor' ),
-        'new_item' => __( 'New faq', 'ebor' ),
-        'view_item' => __( 'View faq', 'ebor' ),
-        'search_items' => __( 'Search faqs', 'ebor' ),
+        'add_new_item' => __( 'Add New FAQ', 'ebor' ),
+        'edit_item' => __( 'Edit FAQ', 'ebor' ),
+        'new_item' => __( 'New FAQ', 'ebor' ),
+        'view_item' => __( 'View FAQ', 'ebor' ),
+        'search_items' => __( 'Search FAQs', 'ebor' ),
         'not_found' => __( 'No faqs found', 'ebor' ),
-        'not_found_in_trash' => __( 'No faqs found in Trash', 'ebor' ),
-        'parent_item_colon' => __( 'Parent faq:', 'ebor' ),
-        'menu_name' => __( 'faqs', 'ebor' ),
+        'not_found_in_trash' => __( 'No FAQs found in Trash', 'ebor' ),
+        'parent_item_colon' => __( 'Parent FAQ:', 'ebor' ),
+        'menu_name' => __( 'FAQs', 'ebor' ),
     );
 
     $args = array( 
         'labels' => $labels,
         'hierarchical' => false,
-        'description' => __('faq entries.', 'ebor'),
+        'description' => __('FAQ Entries.', 'ebor'),
         'supports' => array( 'title', 'editor' ),
         'public' => false,
         'show_ui' => true,
@@ -462,17 +462,17 @@ function ebor_framework_register_faq() {
 function ebor_framework_create_faq_taxonomies(){
 	
 	$labels = array(
-		'name' => _x( 'faq Categories','ebor' ),
-		'singular_name' => _x( 'faq Category','ebor' ),
-		'search_items' =>  __( 'Search faq Categories','ebor' ),
-		'all_items' => __( 'All faq Categories','ebor' ),
-		'parent_item' => __( 'Parent faq Category','ebor' ),
-		'parent_item_colon' => __( 'Parent faq Category:','ebor' ),
-		'edit_item' => __( 'Edit faq Category','ebor' ), 
-		'update_item' => __( 'Update faq Category','ebor' ),
-		'add_new_item' => __( 'Add New faq Category','ebor' ),
-		'new_item_name' => __( 'New faq Category Name','ebor' ),
-		'menu_name' => __( 'faq Categories','ebor' ),
+		'name' => _x( 'FAQ Categories','ebor' ),
+		'singular_name' => _x( 'FAQ Category','ebor' ),
+		'search_items' =>  __( 'Search FAQ Categories','ebor' ),
+		'all_items' => __( 'All FAQ Categories','ebor' ),
+		'parent_item' => __( 'Parent FAQ Category','ebor' ),
+		'parent_item_colon' => __( 'Parent FAQ Category:','ebor' ),
+		'edit_item' => __( 'Edit FAQ Category','ebor' ), 
+		'update_item' => __( 'Update FAQ Category','ebor' ),
+		'add_new_item' => __( 'Add New FAQ Category','ebor' ),
+		'new_item_name' => __( 'New FAQ Category Name','ebor' ),
+		'menu_name' => __( 'FAQ Categories','ebor' ),
 	); 
 		
 	register_taxonomy('faq_category', array('faq'), array(

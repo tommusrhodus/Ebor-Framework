@@ -109,7 +109,7 @@ if(!( class_exists('meetup_social_Widget') )){
 			if ( ! empty( $instance['title'] ) )
 				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 			
-			echo '<ul class="social-icons">';
+			echo '<ul class="social-profiles">';
 				for( $i = 1; $i < 7; $i++ ){
 					if( get_option("footer_social_url_$i") ) {
 						echo '<li>
@@ -143,7 +143,7 @@ if(!( class_exists('meetup_social_Widget') )){
 				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 			</p>
 			
-			<p>This widget uses the footer social icons settings set in "appearance" -> "customise" -> "footer settings"</p>
+			<p>This widget uses the settings set in <code>"appearance" -> "customise" -> "social widget settings"</code></p>
 			
 		<?php 
 		}
