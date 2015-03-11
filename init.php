@@ -22,7 +22,8 @@ $defaults = array(
 	'elemis_widgets'        => '0',
 	'elemis_shortcodes'     => '0',
 	'keepsake_widgets'      => '0',
-	'meetup_widgets'        => '0'
+	'meetup_widgets'        => '0',
+	'machine_widgets'       => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -86,6 +87,9 @@ if( '1' == $framework_options['keepsake_widgets'] ){
 }
 if( '1' == $framework_options['meetup_widgets'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'widgets/meetup-widgets.php' );	
+}
+if( '1' == $framework_options['machine_widgets'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'widgets/machine-widgets.php' );	
 }
 
 /**

@@ -88,7 +88,7 @@ if(!( function_exists('_simple_cb') )){
 
 if(!( function_exists('ebor_add_post_thumbnail_column') )){
 	function ebor_add_post_thumbnail_column($cols){
-	  $cols['ebor_post_thumb'] = __('Featured Image','zonya');
+	  $cols['ebor_post_thumb'] = __('Featured Image','ebor');
 	  return $cols;
 	}
 }
