@@ -8,7 +8,7 @@ if(!( function_exists('ebor_tooltip') )){
 			'link' => '#'
 		), $atts));	
 		
-		return '<a href="#" title="'. $title .'" data-rel="tooltip" data-placement="' . $location . '">' . $content . '</a>';
+		return '<a href="'. esc_url($link) .'" title="'. $title .'" data-rel="tooltip" data-placement="' . $location . '">' . $content . '</a>';
 	}
 	add_shortcode('tooltip', 'ebor_tooltip');
 }
