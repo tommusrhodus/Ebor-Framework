@@ -1,13 +1,19 @@
 <?php
-
 /**
  * Show On Filters
- * Use the 'cmb2_show_on' filter to further refine the conditions under which a metabox is displayed.
+ * Use the 'cmb2_show_on' filter to further refine the conditions
+ * under which a metabox is displayed.
  * Below you can limit it by ID and page template
  *
  * All methods in this class are automatically filtered
  *
  * @since  1.0.0
+ *
+ * @category  WordPress_Plugin
+ * @package   CMB2
+ * @author    WebDevStudios
+ * @license   GPL-2.0+
+ * @link      http://webdevstudios.com
  */
 class CMB2_Show_Filters {
 
@@ -18,7 +24,7 @@ class CMB2_Show_Filters {
 	 *
 	 * @param  array $meta_box_args Metabox config array
 	 *
-	 * @return string|false         show_on key or false
+	 * @return mixed                show_on key or false
 	 */
 	private static function get_show_on_key( $meta_box_args ) {
 		$show_on = isset( $meta_box_args['show_on'] ) ? (array) $meta_box_args['show_on'] : false;
@@ -77,8 +83,9 @@ class CMB2_Show_Filters {
 
 		$object_id = is_admin() ? $cmb->object_id() : @get_the_id();
 
-		if ( ! $object_id )
+		if ( ! $object_id ) {
 			return false;
+		}
 
 		// If current page id is in the included array, display the metabox
 		return in_array( $object_id, (array) self::get_show_on_value( $meta_box_args ) );
@@ -100,7 +107,7 @@ class CMB2_Show_Filters {
 
 		$object_id = $cmb->object_id();
 
-		if ( ! $object_id || $cmb->object_type() !== 'post' ) {
+		if ( ! $object_id || 'post' !== $cmb->object_type() ) {
 			return false;
 		}
 
@@ -146,12 +153,14 @@ class CMB2_Show_Filters {
 
 			if ( is_array( $show_on ) ) {
 				foreach ( $show_on as $page ) {
-					if ( $_GET['page'] == $page )
+					if ( $_GET['page'] == $page ) {
 						return true;
+					}
 				}
 			} else {
-				if ( $_GET['page'] == $show_on )
+				if ( $_GET['page'] == $show_on ) {
 					return true;
+				}
 			}
 
 			return false;
