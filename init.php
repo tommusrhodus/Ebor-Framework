@@ -24,7 +24,9 @@ $defaults = array(
 	'keepsake_widgets'      => '0',
 	'meetup_widgets'        => '0',
 	'machine_widgets'       => '0',
-	'lumos_widgets'         => '0'
+	'lumos_widgets'         => '0',
+	'foundry_widgets'       => '0',
+	'foundry_shortcodes'    => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -73,6 +75,9 @@ if( '1' == $framework_options['pivot_shortcodes'] ){
 if( '1' == $framework_options['elemis_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'shortcodes/elemis-shortcodes.php' );	
 }
+if( '1' == $framework_options['foundry_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'shortcodes/foundry-shortcodes.php' );	
+}
 
 /**
  * Register appropriate widgets
@@ -94,6 +99,9 @@ if( '1' == $framework_options['meetup_widgets'] ){
 }
 if( '1' == $framework_options['machine_widgets'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'widgets/machine-widgets.php' );	
+}
+if( '1' == $framework_options['foundry_widgets'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'widgets/foundry-widgets.php' );	
 }
 
 /**
