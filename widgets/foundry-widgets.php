@@ -11,7 +11,7 @@ if(!( class_exists('foundry_Instagram_Widget') )){
 		public function __construct(){
 			parent::__construct(
 				'foundry-instagram-widget', // Base ID
-				__('foundry : Instagram Widget', 'ebor_framework'), // Name
+				__('Foundry: Instagram Widget', 'ebor_framework'), // Name
 				array( 'description' => __( 'Add a simple Instagram feed widget', 'ebor_framework' ), ) // Args
 			);
 		}
@@ -89,7 +89,7 @@ if(!( class_exists('foundry_Twitter_Widget') )){
 		public function __construct(){
 			parent::__construct(
 				'foundry-twitter-widget', // Base ID
-				__('foundry : Twitter Widget', 'ebor_framework'), // Name
+				__('Foundry: Twitter Widget', 'ebor_framework'), // Name
 				array( 'description' => __( 'Add a simple Twitter feed widget', 'ebor_framework' ), ) // Args
 			);
 		}
@@ -161,13 +161,12 @@ if(!( class_exists('foundry_Twitter_Widget') )){
 if(!( class_exists('ebor_foundry_popular_Widget') )){
 	class ebor_foundry_popular_Widget extends WP_Widget {
 		
-		function ebor_foundry_popular_Widget()
-		{
-			$widget_ops = array('classname' => 'ebor_foundry_popular', 'description' => '');
-	
-			$control_ops = array('id_base' => 'ebor_foundry_popular-widget');
-	
-			$this->WP_Widget('ebor_foundry_popular-widget', 'foundry : Recent Posts', $widget_ops, $control_ops);
+		function ebor_foundry_popular_Widget(){
+			parent::__construct(
+				'ebor_foundry_popular-widget', // Base ID
+				__('Foundry: Popular Posts', 'ebor_framework'), // Name
+				array( 'description' => __( 'Add a simple popular posts widget', 'ebor_framework' ), ) // Args
+			);
 		}
 		
 		function widget($args, $instance)

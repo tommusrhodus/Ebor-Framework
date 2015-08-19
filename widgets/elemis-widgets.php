@@ -6,13 +6,12 @@
 if(!( class_exists('ebor_popular_Widget') )){
 	class ebor_popular_Widget extends WP_Widget {
 		
-		function ebor_popular_Widget()
-		{
-			$widget_ops = array('classname' => 'ebor_popular', 'description' => '');
-	
-			$control_ops = array('id_base' => 'ebor_popular-widget');
-	
-			$this->WP_Widget('ebor_popular-widget', 'TommusRhodus: Popular Posts', $widget_ops, $control_ops);
+		function ebor_popular_Widget(){
+			parent::__construct(
+				'ebor_popular-widget', // Base ID
+				__('TommusRhodus: Popular Posts', 'ebor_framework'), // Name
+				array( 'description' => __( 'Add a simple popular posts widget', 'ebor_framework' ), ) // Args
+			);
 		}
 		
 		function widget($args, $instance)
@@ -96,13 +95,12 @@ if(!( class_exists('ebor_popular_Widget') )){
 if(!( class_exists('ebor_contact_Widget') )){
 	class ebor_contact_Widget extends WP_Widget {
 		
-		function ebor_contact_Widget()
-		{
-			$widget_ops = array('classname' => 'ebor_contact', 'description' => '');
-	
-			$control_ops = array('id_base' => 'ebor_contact-widget');
-	
-			$this->WP_Widget('ebor_contact-widget', 'TommusRhodus: Social Icons', $widget_ops, $control_ops);
+		function ebor_contact_Widget(){
+			parent::__construct(
+				'ebor_contact-widget', // Base ID
+				__('TommusRhodus: Social Icons', 'ebor_framework'), // Name
+				array( 'description' => __( 'Add a simple social icons widget', 'ebor_framework' ), ) // Args
+			);
 		}
 		
 		function widget($args, $instance)
