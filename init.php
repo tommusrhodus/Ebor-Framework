@@ -13,6 +13,7 @@ $defaults = array(
 	'client_post_type'      => '0',
 	'testimonial_post_type' => '0',
 	'faq_post_type'         => '0',
+	'menu_post_type'        => '0',
 	'mega_menu'             => '0',
 	'aq_resizer'            => '0',
 	'page_builder'          => '0',
@@ -142,6 +143,14 @@ if( '1' == $framework_options['testimonial_post_type'] ){
 if( '1' == $framework_options['faq_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_faq', 10  );
 	add_action( 'init', 'ebor_framework_create_faq_taxonomies', 10  );
+}
+
+/**
+ * Register Menu Post Type
+ */
+if( '1' == $framework_options['menu_post_type'] ){
+	add_action( 'init', 'ebor_framework_register_menu', 10  );
+	add_action( 'init', 'ebor_framework_create_menu_taxonomies', 10  );
 }
 
 /**

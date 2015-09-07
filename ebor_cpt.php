@@ -485,3 +485,70 @@ function ebor_framework_create_faq_taxonomies(){
 	));
   
 }
+
+function ebor_framework_register_menu() {
+
+    $labels = array( 
+        'name' => __( 'Menu Items', 'ebor' ),
+        'singular_name' => __( 'Menu Item', 'ebor' ),
+        'add_new' => __( 'Add New', 'ebor' ),
+        'add_new_item' => __( 'Add New Menu Item', 'ebor' ),
+        'edit_item' => __( 'Edit Menu Item', 'ebor' ),
+        'new_item' => __( 'New Menu Item', 'ebor' ),
+        'view_item' => __( 'View Menu Item', 'ebor' ),
+        'search_items' => __( 'Search Menu Items', 'ebor' ),
+        'not_found' => __( 'No Menu Items found', 'ebor' ),
+        'not_found_in_trash' => __( 'No Menu Items found in Trash', 'ebor' ),
+        'parent_item_colon' => __( 'Parent Menu Item:', 'ebor' ),
+        'menu_name' => __( 'Menu Items', 'ebor' ),
+    );
+
+    $args = array( 
+        'labels' => $labels,
+        'hierarchical' => false,
+        'description' => __('Menu Item Entries.', 'ebor'),
+        'supports' => array( 'title', 'editor' ),
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-carrot',
+        'show_in_nav_menus' => true,
+        'publicly_queryable' => true,
+        'exclude_from_search' => true,
+        'has_archive' => false,
+        'query_var' => true,
+        'can_export' => true,
+        'rewrite' => true,
+        'capability_type' => 'post'
+    );
+
+    register_post_type( 'menu', $args );
+}
+
+function ebor_framework_create_menu_taxonomies(){
+	
+	$labels = array(
+		'name' => _x( 'Menu Item Categories','ebor' ),
+		'singular_name' => _x( 'Menu Item Category','ebor' ),
+		'search_items' =>  __( 'Search Menu Item Categories','ebor' ),
+		'all_items' => __( 'All Menu Item Categories','ebor' ),
+		'parent_item' => __( 'Parent Menu Item Category','ebor' ),
+		'parent_item_colon' => __( 'Parent Menu Item Category:','ebor' ),
+		'edit_item' => __( 'Edit Menu Item Category','ebor' ), 
+		'update_item' => __( 'Update Menu Item Category','ebor' ),
+		'add_new_item' => __( 'Add New Menu Item Category','ebor' ),
+		'new_item_name' => __( 'New Menu Item Category Name','ebor' ),
+		'menu_name' => __( 'Menu Item Categories','ebor' ),
+	); 
+		
+	register_taxonomy('menu_category', array('menu'), array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => true,
+	));
+  
+}
