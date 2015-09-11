@@ -508,18 +508,18 @@ function ebor_framework_register_menu() {
         'hierarchical' => false,
         'description' => __('Menu Item Entries.', 'ebor'),
         'supports' => array( 'title', 'editor' ),
-        'public' => true,
+        'public' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'menu_position' => 5,
         'menu_icon' => 'dashicons-carrot',
-        'show_in_nav_menus' => true,
-        'publicly_queryable' => true,
+        'show_in_nav_menus' => false,
+        'publicly_queryable' => false,
         'exclude_from_search' => true,
         'has_archive' => false,
-        'query_var' => true,
+        'query_var' => false,
         'can_export' => true,
-        'rewrite' => true,
+        'rewrite' => false,
         'capability_type' => 'post'
     );
 
@@ -547,8 +547,8 @@ function ebor_framework_create_menu_taxonomies(){
 		'labels' => $labels,
 		'show_ui' => true,
 		'show_admin_column' => true,
-		'query_var' => true,
-		'rewrite' => true,
+		'query_var' => false,
+		'rewrite' => false,
 	));
   
 }
