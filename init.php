@@ -14,6 +14,7 @@ $defaults = array(
 	'testimonial_post_type' => '0',
 	'faq_post_type'         => '0',
 	'menu_post_type'        => '0',
+	'class_post_type'       => '0',
 	'mega_menu'             => '0',
 	'aq_resizer'            => '0',
 	'page_builder'          => '0',
