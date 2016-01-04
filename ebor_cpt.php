@@ -552,3 +552,70 @@ function ebor_framework_create_menu_taxonomies(){
 	));
   
 }
+
+function ebor_framework_register_class() {
+
+    $labels = array( 
+        'name' => __( 'Classes', 'ebor' ),
+        'singular_name' => __( 'Class', 'ebor' ),
+        'add_new' => __( 'Add New', 'ebor' ),
+        'add_new_item' => __( 'Add New Class', 'ebor' ),
+        'edit_item' => __( 'Edit Class', 'ebor' ),
+        'new_item' => __( 'New Class', 'ebor' ),
+        'view_item' => __( 'View Class', 'ebor' ),
+        'search_items' => __( 'Search Classes', 'ebor' ),
+        'not_found' => __( 'No Classes found', 'ebor' ),
+        'not_found_in_trash' => __( 'No Classes found in Trash', 'ebor' ),
+        'parent_item_colon' => __( 'Parent Classes:', 'ebor' ),
+        'menu_name' => __( 'Classes', 'ebor' ),
+    );
+
+    $args = array( 
+        'labels' => $labels,
+        'hierarchical' => false,
+        'description' => __('Class Entries.', 'ebor'),
+        'supports' => array( 'title', 'editor', 'thumbnail' ),
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-welcome-learn-more',
+        'show_in_nav_menus' => true,
+        'publicly_queryable' => true,
+        'exclude_from_search' => false,
+        'has_archive' => true,
+        'query_var' => true,
+        'can_export' => true,
+        'rewrite' => array( 'slug' => 'classes' ),
+        'capability_type' => 'post'
+    );
+
+    register_post_type( 'class', $args );
+}
+
+function ebor_framework_create_class_taxonomies(){
+	
+	$labels = array(
+		'name' => _x( 'Class Categories','ebor' ),
+		'singular_name' => _x( 'Class Category','ebor' ),
+		'search_items' =>  __( 'Search Class Categories','ebor' ),
+		'all_items' => __( 'All Class Categories','ebor' ),
+		'parent_item' => __( 'Parent Class Category','ebor' ),
+		'parent_item_colon' => __( 'Parent Class Category:','ebor' ),
+		'edit_item' => __( 'Edit Class Category','ebor' ), 
+		'update_item' => __( 'Update Class Category','ebor' ),
+		'add_new_item' => __( 'Add New Class Category','ebor' ),
+		'new_item_name' => __( 'New Class Category Name','ebor' ),
+		'menu_name' => __( 'Class Categories','ebor' ),
+	); 
+		
+	register_taxonomy('class_category', array('class'), array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => false,
+		'rewrite' => false,
+	));
+  
+}

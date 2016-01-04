@@ -154,6 +154,14 @@ if( '1' == $framework_options['menu_post_type'] ){
 }
 
 /**
+ * Register Class Post Type
+ */
+if( '1' == $framework_options['class_post_type'] ){
+	add_action( 'init', 'ebor_framework_register_class', 10  );
+	add_action( 'init', 'ebor_framework_create_class_taxonomies', 10  );
+}
+
+/**
  * Register Mega Menu Post Type
  */
 if( '1' == $framework_options['mega_menu'] ){
