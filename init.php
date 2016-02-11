@@ -81,6 +81,10 @@ if( '1' == $framework_options['elemis_shortcodes'] ){
 if( '1' == $framework_options['foundry_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'shortcodes/foundry-shortcodes.php' );	
 }
+
+/**
+ * Visual Composer Shortocdes
+ */
 if( '1' == $framework_options['malory_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/malory/init.php' );	
 }

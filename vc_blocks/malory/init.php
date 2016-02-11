@@ -20,4 +20,11 @@ function ebor_framework_register_malory_blocks(){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/malory/vc_instagram_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/malory/vc_disqus_block.php');
 }
-add_action('after_setup_theme','ebor_framework_register_malory_blocks');
+
+function ebor_framework_malory_init(){
+	if( function_exists('vc_set_as_theme') ){
+		add_action('after_setup_theme', 'ebor_framework_register_malory_blocks', 10);
+	}
+}
+
+add_action('plugins_loaded', 'ebor_framework_malory_init', 9999);
