@@ -23,8 +23,15 @@ if(!( class_exists('ebor_keepsake_popular_Widget') )){
 	
 		    	<ul class="post-list">
 			    	<?php 
-			    		query_posts('post_type=post&posts_per_page=' . $instance['amount'] . '&orderby=comment_count&order=DESC'); 
-			    		if( have_posts() ) : while ( have_posts() ): the_post(); 
+			    		$widget_query = new WP_Query(
+			    			array(
+			    				'post_type' => 'post',
+			    				'orderby' => 'comment_count',
+			    				'order' => 'DESC',
+			    				'posts_per_page' => $instance['amount']
+			    			)
+			    		);
+			    		if( $widget_query->have_posts() ) : while ( $widget_query->have_posts() ): $widget_query->the_post(); 
 			    	?>
 			    	
 				    	  <li>
@@ -45,7 +52,7 @@ if(!( class_exists('ebor_keepsake_popular_Widget') )){
 			    	<?php 
 			    		endwhile; 
 			    		endif; 
-			    		wp_reset_query(); 
+			    		wp_reset_postdata(); 
 			    	?>
 		    	</ul>
 			
