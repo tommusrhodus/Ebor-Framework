@@ -29,7 +29,8 @@ $defaults = array(
 	'lumos_widgets'         => '0',
 	'foundry_widgets'       => '0',
 	'foundry_shortcodes'    => '0',
-	'malory_vc_shortcodes'  => '0'
+	'malory_vc_shortcodes'  => '0',
+	'peekskill_vc_shortcodes'  => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -87,6 +88,9 @@ if( '1' == $framework_options['foundry_shortcodes'] ){
  */
 if( '1' == $framework_options['malory_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/malory/init.php' );	
+}
+if( '1' == $framework_options['peekskill_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/peekskill/init.php' );	
 }
 
 /**
