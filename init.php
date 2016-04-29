@@ -15,6 +15,8 @@ $defaults = array(
 	'faq_post_type'         => '0',
 	'menu_post_type'        => '0',
 	'class_post_type'       => '0',
+	'service_post_type'     => '0',
+	'case_study_post_type'  => '0',
 	'mega_menu'             => '0',
 	'aq_resizer'            => '0',
 	'page_builder'          => '0',
@@ -30,7 +32,8 @@ $defaults = array(
 	'foundry_widgets'       => '0',
 	'foundry_shortcodes'    => '0',
 	'malory_vc_shortcodes'  => '0',
-	'peekskill_vc_shortcodes'  => '0'
+	'peekskill_vc_shortcodes'  => '0',
+	'partner_vc_shortcodes'  => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -91,6 +94,9 @@ if( '1' == $framework_options['malory_vc_shortcodes'] ){
 }
 if( '1' == $framework_options['peekskill_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/peekskill/init.php' );	
+}
+if( '1' == $framework_options['partner_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/partner/init.php' );	
 }
 
 /**
@@ -172,6 +178,22 @@ if( '1' == $framework_options['menu_post_type'] ){
 if( '1' == $framework_options['class_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_class', 10  );
 	add_action( 'init', 'ebor_framework_create_class_taxonomies', 10  );
+}
+
+/**
+ * Register Case Study Post Type
+ */
+if( '1' == $framework_options['case_study_post_type'] ){
+	add_action( 'init', 'ebor_framework_register_case_study', 10  );
+	add_action( 'init', 'ebor_framework_create_case_study_taxonomies', 10  );
+}
+
+/**
+ * Register Service Post Type
+ */
+if( '1' == $framework_options['service_post_type'] ){
+	add_action( 'init', 'ebor_framework_register_service', 10  );
+	add_action( 'init', 'ebor_framework_create_service_taxonomies', 10  );
 }
 
 /**

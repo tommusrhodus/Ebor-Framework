@@ -619,3 +619,141 @@ function ebor_framework_create_class_taxonomies(){
 	));
   
 }
+
+function ebor_framework_register_service() {
+
+    $labels = array( 
+        'name' => __( 'Services', 'ebor' ),
+        'singular_name' => __( 'Service', 'ebor' ),
+        'add_new' => __( 'Add New', 'ebor' ),
+        'add_new_item' => __( 'Add New Service', 'ebor' ),
+        'edit_item' => __( 'Edit Service', 'ebor' ),
+        'new_item' => __( 'New Service', 'ebor' ),
+        'view_item' => __( 'View Service', 'ebor' ),
+        'search_items' => __( 'Search Services', 'ebor' ),
+        'not_found' => __( 'No Services found', 'ebor' ),
+        'not_found_in_trash' => __( 'No Services found in Trash', 'ebor' ),
+        'parent_item_colon' => __( 'Parent Service:', 'ebor' ),
+        'menu_name' => __( 'Services', 'ebor' ),
+    );
+	 
+	 $args = array( 
+	     'labels' => $labels,
+	     'hierarchical' => false,
+	     'description' => __('Service entries.', 'ebor'),
+	     'supports' => array( 'title', 'thumbnail', 'editor', 'excerpt' ),
+	     'taxonomies' => array( 'service_category' ),
+	     'public' => true,
+	     'show_ui' => true,
+	     'show_in_menu' => true,
+	     'menu_position' => 5,
+	     'menu_icon' => 'dashicons-shield-alt',
+	     
+	     'show_in_nav_menus' => true,
+	     'publicly_queryable' => true,
+	     'exclude_from_search' => false,
+	     'has_archive' => true,
+	     'query_var' => true,
+	     'can_export' => true,
+	     'rewrite' => array( 'slug' => 'services' ),
+	     'capability_type' => 'post'
+	 );
+
+    register_post_type( 'service', $args );
+}
+
+function ebor_framework_create_service_taxonomies(){
+	
+	$labels = array(
+		'name' => _x( 'Service Categories','ebor' ),
+		'singular_name' => _x( 'Service Category','ebor' ),
+		'search_items' =>  __( 'Search Service Categories','ebor' ),
+		'all_items' => __( 'All Service Categories','ebor' ),
+		'parent_item' => __( 'Parent Service Category','ebor' ),
+		'parent_item_colon' => __( 'Parent Service Category:','ebor' ),
+		'edit_item' => __( 'Edit Service Category','ebor' ), 
+		'update_item' => __( 'Update Service Category','ebor' ),
+		'add_new_item' => __( 'Add New Service Category','ebor' ),
+		'new_item_name' => __( 'New Service Category Name','ebor' ),
+		'menu_name' => __( 'Service Categories','ebor' ),
+	); 
+		
+	register_taxonomy('service_category', array('service'), array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => true,
+	));
+  
+}
+
+function ebor_framework_register_case_study() {
+
+    $labels = array( 
+        'name' => __( 'Case Studies', 'ebor' ),
+        'singular_name' => __( 'Case Study', 'ebor' ),
+        'add_new' => __( 'Add New', 'ebor' ),
+        'add_new_item' => __( 'Add New Case Study', 'ebor' ),
+        'edit_item' => __( 'Edit Case Study', 'ebor' ),
+        'new_item' => __( 'New Case Study', 'ebor' ),
+        'view_item' => __( 'View Case Study', 'ebor' ),
+        'search_items' => __( 'Search Case Studies', 'ebor' ),
+        'not_found' => __( 'No Case Studies found', 'ebor' ),
+        'not_found_in_trash' => __( 'No Case Studies found in Trash', 'ebor' ),
+        'parent_item_colon' => __( 'Parent Case Study:', 'ebor' ),
+        'menu_name' => __( 'Case Studies', 'ebor' ),
+    );
+	 
+	 $args = array( 
+	     'labels' => $labels,
+	     'hierarchical' => false,
+	     'description' => __('Case Study entries.', 'ebor'),
+	     'supports' => array( 'title', 'thumbnail', 'editor', 'excerpt' ),
+	     'taxonomies' => array( 'case_study_category' ),
+	     'public' => true,
+	     'show_ui' => true,
+	     'show_in_menu' => true,
+	     'menu_position' => 5,
+	     'menu_icon' => 'dashicons-chart-area',
+	     
+	     'show_in_nav_menus' => true,
+	     'publicly_queryable' => true,
+	     'exclude_from_search' => false,
+	     'has_archive' => true,
+	     'query_var' => true,
+	     'can_export' => true,
+	     'rewrite' => array( 'slug' => 'case-studies' ),
+	     'capability_type' => 'post'
+	 );
+
+    register_post_type( 'case_study', $args );
+}
+
+function ebor_framework_create_case_study_taxonomies(){
+	
+	$labels = array(
+		'name' => _x( 'Case Study Categories','ebor' ),
+		'singular_name' => _x( 'Case Study Category','ebor' ),
+		'search_items' =>  __( 'Search Case Study Categories','ebor' ),
+		'all_items' => __( 'All Case Study Categories','ebor' ),
+		'parent_item' => __( 'Parent Case Study Category','ebor' ),
+		'parent_item_colon' => __( 'Parent Case Study Category:','ebor' ),
+		'edit_item' => __( 'Edit Case Study Category','ebor' ), 
+		'update_item' => __( 'Update Case Study Category','ebor' ),
+		'add_new_item' => __( 'Add New Case Study Category','ebor' ),
+		'new_item_name' => __( 'New Case Study Category Name','ebor' ),
+		'menu_name' => __( 'Case Study Categories','ebor' ),
+	); 
+		
+	register_taxonomy('case_tudy_category', array('case_Study'), array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => true,
+	));
+  
+}
