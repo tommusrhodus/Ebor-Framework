@@ -54,6 +54,8 @@ function ebor_portfolio_shortcode( $atts ) {
 	global $wp_query;
 	$wp_query = new WP_Query( $query_args );
 	
+	$wp_query->filter_on_off = $filters;
+	
 	ob_start();
 	
 	get_template_part('loop/loop-portfolio', $type);
@@ -102,16 +104,7 @@ function ebor_portfolio_shortcode_vc() {
 						'Yes' => 'yes',
 						'No' => 'no'
 					),
-				),
-				array(
-					"type" => "dropdown",
-					"heading" => esc_html__("Show load more button? (if enough posts load)", 'ryla'),
-					"param_name" => "more",
-					"value" => array(
-						'No' => 'no',
-						'Yes' => 'yes'
-					),
-				),
+				)
 			)
 		) 
 	);
