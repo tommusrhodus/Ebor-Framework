@@ -29,6 +29,19 @@ function ebor_icon_block_shortcode( $atts, $content = null ) {
 			</div>
 		';
 	
+	} elseif( 'right' == $layout ){
+		
+		$output = '
+			<div class="wow fadeIn" data-wow-duration="'. esc_attr($duration) .'s" data-wow-delay="'. esc_attr($delay) .'s">
+				<div class="feature text-right">
+					<div class="icon icon-m"> 
+						'. wp_get_attachment_image($image, 'admin-list-thumb') .'
+					</div>
+					'. wpautop(do_shortcode(htmlspecialchars_decode($content))) .'
+				</div>
+			</div>
+		';
+	
 	} else {
 	
 		$output = '
@@ -87,7 +100,8 @@ function ebor_icon_block_shortcode_vc() {
 					'param_name' => 'layout',
 					'value' => array(
 						'Top Icon' => 'top',
-						'Left Icon' => 'left'
+						'Left Icon' => 'left',
+						'Right Icon' => 'right'
 					)
 				)
 			)
