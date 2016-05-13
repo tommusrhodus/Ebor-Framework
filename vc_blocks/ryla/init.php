@@ -21,7 +21,6 @@ function ebor_framework_register_ryla_blocks(){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/ryla/vc_icon_carousel_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/ryla/vc_product_carousel_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/ryla/vc_testimonial_block.php');
-	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/ryla/vc_process_circle_block.php');
 }
 
 function ebor_framework_ryla_init(){

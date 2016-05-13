@@ -26,6 +26,7 @@ $defaults = array(
 	'elemis_widgets'        => '0',
 	'elemis_shortcodes'     => '0',
 	'keepsake_widgets'      => '0',
+	'morello_widgets'       => '0',
 	'meetup_widgets'        => '0',
 	'machine_widgets'       => '0',
 	'lumos_widgets'         => '0',
@@ -33,8 +34,8 @@ $defaults = array(
 	'foundry_shortcodes'    => '0',
 	'malory_vc_shortcodes'  => '0',
 	'peekskill_vc_shortcodes'  => '0',
-	'partner_vc_shortcodes' => '0',
-	'ryla_vc_shortcodes'    => '0'
+	'partner_vc_shortcodes'    => '0',
+	'ryla_vc_shortcodes'       => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -126,6 +127,9 @@ if( '1' == $framework_options['machine_widgets'] ){
 }
 if( '1' == $framework_options['foundry_widgets'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'widgets/foundry-widgets.php' );	
+}
+if( '1' == $framework_options['morello_widgets'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'widgets/morello-widgets.php' );	
 }
 
 /**
