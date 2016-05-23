@@ -74,7 +74,7 @@ add_shortcode( 'ryla_portfolio', 'ebor_portfolio_shortcode' );
  */
 function ebor_portfolio_shortcode_vc() {
 	
-	$portfolio_types = ebor_get_portfolio_layouts();
+	$portfolio_types = ryla_get_portfolio_layouts();
 
 	vc_map( 
 		array(

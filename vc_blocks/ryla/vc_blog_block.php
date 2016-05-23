@@ -64,7 +64,7 @@ add_shortcode( 'ryla_blog', 'ebor_blog_shortcode' );
  */
 function ebor_blog_shortcode_vc() {
 	
-	$blog_types = ebor_get_blog_layouts();
+	$blog_types = ryla_get_blog_layouts();
 	
 	vc_map( 
 		array(
