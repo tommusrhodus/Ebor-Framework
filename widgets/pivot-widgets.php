@@ -107,7 +107,7 @@ if(!( class_exists('Pivot_Twitter_Widget') )){
 				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 			
 			if ( isset( $instance['username'] ) )
-				echo '<div id="tweets" data-widget-id="'. $instance['username'] .'"></div>';
+				echo '<div id="tweets" data-widget-id="'. $instance['username'] .'" data-user-name="'. $instance['user_name'] .'"></div>';
 			
 			echo $args['after_widget'];
 		}
@@ -121,21 +121,28 @@ if(!( class_exists('Pivot_Twitter_Widget') )){
 			
 			$defaults = array(
 				'title' => 'Twitter Feed', 
-				'username' => ''
+				'username' => '', 
+				'user_name' => '',
 			);
 			$instance = wp_parse_args((array) $instance, $defaults);
 			extract($instance);
 		?>
 		
 			<p>
-				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'ebor_framework' ); ?></label> 
 				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+			</p>
+
+			<p>
+				<label for="<?php echo $this->get_field_id( 'user_name' ); ?>">Twitter Username <code>e.g: tommusrhodus</code>
+				<p class="description">Do not use @, plain text username only!</p></label> 
+				<input class="widefat" id="<?php echo $this->get_field_id( 'user_name' ); ?>" name="<?php echo $this->get_field_name( 'user_name' ); ?>" type="text" value="<?php echo esc_attr( $user_name ); ?>">
 			</p>
 			
 			<p>
 				<label for="<?php echo $this->get_field_id( 'username' ); ?>">Twitter Widget ID <code>e.g: 492085717044981760</code>
 				<p class="description">
-				<strong>Note!</strong> You need to generate this ID from your account, do this by going to the 'Settings' page of your Twitter account and clicking 'Widgets'. Click 'Create New' and then 'Create Widget'. One done, go back to the 'Widgets' page and click 'Edit' on your newly created widget. From here you need to copy the widget id out of the url bar. The widget id is the long numerical string after /widgets/ and before /edit.</p></label> 
+				<strong>Note!</strong> DEPRECATED: Will continue to work for existing users, new users please use the username field above.</p></label> 
 				<input class="widefat" id="<?php echo $this->get_field_id( 'username' ); ?>" name="<?php echo $this->get_field_name( 'username' ); ?>" type="text" value="<?php echo esc_attr( $username ); ?>">
 			</p>
 			
