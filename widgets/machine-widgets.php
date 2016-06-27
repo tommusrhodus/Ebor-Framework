@@ -101,12 +101,20 @@ if(!( class_exists('machine_Twitter_Widget') )){
 		 * @param array $instance
 		 */
 		public function widget( $args, $instance ) {
+			
+			$defaults = array(
+				'username' => '', 
+				'user_name' => '',
+			);
+			$instance = wp_parse_args((array) $instance, $defaults);
+			extract($instance);
+			
 			echo $args['before_widget'];
 			
 			if ( ! empty( $instance['title'] ) )
 				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 			
-			if ( isset( $instance['username'] ) )
+			if ( isset( $instance['username'] ) || isset( $instance['user_name'] ) )
 				echo '<div class="twitter-feed"><div class="tweets-feed" data-widget-id="'. $instance['username'] .'" data-user-name="'. $instance['user_name'] .'"></div></div>';
 			
 			echo $args['after_widget'];
