@@ -67,7 +67,7 @@ function ebor_map_block_shortcode_vc() {
 					"type" => "textfield",
 					"heading" => esc_html__("Map Address", 'ryla'),
 					"param_name" => "address",
-					'description' => 'Use a plain text address, e.g: 123 Evergreen Terrace, Springfield'
+					'description' => 'Use a plain text address, e.g: 123 Evergreen Terrace, Springfield<br /><code>Note: You require a Google Maps API key for this to work, please see the settings in <a href="'. admin_url('/customize.php') .'">Appearance => Customize</a></code>'
 				),
 				array(
 					"type" => "textfield",
