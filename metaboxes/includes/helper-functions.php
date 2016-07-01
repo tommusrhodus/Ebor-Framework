@@ -29,7 +29,13 @@ function cmb2_autoload_classes( $class_name ) {
 		return;
 	}
 
-	include_once( cmb2_dir( "includes/{$class_name}.php" ) );
+	$path = 'includes';
+
+	if ( 'CMB2_Type' === $class_name || 0 === strpos( $class_name, 'CMB2_Type_' ) ) {
+		$path .= '/types';
+	}
+
+	include_once( cmb2_dir( "$path/{$class_name}.php" ) );
 }
 
 /**
@@ -49,9 +55,7 @@ function cmb2_utils() {
  * @return CMB2_Ajax object CMB2 utilities class
  */
 function cmb2_ajax() {
-	static $cmb2_ajax;
-	$cmb2_ajax = $cmb2_ajax ? $cmb2_ajax : new CMB2_Ajax();
-	return $cmb2_ajax;
+	return CMB2_Ajax::get_instance();
 }
 
 /**
@@ -74,22 +78,48 @@ function cmb2_options( $key ) {
  *         'oembed_args' - $embed_args, // array containing 'width', etc
  *         'field_id'    - false,
  *         'cache_key'   - false,
+ *         'wp_error'    - true/false, // To return a wp_error object if no embed found.
  *
  * @return string        oEmbed string
  */
 function cmb2_get_oembed( $args = array() ) {
-	return cmb2_ajax()->get_oembed( $args );
+	$oembed = cmb2_ajax()->get_oembed_no_edit( $args );
+
+	// Send back our embed
+	if ( $oembed['embed'] && $oembed['embed'] != $oembed['fallback'] ) {
+		return '<div class="cmb2-oembed">' . $oembed['embed'] . '</div>';
+	}
+
+	$error = sprintf( __( 'No oEmbed Results Found for %s. View more info at %s.', 'cmb2' ), $oembed['fallback'], ' <a href="http://codex.wordpress.org/Embeds" target="_blank">codex.wordpress.org/Embeds</a>' );
+
+	if ( isset( $args['wp_error'] ) && $args['wp_error'] ) {
+		return new WP_Error( 'cmb2_get_oembed_result', $wp_error, compact( 'oembed', 'args' ) );
+	}
+
+	// Otherwise, send back error info that no oEmbeds were found
+	return '<p class="ui-state-error-text">' . $error . '</p>';
 }
+
+/**
+ * Outputs the return of cmb2_get_oembed.
+ * @since  2.2.2
+ * @see cmb2_get_oembed
+ */
+function cmb2_do_oembed( $args = array() ) {
+	echo cmb2_get_oembed( $args );
+}
+add_action( 'cmb2_do_oembed', 'cmb2_do_oembed' );
 
 /**
  * A helper function to get an option from a CMB2 options array
  * @since  1.0.1
  * @param  string  $option_key Option key
  * @param  string  $field_id   Option array field key
+ * @param  mixed   $default    Optional default fallback value
  * @return array               Options array or specific field
  */
-function cmb2_get_option( $option_key, $field_id = '' ) {
-	return cmb2_options( $option_key )->get( $field_id );
+function cmb2_get_option( $option_key, $field_id = '', $default = false ) {
+	return cmb2_options( $option_key )->get( $field_id, $default );
 }
 
 /**
@@ -303,5 +333,49 @@ function cmb2_metabox_form( $meta_box, $object_id = 0, $args = array() ) {
 		cmb2_print_metabox_form( $meta_box, $object_id, $args );
 	} else {
 		return cmb2_get_metabox_form( $meta_box, $object_id, $args );
+	}
+}
+
+if ( ! function_exists( 'date_create_from_format' ) ) {
+
+	/**
+	 * Reimplementation of DateTime::createFromFormat for PHP < 5.3. :(
+	 * Borrowed from http://stackoverflow.com/questions/5399075/php-datetimecreatefromformat-in-5-2
+	 *
+	 * @param $date_format
+	 * @param $date_value
+	 *
+	 * @return DateTime
+	 */
+	function date_create_from_format( $date_format, $date_value ) {
+
+		$schedule_format = str_replace(
+			array( 'M', 'Y', 'm', 'd', 'H', 'i', 'a' ),
+			array('%b', '%Y', '%m', '%d', '%H', '%M', '%p' ),
+			$date_format
+		);
+
+		/*
+		 * %Y, %m and %d correspond to date()'s Y m and d.
+		 * %I corresponds to H, %M to i and %p to a
+		 */
+		$parsed_time = strptime( $date_value, $schedule_format );
+
+		$ymd = sprintf(
+			/*
+			 * This is a format string that takes six total decimal
+			 * arguments, then left-pads them with zeros to either
+			 * 4 or 2 characters, as needed
+			 */
+			'%04d-%02d-%02d %02d:%02d:%02d',
+			$parsed_time['tm_year'] + 1900,  // This will be "111", so we need to add 1900.
+			$parsed_time['tm_mon'] + 1,      // This will be the month minus one, so we add one.
+			$parsed_time['tm_mday'],
+			$parsed_time['tm_hour'],
+			$parsed_time['tm_min'],
+			$parsed_time['tm_sec']
+		);
+
+		return new DateTime($ymd);
 	}
 }
