@@ -19,6 +19,8 @@ abstract class CMB2_Type_Multi_Base extends CMB2_Type_Base {
 	 * @return string       Generated option element html
 	 */
 	public function select_option( $args = array() ) {
+		$args['value'] = ( is_array($args['label']) ) ? $args['label']['value'] : $args['value'];
+		$args['label'] = ( is_array($args['label']) ) ? $args['label']['name'] : $args['label'];
 		return sprintf( "\t" . '<option value="%s" %s>%s</option>', $args['value'], selected( isset( $args['checked'] ) && $args['checked'], true, false ), $args['label'] ) . "\n";
 	}
 
