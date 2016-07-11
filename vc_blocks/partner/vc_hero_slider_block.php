@@ -11,7 +11,7 @@ function ebor_slider_shortcode( $atts, $content = null ) {
 			), $atts 
 		) 
 	);
-	$output = '<div class="slider height-60" data-animation="slide" data-arrows="true" data-timing="<?php echo $slider_timing; ?>"><ul class="slides">'. do_shortcode($content) .'</ul></div>';
+	$output = '<div class="slider height-60" data-animation="slide" data-arrows="true" data-timing="' .$slider_timing . '"><ul class="slides">'. do_shortcode($content) .'</ul></div>';
 	return $output;
 }
 add_shortcode( 'partner_slider', 'ebor_slider_shortcode' );
