@@ -4,7 +4,14 @@
  * The Shortcode
  */
 function ebor_slider_shortcode( $atts, $content = null ) {
-	$output = '<div class="slider height-60" data-animation="slide" data-arrows="true" data-timing="5000"><ul class="slides">'. do_shortcode($content) .'</ul></div>';
+	extract( 
+		shortcode_atts( 
+			array(
+				'slider_timing' => '5000'
+			), $atts 
+		) 
+	);
+	$output = '<div class="slider height-60" data-animation="slide" data-arrows="true" data-timing="<?php echo $slider_timing; ?>"><ul class="slides">'. do_shortcode($content) .'</ul></div>';
 	return $output;
 }
 add_shortcode( 'partner_slider', 'ebor_slider_shortcode' );
@@ -53,7 +60,14 @@ function ebor_slider_shortcode_vc() {
 		    'show_settings_on_create' => false,
 		    "js_view" => 'VcColumnView',
 		    "category" => esc_html__('partner WP Theme', 'partner'),
-		    'params'  => array(),
+		    'params'  => array(
+		    	array(
+					"type" => "textfield",
+					"heading" => esc_html__("Slide Delay", 'partner'),
+					"param_name" => "slider_timing",
+					"value" => '5000'
+				)
+		    ),
 		) 
 	);
 }
