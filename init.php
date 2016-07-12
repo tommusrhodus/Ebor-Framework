@@ -42,6 +42,13 @@ $defaults = array(
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
 /**
+ * Getting started instructions
+ */
+if( is_admin() ){
+	require_once( EBOR_FRAMEWORK_PATH  . 'getting_started.php' );
+}
+
+/**
  * Turn on the image resizer.
  * The resizer file has a class exists check to avoid conflicts
  */

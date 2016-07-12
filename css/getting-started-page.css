@@ -1,0 +1,472 @@
+/* Getting Started */
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after { clear: both }
+
+.clearfix { zoom: 1 }
+
+.getting-started #help-panel h1:first-of-type,
+.getting-started #help-panel h1:first-of-type + h2 {
+	display: none;
+}
+.getting-started figure {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.getting-started * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.getting-started {
+	overflow: hidden;
+	padding: 0 3%;
+}
+
+.getting-started .theme-image {
+	background: #64717E;
+	display: inline-block;
+	width: 100%;
+	width: 23%;
+}
+
+.getting-started .panels {
+	margin: 5% 0 0 0;
+}
+
+.getting-started .panel {
+	display: inline-block;
+	width: 100%;
+	padding: 4%;
+	background: #fff;
+	font-size: 16px;
+	animation: smoothFade .3s;
+    -moz-animation: smoothFade .3s;
+    -webkit-animation: smoothFade .3s;
+    -o-animation: smoothFade .3s;
+}
+
+@keyframes smoothFade {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@-moz-keyframes smoothFade {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@-webkit-keyframes smoothFade {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+.getting-started .panel-left.visible {
+	display: inline-block;
+	animation: smoothFade .3s;
+    -moz-animation: smoothFade .3s;
+    -webkit-animation: smoothFade .3s;
+    -o-animation: smoothFade .3s;
+}
+
+.getting-started .panel p {
+	font-size: 16px;
+	line-height: 1.7;
+}
+
+.getting-started .panel-right p {
+	font-size: 15px;
+	line-height: 1.6;
+}
+
+.getting-started .panel a {
+	text-decoration: none;
+}
+
+.getting-started .panel a:focus,
+.getting-started .panel a:active {
+	outline: none;
+	box-shadow: none;
+	border: none;
+}
+
+.getting-started .panel hr {
+	height: 1px;
+    margin: 2em 0;
+
+    border: 0;
+    border-top: solid 2px #E6EAED;
+}
+
+#plugins-panel hr {
+	padding-bottom: 0;
+	display: inline-block;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.getting-started .panel-left ul, .getting-started .panel-left ol {
+	margin: 0 0 5% 0;
+	background: #F8F8F8;
+	padding: 5% 5% 5% 8%;
+	list-style-type: square;
+	font-size: 16px;
+	line-height: 1.8;
+}
+.getting-started .panel-left ul li, .getting-started .panel-left ol li {
+	border-bottom: dotted 1px #ddd;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+.getting-started .panel-left ul li:last-child, .getting-started .panel-left ol li:last-child {
+	border: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.getting-started .panel-left {
+	display: inline-block;
+	display: none;
+	width: 58%;
+}
+
+.getting-started .panel-left img {
+	max-width: 100%;
+	height: auto;
+	border: solid 1px #E6EAED;
+}
+
+.getting-started .panel-left h3 {
+	display: inline-block;
+}
+
+.getting-started .panel-left h3, .getting-started .panel-right h3, .getting-started .panel-right p:first-child {
+	margin-top: 0;
+	line-height: 1.3;
+}
+
+.panel-left ul.anchor-nav {
+	padding: 5%;
+}
+
+.anchor-nav li {
+	list-style: none;
+}
+
+.back-to-top {
+	text-transform: uppercase;
+	font-size: 11px;
+	color: #999;
+	position: absolute;
+	right: 0;
+	top: 8px;
+}
+
+.getting-started .panels h3 {
+	width: 100%;
+	position: relative;
+	padding-right: 90px;
+}
+
+.getting-started h3 .back-to-top {
+	float: right;
+}
+
+.getting-started .panel-right {
+	display: inline-block;
+	width: 35%;
+	float: right;
+	vertical-align: top;
+}
+
+.getting-started .panel-aside {
+	margin-bottom: 25px;
+	background: #F8F8F8;
+	padding: 40px;
+}
+
+.getting-started .panel-aside:last-child {
+	margin-bottom: 0;
+}
+
+.getting-started .panel-aside h4 {
+	margin-top: 0;
+	font-size: 1.1em;
+	line-height: 1.4;
+}
+
+.getting-started .panel-aside ul {
+	margin-bottom: 25px;
+}
+
+.getting-started .panel-aside li {
+	list-style-type: square;
+	margin-left: 18px;
+}
+
+.notices {
+	margin: 0;
+	display: none;
+}
+
+#wpbody-content .getting-started .updated,
+#wpbody-content .getting-started .error {
+	margin-top: 2%;
+}
+
+.getting-started .updated + .intro-wrap,
+.getting-started .error + .intro-wrap {
+	padding-top: 2%;
+}
+
+.getting-started .intro-wrap {
+	padding:  4% 0 0 0;
+}
+
+.getting-started .intro {
+	display: inline-block;
+	width: 50%;
+	margin-left: 4%;
+	vertical-align: top;
+}
+
+.getting-started .intro h3 {
+	font-size: 44px;
+	line-height: 1.2;
+	font-weight: 300;
+	margin: 0 0 20px 0;
+}
+
+.getting-started .intro h4 {
+	color: #868B96;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 1.6;
+	margin: 0;
+}
+
+.getting-started .inline-list {
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+}
+
+.getting-started .inline-list li {
+	display: inline-block;
+	margin: 0 0 0 0;
+}
+
+.getting-started .inline-list li:last-child {
+	margin-right: 0;
+	padding-right: 0;
+}
+
+.getting-started .inline-list li a {
+	font-size: 18px;
+	text-decoration: none;
+	padding: 25px 30px;
+	display: inline-block;
+}
+
+.getting-started .inline-list li a:active,
+.getting-started .inline-list li a::-moz-focus-inner,
+.getting-started ul.inline-list a:focus {
+	outline: none;
+	border: 0;
+	box-shadow: none;
+}
+
+.getting-started ul.toc {
+	padding-left: 5%;
+}
+
+.getting-started .toc li {
+	list-style-type: none;
+}
+
+.getting-started .inline-list li.current a {
+	background: #fff;
+	outline: none;
+	border: none;
+	box-shadow: none;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+}
+
+.getting-started .inline-list li a i {
+	font-size: 16px;
+	margin-right: 5px;
+}
+
+.getting-started .enter-license {
+	display: inline-block;
+	width: 100%;
+	margin: 3% 0 1% 0;
+}
+
+::-webkit-input-placeholder {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	line-height: 1.2;
+}
+
+:-moz-placeholder {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	line-height: 1.2;
+}
+
+::-moz-placeholder {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	line-height: 1.2;
+}
+
+:-ms-input-placeholder {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	line-height: 1.2;
+}
+
+.getting-started .enter-license label {
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 2%;
+}
+
+.getting-started .enter-license .license-key-input {
+	display: inline-block;
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 4%;
+	font-family: 'Andale Mono', 'Lucida Console', monospace;
+	font-size: 16px;
+}
+
+.getting-started .enter-license .submit {
+	display: inline-block;
+	width: 25%;
+	margin: 0;
+	padding: 0;
+}
+
+.getting-started .activate {
+	display: inline-block;
+	width: 100%;
+	vertical-align: top;
+}
+
+.getting-started .activate-text {
+	font-size: 14px;
+	line-height: 28px;
+	display: inline-block;
+	margin-right: 5px;
+	color: green;
+}
+
+.getting-started #changelog {
+	display: none;
+}
+
+.getting-started #install-video {
+	display: none;
+}
+
+.getting-started section.article-content-block {
+	padding-top: 10px;
+	padding-bottom: 50px;
+	margin-bottom: 60px;
+	border-bottom: 2px solid #e5e5e5;
+}
+
+#updates-panel ul {
+	border-bottom: 1px dotted #ddd;
+	padding: 1% 0 5% 3%;
+	list-style-position: inside;
+	background: transparent;
+}
+#updates-panel li {
+	border-bottom: 0;
+	margin-bottom: 0;
+	padding-bottom: 7px;
+}
+#updates-panel h4 {
+	font-size: 1.1em;
+	margin: .5em 0;
+}
+
+h4 .button {
+	float: right;
+	background: #5AC779;
+	color: #fff;
+	border-radius: 3px;
+	font-size: 14px;
+	padding: 3px 6px;
+	vertical-align: middle;
+}
+
+@media only screen and (max-width:768px) {
+	.getting-started .intro, .theme-image, .getting-started .panel-left, .getting-started .panel-right {
+		width: 100%;
+		float: none;
+	}
+
+	.getting-started .intro {
+		padding: 0;
+		margin: 0;
+	}
+
+	.getting-started .intro h2 {
+		font-size: 34px;
+	}
+
+	.getting-started .intro h3 {
+		margin-bottom: 0;
+	}
+
+	.getting-started .inline-list {
+		margin-bottom: 5%;
+	}
+
+	.getting-started .inline-list li {
+		width: 100%;
+	}
+
+	.getting-started .inline-list li a {
+		width: 100%;
+		display: block;
+	}
+
+	.getting-started .theme-image {
+		width: 100%;
+		margin-bottom: 15px;
+	}
+
+	.getting-started .enter-license .submit {
+		width: 100%;
+	}
+
+	.getting-started .activate {
+		width: 100%;
+		float: none;
+		text-align: left;
+		margin-bottom: 20px;
+	}
+}
