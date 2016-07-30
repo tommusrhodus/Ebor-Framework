@@ -747,7 +747,7 @@ function ebor_framework_create_case_study_taxonomies(){
 		'menu_name' => __( 'Case Study Categories','ebor' ),
 	); 
 		
-	register_taxonomy('case_tudy_category', array('case_Study'), array(
+	register_taxonomy('case_study_category', array('case_study'), array(
 		'hierarchical' => true,
 		'labels' => $labels,
 		'show_ui' => true,
