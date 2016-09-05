@@ -76,7 +76,8 @@ if(!( function_exists('ebor_getting_started_page') )){
 			'Pivot' => '7131',
 			'Machine' => '7971',
 			'Malory' => '100001673',
-			'Hive' => '100003285'
+			'Hive' => '100003285',
+			'Pillar' => '100004468'
 		));
 		$this_id = array_search($theme['Name'], $theme_ids);
 		
