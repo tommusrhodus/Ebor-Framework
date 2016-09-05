@@ -37,7 +37,8 @@ $defaults = array(
 	'partner_vc_shortcodes'    => '0',
 	'ryla_vc_shortcodes'       => '0',
 	'morello_vc_shortcodes'    => '0',
-	'hive_vc_shortcodes'       => '0'
+	'hive_vc_shortcodes'       => '0',
+	'pillar_vc_shortcodes'     => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -117,6 +118,9 @@ if( '1' == $framework_options['morello_vc_shortcodes'] ){
 }
 if( '1' == $framework_options['hive_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/hive/init.php' );	
+}
+if( '1' == $framework_options['pillar_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/pillar/init.php' );	
 }
 
 /**
