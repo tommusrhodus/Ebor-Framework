@@ -33,18 +33,20 @@ function ebor_client_shortcode( $atts ) {
 			)
 		);
 	}
-
-	global $wp_query;
+	
+	global $wp_query, $post;
+	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
 	
 	ob_start();
 	
 	get_template_part('loop/loop-client', 'carousel');
 	
-	wp_reset_postdata();
-	
 	$output = ob_get_contents();
 	ob_end_clean();
+
+	wp_reset_postdata();
+	$post = $old_post;
 	
 	return $output;
 }
