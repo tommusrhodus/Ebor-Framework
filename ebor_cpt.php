@@ -9,58 +9,58 @@ register_activation_hook( __FILE__, 'ebor_framework_cpt_activation' );
 
 // Delete options table entries ONLY when plugin deactivated AND deleted
 function ebor_framework_cpt_delete_plugin_options() {
-	delete_option('ebor_framework_cpt_display_options');
+    delete_option('ebor_framework_cpt_display_options');
 }
 
 // Flush rewrite rules on activation
 function ebor_framework_cpt_activation() {
-	flush_rewrite_rules(true);
+    flush_rewrite_rules(true);
 }
 
 // Init plugin options to white list our options
 function ebor_framework_cpt_init(){
-	register_setting( 'ebor_framework_cpt_plugin_display_options', 'ebor_framework_cpt_display_options', 'ebor_framework_cpt_validate_display_options' );
+    register_setting( 'ebor_framework_cpt_plugin_display_options', 'ebor_framework_cpt_display_options', 'ebor_framework_cpt_validate_display_options' );
 }
 
 // Add menu page
 if(!( function_exists('ebor_framework_cpt_add_options_page') )){
-	function ebor_framework_cpt_add_options_page(){
-		$theme = wp_get_theme();
-		add_options_page( $theme->get( 'Name' ) . ' Post Type Options', $theme->get( 'Name' ) . ' Post Type Options', 'manage_options', __FILE__, 'ebor_framework_cpt_render_form');
-	}
+    function ebor_framework_cpt_add_options_page(){
+        $theme = wp_get_theme();
+        add_options_page( $theme->get( 'Name' ) . ' Post Type Options', $theme->get( 'Name' ) . ' Post Type Options', 'manage_options', __FILE__, 'ebor_framework_cpt_render_form');
+    }
 }
 
 // Render the Plugin options form
 function ebor_framework_cpt_render_form() { 
-	$theme = wp_get_theme();
+    $theme = wp_get_theme();
 ?>
-	
-	<div class="wrap">
-	
-		<!-- Display Plugin Icon, Header, and Description -->
-		<?php screen_icon('ebor-cpt'); ?>
-		<h2><?php echo $theme->get( 'Name' ) . __(' Custom Post Type Settings','ebor'); ?></h2>
-		<b>When you make any changes in this plugin, be sure to visit <a href="options-permalink.php">Your Permalink Settings</a> & click the 'save changes' button to refresh & re-write your permalinks, otherwise your changes will not take effect properly.</b>
-		
-		<div class="wrap">
-		
-			<!-- Beginning of the Plugin Options Form -->
-			<form method="post" action="options.php">
-				<?php settings_fields('ebor_framework_cpt_plugin_display_options'); ?>
-				<?php $displays = get_option('ebor_framework_cpt_display_options'); ?>
-				
-				<table class="form-table">
-				<!-- Checkbox Buttons -->
-					<tr valign="top">
-						<th scope="row">Register Post Types</th>
-						<td>
+    
+    <div class="wrap">
+    
+        <!-- Display Plugin Icon, Header, and Description -->
+        <?php screen_icon('ebor-cpt'); ?>
+        <h2><?php echo $theme->get( 'Name' ) . __(' Custom Post Type Settings','ebor'); ?></h2>
+        <b>When you make any changes in this plugin, be sure to visit <a href="options-permalink.php">Your Permalink Settings</a> & click the 'save changes' button to refresh & re-write your permalinks, otherwise your changes will not take effect properly.</b>
+        
+        <div class="wrap">
+        
+            <!-- Beginning of the Plugin Options Form -->
+            <form method="post" action="options.php">
+                <?php settings_fields('ebor_framework_cpt_plugin_display_options'); ?>
+                <?php $displays = get_option('ebor_framework_cpt_display_options'); ?>
+                
+                <table class="form-table">
+                <!-- Checkbox Buttons -->
+                    <tr valign="top">
+                        <th scope="row">Register Post Types</th>
+                        <td>
 
-							<label><b>Enter the URL slug you want to use for this post type. DO-NOT: use numbers, spaces, capital letters or special characters.</b><br /><br />
-							<input type="text" size="30" name="ebor_framework_cpt_display_options[portfolio_slug]" value="<?php echo $displays['portfolio_slug']; ?>" placeholder="portfolio" /><br />
-							 <br />e.g Entering 'portfolio' will result in www.website.com/portfolio becoming the URL to your portfolio.<br />
-							 <b>If you change this setting, be sure to visit <a href="options-permalink.php">Your Permalink Settings</a> & click the 'save changes' button to refresh & re-write your permalinks.</b></label>
-							 
-							 <br />
+                            <label><b>Enter the URL slug you want to use for this post type. DO-NOT: use numbers, spaces, capital letters or special characters.</b><br /><br />
+                            <input type="text" size="30" name="ebor_framework_cpt_display_options[portfolio_slug]" value="<?php echo $displays['portfolio_slug']; ?>" placeholder="portfolio" /><br />
+                             <br />e.g Entering 'portfolio' will result in www.website.com/portfolio becoming the URL to your portfolio.<br />
+                             <b>If you change this setting, be sure to visit <a href="options-permalink.php">Your Permalink Settings</a> & click the 'save changes' button to refresh & re-write your permalinks.</b></label>
+                             
+                             <br />
                              <hr />
                              <br />
 
@@ -74,21 +74,21 @@ function ebor_framework_cpt_render_form() {
                              <br />
 
                             <label><b>Enter the URL slug you want to use for this post type. DO-NOT: use numbers, spaces, capital letters or special characters.</b><br /><br />
-                            <input type="text" size="30" name="ebor_framework_cpt_display_options[case_studies_slug]" value="<?php echo $displays['team_slug']; ?>" placeholder="case-studies" /><br />
-                             <br />e.g Entering 'team' will result in www.website.com/team becoming the URL to your team.<br />
+                            <input type="text" size="30" name="ebor_framework_cpt_display_options[case_studies_slug]" value="<?php echo $displays['case_studies_slug']; ?>" placeholder="case-studies" /><br />
+                             <br />e.g Entering 'case-studies' will result in www.website.com/case-studies becoming the URL to your case studies.<br />
                              <b>If you change this setting, be sure to visit <a href="options-permalink.php">Your Permalink Settings</a> & click the 'save changes' button to refresh & re-write your permalinks.</b></label>
-							 
-						</td>
-					</tr>
-				</table>
-				
-				<?php submit_button('Save Options'); ?>
-				
-			</form>
-		
-		</div>
+                             
+                        </td>
+                    </tr>
+                </table>
+                
+                <?php submit_button('Save Options'); ?>
+                
+            </form>
+        
+        </div>
 
-	</div>
+    </div>
 <?php 
 }
 
@@ -96,20 +96,20 @@ function ebor_framework_cpt_render_form() {
  * Validate inputs for post type options form
  */
 function ebor_framework_cpt_validate_display_options($input) {
-	
-	if( get_option('ebor_framework_cpt_display_options') ){
-		
-		$displays = get_option('ebor_framework_cpt_display_options');
-		
-		foreach ($displays as $key => $value) {
-			if(isset($input[$key])){
-				$input[$key] = wp_filter_nohtml_kses($input[$key]);
-			}
-		}
-	
-	}
-	return $input;
-	
+    
+    if( get_option('ebor_framework_cpt_display_options') ){
+        
+        $displays = get_option('ebor_framework_cpt_display_options');
+        
+        foreach ($displays as $key => $value) {
+            if(isset($input[$key])){
+                $input[$key] = wp_filter_nohtml_kses($input[$key]);
+            }
+        }
+    
+    }
+    return $input;
+    
 }
 
 function ebor_framework_register_mega_menu() {
@@ -200,19 +200,19 @@ if( $displays['portfolio_slug'] ){ $slug = $displays['portfolio_slug']; } else {
 }
 
 function ebor_framework_create_portfolio_taxonomies(){
-	$labels = array(
-	    'name' => _x( 'Portfolio Categories','ebor' ),
-	    'singular_name' => _x( 'Portfolio Category','ebor' ),
-	    'search_items' =>  __( 'Search Portfolio Categories','ebor' ),
-	    'all_items' => __( 'All Portfolio Categories','ebor' ),
-	    'parent_item' => __( 'Parent Portfolio Category','ebor' ),
-	    'parent_item_colon' => __( 'Parent Portfolio Category:','ebor' ),
-	    'edit_item' => __( 'Edit Portfolio Category','ebor' ), 
-	    'update_item' => __( 'Update Portfolio Category','ebor' ),
-	    'add_new_item' => __( 'Add New Portfolio Category','ebor' ),
-	    'new_item_name' => __( 'New Portfolio Category Name','ebor' ),
-	    'menu_name' => __( 'Portfolio Categories','ebor' ),
-	  ); 	
+    $labels = array(
+        'name' => _x( 'Portfolio Categories','ebor' ),
+        'singular_name' => _x( 'Portfolio Category','ebor' ),
+        'search_items' =>  __( 'Search Portfolio Categories','ebor' ),
+        'all_items' => __( 'All Portfolio Categories','ebor' ),
+        'parent_item' => __( 'Parent Portfolio Category','ebor' ),
+        'parent_item_colon' => __( 'Parent Portfolio Category:','ebor' ),
+        'edit_item' => __( 'Edit Portfolio Category','ebor' ), 
+        'update_item' => __( 'Update Portfolio Category','ebor' ),
+        'add_new_item' => __( 'Add New Portfolio Category','ebor' ),
+        'new_item_name' => __( 'New Portfolio Category Name','ebor' ),
+        'menu_name' => __( 'Portfolio Categories','ebor' ),
+      );    
   register_taxonomy('portfolio_category', array('portfolio'), array(
     'hierarchical' => true,
     'labels' => $labels,
@@ -268,29 +268,29 @@ if( $displays['team_slug'] ){ $slug = $displays['team_slug']; } else { $slug = '
 }
 
 function ebor_framework_create_team_taxonomies(){
-	
-	$labels = array(
-		'name' => _x( 'Team Categories','ebor' ),
-		'singular_name' => _x( 'Team Category','ebor' ),
-		'search_items' =>  __( 'Search Team Categories','ebor' ),
-		'all_items' => __( 'All Team Categories','ebor' ),
-		'parent_item' => __( 'Parent Team Category','ebor' ),
-		'parent_item_colon' => __( 'Parent Team Category:','ebor' ),
-		'edit_item' => __( 'Edit Team Category','ebor' ), 
-		'update_item' => __( 'Update Team Category','ebor' ),
-		'add_new_item' => __( 'Add New Team Category','ebor' ),
-		'new_item_name' => __( 'New Team Category Name','ebor' ),
-		'menu_name' => __( 'Team Categories','ebor' ),
-	); 
-		
-	register_taxonomy('team_category', array('team'), array(
-		'hierarchical' => true,
-		'labels' => $labels,
-		'show_ui' => true,
-		'show_admin_column' => true,
-		'query_var' => true,
-		'rewrite' => true,
-	));
+    
+    $labels = array(
+        'name' => _x( 'Team Categories','ebor' ),
+        'singular_name' => _x( 'Team Category','ebor' ),
+        'search_items' =>  __( 'Search Team Categories','ebor' ),
+        'all_items' => __( 'All Team Categories','ebor' ),
+        'parent_item' => __( 'Parent Team Category','ebor' ),
+        'parent_item_colon' => __( 'Parent Team Category:','ebor' ),
+        'edit_item' => __( 'Edit Team Category','ebor' ), 
+        'update_item' => __( 'Update Team Category','ebor' ),
+        'add_new_item' => __( 'Add New Team Category','ebor' ),
+        'new_item_name' => __( 'New Team Category Name','ebor' ),
+        'menu_name' => __( 'Team Categories','ebor' ),
+    ); 
+        
+    register_taxonomy('team_category', array('team'), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => true,
+    ));
   
 }
 
@@ -335,29 +335,29 @@ function ebor_framework_register_client() {
 }
 
 function ebor_framework_create_client_taxonomies(){
-	
-	$labels = array(
-		'name' => _x( 'Client Categories','ebor' ),
-		'singular_name' => _x( 'Client Category','ebor' ),
-		'search_items' =>  __( 'Search Client Categories','ebor' ),
-		'all_items' => __( 'All Client Categories','ebor' ),
-		'parent_item' => __( 'Parent Client Category','ebor' ),
-		'parent_item_colon' => __( 'Parent Client Category:','ebor' ),
-		'edit_item' => __( 'Edit Client Category','ebor' ), 
-		'update_item' => __( 'Update Client Category','ebor' ),
-		'add_new_item' => __( 'Add New Client Category','ebor' ),
-		'new_item_name' => __( 'New Client Category Name','ebor' ),
-		'menu_name' => __( 'Client Categories','ebor' ),
-	); 
-		
-	register_taxonomy('client_category', array('client'), array(
-		'hierarchical' => true,
-		'labels' => $labels,
-		'show_ui' => true,
-		'show_admin_column' => true,
-		'query_var' => true,
-		'rewrite' => true,
-	));
+    
+    $labels = array(
+        'name' => _x( 'Client Categories','ebor' ),
+        'singular_name' => _x( 'Client Category','ebor' ),
+        'search_items' =>  __( 'Search Client Categories','ebor' ),
+        'all_items' => __( 'All Client Categories','ebor' ),
+        'parent_item' => __( 'Parent Client Category','ebor' ),
+        'parent_item_colon' => __( 'Parent Client Category:','ebor' ),
+        'edit_item' => __( 'Edit Client Category','ebor' ), 
+        'update_item' => __( 'Update Client Category','ebor' ),
+        'add_new_item' => __( 'Add New Client Category','ebor' ),
+        'new_item_name' => __( 'New Client Category Name','ebor' ),
+        'menu_name' => __( 'Client Categories','ebor' ),
+    ); 
+        
+    register_taxonomy('client_category', array('client'), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => true,
+    ));
   
 }
 
@@ -402,29 +402,29 @@ function ebor_framework_register_testimonial() {
 }
 
 function ebor_framework_create_testimonial_taxonomies(){
-	
-	$labels = array(
-		'name' => _x( 'Testimonial Categories','ebor' ),
-		'singular_name' => _x( 'Testimonial Category','ebor' ),
-		'search_items' =>  __( 'Search Testimonial Categories','ebor' ),
-		'all_items' => __( 'All Testimonial Categories','ebor' ),
-		'parent_item' => __( 'Parent Testimonial Category','ebor' ),
-		'parent_item_colon' => __( 'Parent Testimonial Category:','ebor' ),
-		'edit_item' => __( 'Edit Testimonial Category','ebor' ), 
-		'update_item' => __( 'Update Testimonial Category','ebor' ),
-		'add_new_item' => __( 'Add New Testimonial Category','ebor' ),
-		'new_item_name' => __( 'New Testimonial Category Name','ebor' ),
-		'menu_name' => __( 'Testimonial Categories','ebor' ),
-	); 
-		
-	register_taxonomy('testimonial_category', array('testimonial'), array(
-		'hierarchical' => true,
-		'labels' => $labels,
-		'show_ui' => true,
-		'show_admin_column' => true,
-		'query_var' => true,
-		'rewrite' => true,
-	));
+    
+    $labels = array(
+        'name' => _x( 'Testimonial Categories','ebor' ),
+        'singular_name' => _x( 'Testimonial Category','ebor' ),
+        'search_items' =>  __( 'Search Testimonial Categories','ebor' ),
+        'all_items' => __( 'All Testimonial Categories','ebor' ),
+        'parent_item' => __( 'Parent Testimonial Category','ebor' ),
+        'parent_item_colon' => __( 'Parent Testimonial Category:','ebor' ),
+        'edit_item' => __( 'Edit Testimonial Category','ebor' ), 
+        'update_item' => __( 'Update Testimonial Category','ebor' ),
+        'add_new_item' => __( 'Add New Testimonial Category','ebor' ),
+        'new_item_name' => __( 'New Testimonial Category Name','ebor' ),
+        'menu_name' => __( 'Testimonial Categories','ebor' ),
+    ); 
+        
+    register_taxonomy('testimonial_category', array('testimonial'), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => true,
+    ));
   
 }
 
@@ -469,29 +469,29 @@ function ebor_framework_register_faq() {
 }
 
 function ebor_framework_create_faq_taxonomies(){
-	
-	$labels = array(
-		'name' => _x( 'FAQ Categories','ebor' ),
-		'singular_name' => _x( 'FAQ Category','ebor' ),
-		'search_items' =>  __( 'Search FAQ Categories','ebor' ),
-		'all_items' => __( 'All FAQ Categories','ebor' ),
-		'parent_item' => __( 'Parent FAQ Category','ebor' ),
-		'parent_item_colon' => __( 'Parent FAQ Category:','ebor' ),
-		'edit_item' => __( 'Edit FAQ Category','ebor' ), 
-		'update_item' => __( 'Update FAQ Category','ebor' ),
-		'add_new_item' => __( 'Add New FAQ Category','ebor' ),
-		'new_item_name' => __( 'New FAQ Category Name','ebor' ),
-		'menu_name' => __( 'FAQ Categories','ebor' ),
-	); 
-		
-	register_taxonomy('faq_category', array('faq'), array(
-		'hierarchical' => true,
-		'labels' => $labels,
-		'show_ui' => true,
-		'show_admin_column' => true,
-		'query_var' => true,
-		'rewrite' => true,
-	));
+    
+    $labels = array(
+        'name' => _x( 'FAQ Categories','ebor' ),
+        'singular_name' => _x( 'FAQ Category','ebor' ),
+        'search_items' =>  __( 'Search FAQ Categories','ebor' ),
+        'all_items' => __( 'All FAQ Categories','ebor' ),
+        'parent_item' => __( 'Parent FAQ Category','ebor' ),
+        'parent_item_colon' => __( 'Parent FAQ Category:','ebor' ),
+        'edit_item' => __( 'Edit FAQ Category','ebor' ), 
+        'update_item' => __( 'Update FAQ Category','ebor' ),
+        'add_new_item' => __( 'Add New FAQ Category','ebor' ),
+        'new_item_name' => __( 'New FAQ Category Name','ebor' ),
+        'menu_name' => __( 'FAQ Categories','ebor' ),
+    ); 
+        
+    register_taxonomy('faq_category', array('faq'), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => true,
+    ));
   
 }
 
@@ -536,29 +536,29 @@ function ebor_framework_register_menu() {
 }
 
 function ebor_framework_create_menu_taxonomies(){
-	
-	$labels = array(
-		'name' => _x( 'Menu Item Categories','ebor' ),
-		'singular_name' => _x( 'Menu Item Category','ebor' ),
-		'search_items' =>  __( 'Search Menu Item Categories','ebor' ),
-		'all_items' => __( 'All Menu Item Categories','ebor' ),
-		'parent_item' => __( 'Parent Menu Item Category','ebor' ),
-		'parent_item_colon' => __( 'Parent Menu Item Category:','ebor' ),
-		'edit_item' => __( 'Edit Menu Item Category','ebor' ), 
-		'update_item' => __( 'Update Menu Item Category','ebor' ),
-		'add_new_item' => __( 'Add New Menu Item Category','ebor' ),
-		'new_item_name' => __( 'New Menu Item Category Name','ebor' ),
-		'menu_name' => __( 'Menu Item Categories','ebor' ),
-	); 
-		
-	register_taxonomy('menu_category', array('menu'), array(
-		'hierarchical' => true,
-		'labels' => $labels,
-		'show_ui' => true,
-		'show_admin_column' => true,
-		'query_var' => false,
-		'rewrite' => false,
-	));
+    
+    $labels = array(
+        'name' => _x( 'Menu Item Categories','ebor' ),
+        'singular_name' => _x( 'Menu Item Category','ebor' ),
+        'search_items' =>  __( 'Search Menu Item Categories','ebor' ),
+        'all_items' => __( 'All Menu Item Categories','ebor' ),
+        'parent_item' => __( 'Parent Menu Item Category','ebor' ),
+        'parent_item_colon' => __( 'Parent Menu Item Category:','ebor' ),
+        'edit_item' => __( 'Edit Menu Item Category','ebor' ), 
+        'update_item' => __( 'Update Menu Item Category','ebor' ),
+        'add_new_item' => __( 'Add New Menu Item Category','ebor' ),
+        'new_item_name' => __( 'New Menu Item Category Name','ebor' ),
+        'menu_name' => __( 'Menu Item Categories','ebor' ),
+    ); 
+        
+    register_taxonomy('menu_category', array('menu'), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => false,
+        'rewrite' => false,
+    ));
   
 }
 
@@ -603,29 +603,29 @@ function ebor_framework_register_class() {
 }
 
 function ebor_framework_create_class_taxonomies(){
-	
-	$labels = array(
-		'name' => _x( 'Class Categories','ebor' ),
-		'singular_name' => _x( 'Class Category','ebor' ),
-		'search_items' =>  __( 'Search Class Categories','ebor' ),
-		'all_items' => __( 'All Class Categories','ebor' ),
-		'parent_item' => __( 'Parent Class Category','ebor' ),
-		'parent_item_colon' => __( 'Parent Class Category:','ebor' ),
-		'edit_item' => __( 'Edit Class Category','ebor' ), 
-		'update_item' => __( 'Update Class Category','ebor' ),
-		'add_new_item' => __( 'Add New Class Category','ebor' ),
-		'new_item_name' => __( 'New Class Category Name','ebor' ),
-		'menu_name' => __( 'Class Categories','ebor' ),
-	); 
-		
-	register_taxonomy('class_category', array('class'), array(
-		'hierarchical' => true,
-		'labels' => $labels,
-		'show_ui' => true,
-		'show_admin_column' => true,
-		'query_var' => false,
-		'rewrite' => false,
-	));
+    
+    $labels = array(
+        'name' => _x( 'Class Categories','ebor' ),
+        'singular_name' => _x( 'Class Category','ebor' ),
+        'search_items' =>  __( 'Search Class Categories','ebor' ),
+        'all_items' => __( 'All Class Categories','ebor' ),
+        'parent_item' => __( 'Parent Class Category','ebor' ),
+        'parent_item_colon' => __( 'Parent Class Category:','ebor' ),
+        'edit_item' => __( 'Edit Class Category','ebor' ), 
+        'update_item' => __( 'Update Class Category','ebor' ),
+        'add_new_item' => __( 'Add New Class Category','ebor' ),
+        'new_item_name' => __( 'New Class Category Name','ebor' ),
+        'menu_name' => __( 'Class Categories','ebor' ),
+    ); 
+        
+    register_taxonomy('class_category', array('class'), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => false,
+        'rewrite' => false,
+    ));
   
 }
 
@@ -645,60 +645,64 @@ function ebor_framework_register_service() {
         'parent_item_colon' => __( 'Parent Service:', 'ebor' ),
         'menu_name' => __( 'Services', 'ebor' ),
     );
-	 
-	 $args = array( 
-	     'labels' => $labels,
-	     'hierarchical' => false,
-	     'description' => __('Service entries.', 'ebor'),
-	     'supports' => array( 'title', 'thumbnail', 'editor', 'excerpt', 'author' ),
-	     'taxonomies' => array( 'service_category' ),
-	     'public' => true,
-	     'show_ui' => true,
-	     'show_in_menu' => true,
-	     'menu_position' => 5,
-	     'menu_icon' => 'dashicons-shield-alt',
-	     
-	     'show_in_nav_menus' => true,
-	     'publicly_queryable' => true,
-	     'exclude_from_search' => false,
-	     'has_archive' => true,
-	     'query_var' => true,
-	     'can_export' => true,
-	     'rewrite' => array( 'slug' => 'services' ),
-	     'capability_type' => 'post'
-	 );
+     
+     $args = array( 
+         'labels' => $labels,
+         'hierarchical' => false,
+         'description' => __('Service entries.', 'ebor'),
+         'supports' => array( 'title', 'thumbnail', 'editor', 'excerpt', 'author' ),
+         'taxonomies' => array( 'service_category' ),
+         'public' => true,
+         'show_ui' => true,
+         'show_in_menu' => true,
+         'menu_position' => 5,
+         'menu_icon' => 'dashicons-shield-alt',
+         
+         'show_in_nav_menus' => true,
+         'publicly_queryable' => true,
+         'exclude_from_search' => false,
+         'has_archive' => true,
+         'query_var' => true,
+         'can_export' => true,
+         'rewrite' => array( 'slug' => 'services' ),
+         'capability_type' => 'post'
+     );
 
     register_post_type( 'service', $args );
 }
 
 function ebor_framework_create_service_taxonomies(){
-	
-	$labels = array(
-		'name' => _x( 'Service Categories','ebor' ),
-		'singular_name' => _x( 'Service Category','ebor' ),
-		'search_items' =>  __( 'Search Service Categories','ebor' ),
-		'all_items' => __( 'All Service Categories','ebor' ),
-		'parent_item' => __( 'Parent Service Category','ebor' ),
-		'parent_item_colon' => __( 'Parent Service Category:','ebor' ),
-		'edit_item' => __( 'Edit Service Category','ebor' ), 
-		'update_item' => __( 'Update Service Category','ebor' ),
-		'add_new_item' => __( 'Add New Service Category','ebor' ),
-		'new_item_name' => __( 'New Service Category Name','ebor' ),
-		'menu_name' => __( 'Service Categories','ebor' ),
-	); 
-		
-	register_taxonomy('service_category', array('service'), array(
-		'hierarchical' => true,
-		'labels' => $labels,
-		'show_ui' => true,
-		'show_admin_column' => true,
-		'query_var' => true,
-		'rewrite' => true,
-	));
+    
+    $labels = array(
+        'name' => _x( 'Service Categories','ebor' ),
+        'singular_name' => _x( 'Service Category','ebor' ),
+        'search_items' =>  __( 'Search Service Categories','ebor' ),
+        'all_items' => __( 'All Service Categories','ebor' ),
+        'parent_item' => __( 'Parent Service Category','ebor' ),
+        'parent_item_colon' => __( 'Parent Service Category:','ebor' ),
+        'edit_item' => __( 'Edit Service Category','ebor' ), 
+        'update_item' => __( 'Update Service Category','ebor' ),
+        'add_new_item' => __( 'Add New Service Category','ebor' ),
+        'new_item_name' => __( 'New Service Category Name','ebor' ),
+        'menu_name' => __( 'Service Categories','ebor' ),
+    ); 
+        
+    register_taxonomy('service_category', array('service'), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => true,
+    ));
   
 }
 
 function ebor_framework_register_case_study() {
+
+$displays = get_option('ebor_framework_cpt_display_options');
+
+if( $displays['case_studies_slug'] ){ $slug = $displays['case_studies_slug']; } else { $slug = 'case-studies'; }
 
     $labels = array( 
         'name' => __( 'Case Studies', 'ebor' ),
@@ -714,55 +718,55 @@ function ebor_framework_register_case_study() {
         'parent_item_colon' => __( 'Parent Case Study:', 'ebor' ),
         'menu_name' => __( 'Case Studies', 'ebor' ),
     );
-	 
-	 $args = array( 
-	     'labels' => $labels,
-	     'hierarchical' => false,
-	     'description' => __('Case Study entries.', 'ebor'),
-	     'supports' => array( 'title', 'thumbnail', 'editor', 'excerpt', 'author' ),
-	     'taxonomies' => array( 'case_study_category' ),
-	     'public' => true,
-	     'show_ui' => true,
-	     'show_in_menu' => true,
-	     'menu_position' => 5,
-	     'menu_icon' => 'dashicons-chart-area',
-	     
-	     'show_in_nav_menus' => true,
-	     'publicly_queryable' => true,
-	     'exclude_from_search' => false,
-	     'has_archive' => true,
-	     'query_var' => true,
-	     'can_export' => true,
-	     'rewrite' => array( 'slug' => 'case-studies' ),
-	     'capability_type' => 'post'
-	 );
+     
+     $args = array( 
+         'labels' => $labels,
+         'hierarchical' => false,
+         'description' => __('Case Study entries.', 'ebor'),
+         'supports' => array( 'title', 'thumbnail', 'editor', 'excerpt', 'author' ),
+         'taxonomies' => array( 'case_study_category' ),
+         'public' => true,
+         'show_ui' => true,
+         'show_in_menu' => true,
+         'menu_position' => 5,
+         'menu_icon' => 'dashicons-chart-area',
+         
+         'show_in_nav_menus' => true,
+         'publicly_queryable' => true,
+         'exclude_from_search' => false,
+         'has_archive' => true,
+         'query_var' => true,
+         'can_export' => true,
+         'rewrite' => array( 'slug' => $slug ),
+         'capability_type' => 'post'
+     );
 
     register_post_type( 'case_study', $args );
 }
 
 function ebor_framework_create_case_study_taxonomies(){
-	
-	$labels = array(
-		'name' => _x( 'Case Study Categories','ebor' ),
-		'singular_name' => _x( 'Case Study Category','ebor' ),
-		'search_items' =>  __( 'Search Case Study Categories','ebor' ),
-		'all_items' => __( 'All Case Study Categories','ebor' ),
-		'parent_item' => __( 'Parent Case Study Category','ebor' ),
-		'parent_item_colon' => __( 'Parent Case Study Category:','ebor' ),
-		'edit_item' => __( 'Edit Case Study Category','ebor' ), 
-		'update_item' => __( 'Update Case Study Category','ebor' ),
-		'add_new_item' => __( 'Add New Case Study Category','ebor' ),
-		'new_item_name' => __( 'New Case Study Category Name','ebor' ),
-		'menu_name' => __( 'Case Study Categories','ebor' ),
-	); 
-		
-	register_taxonomy('case_study_category', array('case_study'), array(
-		'hierarchical' => true,
-		'labels' => $labels,
-		'show_ui' => true,
-		'show_admin_column' => true,
-		'query_var' => true,
-		'rewrite' => true,
-	));
+    
+    $labels = array(
+        'name' => _x( 'Case Study Categories','ebor' ),
+        'singular_name' => _x( 'Case Study Category','ebor' ),
+        'search_items' =>  __( 'Search Case Study Categories','ebor' ),
+        'all_items' => __( 'All Case Study Categories','ebor' ),
+        'parent_item' => __( 'Parent Case Study Category','ebor' ),
+        'parent_item_colon' => __( 'Parent Case Study Category:','ebor' ),
+        'edit_item' => __( 'Edit Case Study Category','ebor' ), 
+        'update_item' => __( 'Update Case Study Category','ebor' ),
+        'add_new_item' => __( 'Add New Case Study Category','ebor' ),
+        'new_item_name' => __( 'New Case Study Category Name','ebor' ),
+        'menu_name' => __( 'Case Study Categories','ebor' ),
+    ); 
+        
+    register_taxonomy('case_study_category', array('case_study'), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => true,
+    ));
   
 }
