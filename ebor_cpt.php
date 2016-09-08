@@ -61,13 +61,22 @@ function ebor_framework_cpt_render_form() {
 							 <b>If you change this setting, be sure to visit <a href="options-permalink.php">Your Permalink Settings</a> & click the 'save changes' button to refresh & re-write your permalinks.</b></label>
 							 
 							 <br />
-							 <hr />
-							 <br />
+                             <hr />
+                             <br />
 
-							<label><b>Enter the URL slug you want to use for this post type. DO-NOT: use numbers, spaces, capital letters or special characters.</b><br /><br />
-							<input type="text" size="30" name="ebor_framework_cpt_display_options[team_slug]" value="<?php echo $displays['team_slug']; ?>" placeholder="team" /><br />
-							 <br />e.g Entering 'team' will result in www.website.com/team becoming the URL to your team.<br />
-							 <b>If you change this setting, be sure to visit <a href="options-permalink.php">Your Permalink Settings</a> & click the 'save changes' button to refresh & re-write your permalinks.</b></label>
+                            <label><b>Enter the URL slug you want to use for this post type. DO-NOT: use numbers, spaces, capital letters or special characters.</b><br /><br />
+                            <input type="text" size="30" name="ebor_framework_cpt_display_options[team_slug]" value="<?php echo $displays['team_slug']; ?>" placeholder="team" /><br />
+                             <br />e.g Entering 'team' will result in www.website.com/team becoming the URL to your team.<br />
+                             <b>If you change this setting, be sure to visit <a href="options-permalink.php">Your Permalink Settings</a> & click the 'save changes' button to refresh & re-write your permalinks.</b></label>
+
+                             <br />
+                             <hr />
+                             <br />
+
+                            <label><b>Enter the URL slug you want to use for this post type. DO-NOT: use numbers, spaces, capital letters or special characters.</b><br /><br />
+                            <input type="text" size="30" name="ebor_framework_cpt_display_options[case_studies_slug]" value="<?php echo $displays['team_slug']; ?>" placeholder="case-studies" /><br />
+                             <br />e.g Entering 'team' will result in www.website.com/team becoming the URL to your team.<br />
+                             <b>If you change this setting, be sure to visit <a href="options-permalink.php">Your Permalink Settings</a> & click the 'save changes' button to refresh & re-write your permalinks.</b></label>
 							 
 						</td>
 					</tr>
