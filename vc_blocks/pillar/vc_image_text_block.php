@@ -30,6 +30,48 @@ function ebor_text_image_shortcode( $atts, $content = null ) {
 			</section>
 		';
 		
+	} elseif( 'left-big' == $layout ){
+		
+		$output = '
+			<section class="imageblock about-1">
+			    <div class="imageblock__content col-md-5 col-sm-4 pos-right">
+			        <div class="background-image-holder">
+			            '. wp_get_attachment_image( $image, 'full' ) .'
+			        </div>
+			    </div>
+			    <div class="container">
+			        <div class="row">
+			            <div class="col-md-6 col-sm-8">
+			                '. do_shortcode($content) .'
+			            </div>
+			        </div>
+			        <!--end of row-->
+			    </div>
+			    <!--end of container-->
+			</section>
+		';
+		
+	} elseif( 'right-big' == $layout ){
+		
+		$output = '
+			<section class="imageblock about-1">
+			    <div class="imageblock__content col-md-5 col-sm-4 pos-left">
+			        <div class="background-image-holder">
+			            '. wp_get_attachment_image( $image, 'full' ) .'
+			        </div>
+			    </div>
+			    <div class="container">
+			        <div class="row">
+			            <div class="col-md-6 col-sm-8">
+			                '. do_shortcode($content) .'
+			            </div>
+			        </div>
+			        <!--end of row-->
+			    </div>
+			    <!--end of container-->
+			</section>
+		';
+		
 	} elseif( 'right' == $layout ) {
 	
 		$output = '
@@ -95,6 +137,8 @@ function ebor_text_image_shortcode_vc() {
 		    		"value" => array(
 		    			'Offscreen Image Left' => 'left',
 		    			'Offscreen Image Right' => 'right',
+		    			'Offscreen Image Left (Bigger Content)' => 'left-big',
+		    			'Offscreen Image Right (Bigger Content)' => 'right-big',
 		    			'Boxed Image (Content on top)' => 'boxed'
 		    		)
 		    	),

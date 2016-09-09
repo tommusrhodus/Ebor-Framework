@@ -125,7 +125,7 @@ function ebor_icon_box_shortcode( $atts, $content = null ) {
 					<i class="icon--pillar '. esc_attr($icon) .' color--primary"></i>
 				</div>
 				<div class="feature__right">
-					<h6>'. htmlspecialchars_decode($title) .'</h6>
+					<h5>'. htmlspecialchars_decode($title) .'</h5>
 					'. wpautop(do_shortcode(htmlspecialchars_decode($content))) .'
 				</div>
 			</div>
