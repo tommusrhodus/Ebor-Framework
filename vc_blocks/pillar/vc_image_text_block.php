@@ -62,7 +62,7 @@ function ebor_text_image_shortcode( $atts, $content = null ) {
 			    </div>
 			    <div class="container">
 			        <div class="row">
-			            <div class="col-md-6 col-sm-8">
+			            <div class="col-md-6 col-md-push-6 col-sm-8 col-sm-push-4">
 			                '. do_shortcode($content) .'
 			            </div>
 			        </div>
