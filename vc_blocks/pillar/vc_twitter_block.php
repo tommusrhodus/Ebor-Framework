@@ -8,6 +8,7 @@ function ebor_twitter_shortcode( $atts, $content = null ) {
 		shortcode_atts( 
 			array(
 				'title' => '',
+				'username' => '',
 				'layout' => 'carousel',
 				'amount' => '5'
 			), $atts 
@@ -18,7 +19,7 @@ function ebor_twitter_shortcode( $atts, $content = null ) {
 		
 		$output = '
 			<div class="twitter-feed twitter-feed-1 twitter-feed--slider text-center">
-				<div class="tweets-feed" data-widget-id="'. esc_attr($title) .'" data-amount="'. esc_attr($amount) .'"></div>
+				<div class="tweets-feed" data-widget-id="'. esc_attr($title) .'" data-user-name="'. esc_attr($username) .'" data-amount="'. esc_attr($amount) .'"></div>
 			</div>
 		';
 		
@@ -28,7 +29,7 @@ function ebor_twitter_shortcode( $atts, $content = null ) {
 			<div class="boxed boxed--lg bg--white text-center">
 				<i class="icon icon--sm color--dark socicon-twitter"></i>
 				<div class="twitter-feed twitter-feed--slider">
-					<div class="tweets-feed" data-widget-id="'. esc_attr($title) .'" data-amount="'. esc_attr($amount) .'"></div>
+					<div class="tweets-feed" data-widget-id="'. esc_attr($title) .'" data-user-name="'. esc_attr($username) .'" data-amount="'. esc_attr($amount) .'"></div>
 				</div>
 			</div>
 		';
@@ -39,7 +40,7 @@ function ebor_twitter_shortcode( $atts, $content = null ) {
 			<div class="text-center">
 				<i class="icon icon--sm color--dark socicon-twitter"></i>
 				<div class="twitter-feed twitter-feed-2">
-					<div class="tweets-feed" data-widget-id="'. esc_attr($title) .'" data-amount="'. esc_attr($amount) .'"></div>
+					<div class="tweets-feed" data-widget-id="'. esc_attr($title) .'" data-user-name="'. esc_attr($username) .'" data-amount="'. esc_attr($amount) .'"></div>
 				</div>
 			</div>
 		';
@@ -64,8 +65,14 @@ function ebor_twitter_shortcode_vc() {
 				array(
 					"type" => "textfield",
 					"heading" => esc_html__("Twitter Username", 'pillar'),
-					"param_name" => "title",
+					"param_name" => "username",
 					"description" => "Plain text, do not use @",
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Twitter User ID", 'pillar'),
+					"param_name" => "title",
+					"description" => "Not Required: Legacy users only.",
 				),
 				array(
 					"type" => "dropdown",
