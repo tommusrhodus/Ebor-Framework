@@ -15,7 +15,9 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 				'align' => 'text-center',
 				'cookie' => false,
 				'manual_id' => false,
-				'video' => ''
+				'video' => '',
+				'width' => '60',
+				'height' => '60'
 			), $atts 
 		) 
 	);
@@ -36,7 +38,7 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 					</a>
 				</div>
 				<div class="modal-container" '. $delay .'>
-					<div class="modal-content bg-dark" data-width="60%" data-height="60%">
+					<div class="modal-content bg-dark" data-width="'. (int) $width .'%" data-height="'. (int) $height .'%">
 						'. wp_oembed_get($video) .'
 					</div><!--end of modal-content-->
 				</div><!--end of modal-container-->
@@ -58,7 +60,7 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 		if( $image ){
 			
 			$output .= '
-					<div class="modal-content bg-white imagebg" data-width="50%" data-height="50%" data-overlay="5">
+					<div class="modal-content bg-white imagebg" data-width="'. (int) $width .'%" data-height="'. (int) $height .'%" data-overlay="5">
 						<div class="background-image-holder">
 							'. wp_get_attachment_image( $image, 'full' ) .'
 						</div>
@@ -153,6 +155,18 @@ function ebor_modal_shortcode_vc() {
 		    		"heading" => __("Cookie Name", 'pillar'),
 		    		"param_name" => "cookie",
 		    		'description' => 'Set a plain text cookie name here to stop the delay popup if someone has already closed it.'
+		    	),
+		    	array(
+		    		"type" => "textfield",
+		    		"heading" => __("Modal Width", 'pillar'),
+		    		"param_name" => "width",
+		    		'description' => 'Video & Image Modal only. Numeric only, value in %, for 50% width type only: 50'
+		    	),
+		    	array(
+		    		"type" => "textfield",
+		    		"heading" => __("Modal Height", 'pillar'),
+		    		"param_name" => "height",
+		    		'description' => 'Video & Image Modal only. Numeric only, value in %, for 50% height type only: 50'
 		    	),
 		    )
 		) 
