@@ -20,16 +20,22 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 		) 
 	);
 	
+	if( $delay ){
+		$delay = 'data-autoshow="'. (int) $delay .'"';	
+	}
+	
 	if( $video ){
 		
 		$output = '
 			<div class="modal-instance modal-video-1">
-				<a class="btn modal-trigger" href="#">
-					<span class="btn__text">
-						&#9658; '. $button_text .'
-					</span>
-				</a>
-				<div class="modal-container">
+				<div class="'. $align .'">
+					<a class="btn modal-trigger" href="#">
+						<span class="btn__text">
+							&#9658; '. $button_text .'
+						</span>
+					</a>
+				</div>
+				<div class="modal-container" '. $delay .'>
 					<div class="modal-content bg-dark" data-width="60%" data-height="60%">
 						'. wp_oembed_get($video) .'
 					</div><!--end of modal-content-->
@@ -41,10 +47,12 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 	
 		$output = '
 			<div class="modal-instance">
-				<a class="btn modal-trigger" href="#">
-					<span class="btn__text">'. $button_text .'</span>
-				</a>
-				<div class="modal-container">
+				<div class="'. $align .'">
+					<a class="btn modal-trigger" href="#">
+						<span class="btn__text"><i class="'. $icon .'"></i> '. $button_text .'</span>
+					</a>
+				</div>
+				<div class="modal-container" '. $delay .'>
 		';
 		
 		if( $image ){
@@ -102,9 +110,26 @@ function ebor_modal_shortcode_vc() {
 		    "category" => esc_html__('pillar WP Theme', 'pillar'),
 		    'params' => array(
 		    	array(
+		    		"type" => "ebor_icons",
+		    		"heading" => __("Button Icon, click to choose", 'pillar'),
+		    		"param_name" => "icon",
+		    		"value" => $icons,
+		    		'description' => 'Type "none" or leave blank to hide icons.'
+		    	),
+		    	array(
 		    		"type" => "textfield",
 		    		"heading" => esc_html__("Button Text", 'pillar'),
 		    		"param_name" => "button_text"
+		    	),
+		    	array(
+		    		"type" => "dropdown",
+		    		"heading" => __("Button Alignment", 'pillar'),
+		    		"param_name" => "align",
+		    		"value" => array(
+		    			'Center' => 'text-center',
+		    			'Left' => 'text-left',
+		    			'Right' => 'text-right'
+		    		)
 		    	),
 		    	array(
 		    		"type" => "attach_image",
@@ -114,7 +139,20 @@ function ebor_modal_shortcode_vc() {
 		    	array(
 		    		"type" => "textfield",
 		    		"heading" => esc_html__("Video URL", 'pillar'),
-		    		"param_name" => "video"
+		    		"param_name" => "video",
+		    		'description' => 'Youtube or Vimeo URL, if added this becomes a video only modal'
+		    	),
+		    	array(
+		    		"type" => "textfield",
+		    		"heading" => __("Delay Timer", 'pillar'),
+		    		"param_name" => "delay",
+		    		'description' => 'Leave blank for infinite delay (manual trigger only) enter milliseconds for automatic popup on timer, e.g: 2000'
+		    	),
+		    	array(
+		    		"type" => "textfield",
+		    		"heading" => __("Cookie Name", 'pillar'),
+		    		"param_name" => "cookie",
+		    		'description' => 'Set a plain text cookie name here to stop the delay popup if someone has already closed it.'
 		    	),
 		    )
 		) 
