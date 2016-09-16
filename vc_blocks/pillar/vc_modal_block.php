@@ -160,13 +160,15 @@ function ebor_modal_shortcode_vc() {
 		    		"type" => "textfield",
 		    		"heading" => __("Modal Width", 'pillar'),
 		    		"param_name" => "width",
-		    		'description' => 'Video & Image Modal only. Numeric only, value in %, for 50% width type only: 50'
+		    		'description' => 'Video & Image Modal only. Numeric only, value in %, for 50% width type only: 50',
+		    		'value' => '60'
 		    	),
 		    	array(
 		    		"type" => "textfield",
 		    		"heading" => __("Modal Height", 'pillar'),
 		    		"param_name" => "height",
-		    		'description' => 'Video & Image Modal only. Numeric only, value in %, for 50% height type only: 50'
+		    		'description' => 'Video & Image Modal only. Numeric only, value in %, for 50% height type only: 50',
+		    		'value' => '60'
 		    	),
 		    )
 		) 
