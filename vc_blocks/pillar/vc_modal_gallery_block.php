@@ -151,7 +151,8 @@ function ebor_modal_gallery_content_shortcode_vc() {
 		    		"type" => "textfield",
 		    		"heading" => esc_html__("Filter Category (Plain Text Only)", 'pillar'),
 		    		"param_name" => "class",
-		    		'holder' => 'div'
+		    		'holder' => 'div',
+		    		'description' => 'Multiple categories: Separate with comma only, no spaces. Spaces are fine in the category name. e.g: <code>Category 1,Category 2</code>'
 		    	),
 	            array(
 	            	"type" => "attach_image",
