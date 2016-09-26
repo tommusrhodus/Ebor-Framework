@@ -15,6 +15,13 @@ function ebor_icon_block_shortcode( $atts, $content = null ) {
 			), $atts 
 		) 
 	);
+
+	if (!empty($image)) {
+		$feature_icon = wp_get_attachment_image($image, 'admin-list-thumb');		
+	} else {
+		$feature_icon = '<i class="'. $icon .'"></i>';
+	}
+	 
 	
 	if( 'left' == $layout ){
 		
@@ -22,7 +29,7 @@ function ebor_icon_block_shortcode( $atts, $content = null ) {
 			<div class="wow fadeIn" data-wow-duration="'. esc_attr($duration) .'s" data-wow-delay="'. esc_attr($delay) .'s">
 				<div class="feature">
 					<div class="icon icon-m"> 
-						'. wp_get_attachment_image($image, 'admin-list-thumb') .'
+						'. $feature_icon .'
 					</div>
 					'. wpautop(do_shortcode(htmlspecialchars_decode($content))) .'
 				</div>
@@ -35,7 +42,7 @@ function ebor_icon_block_shortcode( $atts, $content = null ) {
 			<div class="wow fadeIn" data-wow-duration="'. esc_attr($duration) .'s" data-wow-delay="'. esc_attr($delay) .'s">
 				<div class="feature text-right">
 					<div class="icon icon-m"> 
-						'. wp_get_attachment_image($image, 'admin-list-thumb') .'
+						'. $feature_icon .'
 					</div>
 					'. wpautop(do_shortcode(htmlspecialchars_decode($content))) .'
 				</div>
@@ -47,7 +54,7 @@ function ebor_icon_block_shortcode( $atts, $content = null ) {
 		$output = '
 			<div class="text-center wow fadeInUp" data-wow-duration="'. esc_attr($duration) .'s" data-wow-delay="'. esc_attr($delay) .'s">
 				<div class="icon icon-m bm10"> 
-					'. wp_get_attachment_image($image, 'admin-list-thumb') .'
+					'. $feature_icon .'
 				</div>
 				'. wpautop(do_shortcode(htmlspecialchars_decode($content))) .'
 			</div>
@@ -73,8 +80,15 @@ function ebor_icon_block_shortcode_vc() {
 			"params" => array(
 				array(
 					"type" => "attach_image",
-					"heading" => __("Icon Image", 'ryla'),
+					"heading" => __("Icon Image", 'ryla'),					
+					"description" => esc_html__("Uploading An Icon Image Will Override The Icon Below (if chosen)", 'morello'),
 					"param_name" => "image"
+				),
+				array(
+					"type" => "ebor_icons",
+					"heading" => esc_html__("Icon", 'morello'),
+					"param_name" => "icon",
+					"value" => array_keys(ryla_get_icons())
 				),
 				array(
 					"type" => "textarea_html",
