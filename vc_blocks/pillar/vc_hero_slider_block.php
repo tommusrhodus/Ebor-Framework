@@ -9,13 +9,13 @@ function ebor_slider_shortcode( $atts, $content = null ) {
 			array(
 				'type' => 'standard',
 				'parallax' => 'parallax',
-				'height' => ''
+				'slider_height' => 'height-100'
 			), $atts 
 		) 
 	);
 	
 	$output = '
-		<section class="slider slider--animate height-100 cover cover-5 parallax" data-animation="fade" data-arrows="true" data-paging="true" data-timing="5000">
+		<section class="slider slider--animate '. $slider_height .' cover cover-5 parallax" data-animation="fade" data-arrows="true" data-paging="true" data-timing="5000">
 			<ul class="slides">
 				'. do_shortcode($content) .'
 			</ul>
@@ -33,13 +33,14 @@ function ebor_slider_content_shortcode( $atts, $content = null ) {
 	extract( 
 		shortcode_atts( 
 			array(
-				'image' => ''
+				'image' => '',
+				'overlay_opacity' => '4'
 			), $atts 
 		) 
 	);
 	
 	$output = '
-		<li class="imagebg" data-overlay="4">
+		<li class="imagebg" data-overlay="'. $overlay_opacity .'">
 			<div class="background-image-holder">
 				'. wp_get_attachment_image( $image, 'full' ) .'
 			</div>
@@ -70,7 +71,21 @@ function ebor_slider_shortcode_vc() {
 		    'show_settings_on_create' => false,
 		    "js_view" => 'VcColumnView',
 		    "category" => esc_html__('pillar WP Theme', 'pillar'),
-		    'params'          => array(),
+		    'params'          => array(
+				array(
+		    		"type" => "dropdown",
+		    		"heading" => __("Sider Height", 'pillar'),
+		    		"param_name" => "slider_height",
+		    		"value" => array(
+		    			'100vh' => 'height-100',
+		    			'90vh' => 'height-90',
+		    			'80vh' => 'height-80',
+		    			'70vh' => 'height-70',
+		    			'60vh' => 'height-60',
+		    			'50vh' => 'height-50',
+		    		)
+		    	),
+		    ),
 		) 
 	);
 }
@@ -93,6 +108,23 @@ function ebor_slider_content_shortcode_vc() {
 	            	"heading" => esc_html__("Slide Background Image", 'pillar'),
 	            	"param_name" => "image"
 	            ),
+	            array(
+		    		"type" => "dropdown",
+		    		"heading" => __("Slide Background Image Overlay Opacity (Default 40%)", 'pillar'),
+		    		"param_name" => "overlay_opacity",
+		    		"value" => array(
+		    			'90%' => '9',
+		    			'80%' => '8',
+		    			'70%' => '7',
+		    			'60%' => '6',
+		    			'50%' => '5',
+		    			'40%' => '4',
+		    			'30%' => '3',
+		    			'20%' => '2',
+		    			'10%' => '1',
+		    			'0%' => '0',
+		    		)
+		    	),
 	            array(
 	            	"type" => "textarea_html",
 	            	"heading" => esc_html__("Slide Content", 'pillar'),
