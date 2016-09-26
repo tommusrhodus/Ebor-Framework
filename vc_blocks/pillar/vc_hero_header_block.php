@@ -16,7 +16,9 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 				'button_text' => '',
 				'button_url' => '',
 				'shortcode' => 'None',
-				'parallax' => 'parallax'
+				'parallax' => 'parallax',
+				'slider_height' => 'height-100',
+				'overlay_opacity' => '4'
 			), $atts 
 		) 
 	);
@@ -24,7 +26,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	if( 'intro-left' == $layout ) {
 		
 		$output = '
-			<section class="height-100 imagebg '. $parallax .'">
+			<section class="'. $slider_height .' imagebg '. $parallax .'">
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
@@ -41,7 +43,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'intro-social' == $layout ){
 		
 		$output = '
-			<section class="height-100 imagebg cover cover-1 parallax" data-overlay="3">
+			<section class="'. $slider_height .' imagebg cover cover-1 parallax" data-overlay="'. $overlay_opacity .'">
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
@@ -61,7 +63,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'video-social' == $layout ){
 		
 		$output = '
-			<section class="height-100 cover cover-13 videobg imagebg" data-overlay="1">
+			<section class="'. $slider_height .' cover cover-13 videobg imagebg" data-overlay="'. $overlay_opacity .'">
 				<video autoplay loop muted>
 					<source src="'. esc_url($webm) .'" type="video/webm">
 					<source src="'. esc_url($mpfour) .'" type="video/mp4">
@@ -97,7 +99,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'video-popup' == $layout ){
 		
 		$output = '
-			<section class="cover cover-11 height-100 imagebg '. $parallax .'" data-overlay="4">
+			<section class="cover cover-11 '. $slider_height .' imagebg '. $parallax .'" data-overlay="'. $overlay_opacity .'">
 				<div class="background-image-holder background--bottom">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
@@ -114,7 +116,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'split' == $layout ){
 	
 		$output = '
-			<section class="height-100 cover cover-2">
+			<section class="'. $slider_height .' cover cover-2">
 				<div class="col-md-6 col-sm-5">
 					<div class="background-image-holder">
 						'. wp_get_attachment_image( $image, 'full' ) .'
@@ -134,7 +136,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'video-form' == $layout ){
 	
 		$output = '
-			<section class="height-100 imagebg cover cover-6 parallax" data-overlay="3">
+			<section class="'. $slider_height .' imagebg cover cover-6 parallax" data-overlay="'. $overlay_opacity .'">
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
@@ -161,7 +163,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'video-half' == $layout ){
 	
 		$output = '
-			<section class="imagebg videobg height-70 cover cover-7" data-overlay="4">
+			<section class="imagebg videobg '. $slider_height .' cover cover-7" data-overlay="'. $overlay_opacity .'">
 				<video autoplay loop muted>
 					<source src="'. esc_url($webm) .'" type="video/webm">
 					<source src="'. esc_url($mpfour) .'" type="video/mp4">
@@ -179,7 +181,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'overlay' == $layout ){
 	
 		$output = '
-			<section class="height-80 imagebg bg--primary" data-overlay="8">
+			<section class="'. $slider_height .' imagebg bg--primary" data-overlay="'. $overlay_opacity .'">
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
@@ -196,7 +198,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'half-form' == $layout ){
 	
 		$output = '
-			<section class="cover cover-12 form--dark imagebg height-100 parallax" data-overlay="4">
+			<section class="cover cover-12 form--dark imagebg '. $slider_height .' parallax" data-overlay="'. $overlay_opacity .'">
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
@@ -226,7 +228,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'bottom-left' == $layout ){
 	
 		$output = '
-			<section class="height-100 imagebg cover cover-3 parallax" data-overlay="3">
+			<section class="'. $slider_height .' imagebg cover cover-3 parallax" data-overlay="'. $overlay_opacity .'">
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
@@ -296,6 +298,36 @@ function ebor_hero_shortcode_vc() {
 					"type" => "attach_image",
 					"heading" => esc_html__("Slide Image", 'pillar'),
 					"param_name" => "image"
+				),
+				array(
+					"type" => "dropdown",
+					"heading" => __("Hero Height", 'pillar'),
+					"param_name" => "slider_height",
+					"value" => array(
+						'100vh' => 'height-100',
+						'90vh' => 'height-90',
+						'80vh' => 'height-80',
+						'70vh' => 'height-70',
+						'60vh' => 'height-60',
+						'50vh' => 'height-50',
+					)
+				),
+				array(
+					"type" => "dropdown",
+					"heading" => __("Background Image Overlay Opacity (Default 40%)", 'pillar'),
+					"param_name" => "overlay_opacity",
+					"value" => array(
+						'40%' => '4',
+						'90%' => '9',
+						'80%' => '8',
+						'70%' => '7',
+						'60%' => '6',
+						'50%' => '5',
+						'30%' => '3',
+						'20%' => '2',
+						'10%' => '1',
+						'0%' => '0',
+					)
 				),
 				array(
 					"type" => "textfield",

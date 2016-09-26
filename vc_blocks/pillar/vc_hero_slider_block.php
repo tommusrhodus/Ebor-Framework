@@ -9,13 +9,16 @@ function ebor_slider_shortcode( $atts, $content = null ) {
 			array(
 				'type' => 'standard',
 				'parallax' => 'parallax',
-				'slider_height' => 'height-100'
+				'slider_height' => 'height-100',
+				'arrows' => 'true',
+				'paging' => 'true',
+				'timing' => 5000
 			), $atts 
 		) 
 	);
 	
 	$output = '
-		<section class="slider slider--animate '. $slider_height .' cover cover-5 parallax" data-animation="fade" data-arrows="true" data-paging="true" data-timing="5000">
+		<section class="slider slider--animate '. $slider_height .' cover cover-5 parallax" data-animation="fade" data-arrows="'. $arrows .'" data-paging="'. $paging .'" data-timing="'. $timing .'">
 			<ul class="slides">
 				'. do_shortcode($content) .'
 			</ul>
@@ -68,7 +71,7 @@ function ebor_slider_shortcode_vc() {
 		    'description'             => esc_html__( 'Adds an Image Slider', 'pillar' ),
 		    'as_parent'               => array('only' => 'pillar_slider_content'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)
 		    'content_element'         => true,
-		    'show_settings_on_create' => false,
+		    'show_settings_on_create' => true,
 		    "js_view" => 'VcColumnView',
 		    "category" => esc_html__('pillar WP Theme', 'pillar'),
 		    'params'          => array(
@@ -83,6 +86,30 @@ function ebor_slider_shortcode_vc() {
 		    			'70vh' => 'height-70',
 		    			'60vh' => 'height-60',
 		    			'50vh' => 'height-50',
+		    		)
+		    	),
+		    	array(
+		    		"type" => "textfield",
+		    		"heading" => esc_html__("Autoplay Timer (ms)", 'pillar'),
+		    		"param_name" => "timing",
+		    		'value' => '5000'
+		    	),
+		    	array(
+		    		"type" => "dropdown",
+		    		"heading" => __("Show Arrows", 'pillar'),
+		    		"param_name" => "arrows",
+		    		"value" => array(
+		    			'Yes' => 'true',
+		    			'No' => 'false' 
+		    		)
+		    	),
+		    	array(
+		    		"type" => "dropdown",
+		    		"heading" => __("Show Paging", 'pillar'),
+		    		"param_name" => "paging",
+		    		"value" => array(
+		    			'Yes' => 'true',
+		    			'No' => 'false' 
 		    		)
 		    	),
 		    ),
@@ -113,12 +140,12 @@ function ebor_slider_content_shortcode_vc() {
 		    		"heading" => __("Slide Background Image Overlay Opacity (Default 40%)", 'pillar'),
 		    		"param_name" => "overlay_opacity",
 		    		"value" => array(
+		    			'40%' => '4',
 		    			'90%' => '9',
 		    			'80%' => '8',
 		    			'70%' => '7',
 		    			'60%' => '6',
 		    			'50%' => '5',
-		    			'40%' => '4',
 		    			'30%' => '3',
 		    			'20%' => '2',
 		    			'10%' => '1',
