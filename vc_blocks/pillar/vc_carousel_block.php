@@ -8,14 +8,15 @@ function ebor_carousel_shortcode( $atts, $content = null ) {
 		shortcode_atts( 
 			array(
 				'image' => '',
-				'count' => '4'
+				'count' => '4',
+				'timing' => '7000'
 			), $atts 
 		) 
 	);
 	
 	$image = explode(',', $image);
 	
-	$output = '<div class="slider slider--controlsoutside screenshot-slider" data-items="'. (int) esc_attr($count) .'" data-paging="true" data-arrows="false"><ul class="slides">';
+	$output = '<div class="slider slider--controlsoutside screenshot-slider" data-items="'. (int) esc_attr($count) .'" data-paging="true" data-arrows="false" data-timing="'. (int) esc_attr($timing) .'"><ul class="slides">';
 	
 	foreach ($image as $id){
 		$output .= '
@@ -54,6 +55,12 @@ function ebor_carousel_shortcode_vc() {
 					"heading" => esc_html__("Images Per Page", 'pillar'),
 					"param_name" => "count",
 					'value' => '4'
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Autoplay Timer (ms)", 'pillar'),
+					"param_name" => "timing",
+					'value' => '7000'
 				),
 			)
 		) 
