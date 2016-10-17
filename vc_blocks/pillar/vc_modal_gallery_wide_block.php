@@ -36,7 +36,8 @@ function ebor_modal_gallery_wide_content_shortcode( $atts, $content = null ) {
 				'image' => '',
 				'embed' => '',
 				'title' => '',
-				'images' => ''
+				'images' => '',
+				'hover_title' => ''
 			), $atts 
 		) 
 	);
@@ -46,6 +47,7 @@ function ebor_modal_gallery_wide_content_shortcode( $atts, $content = null ) {
 	$output = '
 		<div class="col-md-4 col-sm-6 col-xs-12 masonry__item" data-masonry-filter="'. $class .'">
 			<div class="hover-element hover-element-1" data-title-position="center,center">
+				<h5>'. $hover_title .'</h5>
 				<div class="hover-element__initial">
 					'. wp_get_attachment_image( $image, 'large' ) .'
 				</div>
@@ -159,6 +161,12 @@ function ebor_modal_gallery_wide_content_shortcode_vc() {
 	            	"type" => "attach_images",
 	            	"heading" => esc_html__("Carousel Images", 'pillar'),
 	            	"param_name" => "images"
+	            ),
+	            array(
+	            	"type" => "textfield",
+	            	"heading" => esc_html__("Image Hover Title", 'pillar'),
+	            	"param_name" => "hover_title",
+	            	'holder' => 'div'
 	            ),
 	            array(
 	            	"type" => "textfield",
