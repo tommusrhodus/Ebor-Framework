@@ -92,6 +92,10 @@ function ebor_modal_gallery_content_shortcode( $atts, $content = null ) {
 							</div><!--end of modal-content-->
 						</div><!--end of modal-container-->
 					</div><!--end of modal instance-->
+	';
+	
+	if( $embed ){
+		$output .= '
 					<div class="modal-instance">
 						<div class="btn-round modal-trigger">
 							<i class="icon-Video-5 pillar--icon color--primary"></i>
@@ -102,6 +106,10 @@ function ebor_modal_gallery_content_shortcode( $atts, $content = null ) {
 							</div><!--end of modal-content-->
 						</div><!--end of modal-container-->
 					</div><!--end of modal instance-->
+		';
+	}
+	
+	$output .= '
 				</div>
 			</div><!--end hover element-->
 		</div><!--end item-->
