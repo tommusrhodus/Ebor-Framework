@@ -176,7 +176,7 @@ if(!( class_exists('foundry_Twitter_Widget') )){
 if(!( class_exists('ebor_foundry_popular_Widget') )){
 	class ebor_foundry_popular_Widget extends WP_Widget {
 		
-		function ebor_foundry_popular_Widget(){
+		public function __construct() { 
 			parent::__construct(
 				'ebor_foundry_popular-widget', // Base ID
 				__('Foundry: Popular Posts', 'ebor_framework'), // Name
