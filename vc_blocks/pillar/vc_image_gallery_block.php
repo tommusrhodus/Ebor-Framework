@@ -7,7 +7,7 @@ function ebor_image_gallery_shortcode( $atts, $content = null ) {
 	extract( 
 		shortcode_atts( 
 			array(
-				'text' => 'Show All'
+				'class' => 'Show All'
 			), $atts 
 		) 
 	);
@@ -16,7 +16,7 @@ function ebor_image_gallery_shortcode( $atts, $content = null ) {
 		<div class="masonry-contained">
 			<div class="row">
 				<div class="masonry">
-					<div class="masonry__filters" data-filter-all-text="'. $text .'"></div>
+					<div class="masonry__filters" data-filter-all-text="'. $class .'"></div>
 					<div class="masonry__container masonry--animate">
 						'. do_shortcode($content) .'
 					</div><!--end masonry container-->

@@ -7,14 +7,14 @@ function ebor_image_gallery_wide_shortcode( $atts, $content = null ) {
 	extract( 
 		shortcode_atts( 
 			array(
-				'text' => 'Show All'
+				'class' => 'Show All'
 			), $atts 
 		) 
 	);
 	
 	$output = '
 		<div class="wide-grid masonry masonry-videos">
-			<div class="masonry__filters masonry__filters--outside text-center" data-filter-all-text="'. $text .'"></div>
+			<div class="masonry__filters masonry__filters--outside text-center" data-filter-all-text="'. $class .'"></div>
 			<div class="masonry__container masonry--animate">
 				'. do_shortcode($content) .'
 			</div><!--end masonry container-->
