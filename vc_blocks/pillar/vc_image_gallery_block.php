@@ -43,11 +43,10 @@ function ebor_image_gallery_content_shortcode( $atts, $content = null ) {
 	);
 	
 	$src = wp_get_attachment_image_src( $image, 'full' );
-	$caption = get_post($image)->post_excerpt;
 	
 	$output = '
 		<div class="col-sm-6 col-xs-12 masonry__item" data-masonry-filter="'. $class .'">
-			<a data-lightbox="gallery" href="'. $src[0] .'" data-title="'. $caption .'">
+			<a data-lightbox="gallery" href="'. $src[0] .'">
 				'. wp_get_attachment_image( $image, 'large' ) .'
 			</a>
 		</div><!--end item-->
