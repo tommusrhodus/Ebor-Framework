@@ -137,8 +137,8 @@ function ebor_text_image_shortcode_vc() {
 		    		"value" => array(
 		    			'Offscreen Image Left' => 'left',
 		    			'Offscreen Image Right' => 'right',
-		    			'Offscreen Image Left (Bigger Content)' => 'left-big',
-		    			'Offscreen Image Right (Bigger Content)' => 'right-big',
+		    			'Offscreen Image Right (Bigger Content)' => 'left-big',
+		    			'Offscreen Image Left (Bigger Content)' => 'right-big',
 		    			'Boxed Image (Content on top)' => 'boxed'
 		    		)
 		    	),
