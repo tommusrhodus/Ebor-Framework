@@ -15,6 +15,8 @@ function ebor_blog_shortcode( $atts ) {
 	);
 	
 	// Fix for pagination
+	global $paged;
+	
 	if( is_front_page() ) { 
 		$paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1; 
 	} else { 
