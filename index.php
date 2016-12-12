@@ -2,11 +2,11 @@
 
 /*
 Plugin Name: Ebor Framework
-Plugin URI: http://www.madeinebor.com/ebor-framework
+Plugin URI: http://www.tommusrhodus.com/ebor-framework
 Description: Ebor Framework - The Driving Force Behind TommusRhodus Themes
 Version: 1.1.16
 Author: Tom Rhodes
-Author URI: http://www.madeinebor.com
+Author URI: http://www.tommusrhodus.com
 */	
 
 /**

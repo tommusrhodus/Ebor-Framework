@@ -27,7 +27,7 @@ function ebor_video_modal_shortcode( $atts ) {
 				<span class="h6">'. $text .'</span>
 				<div class="modal-container">
 					<div class="modal-content bg-white" data-width="50%" data-height="50%">
-						<video autoplay controls>
+						<video controls>
 							<source src="'. esc_url($webm) .'" type="video/webm">
 							<source src="'. esc_url($mpfour) .'" type="video/mp4">
 							<source src="'. esc_url($ogv) .'" type="video/ogg">	
@@ -45,7 +45,7 @@ function ebor_video_modal_shortcode( $atts ) {
 				<span class="h6">'. $text .'</span>
 				<div class="modal-container">
 					<div class="modal-content bg-white" data-width="50%" data-height="50%">
-						<video autoplay controls>
+						<video controls>
 							<source src="'. esc_url($webm) .'" type="video/webm">
 							<source src="'. esc_url($mpfour) .'" type="video/mp4">
 							<source src="'. esc_url($ogv) .'" type="video/ogg">	
@@ -66,7 +66,7 @@ function ebor_video_modal_shortcode( $atts ) {
 				</a>
 				<div class="modal-container">
 					<div class="modal-content bg-white" data-width="50%" data-height="50%">
-						<video autoplay controls>
+						<video controls>
 							<source src="'. esc_url($webm) .'" type="video/webm">
 							<source src="'. esc_url($mpfour) .'" type="video/mp4">
 							<source src="'. esc_url($ogv) .'" type="video/ogg">	
