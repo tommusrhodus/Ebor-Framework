@@ -1,5 +1,40 @@
 <?php 
 
+function ebor_framework_functions_backfill(){
+	
+	if(!( function_exists('ebor_get_portfolio_layouts') )){
+		function ebor_get_portfolio_layouts(){
+			return array('Please Switch to a TommusRhodus Theme for this feature' => 'Please Switch to a TommusRhodus Theme for this feature');	
+		}
+	}
+	
+	if(!( function_exists('ebor_get_blog_layouts') )){
+		function ebor_get_blog_layouts(){
+			return array('Please Switch to a TommusRhodus Theme for this feature' => 'Please Switch to a TommusRhodus Theme for this feature');	
+		}
+	}
+	
+	if(!( function_exists('ebor_get_team_layouts') )){
+		function ebor_get_team_layouts(){
+			return array('Please Switch to a TommusRhodus Theme for this feature' => 'Please Switch to a TommusRhodus Theme for this feature');	
+		}
+	}
+	
+	if(!( function_exists('ebor_get_shop_layouts') )){
+		function ebor_get_shop_layouts(){
+			return array('Please Switch to a TommusRhodus Theme for this feature' => 'Please Switch to a TommusRhodus Theme for this feature');	
+		}
+	}
+	
+	if(!( function_exists('ebor_get_testimonial_layouts') )){
+		function ebor_get_testimonial_layouts(){
+			return array('Please Switch to a TommusRhodus Theme for this feature' => 'Please Switch to a TommusRhodus Theme for this feature');	
+		}
+	}
+	
+}
+add_action('plugins_loaded', 'ebor_framework_functions_backfill', 1);
+
 function ebor_is_woocommerce() {
     if( function_exists( "is_woocommerce" ) && is_woocommerce())
     	return true;
