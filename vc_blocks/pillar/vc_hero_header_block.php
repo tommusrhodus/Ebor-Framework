@@ -253,7 +253,11 @@ add_shortcode( 'pillar_hero', 'ebor_hero_shortcode' );
  */
 function ebor_hero_shortcode_vc() {
 	
-	$icons = ebor_get_icons();
+	$icons = array('Install Ebor Framework' => 'Install Ebor Framework');
+	
+	if( function_exists('ebor_get_icons') ){
+		$icons = ebor_get_icons();	
+	}
 	
 	$args = array(
 		'post_type' => 'wpcf7_contact_form',

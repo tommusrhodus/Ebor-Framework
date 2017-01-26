@@ -31,7 +31,11 @@ add_shortcode( 'partner_icon_small', 'ebor_icon_small_shortcode' );
  */
 function ebor_icon_small_shortcode_vc() {
 	
-	$icons = ebor_get_icons();
+	$icons = array('Install Ebor Framework' => 'Install Ebor Framework');
+	
+	if( function_exists('ebor_get_icons') ){
+		$icons = ebor_get_icons();	
+	}
 	
 	vc_map( 
 		array(

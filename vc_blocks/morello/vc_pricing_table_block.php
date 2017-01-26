@@ -101,6 +101,13 @@ add_shortcode( 'morello_pricing_table', 'ebor_pricing_table_shortcode' );
  * The VC Functions
  */
 function ebor_pricing_table_shortcode_vc() {
+	
+	$icons = array_values(array('Install Ebor Framework' => 'Install Ebor Framework'));
+	
+	if( function_exists('ebor_get_icons') ){
+		$icons = array_values(ebor_get_icons());	
+	}
+	
 	vc_map( 
 		array(
 			"icon" => 'morello-vc-block',
@@ -158,10 +165,11 @@ function ebor_pricing_table_shortcode_vc() {
 					"type" => "ebor_icons",
 					"heading" => esc_html__("Icon", 'morello'),
 					"param_name" => "icon",
-					"value" => array_values(ebor_get_icons())
+					"value" => $icons
 				),
 			)
 		) 
 	);
+	
 }
 add_action( 'vc_before_init', 'ebor_pricing_table_shortcode_vc' );

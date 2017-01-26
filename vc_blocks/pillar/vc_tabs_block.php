@@ -113,7 +113,11 @@ add_action( 'vc_before_init', 'ebor_tabs_shortcode_vc' );
 // Nested Element
 function ebor_tabs_content_shortcode_vc() {
 	
-	$icons = ebor_get_icons();
+	$icons = array('Install Ebor Framework' => 'Install Ebor Framework');
+	
+	if( function_exists('ebor_get_icons') ){
+		$icons = ebor_get_icons();	
+	}
 	
 	vc_map( 
 		array(

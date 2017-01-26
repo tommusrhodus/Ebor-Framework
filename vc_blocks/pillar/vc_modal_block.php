@@ -97,7 +97,11 @@ add_shortcode( 'pillar_modal', 'ebor_modal_shortcode' );
  */
 function ebor_modal_shortcode_vc() {
 	
-	$icons = ebor_get_icons();
+	$icons = array('Install Ebor Framework' => 'Install Ebor Framework');
+	
+	if( function_exists('ebor_get_icons') ){
+		$icons = ebor_get_icons();	
+	}
 	
 	vc_map( 
 		array(

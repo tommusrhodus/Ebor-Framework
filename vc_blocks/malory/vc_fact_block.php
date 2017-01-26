@@ -32,6 +32,13 @@ add_shortcode( 'malory_fact_block', 'ebor_fact_block_shortcode' );
  * The VC Functions
  */
 function ebor_fact_block_shortcode_vc() {
+	
+	$icons = array_keys(array('Install Ebor Framework' => 'Install Ebor Framework'));
+	
+	if( function_exists('ebor_get_icons') ){
+		$icons = array_keys(ebor_get_icons());	
+	}
+	
 	vc_map( 
 		array(
 			"icon" => 'malory-vc-block',
@@ -44,7 +51,7 @@ function ebor_fact_block_shortcode_vc() {
 					"type" => "ebor_icons",
 					"heading" => esc_html__("Icon", 'malory'),
 					"param_name" => "icon",
-					"value" => array_keys(ebor_get_icons()),
+					"value" => $icons,
 					'description' => 'view all icons here: http://ionicons.com'
 				),
 				array(
@@ -56,5 +63,6 @@ function ebor_fact_block_shortcode_vc() {
 			)
 		) 
 	);
+	
 }
 add_action( 'vc_before_init', 'ebor_fact_block_shortcode_vc' );

@@ -51,6 +51,13 @@ add_shortcode( 'morello_top_left_icon_block', 'ebor_top_left_icon_block_shortcod
  * The VC Functions
  */
 function ebor_top_left_icon_block_shortcode_vc() {
+	
+	$icons = array_values(array('Install Ebor Framework' => 'Install Ebor Framework'));
+	
+	if( function_exists('ebor_get_icons') ){
+		$icons = array_values(ebor_get_icons());	
+	}
+	
 	vc_map( 
 		array(
 			"icon" => 'morello-vc-block',
@@ -62,7 +69,7 @@ function ebor_top_left_icon_block_shortcode_vc() {
 					"type" => "ebor_icons",
 					"heading" => esc_html__("Icon", 'morello'),
 					"param_name" => "icon",
-					"value" => array_values(ebor_get_icons())
+					"value" => $icons
 				),
 				array(
 					"type" => "textarea_html",
@@ -94,5 +101,6 @@ function ebor_top_left_icon_block_shortcode_vc() {
 			)
 		) 
 	);
+	
 }
 add_action( 'vc_before_init', 'ebor_top_left_icon_block_shortcode_vc' );

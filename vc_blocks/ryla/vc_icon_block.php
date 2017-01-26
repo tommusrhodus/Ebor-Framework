@@ -70,6 +70,13 @@ add_shortcode( 'ryla_icon_block', 'ebor_icon_block_shortcode' );
  * The VC Functions
  */
 function ebor_icon_block_shortcode_vc() {
+	
+	$icons = array_values(array('Install Ebor Framework' => 'Install Ebor Framework'));
+	
+	if( function_exists('ryla_get_icons') ){
+		$icons = array_values(ryla_get_icons());	
+	}
+	
 	vc_map( 
 		array(
 			"icon" => 'ryla-vc-block',
@@ -88,7 +95,7 @@ function ebor_icon_block_shortcode_vc() {
 					"type" => "ebor_icons",
 					"heading" => esc_html__("Icon", 'morello'),
 					"param_name" => "icon",
-					"value" => array_keys(ryla_get_icons())
+					"value" => $icons
 				),
 				array(
 					"type" => "textarea_html",

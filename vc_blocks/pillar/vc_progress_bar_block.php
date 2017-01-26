@@ -134,7 +134,11 @@ add_shortcode( 'pillar_skill_bar_block', 'ebor_skill_bar_block_shortcode' );
  */
 function ebor_skill_bar_block_shortcode_vc() {
 	
-	$icons = ebor_get_icons();
+	$icons = array('Install Ebor Framework' => 'Install Ebor Framework');
+	
+	if( function_exists('ebor_get_icons') ){
+		$icons = ebor_get_icons();	
+	}
 	
 	vc_map( 
 		array(

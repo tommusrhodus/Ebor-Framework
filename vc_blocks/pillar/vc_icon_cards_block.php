@@ -165,7 +165,11 @@ add_shortcode( 'pillar_icon_box', 'ebor_icon_box_shortcode' );
  */
 function ebor_icon_box_shortcode_vc() {
 	
-	$icons = ebor_get_icons();
+	$icons = array('Install Ebor Framework' => 'Install Ebor Framework');
+	
+	if( function_exists('ebor_get_icons') ){
+		$icons = ebor_get_icons();	
+	}
 	
 	vc_map( 
 		array(

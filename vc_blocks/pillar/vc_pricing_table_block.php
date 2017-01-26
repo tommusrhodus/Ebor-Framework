@@ -148,7 +148,11 @@ add_shortcode( 'pillar_pricing_table', 'ebor_pricing_table_shortcode' );
  */
 function ebor_pricing_table_shortcode_vc() {
 	
-	$icons = ebor_get_icons();
+	$icons = array('Install Ebor Framework' => 'Install Ebor Framework');
+	
+	if( function_exists('ebor_get_icons') ){
+		$icons = ebor_get_icons();	
+	}
 	
 	vc_map( 
 		array(
