@@ -33,7 +33,7 @@ function ebor_framework_functions_backfill(){
 	}
 	
 }
-add_action('plugins_loaded', 'ebor_framework_functions_backfill', 1);
+add_action('after_setup_theme', 'ebor_framework_functions_backfill', 1);
 
 function ebor_is_woocommerce() {
     if( function_exists( "is_woocommerce" ) && is_woocommerce())
