@@ -228,7 +228,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'bottom-left' == $layout ){
 	
 		$output = '
-			<section class="'. $slider_height .' imagebg cover cover-3 parallax" data-overlay="'. $overlay_opacity .'">
+			<section class="'. $slider_height .' imagebg cover cover-3 '. $parallax .'" data-overlay="'. $overlay_opacity .'">
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
