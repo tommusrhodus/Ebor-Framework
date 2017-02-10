@@ -17,6 +17,7 @@ $defaults = array(
 	'class_post_type'       => '0',
 	'service_post_type'     => '0',
 	'case_study_post_type'  => '0',
+	'career_post_type'      => '0',
 	'mega_menu'             => '0',
 	'aq_resizer'            => '0',
 	'page_builder'          => '0',
@@ -38,7 +39,8 @@ $defaults = array(
 	'ryla_vc_shortcodes'       => '0',
 	'morello_vc_shortcodes'    => '0',
 	'hive_vc_shortcodes'       => '0',
-	'pillar_vc_shortcodes'     => '0'
+	'pillar_vc_shortcodes'     => '0',
+	'stack_vc_shortcodes'      => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -46,7 +48,7 @@ $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defau
  * Getting started instructions
  */
 if( is_admin() ){
-	require_once( EBOR_FRAMEWORK_PATH  . 'getting_started.php' );
+	//require_once( EBOR_FRAMEWORK_PATH  . 'getting_started.php' );
 }
 
 /**
@@ -154,7 +156,7 @@ if( '1' == $framework_options['morello_widgets'] ){
 /**
  * Register Portfolio Post Type
  */
-if( '1' == $framework_options['portfolio_post_type'] ){
+if( !( post_type_exists('portfolio') ) && '1' == $framework_options['portfolio_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_portfolio', 10 );
 	add_action( 'init', 'ebor_framework_create_portfolio_taxonomies', 10  );
 }
@@ -162,7 +164,7 @@ if( '1' == $framework_options['portfolio_post_type'] ){
 /**
  * Register Team Post Type
  */
-if( '1' == $framework_options['team_post_type'] ){
+if( !( post_type_exists('team') ) && '1' == $framework_options['team_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_team', 10  );
 	add_action( 'init', 'ebor_framework_create_team_taxonomies', 10  );
 }
@@ -170,7 +172,7 @@ if( '1' == $framework_options['team_post_type'] ){
 /**
  * Register Client Post Type
  */
-if( '1' == $framework_options['client_post_type'] ){
+if( !( post_type_exists('client') ) && '1' == $framework_options['client_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_client', 10  );
 	add_action( 'init', 'ebor_framework_create_client_taxonomies', 10  );
 }
@@ -178,7 +180,7 @@ if( '1' == $framework_options['client_post_type'] ){
 /**
  * Register Testimonial Post Type
  */
-if( '1' == $framework_options['testimonial_post_type'] ){
+if( !( post_type_exists('testimonial') ) && '1' == $framework_options['testimonial_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_testimonial', 10  );
 	add_action( 'init', 'ebor_framework_create_testimonial_taxonomies', 10  );
 }
@@ -186,7 +188,7 @@ if( '1' == $framework_options['testimonial_post_type'] ){
 /**
  * Register faq Post Type
  */
-if( '1' == $framework_options['faq_post_type'] ){
+if( !( post_type_exists('faq') ) && '1' == $framework_options['faq_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_faq', 10  );
 	add_action( 'init', 'ebor_framework_create_faq_taxonomies', 10  );
 }
@@ -194,7 +196,7 @@ if( '1' == $framework_options['faq_post_type'] ){
 /**
  * Register Menu Post Type
  */
-if( '1' == $framework_options['menu_post_type'] ){
+if( !( post_type_exists('menu') ) && '1' == $framework_options['menu_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_menu', 10  );
 	add_action( 'init', 'ebor_framework_create_menu_taxonomies', 10  );
 }
@@ -202,7 +204,7 @@ if( '1' == $framework_options['menu_post_type'] ){
 /**
  * Register Class Post Type
  */
-if( '1' == $framework_options['class_post_type'] ){
+if( !( post_type_exists('class') ) && '1' == $framework_options['class_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_class', 10  );
 	add_action( 'init', 'ebor_framework_create_class_taxonomies', 10  );
 }
@@ -210,7 +212,7 @@ if( '1' == $framework_options['class_post_type'] ){
 /**
  * Register Case Study Post Type
  */
-if( '1' == $framework_options['case_study_post_type'] ){
+if( !( post_type_exists('case_study') ) && '1' == $framework_options['case_study_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_case_study', 10  );
 	add_action( 'init', 'ebor_framework_create_case_study_taxonomies', 10  );
 }
@@ -218,14 +220,22 @@ if( '1' == $framework_options['case_study_post_type'] ){
 /**
  * Register Service Post Type
  */
-if( '1' == $framework_options['service_post_type'] ){
+if( !( post_type_exists('service') ) && '1' == $framework_options['service_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_service', 10  );
 	add_action( 'init', 'ebor_framework_create_service_taxonomies', 10  );
 }
 
 /**
+ * Register career Post Type
+ */
+if( !( post_type_exists('career') ) && '1' == $framework_options['career_post_type'] ){
+	add_action( 'init', 'ebor_framework_register_career', 10  );
+	add_action( 'init', 'ebor_framework_create_career_taxonomies', 10  );
+}
+
+/**
  * Register Mega Menu Post Type
  */
-if( '1' == $framework_options['mega_menu'] ){
+if( !( post_type_exists('mega_menu') ) && '1' == $framework_options['mega_menu'] ){
 	add_action( 'init', 'ebor_framework_register_mega_menu', 10  );
 }

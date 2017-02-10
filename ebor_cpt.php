@@ -770,3 +770,70 @@ function ebor_framework_create_case_study_taxonomies(){
     ));
   
 }
+
+function ebor_framework_register_career() {
+
+    $labels = array( 
+        'name' => __( 'Careers', 'stackwordpresstheme' ),
+        'singular_name' => __( 'Career', 'stackwordpresstheme' ),
+        'add_new' => __( 'Add New', 'stackwordpresstheme' ),
+        'add_new_item' => __( 'Add New Career', 'stackwordpresstheme' ),
+        'edit_item' => __( 'Edit Career', 'stackwordpresstheme' ),
+        'new_item' => __( 'New Career', 'stackwordpresstheme' ),
+        'view_item' => __( 'View Career', 'stackwordpresstheme' ),
+        'search_items' => __( 'Searchs', 'stackwordpresstheme' ),
+        'not_found' => __( 'No Careers found', 'stackwordpresstheme' ),
+        'not_found_in_trash' => __( 'No Careers found in Trash', 'stackwordpresstheme' ),
+        'parent_item_colon' => __( 'Parent Career:', 'stackwordpresstheme' ),
+        'menu_name' => __( 'Careers', 'stackwordpresstheme' ),
+    );
+
+    $args = array( 
+        'labels' => $labels,
+        'hierarchical' => false,
+        'description' => __('Career Member entries for the ebor Theme.', 'stackwordpresstheme'),
+        'supports' => array( 'title', 'thumbnail', 'editor' ),
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-welcome-learn-more',
+        'show_in_nav_menus' => true,
+        'publicly_queryable' => true,
+        'exclude_from_search' => false,
+        'has_archive' => true,
+        'query_var' => true,
+        'can_export' => true,
+        'rewrite' => array( 'slug' => get_option('tommusrhodus_careers_slug', 'careers') ),
+        'capability_type' => 'post'
+    );
+
+    register_post_type( 'career', $args );
+}
+
+function ebor_framework_create_career_taxonomies(){
+	
+	$labels = array(
+		'name' => __( 'Career Categories','stackwordpresstheme' ),
+		'singular_name' => __( 'Career Category','stackwordpresstheme' ),
+		'search_items' =>  __( 'Search Career Categories','stackwordpresstheme' ),
+		'all_items' => __( 'All Career Categories','stackwordpresstheme' ),
+		'parent_item' => __( 'Parent Career Category','stackwordpresstheme' ),
+		'parent_item_colon' => __( 'Parent Career Category:','stackwordpresstheme' ),
+		'edit_item' => __( 'Edit Career Category','stackwordpresstheme' ), 
+		'update_item' => __( 'Update Career Category','stackwordpresstheme' ),
+		'add_new_item' => __( 'Add New Career Category','stackwordpresstheme' ),
+		'new_item_name' => __( 'New Career Category Name','stackwordpresstheme' ),
+		'menu_name' => __( 'Career Categories','stackwordpresstheme' ),
+	); 
+		
+	register_taxonomy('career_category', array('career'), array(
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => true,
+	));
+  
+}
