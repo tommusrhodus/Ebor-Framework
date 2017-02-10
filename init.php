@@ -124,6 +124,9 @@ if( '1' == $framework_options['hive_vc_shortcodes'] ){
 if( '1' == $framework_options['pillar_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/pillar/init.php' );	
 }
+if( '1' == $framework_options['stack_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/init.php' );	
+}
 
 /**
  * Register appropriate widgets

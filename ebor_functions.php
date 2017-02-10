@@ -180,68 +180,12 @@ if(!( function_exists('ebor_hex2rgb') )){
  * @since 1.0.0
  * @author tommusrhodus
  */
-if(!( function_exists('ebor_framework_add_customize_page_link') )){
+/*if(!( function_exists('ebor_framework_add_customize_page_link') )){
 	function ebor_framework_add_customize_page_link() {
 		$theme = wp_get_theme();
-		add_dashboard_page( $theme->get( 'Name' ) . ' Theme Options', $theme->get( 'Name' ) . ' Theme Options', 'edit_theme_options', 'customize.php' );
 		add_dashboard_page( $theme->get( 'Name' ) . ' Theme Readme', $theme->get( 'Name' ) . ' Theme Readme', 'edit_theme_options', 'themes.php?page=ebor_framework-getting-started' );
 	}
 	add_action ('admin_menu', 'ebor_framework_add_customize_page_link');
-}
-
-/**
- * Ebor Load Favicons
- * Prints Custom Favicons to wp_head()
- * @since 1.0.0
- * @author TommusRhodus
- */
-if(!( function_exists('ebor_framework_load_favicons') )){
-	function ebor_framework_load_favicons() {
-		if ( get_option('144_favicon') !=='' )
-			echo '<link rel="apple-touch-icon-precomposed" sizes="144x144" href="' . get_option('144_favicon') . '">';
-		
-		if ( get_option('114_favicon') !=='' )
-			echo '<link rel="apple-touch-icon-precomposed" sizes="114x114" href="' . get_option('114_favicon') . '">';
-			
-		if ( get_option('72_favicon') !=='' )
-			echo '<link rel="apple-touch-icon-precomposed" sizes="72x72" href="' . get_option('72_favicon') . '">';
-			
-		if ( get_option('mobile_favicon') !=='' )
-			echo '<link rel="apple-touch-icon-precomposed" href="' . get_option('mobile_favicon') . '">';
-			
-		if ( get_option('custom_favicon') !=='' )
-			echo '<link rel="shortcut icon" href="' . get_option('custom_favicon') . '">';
-	}
-	add_action('wp_head', 'ebor_framework_load_favicons');
-}
-
-/**
- * Filters wp_title to print a neat <title> tag based on what is being viewed.
- * @since 1.0.0
- * @author _s theme
- */
-if(!( function_exists('ebor_framework_wp_title') )){
-	function ebor_framework_wp_title( $title, $sep ) {
-		global $page, $paged;
-	
-		if ( is_feed() )
-			return $title;
-	
-		// Add the blog name
-		$title .= get_bloginfo( 'name' );
-	
-		// Add the blog description for the home/front page.
-		$site_description = get_bloginfo( 'description', 'display' );
-		if ( $site_description && ( is_home() || is_front_page() ) )
-			$title .= " $sep $site_description";
-	
-		// Add a page number if necessary:
-		if ( $paged >= 2 || $page >= 2 )
-			$title .= " $sep " . sprintf( __( 'Page %s', 'ebor-framework' ), max( $paged, $page ) );
-	
-		return $title;
-	}
-	add_filter( 'wp_title', 'ebor_framework_wp_title', 10, 2 );
-}
+}*/
 
 add_filter('widget_text', 'do_shortcode');
