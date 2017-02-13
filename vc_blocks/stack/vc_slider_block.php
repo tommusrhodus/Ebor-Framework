@@ -30,9 +30,10 @@ function ebor_slider_shortcode( $atts, $content = null ) {
 	if( 'lightbox' == $layout ){
 		
 		foreach ($image as $id){
+			$src = wp_get_attachment_image_src( $id, 'full' );
 			$output .= '
 				<li class="col-sm-'. (int) $column .'">
-					<a href="'. wp_get_attachment_image_src($id, 'full')[0] .'" data-lightbox="Gallery '. $rand .'">
+					<a href="'. $src[0] .'" data-lightbox="Gallery '. $rand .'">
 						'. wp_get_attachment_image($id, 'full') .'
 					</a>
 				</li>

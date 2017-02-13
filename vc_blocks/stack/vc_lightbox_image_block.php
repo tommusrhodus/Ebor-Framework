@@ -14,7 +14,9 @@ function ebor_lightbox_image_shortcode( $atts, $content = null ) {
 		) 
 	);
 	
-	$output = '<a class="'. esc_attr($custom_css_class) .'" href="'. wp_get_attachment_image_src( $image, 'full' )[0] .'" data-lightbox="'. $intro .'">'. wp_get_attachment_image( $image, 'large' ) .'</a>';
+	$src = wp_get_attachment_image_src( $image, 'full' );
+	
+	$output = '<a class="'. esc_attr($custom_css_class) .'" href="'. $src[0] .'" data-lightbox="'. $intro .'">'. wp_get_attachment_image( $image, 'large' ) .'</a>';
 
 	return $output;
 }
