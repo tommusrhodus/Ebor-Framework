@@ -80,24 +80,7 @@ function ebor_portfolio_shortcode_vc() {
 					"type" => "dropdown",
 					"heading" => esc_html__("Portfolio Display Type", 'stackwordpresstheme'),
 					"param_name" => "layout",
-					"value" => array(
-						'Portfolio Carousel 1' => 'carousel-1',
-						'Portfolio Carousel 2' => 'carousel-2',
-						'Titles Outside 1 Column' => 'titles-outside-1',
-						'Titles Outside 2 Columns' => 'titles-outside-2',
-						'Titles Outside 3 Columns' => 'titles-outside-3',
-						'Titles Inside 1 Column' => 'titles-inside-1',
-						'Titles Inside 2 Columns' => 'titles-inside-2',
-						'Titles Inside 3 Columns' => 'titles-inside-3',
-						'Titles Inside on Hover 1 Column' => 'titles-hover-1',
-						'Titles Inside on Hover 2 Columns' => 'titles-hover-2',
-						'Titles Inside on Hover 3 Columns' => 'titles-hover-3',
-						'Tiles' => 'tiles',
-						'Squares' => 'squares',
-						'Fullscreen Slider' => 'fullscreen',
-						'Fullwidth (gapless) Titles on Hover 2 Columns' => 'fullwidth-2',
-						'Fullwidth (gapless) Titles on Hover 3 Columns' => 'fullwidth-3'
-					)
+					"value" => ebor_get_portfolio_layouts()
 				),
 				array(
 					"type" => "textfield",

@@ -77,11 +77,7 @@ function ebor_team_shortcode_vc() {
 					"type" => "dropdown",
 					"heading" => esc_html__("Team Display Type", 'stackwordpresstheme'),
 					"param_name" => "layout",
-					"value" => array(
-						'3 Columns' => 'grid-3',
-						'2 Columns' => 'grid-2',
-						'1 Column' => 'grid-1',
-					)
+					"value" => ebor_get_team_layouts()
 				),
 			)
 		) 

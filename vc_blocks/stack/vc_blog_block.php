@@ -80,14 +80,7 @@ function ebor_post_shortcode_vc() {
 					"type" => "dropdown",
 					"heading" => esc_html__("post Display Type", 'stackwordpresstheme'),
 					"param_name" => "layout",
-					"value" => array(
-						'Simple List' => 'list',
-						'Grid' => 'cards',
-						'Grid & Sidebar' => 'cards-sidebar',
-						'Magazine (Use 7 for "Show how many posts" option)' => 'magazine',
-						'Carousel' => 'carousel'
-					)
-				),
+					"value" => ebor_get_blog_layouts(),
 				array(
 					"type" => "textfield",
 					"heading" => esc_html__("Extra CSS Class Name", 'stackwordpresstheme'),
