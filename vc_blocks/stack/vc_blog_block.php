@@ -81,6 +81,7 @@ function ebor_post_shortcode_vc() {
 					"heading" => esc_html__("post Display Type", 'stackwordpresstheme'),
 					"param_name" => "layout",
 					"value" => ebor_get_blog_layouts(),
+				),
 				array(
 					"type" => "textfield",
 					"heading" => esc_html__("Extra CSS Class Name", 'stackwordpresstheme'),
