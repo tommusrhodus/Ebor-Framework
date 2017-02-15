@@ -80,14 +80,7 @@ function ebor_product_shortcode_vc() {
 					"type" => "dropdown",
 					"heading" => esc_html__("Product Display Type", 'stackwordpresstheme'),
 					"param_name" => "layout",
-					"value" => array(
-						'Standard 2 Columns' => 'column-2',
-						'Standard 3 Columns' => 'column-3',
-						'Standard 4 Columns' => 'column-4',
-						'Tiles 2 Columns' => 'column-tiles-2',
-						'Tiles 3 Columns' => 'column-tiles-3',
-						'Tiles 4 Columns' => 'column-tiles-4',
-					)
+					"value" => ebor_get_shop_layouts()
 				),
 				array(
 					"type" => "textfield",
