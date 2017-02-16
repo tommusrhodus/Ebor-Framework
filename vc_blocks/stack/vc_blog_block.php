@@ -15,6 +15,15 @@ function ebor_post_shortcode( $atts ) {
 		) 
 	);
 	
+	//PAgination fix
+	global $paged;
+	
+	if( is_front_page() ) { 
+		$paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1; 
+	} else { 
+		$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; 
+	}
+	
 	/**
 	 * Setup post query
 	 */
