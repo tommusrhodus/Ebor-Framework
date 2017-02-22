@@ -43,7 +43,7 @@ function ebor_video_inline_shortcode( $atts ) {
 					'. wp_get_attachment_image( $image, 'large' ) .'
 				</div>
 				<div class="video-play-icon"></div>
-				'. wp_oembed_get($embed, array('height' => '300')) .'
+				'. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
 			</div><!--end video cover-->
 		';
 		

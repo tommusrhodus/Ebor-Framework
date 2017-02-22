@@ -53,7 +53,7 @@ function ebor_video_gallery_content_shortcode( $atts, $content = null ) {
 		            '. wp_get_attachment_image( $image, 'large' ) .'
 		        </div>
 		        <div class="video-play-icon"></div>
-		        '. wp_oembed_get($embed, array('height' => '300')) .'
+		        '. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
 		    </div><!--end video cover-->
 		    <span class="h4 inline-block">'. $title .'</span>
 		    <span>'. ucfirst($class) .'</span>

@@ -28,7 +28,7 @@ function ebor_text_video_shortcode( $atts, $content = null ) {
 						<div class="video-play-icon modal-trigger"></div>
 						<div class="modal-container">
 							<div class="modal-content bg-dark" data-width="60%" data-height="60%">
-								'. wp_oembed_get($embed, array('height' => '300')) .'
+								'. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
 							</div><!--end of modal-content-->
 						</div><!--end of modal-container-->
 					</div><!--end of modal instance-->
@@ -55,7 +55,7 @@ function ebor_text_video_shortcode( $atts, $content = null ) {
 						<div class="video-play-icon modal-trigger"></div>
 						<div class="modal-container">
 							<div class="modal-content bg-dark" data-width="60%" data-height="60%">
-								'. wp_oembed_get($embed, array('height' => '300')) .'
+								'. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
 							</div><!--end of modal-content-->
 						</div><!--end of modal-container-->
 					</div><!--end of modal instance-->
