@@ -17,6 +17,13 @@ function ebor_process_shortcode( $atts, $content = null ) {
 		
 		$output = '<div class="'. esc_attr($custom_css_class) .' process-1">'. do_shortcode($content) .'</div>';
 			
+	} elseif( 'vertical-numbered' == $type ) {
+		
+		$find = array('<div','div>', 'process__item">');
+		$replace = array('<li', 'div></li>', 'process_item"><div class="process__number"><span></span></div><div class="process__body">');
+		$content = str_replace($find, $replace, do_shortcode($content));
+		$output = '<ol class="process-3 '. esc_attr($custom_css_class) .'">'. $content .'</ol>';
+		
 	} else {
 		
 		$find = array('<div','div>');
@@ -69,6 +76,7 @@ function ebor_process_shortcode_vc() {
 		    		"param_name" => "type",
 		    		"value" => array(
 		    			'Vertical Process' => 'vertical',
+		    			'Vertical Numbered Process' => 'vertical-numbered',
 		    			'Horizontal Process' => 'horizontal',
 		    		)
 		    	),
@@ -86,13 +94,7 @@ add_action( 'vc_before_init', 'ebor_process_shortcode_vc' );
 
 // Nested Element
 function ebor_process_content_shortcode_vc() {
-	
-	$icons = array('Install Ebor Framework' => 'Install Ebor Framework');
-	
-	if( function_exists('ebor_get_icons') ){
-		$icons = ebor_get_icons();	
-	}
-	
+
 	vc_map( 
 		array(
 			"icon" => 'stack-vc-block',
