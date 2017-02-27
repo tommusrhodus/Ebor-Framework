@@ -84,7 +84,7 @@ function ebor_process_shortcode_vc() {
 		    		"type" => "textfield",
 		    		"heading" => esc_html__("Extra CSS Class Name", 'stackwordpresstheme'),
 		    		"param_name" => "custom_css_class",
-		    		"description" => '<code>DEVELOPERS ONLY</code> - Style particular content element differently - add a class name and refer to it in custom CSS.',
+		    		"description" => '<code>DEVELOPERS ONLY</code> - Style particular content element differently - add a class name and refer to it in custom CSS.<br><br><div class="wpb_element_label">Need help with this block? Check out the <a target="_blank" href="https://www.youtube.com/watch?v=abgDKyUZ-hI">Video Tutorial</a></div>',
 		    	),
 		    )
 		) 
