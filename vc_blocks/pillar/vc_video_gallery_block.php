@@ -125,7 +125,7 @@ function ebor_video_gallery_content_shortcode_vc() {
 	            	"type" => "textfield",
 	            	"heading" => esc_html__("Video Embed", 'pillar'),
 	            	"param_name" => "embed",
-	            	'description' => 'Enter link to video <a href="http://codex.wordpress.org/Embeds#Okay.2C_So_What_Sites_Can_I_Embed_From.3F">(Note: read more about available formats at WordPress codex page).</a>'
+	            	'description' => 'Enter link to video <a href="http://codex.wordpress.org/Embeds#Okay.2C_So_What_Sites_Can_I_Embed_From.3F">(Note: read more about available formats at WordPress codex page).</a><br><br><div class="wpb_element_label">Need help with this block? Check out the <a target="_blank" href="https://www.youtube.com/watch?v=k8dyBD1HsAY">Video Tutorial</a></div>'
 	            ),
 		    ),
 		) 
