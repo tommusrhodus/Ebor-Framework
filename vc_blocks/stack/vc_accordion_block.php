@@ -59,7 +59,7 @@ function ebor_accordion_shortcode_vc() {
 		    'content_element'         => true,
 		    'show_settings_on_create' => true,
 		    "js_view" => 'VcColumnView',
-		    "category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+		    "category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 		    'params'          => array(
 		    	array(
 		    		"type" => "dropdown",
@@ -92,7 +92,7 @@ function ebor_accordion_content_shortcode_vc() {
 		    'name'            => esc_html__('Accordion Content', 'stackwordpresstheme'),
 		    'base'            => 'stack_accordion_content',
 		    'description'     => esc_html__( 'Toggle Content Element', 'stackwordpresstheme' ),
-		    "category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+		    "category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 		    'content_element' => true,
 		    'as_child'        => array('only' => 'stack_accordion'), // Use only|except attributes to limit parent (separate multiple values with comma)
 		    'params'          => array(

@@ -221,7 +221,7 @@ function ebor_hero_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Hero Header (Image)", 'stackwordpresstheme'),
 			"base" => "stack_hero",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			'as_parent'               => array('except' => 'stack_tabs_content'),
 			'content_element'         => true,
 			'show_settings_on_create' => true,
@@ -242,7 +242,7 @@ function ebor_hero_shortcode_vc() {
 						'80% Height, Text column on LEFT, boxed against image' => 'boxed-left-text',
 						'50% Height, Left Column Text' => 'half',
 						'90% Height, Parallax Background Image, Centered Text' => 'parallax',
-						'Parallax Background Image, Gradient Scrim Overlat' => 'parallax-thin'
+						'Parallax Background Image, Gradient Scrim Overlay' => 'parallax-thin'
 					)
 				),
 				array(

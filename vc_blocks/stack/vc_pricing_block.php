@@ -117,7 +117,7 @@ function ebor_pricing_table_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Pricing Table", 'stackwordpresstheme'),
 			"base" => "stack_pricing_table",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "textfield",

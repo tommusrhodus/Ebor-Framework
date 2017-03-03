@@ -29,7 +29,7 @@ function ebor_countdown_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Countdown Timer", 'stackwordpresstheme'),
 			"base" => "stack_countdown",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "textfield",

@@ -93,7 +93,7 @@ function ebor_call_to_action_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Call To Action", 'stackwordpresstheme'),
 			"base" => "stack_call_to_action",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "textfield",

@@ -27,7 +27,7 @@ function ebor_section_navigator_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Section Navigator", 'stackwordpresstheme'),
 			"base" => "stack_section_navigator",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "textfield",

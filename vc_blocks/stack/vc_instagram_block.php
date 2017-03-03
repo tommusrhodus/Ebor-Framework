@@ -32,7 +32,7 @@ function ebor_instagram_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Instagram Feed", 'stackwordpresstheme'),
 			"base" => "stack_instagram",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "textfield",

@@ -47,7 +47,7 @@ function ebor_header_plate_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Header Plate", 'stackwordpresstheme'),
 			"base" => "stack_header_plate",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "attach_image",

@@ -124,7 +124,7 @@ function ebor_video_modal_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Video Modals", 'stackwordpresstheme'),
 			"base" => "stack_video_modal",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "dropdown",

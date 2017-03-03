@@ -70,7 +70,7 @@ function ebor_slider_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Image Slider", 'stackwordpresstheme'),
 			"base" => "stack_slider",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "attach_images",

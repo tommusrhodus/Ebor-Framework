@@ -154,14 +154,14 @@ function ebor_text_image_shortcode_vc() {
 	vc_map( 
 		array(
 			"icon" => 'stack-vc-block',
-		    'name'                    => esc_html__( 'Text & Image' , 'stackwordpresstheme' ),
+		    'name'                    => esc_html__( 'Text + Image' , 'stackwordpresstheme' ),
 		    'base'                    => 'stack_text_image',
 		    'description'             => esc_html__( 'Create fancy images & text', 'stackwordpresstheme' ),
 		    'as_parent'               => array('except' => 'stack_tabs_content'),
 		    'content_element'         => true,
 		    'show_settings_on_create' => true,
 		    "js_view" => 'VcColumnView',
-		    "category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+		    "category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 		    'params' => array(
 		    	array(
 		    		"type" => "attach_image",

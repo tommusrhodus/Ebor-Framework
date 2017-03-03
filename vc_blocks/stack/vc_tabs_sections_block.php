@@ -30,7 +30,7 @@ function ebor_tabs_sections_shortcode_vc() {
 		    'content_element'         => true,
 		    'show_settings_on_create' => true,
 		    "js_view" => 'VcColumnView',
-		    "category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+		    "category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 		    'params'          => array(
 		    	array(
 		    		"type" => "textfield",

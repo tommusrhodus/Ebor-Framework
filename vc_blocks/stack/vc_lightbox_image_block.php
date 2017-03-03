@@ -31,7 +31,7 @@ function ebor_lightbox_image_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Lightbox Image", 'stackwordpresstheme'),
 			"base" => "stack_lightbox_image",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "attach_image",

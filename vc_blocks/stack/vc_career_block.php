@@ -67,7 +67,7 @@ function ebor_career_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Career Feeds", 'stackwordpresstheme'),
 			"base" => "stack_career",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			'description' => 'Show career posts with layout options.',
 			"params" => array(
 				array(

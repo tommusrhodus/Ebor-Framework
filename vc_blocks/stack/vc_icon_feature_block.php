@@ -38,7 +38,7 @@ function ebor_icon_feature_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Icon Feature Blocks", 'stackwordpresstheme'),
 			"base" => "stack_icon_feature",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "textfield",

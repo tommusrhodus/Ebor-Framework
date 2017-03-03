@@ -35,7 +35,7 @@ function ebor_typed_text_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Typed Text", 'stackwordpresstheme'),
 			"base" => "stack_typed_text",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "textfield",

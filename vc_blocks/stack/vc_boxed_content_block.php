@@ -42,7 +42,7 @@ function ebor_boxed_content_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Boxed Content", 'stackwordpresstheme'),
 			"base" => "stack_boxed_content",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			'as_parent'               => array('except' => 'stack_tabs_content'),
 			'content_element'         => true,
 			'show_settings_on_create' => true,

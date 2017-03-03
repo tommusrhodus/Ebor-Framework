@@ -67,7 +67,7 @@ function ebor_portfolio_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Portfolio Feeds", 'stackwordpresstheme'),
 			"base" => "stack_portfolio",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			'description' => 'Show portfolio posts with layout options.',
 			"params" => array(
 				array(

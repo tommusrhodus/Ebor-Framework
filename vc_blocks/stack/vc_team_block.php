@@ -64,7 +64,7 @@ function ebor_team_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Team Feeds", 'stackwordpresstheme'),
 			"base" => "stack_team",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			'description' => 'Show team posts with layout options.',
 			"params" => array(
 				array(

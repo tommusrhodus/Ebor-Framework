@@ -62,7 +62,7 @@ function ebor_video_inline_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Video Inline Embeds", 'stackwordpresstheme'),
 			"base" => "stack_video_inline",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "dropdown",

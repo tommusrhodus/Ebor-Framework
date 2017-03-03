@@ -58,7 +58,7 @@ function ebor_breadcrumbs_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Breadcrumbs", 'stackwordpresstheme'),
 			"base" => "stack_breadcrumbs",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "attach_image",

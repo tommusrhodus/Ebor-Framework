@@ -64,7 +64,7 @@ function ebor_testimonial_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Testimonial Feeds", 'stackwordpresstheme'),
 			"base" => "stack_testimonial",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			'description' => 'Show testimonial posts with layout options.',
 			"params" => array(
 				array(

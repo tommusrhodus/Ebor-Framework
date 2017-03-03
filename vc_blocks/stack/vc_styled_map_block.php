@@ -31,7 +31,7 @@ function ebor_styled_map_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Styled Google Map", 'stackwordpresstheme'),
 			"base" => "stack_styled_map",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "textfield",

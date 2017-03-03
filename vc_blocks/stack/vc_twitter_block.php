@@ -42,7 +42,7 @@ function ebor_twitter_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Twitter Feed", 'stackwordpresstheme'),
 			"base" => "stack_twitter",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "textfield",

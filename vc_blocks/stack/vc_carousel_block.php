@@ -40,7 +40,7 @@ function ebor_carousel_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Image Carousel", 'stackwordpresstheme'),
 			"base" => "stack_carousel",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "attach_images",

@@ -193,7 +193,7 @@ function ebor_cards_shortcode_vc() {
 			"icon" => 'stack-vc-block',
 			"name" => esc_html__("Features Small", 'stackwordpresstheme'),
 			"base" => "stack_cards",
-			"category" => esc_html__('stack WP Theme', 'stackwordpresstheme'),
+			"category" => esc_html__('Stack WP Theme', 'stackwordpresstheme'),
 			"params" => array(
 				array(
 					"type" => "attach_image",
@@ -239,7 +239,7 @@ function ebor_cards_shortcode_vc() {
 				),
 				array(
 					"type" => "ebor_icons",
-					"heading" => esc_html__("Click an Icon to choose (Icon tabs only)", 'stackwordpresstheme'),
+					"heading" => esc_html__("Click an Icon to choose", 'stackwordpresstheme'),
 					"param_name" => "icon",
 					"value" => $icons,
 					'description' => 'Type "none" or leave blank to hide icons.'
