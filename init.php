@@ -1,39 +1,56 @@
 <?php 
 
+function ebor_framework_clean_theme_options(){
+	$existing_options = get_option('ebor_framework_options');
+	if( is_array($existing_options) ){
+		foreach ($existing_options as $key => $value) {
+			$existing_options[$key] = '0';
+		}
+		update_option('ebor_framework_options', $existing_options);
+	}
+}
+
+if ( 
+	is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ||
+	is_admin() && isset( $_GET['theme'] ) && $pagenow == 'customize.php'
+){
+	add_action( 'after_setup_theme', 'ebor_framework_clean_theme_options', 0 );
+}
+
 /**
  * Grab our framework options as registered by the theme.
  * If ebor_framework_options isn't set then we'll pull a list of defaults.
  * By default everything is turned off.
  */
 $defaults = array(
-	'pivot_shortcodes'      => '0',
-	'pivot_widgets'         => '0',
-	'portfolio_post_type'   => '0',
-	'team_post_type'        => '0',
-	'client_post_type'      => '0',
-	'testimonial_post_type' => '0',
-	'faq_post_type'         => '0',
-	'menu_post_type'        => '0',
-	'class_post_type'       => '0',
-	'service_post_type'     => '0',
-	'case_study_post_type'  => '0',
-	'career_post_type'      => '0',
-	'mega_menu'             => '0',
-	'aq_resizer'            => '0',
-	'page_builder'          => '0',
-	'likes'                 => '0',
-	'options'               => '0',
-	'metaboxes'             => '0',
-	'elemis_widgets'        => '0',
-	'elemis_shortcodes'     => '0',
-	'keepsake_widgets'      => '0',
-	'morello_widgets'       => '0',
-	'meetup_widgets'        => '0',
-	'machine_widgets'       => '0',
-	'lumos_widgets'         => '0',
-	'foundry_widgets'       => '0',
-	'foundry_shortcodes'    => '0',
-	'malory_vc_shortcodes'  => '0',
+	'pivot_shortcodes'         => '0',
+	'pivot_widgets'            => '0',
+	'portfolio_post_type'      => '0',
+	'team_post_type'           => '0',
+	'client_post_type'         => '0',
+	'testimonial_post_type'    => '0',
+	'faq_post_type'            => '0',
+	'menu_post_type'           => '0',
+	'class_post_type'          => '0',
+	'service_post_type'        => '0',
+	'case_study_post_type'     => '0',
+	'career_post_type'         => '0',
+	'mega_menu'                => '0',
+	'aq_resizer'               => '0',
+	'page_builder'             => '0',
+	'likes'                    => '0',
+	'options'                  => '0',
+	'metaboxes'                => '0',
+	'elemis_widgets'           => '0',
+	'elemis_shortcodes'        => '0',
+	'keepsake_widgets'         => '0',
+	'morello_widgets'          => '0',
+	'meetup_widgets'           => '0',
+	'machine_widgets'          => '0',
+	'lumos_widgets'            => '0',
+	'foundry_widgets'          => '0',
+	'foundry_shortcodes'       => '0',
+	'malory_vc_shortcodes'     => '0',
 	'peekskill_vc_shortcodes'  => '0',
 	'partner_vc_shortcodes'    => '0',
 	'ryla_vc_shortcodes'       => '0',
