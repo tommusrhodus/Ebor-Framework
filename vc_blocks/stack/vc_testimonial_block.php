@@ -19,6 +19,7 @@ function ebor_testimonial_shortcode( $atts ) {
 	 */
 	$query_args = array(
 		'post_type' => 'testimonial',
+		'post_status' => 'publish',
 		'posts_per_page' => $pppage
 	);
 	

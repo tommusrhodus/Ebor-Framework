@@ -20,6 +20,7 @@ function ebor_portfolio_shortcode( $atts ) {
 	 */
 	$query_args = array(
 		'post_type' => 'portfolio',
+		'post_status' => 'publish',
 		'posts_per_page' => $pppage
 	);
 	
