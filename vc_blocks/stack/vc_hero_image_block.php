@@ -11,12 +11,32 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 				'layout' => 'light-image-left',
 				'opacity' => '',
 				'custom_css_class' => '',
-				'id' => ''
+				'id' => '',
+				'title' => '',
+				'subtitle' => ''
 			), $atts 
 		) 
 	);
 	
 	$id = ( $id ) ? 'id="'. esc_attr($id) .'"' : false;
+	$footer = false;
+	
+	if( $title || $subtitle ){
+		$footer = '
+			<div class="pos-absolute pos-bottom col-xs-12">
+	            <div class="container">
+	                <div class="row">
+	                    <div class="col-xs-12 text-left">
+	                        <div class="text-block">
+	                            <h5>'. $title .'</h5>
+	                            <span>'. $subtitle .'</span>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+		';	
+	}
 	
 	if( 'light-image-left' == $layout ) {
 		
@@ -30,6 +50,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 						</div>
 					</div><!--end of row-->
 				</div><!--end of container-->
+				'. $footer .'
 			</section>
 		';
 		
@@ -49,6 +70,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 						</div>
 					</div><!--end of row-->
 				</div><!--end of container-->
+				'. $footer .'
 			</section>
 		';
 		
@@ -64,6 +86,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 						<div class="col-sm-10 col-sm-offset-1">'. do_shortcode(htmlspecialchars_decode($content)) .'</div>
 					</div>
 				</div>
+				'. $footer .'
 			</div>
 		';
 		
@@ -81,6 +104,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 			            <div class="col-sm-12">'. do_shortcode(htmlspecialchars_decode($content)) .'</div>
 			        </div><!--end of row-->
 			    </div><!--end of container-->
+			    '. $footer .'
 			</section>
 		';
 		
@@ -98,6 +122,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 						<div class="col-sm-12">'. do_shortcode(htmlspecialchars_decode($content)) .'</div>
 					</div><!--end of row-->
 				</div><!--end of container-->
+				'. $footer .'
 			</section>
 		';
 		
@@ -115,6 +140,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 						<div class="col-sm-12">'. do_shortcode(htmlspecialchars_decode($content)) .'</div>
 					</div><!--end of row-->
 				</div><!--end of container-->
+				'. $footer .'
 			</section>
 		';	
 		
@@ -134,6 +160,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 						</div>
 					</div><!--end of row-->
 				</div><!--end of container-->
+				'. $footer .'
 			</section>
 		';
 			
@@ -153,6 +180,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 						</div>
 					</div><!--end of row-->
 				</div><!--end of container-->
+				'. $footer .'
 			</section>
 		';
 			
@@ -168,6 +196,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 			            <div class="col-sm-6">'. do_shortcode(htmlspecialchars_decode($content)) .'</div>
 			        </div><!--end of row-->
 			    </div><!--end of container-->
+			    '. $footer .'
 			</section>
 		';	
 		
@@ -185,6 +214,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 						<div class="col-sm-12">'. do_shortcode(htmlspecialchars_decode($content)) .'</div>
 					</div><!--end of row-->
 				</div><!--end of container-->
+				'. $footer .'
 			</section>
 		';	
 		
@@ -202,6 +232,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 			            <div class="col-sm-12">'. do_shortcode(htmlspecialchars_decode($content)) .'</div>
 			        </div><!--end of row-->
 			    </div><!--end of container-->
+			    '. $footer .'
 			</section>
 		';	
 		
@@ -255,6 +286,18 @@ function ebor_hero_shortcode_vc() {
 					"heading" => esc_html__("Image Overlay Opacity", 'stackwordpresstheme'),
 					"param_name" => "opacity",
 					"description" => 'Leave blank for header option default opacity, enter 1 (light overlay) to 9 (dark overlay) to customize.',
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Title", 'stackwordpresstheme'),
+					"param_name" => "title",
+					"description" => 'Adds a title for your header in the bottom left corner, perhaps for an image credit.',
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Subtitle", 'stackwordpresstheme'),
+					"param_name" => "subtitle",
+					"description" => 'Adds a subtitle for your header in the bottom left corner, perhaps for an image credit.',
 				),
 				array(
 					"type" => "textfield",
