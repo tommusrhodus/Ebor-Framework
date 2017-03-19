@@ -1,6 +1,6 @@
 <?php 
 
-if(!( function_exists('ebor_icons_settings_field') )){
+if( !( function_exists('ebor_icons_settings_field') ) && function_exists('vc_set_as_theme') ){
 	function ebor_icons_settings_field( $settings, $value ) {
 		
 		$icons = $settings['value'];

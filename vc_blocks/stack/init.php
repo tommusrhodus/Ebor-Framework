@@ -51,9 +51,7 @@ function ebor_framework_register_stack_blocks(){
 }
 
 function ebor_framework_stack_init(){
-	if( function_exists('vc_set_as_theme') ){
-		add_action('after_setup_theme', 'ebor_framework_register_stack_blocks', 10);
-	}
+	add_action('after_setup_theme', 'ebor_framework_register_stack_blocks', 10);
 }
 
 add_action('plugins_loaded', 'ebor_framework_stack_init', 9999);
