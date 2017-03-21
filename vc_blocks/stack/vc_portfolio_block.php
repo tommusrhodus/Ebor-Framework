@@ -10,7 +10,10 @@ function ebor_portfolio_shortcode( $atts ) {
 				'pppage' => '4',
 				'filter' => 'all',
 				'layout' => 'carousel-1',
-				'custom_css_class' => ''
+				'custom_css_class' => '',
+				'paging' => 'true',
+				'arrows' => 'false',
+				'timing' => 'false'
 			), $atts 
 		) 
 	);
@@ -41,6 +44,11 @@ function ebor_portfolio_shortcode( $atts ) {
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
+	$wp_query->{"slider_options"} = array(
+		'paging' => $paging,
+		'arrows' => $arrows,
+		'timing' => $timing
+	);
 	
 	ob_start();
 	
