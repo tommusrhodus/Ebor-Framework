@@ -19,6 +19,10 @@ if( !( function_exists('ebor_icons_settings_field') ) && function_exists('vc_set
 	vc_add_shortcode_param( 'ebor_icons', 'ebor_icons_settings_field' );
 }
 
+if( function_exists('ebor_breadcrumbs') ){
+	add_shortcode('stack_breadcrumbs_variant', 'ebor_breadcrumbs');	
+}
+
 /*-----------------------------------------------------------------------------------*/
 /*	INSTAGRAM WIDGET
 /*-----------------------------------------------------------------------------------*/
