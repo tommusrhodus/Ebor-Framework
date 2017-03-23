@@ -81,7 +81,8 @@ function ebor_hover_tile_shortcode_vc() {
 				array(
 					"type" => "textfield",
 					"heading" => esc_html__("URL for block", 'pillar'),
-					"param_name" => "link"
+					"param_name" => "link",
+	            	'description' => '<br><br><div class="wpb_element_label">Need help with this block? Check out the <a target="_blank" href="https://www.youtube.com/watch?v=O-1kRSALF9E">Video Tutorial</a></div>'
 				),
 			)
 		) 

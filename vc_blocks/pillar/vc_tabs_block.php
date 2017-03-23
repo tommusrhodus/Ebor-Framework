@@ -145,7 +145,7 @@ function ebor_tabs_content_shortcode_vc() {
 	            	"heading" => esc_html__("Click an Icon to choose (Icon tabs only)", 'pillar'),
 	            	"param_name" => "icon",
 	            	"value" => $icons,
-	            	'description' => 'Type "none" or leave blank to hide icons.'
+	            	'description' => 'Type "none" or leave blank to hide icons.<br><br><div class="wpb_element_label">Need help with this block? Check out the <a target="_blank" href="https://www.youtube.com/watch?v=5py8m9XL0AQ">Video Tutorial</a></div>'
 	            ),
 		    ),
 		) 

@@ -105,7 +105,8 @@ function ebor_image_gallery_content_shortcode_vc() {
 	            array(
 	            	"type" => "attach_image",
 	            	"heading" => esc_html__("Block Image", 'pillar'),
-	            	"param_name" => "image"
+	            	"param_name" => "image",
+	            	"description" => '<br><br><div class="wpb_element_label">Need help with this block? Check out the <a target="_blank" href="https://www.youtube.com/watch?v=f6qWRVkEfE4">Video Tutorial</a></div>',
 	            ),
 		    ),
 		) 

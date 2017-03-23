@@ -171,7 +171,7 @@ function ebor_modal_shortcode_vc() {
 		    		"type" => "textfield",
 		    		"heading" => __("Modal Height", 'pillar'),
 		    		"param_name" => "height",
-		    		'description' => 'Video & Image Modal only. Numeric only, value in %, for 50% height type only: 50',
+		    		'description' => 'Video & Image Modal only. Numeric only, value in %, for 50% height type only: 50<br><br><div class="wpb_element_label">Need help with this block? Check out the <a target="_blank" href="https://www.youtube.com/watch?v=hj9K-gGwG_c">Video Tutorial</a></div>',
 		    		'value' => '60'
 		    	),
 		    )

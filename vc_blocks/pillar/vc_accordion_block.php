@@ -95,7 +95,8 @@ function ebor_accordion_content_shortcode_vc() {
 	            array(
 	            	"type" => "textarea_html",
 	            	"heading" => esc_html__("Block Content", 'pillar'),
-	            	"param_name" => "content"
+	            	"param_name" => "content",
+	            	'description' => '<br><br><div class="wpb_element_label">Need help with this block? Check out the <a target="_blank" href="https://www.youtube.com/watch?v=5py8m9XL0AQ">Video Tutorial</a></div>'
 	            ),
 		    ),
 		) 
