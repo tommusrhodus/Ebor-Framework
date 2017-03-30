@@ -37,13 +37,13 @@ function ebor_call_to_action_shortcode( $atts, $content = null ) {
 		
 		$output = '
 			<div class="'. esc_attr($custom_css_class) .' cta cta-1 cta--horizontal boxed boxed--border text-center-xs">
-			    <div class="col-md-3 col-md-offset-1 col-sm-4">
+			    <div class="col-md-3 col-md-offset-1">
 			        <h4>'. $intro .'</h4>
 			    </div>
-			    <div class="col-md-4 col-sm-5">
+			    <div class="col-md-4">
 			        <p class="lead">'. $middle .'</p>
 			    </div>
-			    <div class="col-md-4 col-sm-3 text-center">
+			    <div class="col-md-4 text-center">
 			        <a class="btn btn--primary type--uppercase" href="'. esc_url($button_url) .'">'. $button_text .'</a>
 			    </div>
 			</div>
