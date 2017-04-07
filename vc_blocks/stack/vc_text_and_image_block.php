@@ -140,6 +140,36 @@ function ebor_text_image_shortcode( $atts, $content = null ) {
 			</section>
 		';
 			
+	} elseif( 'right-small' == $layout ){
+	
+		$output = '
+			<section class="'. esc_attr($custom_css_class) .' '. $background .' switchable--switch space--xs imageblock switchable feature-large">
+			    <div class="imageblock__content col-md-5 col-sm-4 pos-right">
+			        <div class="background-image-holder">'. wp_get_attachment_image( $image, 'full' ) .'</div>
+			    </div>
+			    <div class="container">
+			        <div class="row">
+			            <div class="col-md-5 col-sm-7">'. do_shortcode($content) .'</div>
+			        </div><!--end of row-->
+			    </div><!--end of container-->
+			</section>
+		';
+		
+	} elseif( 'right-smaller' == $layout ){
+		
+		$output = '
+			<section class="'. esc_attr($custom_css_class) .' '. $background .' switchable--switch imageblock switchable feature-large">
+			    <div class="imageblock__content col-md-4 col-sm-3 pos-right">
+			        <div class="background-image-holder">'. wp_get_attachment_image( $image, 'full' ) .'</div>
+			    </div>
+			    <div class="container">
+			        <div class="row">
+			            <div class="col-md-7 col-sm-6">'. do_shortcode($content) .'</div>
+			        </div><!--end of row-->
+			    </div><!--end of container-->
+			</section>
+		';
+			
 	}
 	
 	return $output;
@@ -176,7 +206,9 @@ function ebor_text_image_shortcode_vc() {
 		    			'Image Left 50/50' => 'left',
 		    			'Image Left 33/66' => 'left-small',
 		    			'Image Left 25/75' => 'left-smaller',
-		    			'Image Right' => 'right',
+		    			'Image Right 50/50' => 'right',
+		    			'Image Right 33/66' => 'right-small',
+		    			'Image Right 25/75' => 'right-smaller',
 		    			'Text Overlaid on Image' => 'overlay',
 		    			'Inline Image Left' => 'inline-left',
 		    			'Inline Image Right' => 'inline-right'
