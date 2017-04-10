@@ -10,7 +10,7 @@ function ebor_hero_slider_shortcode( $atts, $content = null ) {
 				'image' => '',
 				'layout' => 'light-image-left',
 				'opacity' => '',
-				'custom_css_class' => ''
+				'custom_css_class' => '',
 				'height' => ''
 			), $atts 
 		) 
