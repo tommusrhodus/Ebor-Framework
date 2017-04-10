@@ -10,6 +10,7 @@ function ebor_hero_video_shortcode( $atts, $content = null ) {
 				'image' => '',
 				'layout' => 'self-hosted',
 				'opacity' => '',
+				'height' => '',
 				'custom_css_class' => '',
 				'mpfour' => '',
 				'webm' => '',
@@ -24,9 +25,10 @@ function ebor_hero_video_shortcode( $atts, $content = null ) {
 	if( 'self-hosted' == $layout ) {
 		
 		$opacity = ( '' == $opacity ) ? '4' : $opacity;
+		$height = ( '' == $height ) ? '60' : $height;
 		
 		$output = '
-			<section class="'. esc_attr($custom_css_class) .' imagebg videobg height-60 text-center" data-overlay="'. $opacity .'">
+			<section class="'. esc_attr($custom_css_class) .' imagebg videobg height-'. $height .' text-center" data-overlay="'. $opacity .'">
 				
 				<video autoplay loop muted>
 					<source src="'. esc_url($webm) .'" type="video/webm">
@@ -59,9 +61,10 @@ function ebor_hero_video_shortcode( $atts, $content = null ) {
 	} elseif( 'youtube' == $layout ) {
 		
 		$opacity = ( '' == $opacity ) ? '4' : $opacity;
+		$height = ( '' == $height ) ? '60' : $height;
 		
 		$output = '
-			<section class="'. esc_attr($custom_css_class) .' imagebg videobg height-60 text-center" data-overlay="'. $opacity .'">
+			<section class="'. esc_attr($custom_css_class) .' imagebg videobg height-'. $height .' text-center" data-overlay="'. $opacity .'">
 				
 				<div class="youtube-background" data-video-url="'. esc_attr($embed) .'" data-start-at="'. $start .'"></div>
 				
@@ -91,9 +94,10 @@ function ebor_hero_video_shortcode( $atts, $content = null ) {
 	} elseif( 'self-hosted-full' == $layout ) {
 		
 		$opacity = ( '' == $opacity ) ? '4' : $opacity;
+		$height = ( '' == $height ) ? '100' : $height;
 		
 		$output = '
-			<section class="'. esc_attr($custom_css_class) .' cover imagebg videobg height-100 text-center" data-overlay="'. $opacity .'">
+			<section class="'. esc_attr($custom_css_class) .' cover imagebg videobg height-'. $height .' text-center" data-overlay="'. $opacity .'">
 				
 				<video autoplay loop muted>
 					<source src="'. esc_url($webm) .'" type="video/webm">
@@ -126,9 +130,10 @@ function ebor_hero_video_shortcode( $atts, $content = null ) {
 	} elseif( 'youtube-full' == $layout ) {
 		
 		$opacity = ( '' == $opacity ) ? '4' : $opacity;
+		$height = ( '' == $height ) ? '100' : $height;
 		
 		$output = '
-			<section class="'. esc_attr($custom_css_class) .' cover imagebg videobg height-100 text-center" data-overlay="'. $opacity .'">
+			<section class="'. esc_attr($custom_css_class) .' cover imagebg videobg height-'. $height .' text-center" data-overlay="'. $opacity .'">
 				
 				<div class="youtube-background" data-video-url="'. esc_attr($embed) .'" data-start-at="'. $start .'"></div>
 				
@@ -198,6 +203,12 @@ function ebor_hero_video_shortcode_vc() {
 					"heading" => esc_html__("Image Overlay Opacity", 'stackwordpresstheme'),
 					"param_name" => "opacity",
 					"description" => 'Leave blank for header option default opacity, enter 1 (light overlay) to 9 (dark overlay) to customize.',
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Hero Height", 'stackwordpresstheme'),
+					"param_name" => "height",
+					"description" => 'Leave blank for default height, enter 10, 20, 30, 40, 50, 60, 70, 80, 90 or 100 for custom height (percentage of window height)',
 				),
 				array(
 					"type" => "textfield",

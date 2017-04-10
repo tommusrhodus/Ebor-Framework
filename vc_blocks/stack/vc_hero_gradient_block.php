@@ -8,6 +8,7 @@ function ebor_hero_gradient_shortcode( $atts, $content = null ) {
 		shortcode_atts( 
 			array(
 				'colors' => '',
+				'height' => '',
 				'layout' => 'half',
 				'custom_css_class' => '',
 				'image' => ''
@@ -17,8 +18,10 @@ function ebor_hero_gradient_shortcode( $atts, $content = null ) {
 	
 	if( 'half' == $layout ) {
 		
+		$height = ( '' == $height ) ? '50' : $height;
+		
 		$output = '
-			<div class="'. esc_attr($custom_css_class) .' height-50 imagebg text-center" data-gradient-bg="'. $colors .'">
+			<div class="'. esc_attr($custom_css_class) .' height-'. $height .' imagebg text-center" data-gradient-bg="'. $colors .'">
 				<div class="pos-vertical-center">
 					'. do_shortcode(htmlspecialchars_decode($content)) .'
 				</div>
@@ -27,8 +30,10 @@ function ebor_hero_gradient_shortcode( $atts, $content = null ) {
 		
 	} elseif( 'full' == $layout ) {
 		
+		$height = ( '' == $height ) ? '100' : $height;
+		
 		$output = '
-			<section class="'. esc_attr($custom_css_class) .' imagebg height-100 text-center" data-gradient-bg="'. $colors .'">
+			<section class="'. esc_attr($custom_css_class) .' imagebg height-'. $height .' text-center" data-gradient-bg="'. $colors .'">
 				<div class="background-image-holder">'. wp_get_attachment_image( $image, 'full' ) .'</div>
 				<div class="container pos-vertical-center">
 					<div class="row">
@@ -79,6 +84,12 @@ function ebor_hero_gradient_shortcode_vc() {
 					"heading" => esc_html__("Hero Gradient Header Colors List", 'stackwordpresstheme'),
 					"param_name" => "colors",
 					'description' => '1 Hex color code per line, e.g: <code>#4876BD #5448BD #8F48BD #BD48B1</code>'
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Hero Height", 'stackwordpresstheme'),
+					"param_name" => "height",
+					"description" => 'Leave blank for default height, enter 10, 20, 30, 40, 50, 60, 70, 80, 90 or 100 for custom height (percentage of window height)',
 				),
 				array(
 					"type" => "textfield",

@@ -11,13 +11,15 @@ function ebor_hero_slider_shortcode( $atts, $content = null ) {
 				'layout' => 'light-image-left',
 				'opacity' => '',
 				'custom_css_class' => ''
+				'height' => ''
 			), $atts 
 		) 
 	);
 	
 	$image = explode(',', $image);
+	$height = ( '' == $height ) ? '70' : $height;
 	
-	$output = '<section class="'. esc_attr($custom_css_class) .' cover height-70 imagebg text-center slider slider--ken-burns" data-arrows="true" data-paging="true"><ul class="slides">';
+	$output = '<section class="'. esc_attr($custom_css_class) .' cover height-'. $height .' imagebg text-center slider slider--ken-burns" data-arrows="true" data-paging="true"><ul class="slides">';
             
     foreach ($image as $id){
     	$output .= '
@@ -60,6 +62,12 @@ function ebor_hero_slider_shortcode_vc() {
 					"type" => "attach_images",
 					"heading" => esc_html__("Hero Slider Header Background Images", 'stackwordpresstheme'),
 					"param_name" => "image"
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Hero Height", 'stackwordpresstheme'),
+					"param_name" => "height",
+					"description" => 'Leave blank for default height, enter 10, 20, 30, 40, 50, 60, 70, 80, 90 or 100 for custom height (percentage of window height)',
 				),
 				array(
 					"type" => "textfield",

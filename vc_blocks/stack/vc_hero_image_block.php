@@ -10,6 +10,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 				'image' => '',
 				'layout' => 'light-image-left',
 				'opacity' => '',
+				'height' => '',
 				'custom_css_class' => '',
 				'id' => '',
 				'title' => '',
@@ -77,9 +78,10 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'rounded-edges' == $layout ) {
 		
 		$opacity = ( '' == $opacity ) ? '3' : $opacity;
+		$height = ( '' == $height ) ? '60' : $height;
 	
 		$output = '
-			<div class="imagebg height-60 border--round '. esc_attr($custom_css_class) .'" data-overlay="'. $opacity .'" '. $id .'>
+			<div class="imagebg height-'. $height .' border--round '. esc_attr($custom_css_class) .'" data-overlay="'. $opacity .'" '. $id .'>
 				<div class="background-image-holder">'. wp_get_attachment_image( $image, 'full' ) .'</div>
 				<div class="container pos-vertical-center">
 					<div class="row">
@@ -93,9 +95,10 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'fullscreen' == $layout ) {
 		
 		$opacity = ( '' == $opacity ) ? '7' : $opacity;
+		$height = ( '' == $height ) ? '100' : $height;
 		
 		$output = '
-			<section class="'. esc_attr($custom_css_class) .' cover height-100 imagebg text-center" data-overlay="'. $opacity .'" '. $id .'>
+			<section class="'. esc_attr($custom_css_class) .' cover height-'. $height .' imagebg text-center" data-overlay="'. $opacity .'" '. $id .'>
 			    <div class="background-image-holder">
 			        '. wp_get_attachment_image( $image, 'full' ) .'
 			    </div>
@@ -111,9 +114,10 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( '80-form' == $layout ) {
 		
 		$opacity = ( '' == $opacity ) ? '5' : $opacity;
+		$height = ( '' == $height ) ? '80' : $height;
 		
 		$output = '
-			<section class="'. esc_attr($custom_css_class) .' cover height-80 imagebg" data-overlay="'. $opacity .'" '. $id .'>
+			<section class="'. esc_attr($custom_css_class) .' cover height-'. $height .' imagebg" data-overlay="'. $opacity .'" '. $id .'>
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
@@ -129,9 +133,10 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'top-left-text' == $layout ){
 		
 		$opacity = ( '' == $opacity ) ? '3' : $opacity;
+		$height = ( '' == $height ) ? '80' : $height;
 		
 		$output = '
-			<section class="'. esc_attr($custom_css_class) .' imagebg height-80 parallax" data-overlay="'. $opacity .'" '. $id .'>
+			<section class="'. esc_attr($custom_css_class) .' imagebg height-'. $height .' parallax" data-overlay="'. $opacity .'" '. $id .'>
 				<div class="background-image-holder background--top">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
@@ -187,9 +192,10 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'half' == $layout ){
 		
 		$opacity = ( '' == $opacity ) ? '2' : $opacity;
+		$height = ( '' == $height ) ? '50' : $height;
 		
 		$output = '
-			<section class="'. esc_attr($custom_css_class) .' switchable switchable--switch imagebg height-50" data-overlay="'. $opacity .'" '. $id .'>
+			<section class="'. esc_attr($custom_css_class) .' switchable switchable--switch imagebg height-'. $height .'" data-overlay="'. $opacity .'" '. $id .'>
 			    <div class="background-image-holder">'. wp_get_attachment_image( $image, 'full' ) .'</div>
 			    <div class="container pos-vertical-center">
 			        <div class="row">
@@ -203,9 +209,10 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'parallax' == $layout ){
 		
 		$opacity = ( '' == $opacity ) ? '4' : $opacity;
+		$height = ( '' == $height ) ? '90' : $height;
 		
 		$output = '
-			<section class="'. esc_attr($custom_css_class) .' cover height-90 imagebg parallax" data-overlay="'. $opacity .'" '. $id .'>
+			<section class="'. esc_attr($custom_css_class) .' cover height-'. $height .' imagebg parallax" data-overlay="'. $opacity .'" '. $id .'>
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
@@ -286,6 +293,12 @@ function ebor_hero_shortcode_vc() {
 					"heading" => esc_html__("Image Overlay Opacity", 'stackwordpresstheme'),
 					"param_name" => "opacity",
 					"description" => 'Leave blank for header option default opacity, enter 1 (light overlay) to 9 (dark overlay) to customize.',
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Hero Height", 'stackwordpresstheme'),
+					"param_name" => "height",
+					"description" => 'Leave blank for default height, enter 10, 20, 30, 40, 50, 60, 70, 80, 90 or 100 for custom height (percentage of window height)',
 				),
 				array(
 					"type" => "textfield",
