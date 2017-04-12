@@ -11,7 +11,9 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 				'autoshow' => '',
 				'cookie' => '',
 				'exit' => '',
-				'custom_css_class' => ''
+				'custom_css_class' => '',
+				'layout' => 'basic',
+				'image' => ''
 			), $atts 
 		) 
 	);
@@ -20,15 +22,107 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 	$cookie = ( $cookie ) ? 'data-cookie="'. $cookie .'"' : false;
 	$exit = ( $exit ) ? 'data-show-on-exit="'. $exit .'"' : false;
 	
+	if( 'basic' == $layout ){
+		
+		$modal_content = '
+			<div class="modal-content">
+				<div class="boxed boxed--lg">
+					'. do_shortcode(htmlspecialchars_decode($content)) .'
+				</div>
+			</div>
+		';	
+		
+	} elseif( 'image-left' == $layout ) {
+		
+		$modal_content = '
+			<div class="modal-content">
+				<section class="imageblock feature-large bg--white border--round ">
+				    <div class="imageblock__content col-md-5 col-sm-3 pos-left">
+				        <div class="background-image-holder">
+				            '. wp_get_attachment_image( $image, 'full' ) .'
+				        </div>
+				    </div>
+				    <div class="container">
+				        <div class="row">
+				            <div class="col-md-5 col-md-push-6 col-sm-7 col-sm-push-4">
+				                '. do_shortcode(htmlspecialchars_decode($content)) .'
+				            </div>
+				        </div><!--end of row-->
+				    </div><!--end of container-->
+				</section>
+			</div>
+		';	
+		
+	} elseif( 'image-right' == $layout ) {
+		
+		$modal_content = '
+			<div class="modal-content">
+				<section class="imageblock feature-large bg--white border--round ">
+				    <div class="imageblock__content col-md-5 col-sm-3 pos-right">
+				        <div class="background-image-holder">
+				            '. wp_get_attachment_image( $image, 'full' ) .'
+				        </div>
+				    </div>
+				    <div class="container">
+				        <div class="row">
+				            <div class="col-md-5 col-md-push-1 col-sm-7 col-sm-push-1">
+				                '. do_shortcode(htmlspecialchars_decode($content)) .'
+				            </div>
+				        </div><!--end of row-->
+				    </div><!--end of container-->
+				</section>
+			</div>
+		';	
+		
+	} elseif( 'narrow' == $layout ) {
+	
+		$modal_content = '
+			<div class="modal-content">
+				<section class="unpad ">
+				    <div class="container">
+				        <div class="row">
+				            <div class="col-sm-6 col-md-offset-3 col-sm-offset-3 col-xs-12">
+			                    <div class="feature feature-1 text-center">
+			                        '. wp_get_attachment_image( $image, 'full' ) .'
+			                        <div class="feature__body boxed boxed--lg boxed--border">
+			                            <div class="modal-close modal-close-cross"></div>
+			                            '. do_shortcode(htmlspecialchars_decode($content)) .'
+			                        </div>
+			                    </div><!--end feature-->
+			                </div>
+				        </div><!--end of row-->
+				    </div><!--end of container-->
+				</section>
+			</div>
+		';
+	
+	} elseif( 'image-background' == $layout ) {
+	
+		$modal_content = '
+			<div class="modal-content">
+			    <section class="cover height-60 imagebg border--round" data-overlay="2">
+			        <div class="modal-close modal-close-cross"></div>
+			        <div class="background-image-holder">
+			            '. wp_get_attachment_image( $image, 'full' ) .'
+			        </div>
+			        <div class="container pos-vertical-center">
+			            <div class="row">
+			                <div class="col-sm-7 col-md-5 col-md-offset-1 col-sm-offset-1">
+			                    '. do_shortcode(htmlspecialchars_decode($content)) .'
+			                </div>
+			            </div><!--end of row-->
+			        </div><!--end of container-->
+			    </section>
+			</div>
+		';
+		
+	}
+	
 	$output = '
 		<div class="modal-instance '. esc_attr($custom_css_class) .'">
 			<a class="btn modal-trigger" href="#">'. $button_text .'</a>
 			<div class="modal-container" '. $autoshow .' '. $cookie .' '. $exit .'>
-				<div class="modal-content">
-					<div class="boxed boxed--lg">
-						'. do_shortcode(htmlspecialchars_decode($content)) .'
-					</div>
-				</div>
+				'. $modal_content .'
 			</div>
 		</div><!--end of modal instance-->
 	';
@@ -54,10 +148,27 @@ function ebor_modal_shortcode_vc() {
 			"js_view" => 'VcColumnView',
 			"params" => array(
 				array(
+					"type" => "dropdown",
+					"heading" => esc_html__("Modal Layout", 'stackwordpresstheme'),
+					"param_name" => "layout",
+					"value" => array(
+						'Basic Modal' => 'basic',
+						'Image Left & Content Right' => 'image-left',
+						'Image Right & Content Left' => 'image-right',
+						'Image Top' => 'narrow',
+						'Image Background' => 'image-background'
+					),
+				),
+				array(
 					"type" => "textfield",
 					"heading" => esc_html__("Button Text", 'stackwordpresstheme'),
 					"param_name" => "button_text",
 					"description" => 'Modal trigger button text',
+				),
+				array(
+					"type" => "attach_image",
+					"heading" => esc_html__("Block Image", 'stackwordpresstheme'),
+					"param_name" => "image"
 				),
 				array(
 					"type" => "textfield",
