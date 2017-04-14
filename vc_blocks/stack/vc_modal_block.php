@@ -120,7 +120,7 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 	
 	$output = '
 		<div class="modal-instance '. esc_attr($custom_css_class) .'">
-			<a class="btn modal-trigger" href="#">'. $button_text .'</a>
+			<a class="btn modal-trigger" href="#"><span class="btn__text">'. $button_text .'</span></a>
 			<div class="modal-container" '. $autoshow .' '. $cookie .' '. $exit .'>
 				'. $modal_content .'
 			</div>
