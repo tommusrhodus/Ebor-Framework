@@ -13,7 +13,8 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 				'exit' => '',
 				'custom_css_class' => '',
 				'layout' => 'basic',
-				'image' => ''
+				'image' => '',
+				'show_trigger' => 'yes'
 			), $atts 
 		) 
 	);
@@ -118,9 +119,11 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 		
 	}
 	
+	$trigger = ( 'yes' == $show_trigger ) ? '<a class="btn modal-trigger" href="#">'. $button_text .'</a>' : false;
+	
 	$output = '
 		<div class="modal-instance '. esc_attr($custom_css_class) .'">
-			<a class="btn modal-trigger" href="#"><span class="btn__text">'. $button_text .'</span></a>
+			'. $trigger .'
 			<div class="modal-container" '. $autoshow .' '. $cookie .' '. $exit .'>
 				'. $modal_content .'
 			</div>
@@ -157,6 +160,15 @@ function ebor_modal_shortcode_vc() {
 						'Image Right & Content Left' => 'image-right',
 						'Image Top' => 'narrow',
 						'Image Background' => 'image-background'
+					),
+				),
+				array(
+					"type" => "dropdown",
+					"heading" => esc_html__("Show trigger Button?", 'stackwordpresstheme'),
+					"param_name" => "show_trigger",
+					"value" => array(
+						'Yes' => 'yes',
+						'No' => 'no'
 					),
 				),
 				array(

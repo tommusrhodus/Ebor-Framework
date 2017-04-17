@@ -14,7 +14,8 @@ function ebor_notification_shortcode( $atts, $content = null ) {
 				'position' => 'pos-right pos-bottom',
 				'layout' => 'basic',
 				'animation' => 'from-bottom',
-				'image' => ''
+				'image' => '',
+				'show_trigger' => 'yes'
 			), $atts 
 		) 
 	);
@@ -74,10 +75,9 @@ function ebor_notification_shortcode( $atts, $content = null ) {
 		
 	}
 	
-	$output = '
-		<a class="btn '. esc_attr($custom_css_class) .'" href="#" data-notification-link="'. $trigger_name .'"><span class="btn__text">'. $button_text .'</span></a>
-		'. $notification_content .'
-	';
+	$trigger = ( 'yes' == $show_trigger ) ? '<a class="btn '. esc_attr($custom_css_class) .'" href="#" data-notification-link="'. $trigger_name .'"><span class="btn__text">'. $button_text .'</span></a>' : false;
+	
+	$output = $trigger . $notification_content;
 
 	return $output;
 }
@@ -120,6 +120,15 @@ function ebor_notification_shortcode_vc() {
 						'Basic, Dark Background' => 'basic-dark',
 						'Image Top' => 'narrow',
 						'Image Background' => 'image-background'
+					),
+				),
+				array(
+					"type" => "dropdown",
+					"heading" => esc_html__("Show trigger Button?", 'stackwordpresstheme'),
+					"param_name" => "show_trigger",
+					"value" => array(
+						'Yes' => 'yes',
+						'No' => 'no'
 					),
 				),
 				array(
