@@ -19,7 +19,7 @@ if( class_exists('Ebor_Options') ){
 	
 }
 
-function variant_visual_composer_notification(){
+function ebor_framework_updates_notification(){
 	
 	if( '' == get_option('ebor_framework_username', '') && 'yes' == get_option('framework_show_welcome_modal', 'yes') ){
 		
@@ -31,7 +31,7 @@ function variant_visual_composer_notification(){
 				<img src="http://www.tommusrhodus.com/wp-content/uploads/2014/06/profile4.png" alt="tommsusrhodus" />
 				<div class="content">
 					<h3>Thank you for installing Ebor Framework <small>by TommusRhodus</small></h3>
-			        <p class="lead">Ebor Framework provides verified customers with auto-updates and important features of your TommusRhodus Themes and Plugins. Keep your Theme, Plugins and Site secure by enabling updates from the framework settings.</p>
+			        <p class="lead">Ebor Framework provides verified customers with auto-updates and important features for your TommusRhodus Themes and Plugins. Keep your Theme, Plugins and Site secure by enabling updates from the framework settings.</p>
 			        <p>To get started with enabling auto-updates and important framework features, visit the Ebor Framework settings in your <a href="'. esc_url( $control_link ) .'">customizer panel</a> to fill out your Envato Username & API key.</p>
 			        <p><a class="button button-primary" href="'. esc_url( $control_link ) .'">Enable Updates & Extras</a></p>
 		        </div>
@@ -41,7 +41,7 @@ function variant_visual_composer_notification(){
 	}
     
 }
-add_action( 'admin_notices', 'variant_visual_composer_notification' );
+add_action( 'admin_notices', 'ebor_framework_updates_notification' );
 
 //MasonThemes
 //htw0lppk5z4fhu99fjyrbuo6vmb7qxss
