@@ -18,3 +18,21 @@ input[type="range"] + input[type="text"] {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+.ebor-framework-updates-dismiss {
+	padding: 20px;
+}
+.ebor-framework-updates-dismiss img {
+	float: left;
+	margin: 15px 0 0 10px;
+}
+.ebor-framework-updates-dismiss .content {
+	overflow: hidden;
+	margin-left: 120px;
+}
+.ebor-framework-updates-dismiss p.lead {
+	font-size: 16px;
+}
+.ebor-framework-updates-dismiss h3 small {
+	font-style: italic;
+	font-size: 11px;
+}

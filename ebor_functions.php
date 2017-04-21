@@ -1,5 +1,13 @@
 <?php 
 
+/**
+ * Update an option name with a value, both given by $_POST data
+ */
+function ebor_framework_update_option(){
+	update_option($_POST['optionName'], $_POST['optionValue']);
+}
+add_action('wp_ajax_ebor_framework_update_option', 'ebor_framework_update_option');
+
 function ebor_framework_functions_backfill(){
 	
 	if(!( function_exists('ebor_get_portfolio_layouts') )){

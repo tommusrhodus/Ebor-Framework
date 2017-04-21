@@ -10,10 +10,26 @@ function printValue(name){
 	var val = jQuery('input[type="range"][name="'+ name +'"]').val();
 	jQuery('input[type="text"][name="'+ name +'"]').val(val);
 }
+updateOption = function(name, value){
+	
+	jQuery.ajax({
+		type: "POST",
+		url: ajaxurl,
+		data: {
+			action: 'ebor_framework_update_option',
+			optionName: name,
+			optionValue: value
+		},
+		error: function(response) {},
+		success: function(response) {}
+	});
+		
+}
 /*-----------------------------------------------------------------------------------*/
 /*	BASIC ADMIN JS
 /*-----------------------------------------------------------------------------------*/
 jQuery(document).ready(function($){
+	
 	
 	jQuery('input[type="range"]').trigger('change');
 	
@@ -24,6 +40,10 @@ jQuery(document).ready(function($){
 	
 	jQuery('#post-formats-select input').click(function(){
 		ebor_hide_metaboxes();
+	});
+	
+	jQuery('body').on('click', '.ebor-framework-updates-dismiss .notice-dismiss', function(){
+		updateOption('framework_show_welcome_modal', 'no');
 	});
 
 });

@@ -4,7 +4,7 @@
 Plugin Name: Ebor Framework
 Plugin URI: http://www.tommusrhodus.com/ebor-framework
 Description: Ebor Framework - The Driving Force Behind TommusRhodus Themes
-Version: 1.2.4
+Version: 1.3.0
 Author: Tom Rhodes
 Author URI: http://www.tommusrhodus.com
 */	
@@ -13,7 +13,7 @@ Author URI: http://www.tommusrhodus.com
  * Plugin definitions
  */
 define( 'EBOR_FRAMEWORK_PATH', trailingslashit(plugin_dir_path(__FILE__)) );
-define( 'EBOR_FRAMEWORK_VERSION', '1.2.4');
+define( 'EBOR_FRAMEWORK_VERSION', '1.3.0');
 
 /**
  * Styles & Scripts
@@ -62,6 +62,11 @@ if(!( function_exists('ebor_ajax_import_data') )){
 	}
 	add_action('wp_ajax_ebor_ajax_import_data', 'ebor_ajax_import_data');
 }
+
+/**
+ * Theme updates
+ */
+require_once( EBOR_FRAMEWORK_PATH . 'envato-wp-updater/updater-init.php' );
 
 /**
  * Plugin Updates
