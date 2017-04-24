@@ -34,6 +34,12 @@ function ebor_post_shortcode( $atts ) {
 		'paged' => $paged
 	);
 	
+	//Hide current post ID from the loop if we're in a singular view
+	global $post;
+	if( is_single() && isset($post->ID) ){
+		$query_args['post__not_in']	= array($post->ID);
+	}
+	
 	if (!( $filter == 'all' )) {
 		if( function_exists( 'icl_object_id' ) ){
 			$filter = (int)icl_object_id( $filter, 'category', true);
