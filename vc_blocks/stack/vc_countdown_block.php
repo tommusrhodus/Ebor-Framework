@@ -10,12 +10,13 @@ function ebor_countdown_shortcode( $atts, $content = null ) {
 				'intro' => '03/13/2018',
 				'text' => 'Timer Done',
 				'custom_css_class' => '',
-				'size' => 'h3'
+				'size' => 'h3',
+				'days' => 'days'
 			), $atts 
 		) 
 	);
 	
-	$output = '<span class="'. $size .' countdown '. esc_attr($custom_css_class) .'" data-date="'. $intro .'" data-date-fallback="'. $text .'"></span>';
+	$output = '<span class="'. $size .' countdown '. esc_attr($custom_css_class) .'" data-days-text="'. esc_attr($days) .'" data-date="'. $intro .'" data-date-fallback="'. $text .'"></span>';
 	return $output;
 }
 add_shortcode( 'stack_countdown', 'ebor_countdown_shortcode' );
@@ -37,6 +38,13 @@ function ebor_countdown_shortcode_vc() {
 					"param_name" => "intro",
 					"description" => 'Date to count to, formatted /MM/DD/YYYY',
 					'value' => '03/13/2018'
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("'days' text", 'stackwordpresstheme'),
+					"param_name" => "days",
+					"description" => '"Days" text for your countdown.',
+					'value' => 'days'
 				),
 				array(
 					"type" => "textfield",
