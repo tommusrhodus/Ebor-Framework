@@ -18,7 +18,7 @@ function ebor_slider_shortcode( $atts, $content = null ) {
 	);
 	
 	$output = '
-		<section class="slider slider--animate '. $slider_height .' cover cover-5 parallax" data-animation="fade" data-arrows="'. $arrows .'" data-paging="'. $paging .'" data-timing="'. $timing .'">
+		<section class="slider slider--animate '. $slider_height .' cover cover-5 '. $parallax .'" data-animation="fade" data-arrows="'. $arrows .'" data-paging="'. $paging .'" data-timing="'. $timing .'">
 			<ul class="slides">
 				'. do_shortcode($content) .'
 			</ul>

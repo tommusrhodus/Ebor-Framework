@@ -43,7 +43,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'intro-social' == $layout ){
 		
 		$output = '
-			<section class="'. $slider_height .' imagebg cover cover-1 parallax" data-overlay="'. $overlay_opacity .'">
+			<section class="'. $slider_height .' imagebg cover cover-1 '. $parallax .'" data-overlay="'. $overlay_opacity .'">
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
@@ -136,7 +136,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'video-form' == $layout ){
 	
 		$output = '
-			<section class="'. $slider_height .' imagebg cover cover-6 parallax" data-overlay="'. $overlay_opacity .'">
+			<section class="'. $slider_height .' imagebg cover cover-6 '. $parallax .'" data-overlay="'. $overlay_opacity .'">
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
@@ -198,7 +198,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'half-form' == $layout ){
 	
 		$output = '
-			<section class="cover cover-12 form--dark imagebg '. $slider_height .' parallax" data-overlay="'. $overlay_opacity .'">
+			<section class="cover cover-12 form--dark imagebg '. $slider_height .' '. $parallax .'" data-overlay="'. $overlay_opacity .'">
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
