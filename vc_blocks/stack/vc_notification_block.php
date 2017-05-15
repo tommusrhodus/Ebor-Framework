@@ -15,7 +15,8 @@ function ebor_notification_shortcode( $atts, $content = null ) {
 				'layout' => 'basic',
 				'animation' => 'from-bottom',
 				'image' => '',
-				'show_trigger' => 'yes'
+				'show_trigger' => 'yes',
+				'btn_class' => ''
 			), $atts 
 		) 
 	);
@@ -75,7 +76,7 @@ function ebor_notification_shortcode( $atts, $content = null ) {
 		
 	}
 	
-	$trigger = ( 'yes' == $show_trigger ) ? '<a class="btn '. esc_attr($custom_css_class) .'" href="#" data-notification-link="'. $trigger_name .'"><span class="btn__text">'. $button_text .'</span></a>' : false;
+	$trigger = ( 'yes' == $show_trigger ) ? '<a class="btn '. $btn_class .' '. esc_attr($custom_css_class) .'" href="#" data-notification-link="'. $trigger_name .'"><span class="btn__text">'. $button_text .'</span></a>' : false;
 	
 	$output = $trigger . $notification_content;
 
@@ -129,6 +130,17 @@ function ebor_notification_shortcode_vc() {
 					"value" => array(
 						'Yes' => 'yes',
 						'No' => 'no'
+					),
+				),
+				array(
+					"type" => "dropdown",
+					"heading" => esc_html__("Button Display Type", 'stackwordpresstheme'),
+					"param_name" => "btn_class",
+					"value" => array(
+						'Outline Button' => '',
+						'Standard Button' => 'btn--primary',
+						'Outline Button Uppercase' => 'type--uppercase',
+						'Standard Button Uppercase' => 'btn--primary type--uppercase'
 					),
 				),
 				array(

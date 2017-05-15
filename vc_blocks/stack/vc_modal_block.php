@@ -14,7 +14,8 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 				'custom_css_class' => '',
 				'layout' => 'basic',
 				'image' => '',
-				'show_trigger' => 'yes'
+				'show_trigger' => 'yes',
+				'btn_class' => ''
 			), $atts 
 		) 
 	);
@@ -119,7 +120,7 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 		
 	}
 	
-	$trigger = ( 'yes' == $show_trigger ) ? '<a class="btn modal-trigger" href="#">'. $button_text .'</a>' : false;
+	$trigger = ( 'yes' == $show_trigger ) ? '<a class="btn '. $btn_class .' modal-trigger" href="#">'. $button_text .'</a>' : false;
 	
 	$output = '
 		<div class="modal-instance '. esc_attr($custom_css_class) .'">
@@ -169,6 +170,17 @@ function ebor_modal_shortcode_vc() {
 					"value" => array(
 						'Yes' => 'yes',
 						'No' => 'no'
+					),
+				),
+				array(
+					"type" => "dropdown",
+					"heading" => esc_html__("Button Display Type", 'stackwordpresstheme'),
+					"param_name" => "btn_class",
+					"value" => array(
+						'Outline Button' => '',
+						'Standard Button' => 'btn--primary',
+						'Outline Button Uppercase' => 'type--uppercase',
+						'Standard Button Uppercase' => 'btn--primary type--uppercase'
 					),
 				),
 				array(
