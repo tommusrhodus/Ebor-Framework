@@ -49,6 +49,7 @@ function ebor_framework_register_stack_blocks(){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_content_carousel_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_section_navigator_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_login_block.php');
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_add_to_cart_block.php');
 }
 
 function ebor_framework_stack_init(){
