@@ -18,6 +18,10 @@ function ebor_portfolio_shortcode( $atts ) {
 		) 
 	);
 	
+	if( 0 == $pppage ){
+		return false;	
+	}
+	
 	/**
 	 * Setup post query
 	 */

@@ -15,6 +15,10 @@ function ebor_post_shortcode( $atts ) {
 		) 
 	);
 	
+	if( 0 == $pppage ){
+		return false;	
+	}
+	
 	//PAgination fix
 	global $paged;
 	

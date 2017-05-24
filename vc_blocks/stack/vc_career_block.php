@@ -15,6 +15,10 @@ function ebor_career_shortcode( $atts ) {
 		) 
 	);
 	
+	if( 0 == $pppage ){
+		return false;	
+	}
+	
 	/**
 	 * Setup post query
 	 */

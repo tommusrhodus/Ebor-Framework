@@ -14,6 +14,10 @@ function ebor_team_shortcode( $atts ) {
 		) 
 	);
 	
+	if( 0 == $pppage ){
+		return false;	
+	}
+	
 	/**
 	 * Setup post query
 	 */

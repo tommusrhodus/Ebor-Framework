@@ -15,6 +15,10 @@ function ebor_product_shortcode( $atts ) {
 		) 
 	);
 	
+	if( 0 == $pppage ){
+		return false;	
+	}
+	
 	/**
 	 * Setup post query
 	 */
