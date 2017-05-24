@@ -8,6 +8,7 @@ function ebor_typed_text_shortcode( $atts, $content = null ) {
 		shortcode_atts( 
 			array(
 				'intro' => '',
+				'outro' => '',
 				'text' => '',
 				'custom_css_class' => '',
 				'size' => 'h4'
@@ -19,6 +20,7 @@ function ebor_typed_text_shortcode( $atts, $content = null ) {
 		<div class="typed-headline '. esc_attr($custom_css_class) .'">
 			<span class="'. $size .' inline-block">'. $intro .'</span>
 			<span class="'. $size .' inline-block typed-text typed-text--cursor color--primary" data-typed-strings="'. $text .'"></span>
+			<span class="'. $size .' inline-block">'. $outro .'</span>
 		</div>
 	';
 
@@ -48,6 +50,12 @@ function ebor_typed_text_shortcode_vc() {
 					"heading" => esc_html__("Text to animate", 'stackwordpresstheme'),
 					"param_name" => "text",
 					"description" => '1 animation per line, multiple words per line are fine, add a new line for each new animation you wish to create.',
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Outro Text", 'stackwordpresstheme'),
+					"param_name" => "outro",
+					"description" => 'Static text to show after the animated text.',
 				),
 				array(
 					"type" => "textfield",
