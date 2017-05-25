@@ -8,7 +8,8 @@ function ebor_portfolio_shortcode( $atts ) {
 		shortcode_atts( 
 			array(
 				'pppage' => '5',
-				'filter' => 'all'
+				'filter' => 'all',
+				'layout' => 'grid'
 			), $atts 
 		) 
 	);
@@ -56,7 +57,7 @@ function ebor_portfolio_shortcode( $atts ) {
 	
 	ob_start();
 
-	get_template_part('loop/loop-portfolio');
+	get_template_part('loop/loop-portfolio', $layout);
 	
 	$output = ob_get_contents();
 	ob_end_clean();
@@ -86,6 +87,12 @@ function ebor_portfolio_shortcode_vc() {
 					"heading" => esc_html__("Show How Many Posts?", 'malefic'),
 					"param_name" => "pppage",
 					"value" => '5'
+				),
+				array(
+					"type" => "dropdown",
+					"heading" => esc_html__("Portfolio Display Type", 'stackwordpresstheme'),
+					"param_name" => "layout",
+					"value" => ebor_get_portfolio_layouts()
 				)
 			)
 		) 
