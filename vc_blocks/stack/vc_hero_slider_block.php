@@ -11,7 +11,9 @@ function ebor_hero_slider_shortcode( $atts, $content = null ) {
 				'layout' => 'light-image-left',
 				'opacity' => '',
 				'custom_css_class' => '',
-				'height' => ''
+				'height' => '',
+				'timing' => '7000',
+				'arrows' => 'true'
 			), $atts 
 		) 
 	);
@@ -19,7 +21,7 @@ function ebor_hero_slider_shortcode( $atts, $content = null ) {
 	$image = explode(',', $image);
 	$height = ( '' == $height ) ? '70' : $height;
 	
-	$output = '<section class="'. esc_attr($custom_css_class) .' cover height-'. $height .' imagebg text-center slider slider--ken-burns" data-arrows="true" data-paging="true"><ul class="slides">';
+	$output = '<section data-arrows="'. $arrows .'" data-timing="'. esc_attr($timing) .'" class="'. esc_attr($custom_css_class) .' cover height-'. $height .' imagebg text-center slider slider--ken-burns" data-arrows="true" data-paging="true"><ul class="slides">';
             
     foreach ($image as $id){
     	$output .= '
@@ -68,6 +70,20 @@ function ebor_hero_slider_shortcode_vc() {
 					"heading" => esc_html__("Hero Height", 'stackwordpresstheme'),
 					"param_name" => "height",
 					"description" => 'Leave blank for default height, enter 10, 20, 30, 40, 50, 60, 70, 80, 90 or 100 for custom height (percentage of window height)',
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Timing", 'stackwordpresstheme'),
+					"param_name" => "timing",
+					'value' => '7000',
+					"description" => 'Timing speed for switching slides, in milliseconds. Default 7000 (7 seconds)',
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Show Arrows?", 'stackwordpresstheme'),
+					"param_name" => "arrows",
+					'value' => 'true',
+					"description" => 'Show navigation arrows? <code>true</code> to show arrows, <code>false</code> to hide them',
 				),
 				array(
 					"type" => "textfield",
