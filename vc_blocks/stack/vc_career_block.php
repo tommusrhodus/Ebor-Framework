@@ -4,6 +4,8 @@
  * The Shortcode
  */
 function ebor_career_shortcode( $atts ) {
+	global $wp_query, $post;
+	
 	extract( 
 		shortcode_atts( 
 			array(
@@ -15,7 +17,7 @@ function ebor_career_shortcode( $atts ) {
 		) 
 	);
 	
-	if( 0 == $pppage ){
+	if( 0 == $pppage || isset($wp_query->doing_career_shortcode) ){
 		return false;	
 	}
 	
@@ -28,7 +30,6 @@ function ebor_career_shortcode( $atts ) {
 	);
 	
 	//Hide current post ID from the loop if we're in a singular view
-	global $post;
 	if( is_single() && isset($post->ID) ){
 		$query_args['post__not_in']	= array($post->ID);
 	}
@@ -46,10 +47,10 @@ function ebor_career_shortcode( $atts ) {
 		);
 	}
 	
-	global $wp_query, $post;
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
+	$wp_query->{"doing_career_shortcode"} = 'true';
 	
 	ob_start();
 	

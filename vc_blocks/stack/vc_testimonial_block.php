@@ -4,6 +4,8 @@
  * The Shortcode
  */
 function ebor_testimonial_shortcode( $atts ) {
+	global $wp_query, $post;
+	
 	extract( 
 		shortcode_atts( 
 			array(
@@ -14,7 +16,7 @@ function ebor_testimonial_shortcode( $atts ) {
 		) 
 	);
 	
-	if( 0 == $pppage ){
+	if( 0 == $pppage || isset($wp_query->doing_testimonial_shortcode) ){
 		return false;	
 	}
 	
@@ -40,10 +42,10 @@ function ebor_testimonial_shortcode( $atts ) {
 		);
 	}
 	
-	global $wp_query, $post;
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
+	$wp_query->{"doing_testimonial_shortcode"} = 'true';
 	
 	ob_start();
 

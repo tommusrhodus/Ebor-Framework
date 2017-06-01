@@ -17,23 +17,11 @@ function ebor_icon_and_text_shortcode( $atts, $content = null ) {
 	
 	if( 'background' == $layout ){
 		
-		$output = '
-			<div class="text-center icon-and-text">
-				<span class="icon icon-bg mb-20"><i class="fa '. $icon .'"></i></span>
-				  <h4 class="upper">'. $title .'</h4>
-				  '. htmlspecialchars_decode($content) .'
-			</div>
-		';
+		$output = '<div class="text-center icon-and-text"><span class="icon icon-bg mb-20"><i class="fa '. $icon .'"></i></span><h4 class="upper">'. $title .'</h4>'. wpautop($content) .'</div>';
 		
 	} else {
 		
-		$output = '
-			<div class="text-center icon-and-text">
-				<span class="icon mb-20"><i class="fa '. $icon .'"></i></span>
-				  <h4 class="upper">'. $title .'</h4>
-				  '. htmlspecialchars_decode($content) .'
-			</div>
-		';
+		$output = '<div class="text-center icon-and-text"><span class="icon mb-20"><i class="fa '. $icon .'"></i></span><h4 class="upper">'. $title .'</h4>'. wpautop($content) .'</div>';
 		
 	}
 	
