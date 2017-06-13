@@ -4,6 +4,9 @@
  * The Shortcode
  */
 function ebor_text_map_shortcode( $atts, $content = null ) {
+	
+	$map_style = '[{"featureType":"landscape","stylers":[{"hue":"#FFBB00"},{"saturation":43.400000000000006},{"lightness":37.599999999999994},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#FFC200"},{"saturation":-61.8},{"lightness":45.599999999999994},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":51.19999999999999},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":52},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0078FF"},{"saturation":-13.200000000000003},{"lightness":2.4000000000000057},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#00FF6A"},{"saturation":-1.0989010989011234},{"lightness":11.200000000000017},{"gamma":1}]}]';
+	
 	extract( 
 		shortcode_atts( 
 			array(
@@ -13,17 +16,23 @@ function ebor_text_map_shortcode( $atts, $content = null ) {
 				'api_key' => '',
 				'address' => '',
 				'iframe' => '',
-				'style' => '[{"featureType":"landscape","stylers":[{"hue":"#FFBB00"},{"saturation":43.400000000000006},{"lightness":37.599999999999994},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#FFC200"},{"saturation":-61.8},{"lightness":45.599999999999994},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":51.19999999999999},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":52},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0078FF"},{"saturation":-13.200000000000003},{"lightness":2.4000000000000057},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#00FF6A"},{"saturation":-1.0989010989011234},{"lightness":11.200000000000017},{"gamma":1}]}]',
+				'style' => $map_style,
+				'zoom' => '15'
 			), $atts 
 		) 
 	);
+	
+	$final_style = ( $style == $map_style ) ? $style : htmlspecialchars_decode(rawurldecode(base64_decode($style)));
+	if( '' == $final_style ){
+		$final_style = $map_style;	
+	}
 	
 	if( 'left' == $layout ){
 		
 		$output = '
 			<section class="'. esc_attr($custom_css_class) .' imageblock switchable feature-large space--lg '. $background .'">
 			    <div class="imageblock__content col-md-6 col-sm-4 pos-right">
-			        <div class="map-container" data-maps-api-key="'. $api_key .'" data-address="'. $address .'" data-marker-title="'. esc_attr(get_bloginfo('title')) .'"   data-map-style="'. esc_attr($style) .'" data-map-zoom="15"></div>
+			        <div class="map-container" data-maps-api-key="'. $api_key .'" data-address="'. $address .'" data-marker-title="'. esc_attr(get_bloginfo('title')) .'"   data-map-style="'. esc_attr($final_style) .'" data-map-zoom="'. esc_attr($zoom) .'"></div>
 			    </div>
 			    <div class="container">
 			        <div class="row">
@@ -90,7 +99,13 @@ function ebor_text_map_shortcode_vc() {
 		    		"description" => "Enter your desired map location street address.",
 		    	),
 		    	array(
-		    		"type" => "textarea",
+		    		"type" => "textfield",
+		    		"heading" => esc_html__("Zoom Level", 'stackwordpresstheme'),
+		    		"param_name" => "zoom",
+		    		"description" => "Zoom level of the map, default is 15, numeric only!",
+		    	),
+		    	array(
+		    		"type" => "textarea_raw_html",
 		    		"heading" => esc_html__("Map Custom Style", 'stackwordpresstheme'),
 		    		"param_name" => "style",
 		    		"description" => 'Apply any style from <a href="http://snazzymaps.com">Snazzy Maps</a> or <a href="https://mapstyle.withgoogle.com/">make your own</a>',

@@ -13,7 +13,8 @@ function ebor_styled_map_shortcode( $atts, $content = null ) {
 				'api_key' => '',
 				'address' => '',
 				'style' => $map_style,
-				'custom_css_class' => ''
+				'custom_css_class' => '',
+				'zoom' => '15'
 			), $atts 
 		) 
 	);
@@ -23,7 +24,7 @@ function ebor_styled_map_shortcode( $atts, $content = null ) {
 		$final_style = $map_style;	
 	}
 	
-	$output = '<div class="map-container '. esc_attr($custom_css_class) .'" data-maps-api-key="'. $api_key .'" data-address="'. $address .'" data-marker-title="'. esc_attr(get_bloginfo('title')) .'" data-map-style="'. esc_attr($final_style) .'"></div>';
+	$output = '<div class="map-container '. esc_attr($custom_css_class) .'" data-maps-api-key="'. $api_key .'" data-address="'. $address .'" data-marker-title="'. esc_attr(get_bloginfo('title')) .'" data-map-style="'. esc_attr($final_style) .'" data-map-zoom="'. esc_attr($zoom) .'"></div>';
 	
 
 	return $output;
@@ -52,6 +53,12 @@ function ebor_styled_map_shortcode_vc() {
 					"heading" => esc_html__("Street Address", 'stackwordpresstheme'),
 					"param_name" => "address",
 					"description" => "Enter your desired map location street address.",
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Zoom Level", 'stackwordpresstheme'),
+					"param_name" => "zoom",
+					"description" => "Zoom level of the map, default is 15, numeric only!",
 				),
 				array(
 					"type" => "textarea_raw_html",
