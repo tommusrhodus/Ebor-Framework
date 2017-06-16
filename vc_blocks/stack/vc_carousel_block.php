@@ -8,6 +8,7 @@ function ebor_carousel_shortcode( $atts, $content = null ) {
 		shortcode_atts( 
 			array(
 				'image' => '',
+				'timing' => '7000',
 				'custom_css_class' => ''
 			), $atts 
 		) 
@@ -15,7 +16,7 @@ function ebor_carousel_shortcode( $atts, $content = null ) {
 	
 	$image = explode(',', $image);
 	
-	$output = '<div class="'. esc_attr($custom_css_class) .' slider slider--inline-arrows slider--arrows-hover text-center" data-arrows="true"><ul class="slides">';
+	$output = '<div class="'. esc_attr($custom_css_class) .' slider slider--inline-arrows slider--arrows-hover text-center" data-arrows="true" data-timing="'. $timing .'"><ul class="slides">';
 	
 	foreach ($image as $id){
 		$output .= '
@@ -46,6 +47,13 @@ function ebor_carousel_shortcode_vc() {
 					"type" => "attach_images",
 					"heading" => esc_html__("Carousel Images", 'stackwordpresstheme'),
 					"param_name" => "image"
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Carousel Timing (ms)", 'stackwordpresstheme'),
+					"param_name" => "timing",
+					'value' => '7000',
+					"description" => 'Carousel Timing in Milliseconds',
 				),
 				array(
 					"type" => "textfield",

@@ -103,6 +103,7 @@ function ebor_text_map_shortcode_vc() {
 		    		"heading" => esc_html__("Zoom Level", 'stackwordpresstheme'),
 		    		"param_name" => "zoom",
 		    		"description" => "Zoom level of the map, default is 15, numeric only!",
+		    		'value' => '15'
 		    	),
 		    	array(
 		    		"type" => "textarea_raw_html",
