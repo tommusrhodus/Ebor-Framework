@@ -11,7 +11,10 @@ function ebor_team_shortcode( $atts ) {
 			array(
 				'pppage' => '4',
 				'filter' => 'all',
-				'layout' => 'grid-3'
+				'layout' => 'grid-3',
+				'paging' => 'true',
+				'arrows' => 'false',
+				'timing' => 'false'
 			), $atts 
 		) 
 	);
@@ -50,6 +53,11 @@ function ebor_team_shortcode( $atts ) {
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
+	$wp_query->{"slider_options"} = array(
+		'paging' => $paging,
+		'arrows' => $arrows,
+		'timing' => $timing
+	);
 	$wp_query->{"doing_team_shortcode"} = 'true';
 	
 	ob_start();

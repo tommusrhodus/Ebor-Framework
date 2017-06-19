@@ -12,7 +12,10 @@ function ebor_post_shortcode( $atts ) {
 				'pppage' => '4',
 				'filter' => 'all',
 				'layout' => 'list',
-				'custom_css_class' => ''
+				'custom_css_class' => '',
+				'paging' => 'false',
+				'arrows' => 'true',
+				'timing' => 'false'
 			), $atts 
 		) 
 	);
@@ -58,6 +61,11 @@ function ebor_post_shortcode( $atts ) {
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
+	$wp_query->{"slider_options"} = array(
+		'paging' => $paging,
+		'arrows' => $arrows,
+		'timing' => $timing
+	);
 	$wp_query->{"doing_blog_shortcode"} = 'true';
 	
 	ob_start();
