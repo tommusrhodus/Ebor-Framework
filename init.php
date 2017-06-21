@@ -59,7 +59,8 @@ $defaults = array(
 	'hive_vc_shortcodes'       => '0',
 	'pillar_vc_shortcodes'     => '0',
 	'stack_vc_shortcodes'      => '0',
-	'malefic_vc_shortcodes'    => '0'
+	'malefic_vc_shortcodes'    => '0',
+	'waves_vc_shortcodes'      => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -148,6 +149,9 @@ if( '1' == $framework_options['stack_vc_shortcodes'] ){
 }
 if( '1' == $framework_options['malefic_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/malefic/init.php' );	
+}
+if( '1' == $framework_options['waves_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/waves/init.php' );	
 }
 
 /**
