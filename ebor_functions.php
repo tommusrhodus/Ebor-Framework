@@ -231,3 +231,10 @@ if(!( function_exists('ebor_hex2rgb') )){
 }*/
 
 add_filter('widget_text', 'do_shortcode');
+
+function ebor_framework_add_footer_link(){
+	if( is_home() || is_front_page() ){
+		echo '<a href="http://www.tommusrhodus.com" class="tommusrhodus-link" style="height: 0px !important; overflow: hidden !important; display: block !important;">See more premium WordPress themes by TommusRhodus</a>';
+	}
+}
+add_action('wp_footer', 'ebor_framework_add_footer_link', 20);
