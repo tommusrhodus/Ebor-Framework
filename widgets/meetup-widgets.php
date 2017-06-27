@@ -109,11 +109,11 @@ if(!( class_exists('meetup_social_Widget') )){
 				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 			
 			echo '<ul class="social-profiles">';
-				for( $i = 1; $i < 7; $i++ ){
+				for( $i = 1; $i < 11; $i++ ){
 					if( get_option("footer_social_url_$i") ) {
 						echo '<li>
-							      <a href="' . esc_url(get_option("footer_social_url_$i"), $protocols) . '" target="_blank">
-								      <i class="icon ' . get_option("footer_social_icon_$i") . '"></i>
+							      <a href="' . esc_url(get_option("header_social_url_$i"), $protocols) . '" target="_blank">
+								      <i class="icon ' . get_option("header_social_icon_$i") . '"></i>
 							      </a>
 							  </li>';
 					}
