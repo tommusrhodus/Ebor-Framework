@@ -110,7 +110,7 @@ if(!( class_exists('meetup_social_Widget') )){
 			
 			echo '<ul class="social-profiles">';
 				for( $i = 1; $i < 11; $i++ ){
-					if( get_option("footer_social_url_$i") ) {
+					if( get_option("header_social_url_$i") ) {
 						echo '<li>
 							      <a href="' . esc_url(get_option("header_social_url_$i"), $protocols) . '" target="_blank">
 								      <i class="icon ' . get_option("header_social_icon_$i") . '"></i>

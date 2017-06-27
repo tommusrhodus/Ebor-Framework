@@ -30,23 +30,31 @@ function ebor_comments_shortcode( $atts, $content = null ) {
 
 	<div class="row">
 		<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-		
-			<div class="comments">
 			
-				<h3><?php comments_number( esc_html__('0 Comments','stack'), esc_html__('1 Comment','stack'), esc_html__('% Comments','stack') ); ?></h3>
-				
-				<?php
-					echo '<ul id="singlecomments" class="comments__list">';
-					wp_list_comments('type=comment&callback=ebor_custom_comment', $comments);
-					echo '</ul>';
-					paginate_comments_links();
-				?>
-				
-			</div><!--end comments-->
+			<?php if( comments_open() ) : ?>
 			
-			<div class="comments-form">
-				<?php comment_form($custom_comment_form); ?>
-			</div>
+				<div class="comments">
+				
+					<h3><?php comments_number( esc_html__('0 Comments','stack'), esc_html__('1 Comment','stack'), esc_html__('% Comments','stack') ); ?></h3>
+					
+					<?php
+						echo '<ul id="singlecomments" class="comments__list">';
+						wp_list_comments('type=comment&callback=ebor_custom_comment', $comments);
+						echo '</ul>';
+						paginate_comments_links();
+					?>
+					
+				</div><!--end comments-->
+				
+				<div class="comments-form">
+					<?php comment_form($custom_comment_form); ?>
+				</div>
+			
+			<?php else : ?>
+			
+				<h3>Please turn on comments from your page settings for this page.</h3>
+			
+			<?php endif; ?>
 			
 		</div>
 	</div><!--end of row-->
