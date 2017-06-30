@@ -38,20 +38,34 @@ function ebor_portfolio_shortcode( $atts ) {
 		$query_args['post__not_in']	= array($post->ID);
 	}
 	
-	if (!( $filter == 'all' )) {
-		if( function_exists( 'icl_object_id' ) ){
-			$filter = (int)icl_object_id( $filter, 'portfolio_category', true);
+	if(!( $filter == 'all' )) {
+		
+		//Check for WPML
+		if( has_filter('wpml_object_id') ){
+			global $sitepress;
+			
+			//WPML recommended, remove filter, then add back after
+			remove_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
+			
+			$filterClass = get_term_by('slug', $filter, 'portfolio_category');
+			$ID = (int) apply_filters('wpml_object_id', (int) $filterClass->term_id, 'portfolio_category', true);
+			$translatedSlug = get_term_by('id', $ID, 'portfolio_category');
+			$filter = $translatedSlug->slug;
+			
+			//Adding filter back
+			add_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
 		}
+			
 		$query_args['tax_query'] = array(
 			array(
 				'taxonomy' => 'portfolio_category',
 				'field' => 'slug',
 				'terms' => $filter
 			)
-		);
+		);	
+		
 	}
 	
-	global $wp_query, $post;
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
