@@ -47,13 +47,21 @@ if(!( class_exists('stack_Instagram_Widget') )){
 		 * @param array $instance
 		 */
 		public function widget( $args, $instance ) {
+			$defaults = array(
+				'title'    => 'Instagram Feed', 
+				'username' => '',
+				'amount'   => '6',
+				'grid'     => '3'
+			);
+			$instance = wp_parse_args((array) $instance, $defaults);
+			
 			echo $args['before_widget'];
 			
 			if ( ! empty( $instance['title'] ) )
 				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 			
 			if ( isset( $instance['username'] ) )
-				echo '<div class="instafeed instafeed--gapless" data-user-name="'. $instance['username'] .'" data-amount="6" data-grid="3"></div>';
+				echo '<div class="instafeed instafeed--gapless" data-user-name="'. $instance['username'] .'" data-amount="'. $instance['amount'] .'" data-grid="'. $instance['grid'] .'"></div>';
 			
 			echo $args['after_widget'];
 		}
@@ -66,8 +74,10 @@ if(!( class_exists('stack_Instagram_Widget') )){
 		public function form( $instance ) {
 			
 			$defaults = array(
-				'title' => 'Instagram Feed', 
-				'username' => ''
+				'title'    => 'Instagram Feed', 
+				'username' => '',
+				'amount'   => '6',
+				'grid'     => '3'
 			);
 			$instance = wp_parse_args((array) $instance, $defaults);
 			extract($instance);
@@ -81,6 +91,16 @@ if(!( class_exists('stack_Instagram_Widget') )){
 			<p>
 				<label for="<?php echo $this->get_field_id( 'username' ); ?>"><?php esc_html_e( 'Username:', 'stackwordpresstheme' ); ?></label> 
 				<input class="widefat" id="<?php echo $this->get_field_id( 'username' ); ?>" name="<?php echo $this->get_field_name( 'username' ); ?>" type="text" value="<?php echo esc_attr( $username ); ?>">
+			</p>
+			
+			<p>
+				<label for="<?php echo $this->get_field_id( 'amount' ); ?>"><?php esc_html_e( 'Amount:', 'stackwordpresstheme' ); ?></label> 
+				<input class="widefat" id="<?php echo $this->get_field_id( 'amount' ); ?>" name="<?php echo $this->get_field_name( 'amount' ); ?>" type="text" value="<?php echo esc_attr( $amount ); ?>">
+			</p>
+			
+			<p>
+				<label for="<?php echo $this->get_field_id( 'grid' ); ?>"><?php esc_html_e( 'Grid:', 'stackwordpresstheme' ); ?></label> 
+				<input class="widefat" id="<?php echo $this->get_field_id( 'grid' ); ?>" name="<?php echo $this->get_field_name( 'grid' ); ?>" type="text" value="<?php echo esc_attr( $grid ); ?>">
 			</p>
 			
 		<?php 
