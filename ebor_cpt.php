@@ -72,6 +72,15 @@ function ebor_framework_cpt_render_form() {
                              <br />
                              <hr />
                              <br />
+                             
+                             <label><b>Enter the URL slug you want to use for this post type. DO-NOT: use numbers, spaces, capital letters or special characters.</b><br /><br />
+                             <input type="text" size="30" name="ebor_framework_cpt_display_options[careers_slug]" value="<?php echo $displays['careers_slug']; ?>" placeholder="careers" /><br />
+                              <br />e.g Entering 'careers' will result in www.website.com/careers becoming the URL to your careers.<br />
+                              <b>If you change this setting, be sure to visit <a href="options-permalink.php">Your Permalink Settings</a> & click the 'save changes' button to refresh & re-write your permalinks.</b></label>
+ 
+                              <br />
+                              <hr />
+                              <br />
 
                             <label><b>Enter the URL slug you want to use for this post type. DO-NOT: use numbers, spaces, capital letters or special characters.</b><br /><br />
                             <input type="text" size="30" name="ebor_framework_cpt_display_options[case_studies_slug]" value="<?php echo $displays['case_studies_slug']; ?>" placeholder="case-studies" /><br />
@@ -772,6 +781,10 @@ function ebor_framework_create_case_study_taxonomies(){
 }
 
 function ebor_framework_register_career() {
+	
+	$displays = get_option('ebor_framework_cpt_display_options');
+	
+	if( $displays['careers_slug'] ){ $slug = $displays['careers_slug']; } else { $slug = 'careers'; }
 
     $labels = array( 
         'name' => __( 'Careers', 'stackwordpresstheme' ),
@@ -804,7 +817,7 @@ function ebor_framework_register_career() {
         'has_archive' => true,
         'query_var' => true,
         'can_export' => true,
-        'rewrite' => array( 'slug' => get_option('tommusrhodus_careers_slug', 'careers') ),
+        'rewrite' => array( 'slug' => $slug ),
         'capability_type' => 'post'
     );
 
