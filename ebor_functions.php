@@ -216,18 +216,4 @@ if(!( function_exists('ebor_hex2rgb') )){
 	}
 }
 
-/**
- * Add an additional link to the theme options on the dashboard
- * 
- * @since 1.0.0
- * @author tommusrhodus
- */
-/*if(!( function_exists('ebor_framework_add_customize_page_link') )){
-	function ebor_framework_add_customize_page_link() {
-		$theme = wp_get_theme();
-		add_dashboard_page( $theme->get( 'Name' ) . ' Theme Readme', $theme->get( 'Name' ) . ' Theme Readme', 'edit_theme_options', 'themes.php?page=ebor_framework-getting-started' );
-	}
-	add_action ('admin_menu', 'ebor_framework_add_customize_page_link');
-}*/
-
 add_filter('widget_text', 'do_shortcode');
