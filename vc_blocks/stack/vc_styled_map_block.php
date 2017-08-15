@@ -24,7 +24,7 @@ function ebor_styled_map_shortcode( $atts, $content = null ) {
 		$final_style = $map_style;	
 	}
 	
-	$output = '<div class="map-container '. esc_attr($custom_css_class) .'" data-maps-api-key="'. $api_key .'" data-address="'. $address .'" data-marker-title="'. esc_attr(get_bloginfo('title')) .'" data-map-style="'. esc_attr($final_style) .'" data-map-zoom="'. esc_attr($zoom) .'"></div>';
+	$output = '<div class="map-container '. esc_attr($custom_css_class) .'" data-maps-api-key="'. $api_key .'" data-address="'. $address .'" data-marker-title="'. esc_attr($address) .'" data-map-style="'. esc_attr($final_style) .'" data-map-zoom="'. esc_attr($zoom) .'"></div>';
 	
 
 	return $output;
