@@ -41,7 +41,7 @@ function ebor_content_carousel_shortcode_vc() {
 		    'params'          => array(
 		    	array(
 		    		"type" => "textfield",
-		    		"heading" => esc_html__("Extra CSS Class Name", 'stackwordpresstheme'),
+		    		"heading" => esc_html__("Item Width Class Name", 'stackwordpresstheme'),
 		    		"param_name" => "item_width",
 		    		'value' => 'col-sm-4 col-xs-12',
 		    		"description" => '<code>DEVELOPERS ONLY</code> - Style particular content element differently - add a class name and refer to it in custom CSS.',

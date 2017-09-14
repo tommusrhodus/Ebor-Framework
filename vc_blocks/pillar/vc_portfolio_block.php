@@ -14,12 +14,22 @@ function ebor_portfolio_shortcode( $atts ) {
 		) 
 	);
 	
+	// Fix for pagination
+	global $paged;
+	
+	if( is_front_page() ) { 
+		$paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1; 
+	} else { 
+		$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; 
+	}
+	
 	/**
 	 * Setup post query
 	 */
 	$query_args = array(
 		'post_type' => 'portfolio',
-		'posts_per_page' => $pppage
+		'posts_per_page' => $pppage,
+		'paged' => $paged
 	);
 	
 	if (!( $filter == 'all' )) {
