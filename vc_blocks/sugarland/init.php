@@ -6,7 +6,7 @@
 function ebor_framework_register_sugarland_blocks(){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/vc_maps_button_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/vc_video_button_block.php');
-	require_once( EBOR_FRAMEWORK_PATH . ('vc_blocks/vc_portfolio_block.php');
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/vc_portfolio_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/vc_team_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/vc_pricing_table_block.php');
 }
