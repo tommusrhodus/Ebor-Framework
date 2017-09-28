@@ -34,10 +34,19 @@ function ebor_instagram_block_shortcode( $atts, $content = null ) {
 			    limit: 12,
 			    userId: <?php echo esc_js($id); ?>,
 			    accessToken: '<?php echo esc_js($token); ?>',
-			    resolution: 'low_resolution',
+			    resolution: 'thumbnail',
 			    template: '<div class="item col-xs-6 col-sm-3 col-md-2"><figure class="overlay icon-overlay instagram"><a href="{{link}}" target="_blank"><img src="{{image}}" /></a></figure></div>',
 			    after: function() {
 			        $('#instafeed figure.overlay a').prepend('<span class="over"><span></span></span>');
+			    },
+			    success: function(response){
+			    	response.data.forEach(function(e){
+			    		e.images.thumbnail = {
+			    			url: e.images.thumbnail.url.replace('150x150', '600x600'),
+			    			width: 600,
+			    			height: 600
+			    		};
+			    	});
 			    }
 			});
 			$('#instafeed').each(function() {

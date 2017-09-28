@@ -324,10 +324,19 @@ if(!( class_exists('malefic_Instagram_Widget') )){
 						    limit: 6,
 						    userId: '. $id .',
 						    accessToken: \''. $username .'\',
-						    resolution: \'low_resolution\',
+						    resolution: \'thumbnail\',
 						    template: \'<div class="item col-xs-4 col-sm-6 col-md-4"><figure class="overlay icon-overlay instagram"><a href="{{link}}" target="_blank"><img src="{{image}}" /></a></figure></div>\',
 						    after: function() {
 						        jQuery(\'#instafeed-widget figure.overlay a\').prepend(\'<span class="over"><span></span></span>\');
+						    },
+						    success: function(response){
+						    	response.data.forEach(function(e){
+						    		e.images.thumbnail = {
+						    			url: e.images.thumbnail.url.replace(\'150x150\', \'600x600\'),
+						    			width: 600,
+						    			height: 600
+						    		};
+						    	});
 						    }
 						});
 						jQuery(\'#instafeed-widget\').each(function() {
