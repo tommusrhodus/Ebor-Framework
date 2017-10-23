@@ -206,6 +206,7 @@ if( $displays['portfolio_slug'] ){ $slug = $displays['portfolio_slug']; } else {
     );
 
     register_post_type( 'portfolio', $args );
+    register_taxonomy_for_object_type( 'post_format', 'portfolio' );
 }
 
 function ebor_framework_create_portfolio_taxonomies(){
