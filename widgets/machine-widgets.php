@@ -176,7 +176,7 @@ if(!( class_exists('machine_Twitter_Widget') )){
 if(!( class_exists('ebor_machine_popular_Widget') )){
 	class ebor_machine_popular_Widget extends WP_Widget {
 		
-		function ebor_machine_popular_Widget(){
+		public function __construct(){
 			parent::__construct(
 				'ebor_machine_popular-widget', // Base ID
 				__('Machine: Recent Posts', 'ebor_framework'), // Name
@@ -184,7 +184,7 @@ if(!( class_exists('ebor_machine_popular_Widget') )){
 			);
 		}
 		
-		function widget($args, $instance)
+		public function widget($args, $instance)
 		{
 			extract($args);
 			$title = apply_filters('widget_title', $instance['title']);
@@ -216,7 +216,7 @@ if(!( class_exists('ebor_machine_popular_Widget') )){
 			<?php echo $after_widget;
 		}
 		
-		function update($new_instance, $old_instance)
+		public function update($new_instance, $old_instance)
 		{
 			$instance = $old_instance;
 	
@@ -230,7 +230,7 @@ if(!( class_exists('ebor_machine_popular_Widget') )){
 			return $instance;
 		}
 	
-		function form($instance)
+		public function form($instance)
 		{
 			$defaults = array('title' => 'Popular Posts', 'amount' => '3');
 			$instance = wp_parse_args((array) $instance, $defaults); ?>
