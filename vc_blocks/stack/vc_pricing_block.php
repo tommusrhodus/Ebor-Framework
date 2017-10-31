@@ -47,7 +47,7 @@ function ebor_pricing_table_shortcode( $atts, $content = null ) {
 			<div class="'. esc_attr($custom_css_class) .' pricing pricing-1 boxed boxed--border boxed--lg text-center '. $head_class .'">
 				<h4>'. htmlspecialchars_decode($title) .'</h4>
 				<span class="h1"><span class="pricing__dollar">'. htmlspecialchars_decode($currency) .'</span>'. htmlspecialchars_decode($price) .'</span>
-				'. do_shortcode(htmlspecialchars_decode($content)) .'
+				'. wpautop(do_shortcode(htmlspecialchars_decode($content))) .'
 				'. $label .'
 				<a class="btn '. $button_class .'" href="'. esc_url($button_url) .'">'. htmlspecialchars_decode($button_text) .'</a>
 			</div><!--end pricing-->
@@ -80,7 +80,7 @@ function ebor_pricing_table_shortcode( $atts, $content = null ) {
 					<a class="btn btn--primary" href="'. esc_url($button_url) .'">'. htmlspecialchars_decode($button_text) .'</a>
 				</div>
 				<div class="col-md-6">
-					'. do_shortcode(htmlspecialchars_decode($content)) .'
+					'. wpautop(do_shortcode(htmlspecialchars_decode($content))) .'
 				</div>
 			</div><!--end of pricing-->
 		';
@@ -89,6 +89,7 @@ function ebor_pricing_table_shortcode( $atts, $content = null ) {
 		
 		$label = ( $label ) ? '<span class="label">'. $label .'</span>' : false;
 		$head_class = ( $label ) ? 'bg--primary' : 'bg--secondary';
+		$button = ( $button_url ) ? '<ul><li><a class="btn btn--primary" href="'. esc_url($button_url) .'">'. htmlspecialchars_decode($button_text) .'</a></li></ul>' : '';
 		
 		$output = '
 			<div class="'. esc_attr($custom_css_class) .' pricing pricing-3 text-center">
@@ -98,6 +99,7 @@ function ebor_pricing_table_shortcode( $atts, $content = null ) {
 					<span class="h1"><span class="pricing__dollar">'. htmlspecialchars_decode($currency) .'</span>'. htmlspecialchars_decode($price) .'</span>
 				</div>
 				'. wpautop(do_shortcode(htmlspecialchars_decode($content))) .'
+				'. $button .'
 			</div><!--end pricing-->
 		';
 		

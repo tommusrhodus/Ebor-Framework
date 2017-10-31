@@ -5,7 +5,11 @@
  */
 function ebor_add_to_cart_shortcode( $atts ) {
 	ob_start();
-	woocommerce_template_single_add_to_cart();
+	
+	if( is_singular('product') ){ 
+		woocommerce_template_single_add_to_cart();
+	}
+	
 	$output = ob_get_contents();
 	ob_end_clean();
 	return $output;
