@@ -181,7 +181,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 	} elseif( 'overlay' == $layout ){
 	
 		$output = '
-			<section class="'. $slider_height .' imagebg bg--primary" data-overlay="'. $overlay_opacity .'">
+			<section class="'. $slider_height .' imagebg bg--primary '. $parallax .'" data-overlay="'. $overlay_opacity .'">
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'full' ) .'
 				</div>
