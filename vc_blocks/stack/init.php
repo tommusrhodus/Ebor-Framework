@@ -53,6 +53,7 @@ function ebor_framework_register_stack_blocks(){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_login_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_add_to_cart_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_comments_block.php');
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_wizard_block.php');
 }
 
 function ebor_framework_stack_init(){
