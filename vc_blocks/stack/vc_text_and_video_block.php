@@ -11,10 +11,32 @@ function ebor_text_video_shortcode( $atts, $content = null ) {
 				'layout' => 'left',
 				'custom_css_class' => '',
 				'embed' => '',
-				'background' => 'bg--secondary'
+				'background' => 'bg--secondary',
+				'result' => ''
 			), $atts 
 		) 
 	);
+	
+	if(!( '' == $embed )){
+		
+		$cache_key = 'tr-oembed-' . md5($embed);
+		
+		//Bail early on result
+		if( $result = get_transient($cache_key) ) {
+		    //$result now has the iFrame
+		} else {
+		
+			//Cache is empty, resolve oEmbed
+			$result = wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true'));
+			
+			//Cache 4 hours for standard and 5 min for failed
+			$ttl = $result ? 14400 : 300;
+			
+			set_transient($cache_key, $result, $ttl);
+			
+		}
+	
+	}
 	
 	if( 'left' == $layout ){
 		
@@ -28,7 +50,7 @@ function ebor_text_video_shortcode( $atts, $content = null ) {
 						<div class="video-play-icon modal-trigger"></div>
 						<div class="modal-container">
 							<div class="modal-content bg-dark" data-width="60%" data-height="60%">
-								'. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
+								'. $result .'
 							</div><!--end of modal-content-->
 						</div><!--end of modal-container-->
 					</div><!--end of modal instance-->
@@ -55,7 +77,7 @@ function ebor_text_video_shortcode( $atts, $content = null ) {
 						<div class="video-play-icon modal-trigger"></div>
 						<div class="modal-container">
 							<div class="modal-content bg-dark" data-width="60%" data-height="60%">
-								'. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
+								'. $result .'
 							</div><!--end of modal-content-->
 						</div><!--end of modal-container-->
 					</div><!--end of modal instance-->

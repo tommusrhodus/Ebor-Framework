@@ -12,10 +12,32 @@ function ebor_video_modal_shortcode( $atts ) {
 				'text' => '',
 				'embed' => '',
 				'custom_css_class' => '',
-				'image' => ''
+				'image' => '',
+				'result' => ''
 			), $atts 
 		) 
 	);
+	
+	if(!( '' == $embed )){
+		
+		$cache_key = 'tr-oembed-' . md5($embed);
+		
+		//Bail early on result
+		if( $result = get_transient($cache_key) ) {
+		    //$result now has the iFrame
+		} else {
+		
+			//Cache is empty, resolve oEmbed
+			$result = wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true'));
+			
+			//Cache 4 hours for standard and 5 min for failed
+			$ttl = $result ? 14400 : 300;
+			
+			set_transient($cache_key, $result, $ttl);
+			
+		}
+	
+	}
 	
 	if( 'basic' == $layout ){
 		
@@ -25,7 +47,7 @@ function ebor_video_modal_shortcode( $atts ) {
 					<a class="btn type--uppercase modal-trigger" href="#">&#9654; '. $button_text .'</a>
 					<div class="modal-container">
 						<div class="modal-content bg-dark" data-width="60%" data-height="60%">
-							'. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
+							'. $result .'
 						</div><!--end of modal-content-->
 					</div><!--end of modal-container-->
 				</div><!--end of modal instance-->
@@ -44,7 +66,7 @@ function ebor_video_modal_shortcode( $atts ) {
 					<div class="video-play-icon video-play-icon--sm modal-trigger"></div>
 					<div class="modal-container">
 						<div class="modal-content bg-dark" data-width="60%" data-height="60%">
-							'. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
+							'. $result .'
 						</div><!--end of modal-content-->
 					</div><!--end of modal-container-->
 				</div><!--end of modal instance-->
@@ -60,7 +82,7 @@ function ebor_video_modal_shortcode( $atts ) {
 					<div class="video-play-icon video-play-icon--sm modal-trigger box-shadow"></div>
 					<div class="modal-container">
 						<div class="modal-content bg-dark" data-width="60%" data-height="60%">
-							'. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
+							'. $result .'
 						</div><!--end of modal-content-->
 					</div><!--end of modal-container-->
 				</div><!--end of modal instance-->
@@ -76,7 +98,7 @@ function ebor_video_modal_shortcode( $atts ) {
 			    <span><strong>'. $button_text .'</strong>&nbsp;&nbsp;&nbsp;'. $text .'</span>
 			    <div class="modal-container">
 			        <div class="modal-content bg-dark" data-width="60%" data-height="60%">
-			            '. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
+			            '. $result .'
 			        </div><!--end of modal-content-->
 			    </div><!--end of modal-container-->
 			</div><!--end of modal instance-->
@@ -90,7 +112,7 @@ function ebor_video_modal_shortcode( $atts ) {
                 <span>'. $button_text .'</span>
                 <div class="modal-container">
                     <div class="modal-content bg-dark" data-width="60%" data-height="60%">
-                        '. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
+                        '. $result .'
                     </div><!--end of modal-content-->
                 </div><!--end of modal-container-->
             </div>
@@ -103,7 +125,7 @@ function ebor_video_modal_shortcode( $atts ) {
                 <div class="video-play-icon modal-trigger"></div>
                 <div class="modal-container">
                     <div class="modal-content bg-dark" data-width="60%" data-height="60%">
-                        '. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
+                        '. $result .'
                     </div><!--end of modal-content-->
                 </div><!--end of modal-container-->
             </div>

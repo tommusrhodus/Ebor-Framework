@@ -37,13 +37,30 @@ function ebor_video_inline_shortcode( $atts ) {
 		
 	} elseif( 'embed' == $layout ){
 		
+		$cache_key = 'tr-oembed-' . md5($embed);
+		
+		//Bail early on result
+		if( $result = get_transient($cache_key) ) {
+		    //$result now has the iFrame
+		} else {
+		
+			//Cache is empty, resolve oEmbed
+			$result = wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true'));
+			
+			//Cache 4 hours for standard and 5 min for failed
+			$ttl = $result ? 14400 : 300;
+			
+			set_transient($cache_key, $result, $ttl);
+			
+		}
+		
 		$output = '
 			<div class="'. esc_attr($custom_css_class) .' video-cover border--round box-shadow">
 				<div class="background-image-holder">
 					'. wp_get_attachment_image( $image, 'large' ) .'
 				</div>
 				<div class="video-play-icon"></div>
-				'. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
+				'. $result .'
 			</div><!--end video cover-->
 		';
 		

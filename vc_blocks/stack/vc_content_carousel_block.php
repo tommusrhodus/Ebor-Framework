@@ -7,8 +7,9 @@ function ebor_content_carousel_shortcode( $atts, $content = null ) {
 	extract( 
 		shortcode_atts( 
 			array(
-				'type' => 'content_carousel-horizontal',
-				'item_width' => 'col-sm-4 col-xs-12',
+				'type'             => 'content_carousel-horizontal',
+				'item_width'       => 'col-sm-4 col-xs-12',
+				'arrows'           => 'false',
 				'custom_css_class' => ''
 			), $atts 
 		) 
@@ -19,7 +20,7 @@ function ebor_content_carousel_shortcode( $atts, $content = null ) {
 	
 	$content = '<li class="'. esc_attr($item_width) .'">' . implode('</li><li class="'. esc_attr($item_width) .'">', $matches[0]) . '</li>';
 	
-	$output = '<div class="'. $custom_css_class .' row slider" data-arrows="false" data-paging="true"><ul class="slides">'. do_shortcode($content) .'</ul></div>';
+	$output = '<div class="'. $custom_css_class .' row slider" data-arrows="'. $arrows .'" data-paging="true"><ul class="slides">'. do_shortcode($content) .'</ul></div>';
 
 	return $output;
 }
@@ -45,6 +46,15 @@ function ebor_content_carousel_shortcode_vc() {
 		    		"param_name" => "item_width",
 		    		'value' => 'col-sm-4 col-xs-12',
 		    		"description" => '<code>DEVELOPERS ONLY</code> - Style particular content element differently - add a class name and refer to it in custom CSS.',
+		    	),
+		    	array(
+		    		"type" => "dropdown",
+		    		"heading" => esc_html__("Show navigation arrows?", 'stackwordpresstheme'),
+		    		"param_name" => "arrows",
+		    		"value" => array(
+		    			'No' => 'false',
+		    			'Yes' => 'true'
+		    		)
 		    	),
 		    	array(
 		    		"type" => "textfield",

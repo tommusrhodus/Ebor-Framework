@@ -41,10 +41,32 @@ function ebor_video_gallery_content_shortcode( $atts, $content = null ) {
 				'class' => '',
 				'image' => '',
 				'title' => '',
-				'embed' => ''
+				'embed' => '',
+				'result' => ''
 			), $atts 
 		) 
 	);
+	
+	if(!( '' == $embed )){
+		
+		$cache_key = 'tr-oembed-' . md5($embed);
+		
+		//Bail early on result
+		if( $result = get_transient($cache_key) ) {
+		    //$result now has the iFrame
+		} else {
+		
+			//Cache is empty, resolve oEmbed
+			$result = wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true'));
+			
+			//Cache 4 hours for standard and 5 min for failed
+			$ttl = $result ? 14400 : 300;
+			
+			set_transient($cache_key, $result, $ttl);
+			
+		}
+	
+	}
 
 	$output = '
 		<div class="masonry__item col-sm-6 col-xs-12" data-masonry-filter="'. $class .'">
@@ -53,7 +75,7 @@ function ebor_video_gallery_content_shortcode( $atts, $content = null ) {
 		            '. wp_get_attachment_image( $image, 'large' ) .'
 		        </div>
 		        <div class="video-play-icon"></div>
-		        '. wp_oembed_get($embed, array('height' => '300', 'autoplay' => 'true')) .'
+		        '. $result .'
 		    </div><!--end video cover-->
 		    <span class="h4 inline-block">'. $title .'</span>
 		    <span>'. ucfirst($class) .'</span>
