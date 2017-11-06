@@ -1,0 +1,17 @@
+{
+    "name": "tommusrhodus/Ebor-Framework",
+    "type": "wordpress-plugin",
+    "description": "The driving force behind TommusRhodus' Themes custom post types, meta boxes etc.",
+    "homepage": "https://www.tommusrhodus.com",
+    "license": "MIT",
+    "require": {
+        "composer/installers": "~1.0"
+    },
+    "authors": [
+        {
+            "name": "Tom Rhodes",
+            "homepage": "https://www.tommusrhodus.com",
+            "role": "Developer"
+        }
+    ]
+}
