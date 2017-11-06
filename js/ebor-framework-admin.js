@@ -10,21 +10,6 @@ function printValue(name){
 	var val = jQuery('input[type="range"][name="'+ name +'"]').val();
 	jQuery('input[type="text"][name="'+ name +'"]').val(val);
 }
-updateOption = function(name, value){
-	
-	jQuery.ajax({
-		type: "POST",
-		url: ajaxurl,
-		data: {
-			action: 'ebor_framework_update_option',
-			optionName: name,
-			optionValue: value
-		},
-		error: function(response) {},
-		success: function(response) {}
-	});
-		
-}
 /*-----------------------------------------------------------------------------------*/
 /*	BASIC ADMIN JS
 /*-----------------------------------------------------------------------------------*/
