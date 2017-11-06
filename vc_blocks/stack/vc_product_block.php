@@ -24,13 +24,20 @@ function ebor_product_shortcode( $atts ) {
 		return false;	
 	}
 	
+	if( is_front_page() ) { 
+		$paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1; 
+	} else { 
+		$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; 
+	}
+	
 	/**
 	 * Setup post query
 	 */
 	$query_args = array(
 		'post_type' => 'product',
 		'post_status' => 'publish',
-		'posts_per_page' => $pppage
+		'posts_per_page' => $pppage,
+		'paged' => $paged
 	);
 	
 	if (!( $filter == 'all' )) {
