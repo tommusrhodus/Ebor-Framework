@@ -61,7 +61,8 @@ $defaults = array(
 	'stack_vc_shortcodes'      => '0',
 	'malefic_vc_shortcodes'    => '0',
 	'waves_vc_shortcodes'      => '0',
-	'sugarland_vc_shortcodes'  => '0'
+	'sugarland_vc_shortcodes'  => '0',
+	'foundry_vc_shortcodes'    => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -156,6 +157,9 @@ if( '1' == $framework_options['waves_vc_shortcodes'] ){
 }
 if( '1' == $framework_options['sugarland_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/sugarland/init.php' );	
+}
+if( '1' == $framework_options['foundry_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/foundry/init.php' );	
 }
 
 /**
