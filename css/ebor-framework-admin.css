@@ -36,3 +36,6 @@ input[type="range"] + input[type="text"] {
 	font-style: italic;
 	font-size: 11px;
 }
+.mce-notification-error {
+    display: none !important;
+}
