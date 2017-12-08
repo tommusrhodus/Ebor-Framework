@@ -21,6 +21,7 @@ function ebor_post_single_shortcode( $atts ) {
 		'post_type' => 'post',
 		'post_status' => 'publish',
 		'posts_per_page' => '1',
+		'ignore_sticky_posts' => true,
 		'offset' => $offset
 	);
 	

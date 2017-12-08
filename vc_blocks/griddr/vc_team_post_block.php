@@ -20,7 +20,8 @@ function ebor_team_single_shortcode( $atts ) {
 	$query_args = array(
 		'post_type' => 'team',
 		'post_status' => 'publish',
-		'tposts_per_page' => '1',
+		'posts_per_page' => '1',
+		'ignore_sticky_posts' => true,
 		'offset' => $offset
 	);
 	
