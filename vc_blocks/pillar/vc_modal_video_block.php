@@ -108,7 +108,7 @@ function ebor_video_modal_shortcode( $atts ) {
 		
 		$output = '
 			<div class="modal-instance modal-video-1">
-				<a class="btn btn-primary modal-trigger" href="#">
+				<a class="btn btn--primary modal-trigger" href="#">
 					<span class="btn__text">
 						&#9658; '. $text .'
 					</span>
