@@ -12,7 +12,8 @@ function ebor_call_to_action_shortcode( $atts, $content = null ) {
 				'button_text' => '',
 				'button_url' => '',
 				'custom_css_class' => '',
-				'layout' => 'default'
+				'layout' => 'default',
+				'button_target' => '_self'
 			), $atts 
 		) 
 	);
@@ -28,7 +29,7 @@ function ebor_call_to_action_shortcode( $atts, $content = null ) {
 			        <p class="lead">'. $middle .'</p>
 			    </div>
 			    <div class="col-sm-3 text-right text-center-xs">
-			        <a class="btn btn--primary type--uppercase" href="'. esc_url($button_url) .'"><span class="btn__text">'. $button_text .'</span></a>
+			        <a class="btn btn--primary type--uppercase" href="'. esc_url($button_url) .'" target="'. esc_attr( $button_target ) .'"><span class="btn__text">'. $button_text .'</span></a>
 			    </div>
 			</div>
 		';
@@ -44,7 +45,7 @@ function ebor_call_to_action_shortcode( $atts, $content = null ) {
 			        <p class="lead">'. $middle .'</p>
 			    </div>
 			    <div class="col-md-4 text-center">
-			        <a class="btn btn--primary type--uppercase" href="'. esc_url($button_url) .'"><span class="btn__text">'. $button_text .'</span></a>
+			        <a class="btn btn--primary type--uppercase" href="'. esc_url($button_url) .'" target="'. esc_attr( $button_target ) .'"><span class="btn__text">'. $button_text .'</span></a>
 			    </div>
 			</div>
 		';
@@ -53,7 +54,7 @@ function ebor_call_to_action_shortcode( $atts, $content = null ) {
 	
 		$output = '
 			<section class="'. esc_attr($custom_css_class) .' bg--primary unpad cta cta-2">
-				<a href="'. esc_url($button_url) .'">
+				<a href="'. esc_url($button_url) .'" target="'. esc_attr( $button_target ) .'">
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-12 text-center">
@@ -69,7 +70,7 @@ function ebor_call_to_action_shortcode( $atts, $content = null ) {
 	
 		$output = '
 			<div class="'. esc_attr($custom_css_class) .'">
-				<a class="btn btn--primary type--uppercase" href="'. $button_url .'">
+				<a class="btn btn--primary type--uppercase" href="'. $button_url .'" target="'. esc_attr( $button_target ) .'">
 				    <span class="btn__text">
 				        '. $button_text .'
 				    </span>
@@ -114,6 +115,13 @@ function ebor_call_to_action_shortcode_vc() {
 					"type" => "textfield",
 					"heading" => esc_html__("Button URL", 'stackwordpresstheme'),
 					"param_name" => "button_url"
+				),
+				array(
+					"type"       => "textfield",
+					"heading"    => esc_html__("Button Target", 'stackwordpresstheme'),
+					"param_name" => "button_target",
+					'value'      => '_self',
+					'description' => 'Default is <code>_self</code> use <code>_blank</code> to open in a new window'
 				),
 				array(
 					"type" => "dropdown",

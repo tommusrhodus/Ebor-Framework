@@ -47,10 +47,10 @@ function ebor_portfolio_shortcode( $atts ) {
 			//WPML recommended, remove filter, then add back after
 			remove_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
 			
-			$filterClass = get_term_by('slug', $filter, 'portfolio_category');
-			$ID = (int) apply_filters('wpml_object_id', (int) $filterClass->term_id, 'portfolio_category', true);
+			$filterClass    = get_term_by('slug', $filter, 'portfolio_category');
+			$ID             = (int) apply_filters('wpml_object_id', (int) $filterClass->term_id, 'portfolio_category', true);
 			$translatedSlug = get_term_by('id', $ID, 'portfolio_category');
-			$filter = $translatedSlug->slug;
+			$filter         = $translatedSlug->slug;
 			
 			//Adding filter back
 			add_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
