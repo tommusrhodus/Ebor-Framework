@@ -200,6 +200,9 @@ if( '1' == $framework_options['morello_widgets'] ){
 if( '1' == $framework_options['malefic_widgets'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'widgets/malefic-widgets.php' );	
 }
+if( '1' == $framework_options['creatink_widgets'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'widgets/creatink-widgets.php' );	
+}
 
 /**
  * Register Portfolio Post Type
