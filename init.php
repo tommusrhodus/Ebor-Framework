@@ -50,6 +50,7 @@ $defaults = array(
 	'lumos_widgets'            => '0',
 	'foundry_widgets'          => '0',
 	'malefic_widgets'          => '0',
+	'creatink_widgets'         => '0',
 	'foundry_shortcodes'       => '0',
 	'malory_vc_shortcodes'     => '0',
 	'peekskill_vc_shortcodes'  => '0',
