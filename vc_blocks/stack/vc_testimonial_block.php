@@ -84,12 +84,7 @@ function ebor_testimonial_shortcode_vc() {
 					"type" => "dropdown",
 					"heading" => esc_html__("Testimonial Display Type", 'stackwordpresstheme'),
 					"param_name" => "layout",
-					"value" => array(
-						'Slider 1' => 'slider-1',
-						'Slider 2' => 'slider-2',
-						'Avatar Grid' => 'avatar',
-						'Avatar List' => 'avatar-list'
-					)
+					"value" => ebor_get_testimonial_layouts()
 				),
 			)
 		) 

@@ -8,6 +8,12 @@ function ebor_framework_functions_backfill(){
 		}
 	}
 	
+	if(!( function_exists('ebor_get_testimonial_layouts') )){
+		function ebor_get_testimonial_layouts(){
+			return array('Please Switch to a TommusRhodus Theme for this feature' => 'Please Switch to a TommusRhodus Theme for this feature');	
+		}
+	}
+	
 	if(!( function_exists('ebor_get_blog_layouts') )){
 		function ebor_get_blog_layouts(){
 			return array('Please Switch to a TommusRhodus Theme for this feature' => 'Please Switch to a TommusRhodus Theme for this feature');	
