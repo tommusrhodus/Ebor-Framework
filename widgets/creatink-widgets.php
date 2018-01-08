@@ -144,7 +144,7 @@ if(!( class_exists('ebor_contact_Widget') )){
 	    	<ul class="social social-bg social-s">
 	    		<?php
 	    			foreach( $links as $index => $link ){
-	    				echo '<li><a href="'. $link .'" target="_blank"><i class="fa fa-'. $icons[$index] .'"></i></a></li>';
+	    				echo '<li><a href="'. $link .'" target="_blank"><i class="et-'. $icons[$index] .'"></i></a></li>';
 	    			}
 	    		?>
 	
