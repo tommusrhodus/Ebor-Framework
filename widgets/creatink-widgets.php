@@ -22,7 +22,7 @@ if(!( class_exists('ebor_malefic_popular_Widget') )){
 				echo  $before_title.$title.$after_title;
 			} ?>
 	
-		    	<ul class="post-list">
+		    	<ul class="image-list">
 			    	<?php 
 			    		$widget_query = new WP_Query(
 			    			array(
@@ -40,8 +40,8 @@ if(!( class_exists('ebor_malefic_popular_Widget') )){
 			    		  <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a> 
 			    		  </figure>
 			    		  <div class="post-content">
-			    		    <div class="meta"><span class="date"><?php the_time( get_option('date_format') ); ?> </span> </div>
-			    		    <h4 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+			    		  	<h6 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
+			    		    <div class="meta"><span class="date"><?php the_time( get_option('date_format') ); ?> </span> </div>			    		    
 			    		  </div>
 			    		</li>
 			    	              
