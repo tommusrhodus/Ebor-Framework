@@ -33,7 +33,7 @@ function ebor_instagram_block_shortcode( $atts, $content = null ) {
 			    get: 'user',
 			    userId: <?php echo esc_js($id); ?>,
 			    accessToken: '<?php echo esc_js($token); ?>',
-			    resolution: 'thumbnail',
+			    resolution: 'low_resolution',
 			    template: '<div class="item"><figure class="overlay"><a href="{{link}}" target="_blank"><img src="{{image}}" /></a></figure></div>',
 			    after: function() {
 			        jQuery('#instafeed figure.overlay a').prepend('<span class="over"></span>');
@@ -65,7 +65,7 @@ function ebor_instagram_block_shortcode( $atts, $content = null ) {
 			    success: function(response){
 			    	response.data.forEach(function(e){
 			    		e.images.thumbnail = {
-			    			url: e.images.thumbnail.url.replace('150x150', '600x600'),
+			    			url: e.images.thumbnail.url,
 			    			width: 600,
 			    			height: 600
 			    		};
