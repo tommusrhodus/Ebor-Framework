@@ -55,7 +55,7 @@ function ebor_social_feed_block_shortcode( $atts, $content = null ) {
 					jQuery(\'.flickr-feed\').dcFlickr({
 					    limit: 6,
 					    q: {
-					        id: \''. $flick_id .'\',
+					        id: \''. $flickr_id .'\',
 					        lang: \'en-us\',
 					        format: \'json\',
 					        jsoncallback: \'?\'
