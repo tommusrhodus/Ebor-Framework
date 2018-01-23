@@ -6,8 +6,8 @@ if(!( class_exists('ebor_malefic_popular_Widget') )){
 		function ebor_malefic_popular_Widget(){
 			parent::__construct(
 				'ebor_malefic_popular-widget', // Base ID
-				esc_html__('TommusRhodus: Popular Posts', 'malefic'), // Name
-				array( 'description' => esc_html__( 'Add a simple popular posts widget', 'malefic' ), ) // Args
+				esc_html__('TommusRhodus: Popular Posts', 'creatink'), // Name
+				array( 'description' => esc_html__( 'Add a simple popular posts widget', 'creatink' ), ) // Args
 			);
 		}
 		
@@ -100,8 +100,8 @@ if(!( class_exists('ebor_contact_Widget') )){
 		function ebor_contact_Widget(){
 			parent::__construct(
 				'ebor_contact-widget', // Base ID
-				esc_html__('TommusRhodus: Social Icons', 'malefic'), // Name
-				array( 'description' => esc_html__( 'Add a simple social icons widget', 'malefic' ), ) // Args
+				esc_html__('TommusRhodus: Social Icons', 'creatink'), // Name
+				array( 'description' => esc_html__( 'Add a simple social icons widget', 'creatink' ), ) // Args
 			);
 		}
 		
@@ -290,8 +290,8 @@ if(!( class_exists('malefic_Instagram_Widget') )){
 		public function __construct(){
 			parent::__construct(
 				'malefic-instagram-widget', // Base ID
-				esc_html__('TommusRhodus: Instagram Widget', 'malefic'), // Name
-				array( 'description' => esc_html__( 'Add a simple Instagram feed widget', 'malefic' ), ) // Args
+				esc_html__('TommusRhodus: Instagram Widget', 'creatink'), // Name
+				array( 'description' => esc_html__( 'Add a simple Instagram feed widget', 'creatink' ), ) // Args
 			);
 		}
 	
@@ -365,17 +365,17 @@ if(!( class_exists('malefic_Instagram_Widget') )){
 		?>
 		
 			<p>
-				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Widget Title', 'malefic' ); ?></label> 
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Widget Title', 'creatink' ); ?></label> 
 				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 			</p>
 			
 			<p>
-				<label for="<?php echo $this->get_field_id( 'id' ); ?>"><?php esc_html_e( 'Numeric User ID', 'malefic' ); ?></label> 
+				<label for="<?php echo $this->get_field_id( 'id' ); ?>"><?php esc_html_e( 'Numeric User ID', 'creatink' ); ?></label> 
 				<input class="widefat" id="<?php echo $this->get_field_id( 'id' ); ?>" name="<?php echo $this->get_field_name( 'id' ); ?>" type="text" value="<?php echo esc_attr( $id ); ?>">
 			</p>
 			
 			<p>
-				<label for="<?php echo $this->get_field_id( 'username' ); ?>"><?php esc_html_e( 'Access Token', 'malefic' ); ?></label> 
+				<label for="<?php echo $this->get_field_id( 'username' ); ?>"><?php esc_html_e( 'Access Token', 'creatink' ); ?></label> 
 				<input class="widefat" id="<?php echo $this->get_field_id( 'username' ); ?>" name="<?php echo $this->get_field_name( 'username' ); ?>" type="text" value="<?php echo esc_attr( $username ); ?>">
 			</p>
 			
@@ -396,4 +396,96 @@ if(!( class_exists('malefic_Instagram_Widget') )){
 	     register_widget( 'malefic_Instagram_Widget' );
 	}
 	add_action( 'widgets_init', 'ebor_framework_register_malefic_instagram');
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	PRODUCTS WIDGET
+/*-----------------------------------------------------------------------------------*/
+if(!( class_exists('ebor_creatink_product_Widget') )){
+	class ebor_creatink_product_Widget extends WP_Widget {
+		
+		function ebor_creatink_product_Widget(){
+			parent::__construct(
+				'ebor_creatink_product-widget', // Base ID
+				esc_html__('TommusRhodus: Recent Products', 'creatink'), // Name
+				array( 'description' => esc_html__( 'Add a simple recent products widget', 'creatink' ), ) // Args
+			);
+		}
+		
+		function widget($args, $instance)
+		{
+			extract($args);
+			$title = apply_filters('widget_title', $instance['title']);
+	
+			echo $before_widget;
+	
+			if($title) {
+				echo  $before_title.$title.$after_title;
+			} ?>
+	
+		    	<ul class="image-list">
+			    	<?php 
+			    		$widget_query = new WP_Query(
+			    			array(
+			    				'post_type' => 'product',
+			    				'posts_per_page' => $instance['amount']
+			    			)
+			    		);
+			    		if( $widget_query->have_posts() ) : while ( $widget_query->have_posts() ): $widget_query->the_post(); 
+			    	?>
+			    	  
+			    		<li>
+			    		  <figure class="overlay icon-overlay small"> 
+			    		  <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a> 
+			    		  </figure>
+			    		  <div class="post-content">
+			    		  	<h6 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
+			    		    <div class="meta"><span class="date"><?php the_time( get_option('date_format') ); ?> </span> </div>			    		    
+			    		  </div>
+			    		</li>
+			    	              
+			    	<?php 
+			    		endwhile; 
+			    		endif; 
+			    		wp_reset_postdata(); 
+			    	?>
+		    	</ul>
+			
+			<?php echo $after_widget;
+		}
+		
+		function update($new_instance, $old_instance)
+		{
+			$instance = $old_instance;
+	
+			$instance['title'] = strip_tags($new_instance['title']);
+			if( is_numeric($new_instance['amount']) ){
+				$instance['amount'] = $new_instance['amount'];
+			} else {
+				$new_instance['amount'] = '3';
+			}
+	
+			return $instance;
+		}
+	
+		function form($instance)
+		{
+			$defaults = array('title' => 'Recent Products', 'amount' => '3');
+			$instance = wp_parse_args((array) $instance, $defaults); ?>
+			
+			<p>
+				<label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
+				<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $instance['title']; ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id('amount'); ?>">Amount of Posts:</label>
+				<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('amount'); ?>" name="<?php echo $this->get_field_name('amount'); ?>" value="<?php echo $instance['amount']; ?>" />
+			</p>
+		<?php
+		}
+	}
+	function ebor_framework_register_ebor_creatink_product(){
+	     register_widget( 'ebor_creatink_product_Widget' );
+	}
+	add_action( 'widgets_init', 'ebor_framework_register_ebor_creatink_product');
 }
