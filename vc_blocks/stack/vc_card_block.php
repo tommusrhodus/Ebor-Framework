@@ -104,6 +104,10 @@ function ebor_cards_shortcode( $atts, $content = null ) {
 		
 		$output = '<div class="'. esc_attr($custom_css_class) .' feature feature-4 boxed boxed--lg boxed--border"><span class="icon '. $icon .'"></span>'. do_shortcode(htmlspecialchars_decode($content)) .'</div>';	
 		
+	} elseif( 'large-button-image' == $layout ){
+		
+		$output = '<div class="'. esc_attr($custom_css_class) .'">'. wp_get_attachment_image( $image, 'large' ) .'<div class="feature feature-4 boxed boxed--lg boxed--border">'. do_shortcode(htmlspecialchars_decode($content)) .'</div></div>';	
+		
 	} elseif( 'side-icon' == $layout ){
 		
 		$label = ($middle) ? ' <span class="label">'. $middle .'</span>' : false;
@@ -228,6 +232,7 @@ function ebor_cards_shortcode_vc() {
 						'Featured & Large Icon (Grey)' => 'large-icon',
 						'Featured & Large Icon (Colour)' => 'large-icon-colour',
 						'Large Padding & Button' => 'large-button',
+						'Large Padding, Image & Button' => 'large-button-image',
 						'Large Icon on Left' => 'side-icon',
 						'Small Basic & Top Icon' => 'small-top-icon',
 						'Background Image With Title & Link' => 'image-link',
