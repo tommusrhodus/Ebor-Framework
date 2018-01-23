@@ -102,10 +102,10 @@ add_shortcode( 'creatink_counter_block', 'ebor_counter_block_shortcode' );
  */
 function ebor_counter_block_shortcode_vc() {
 	
-	$icons = array_keys(array('Install Ebor Framework' => 'Install Ebor Framework'));
+	$icons = array_values(array('Install Ebor Framework' => 'Install Ebor Framework'));
 	
 	if( function_exists('ebor_get_icons') ){
-		$icons = array_keys(ebor_get_icons());	
+		$icons = array_values(ebor_get_icons());	
 	}
 	
 	vc_map( 
@@ -129,13 +129,13 @@ function ebor_counter_block_shortcode_vc() {
 				),
 				array(
 					"type" => "textfield",
-					"heading" => esc_html__("Title", 'creatink'),
+					"heading" => esc_html__("Number To Count To", 'creatink'),
 					"param_name" => "title",
 					'holder' => 'div'
 				),
 				array(
 					"type" => "textfield",
-					"heading" => esc_html__("Description", 'creatink'),
+					"heading" => esc_html__("Description Text", 'creatink'),
 					"param_name" => "description",
 					'holder' => 'div'
 				),

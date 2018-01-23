@@ -18,7 +18,7 @@ function ebor_framework_register_creatink_blocks(){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/creatink/vc_countdown_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/creatink/vc_footer_social_icons_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/creatink/vc_icon_and_text_block.php');
-	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/creatink/vc_image_hover_block.php');
+	//require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/creatink/vc_image_hover_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/creatink/vc_lightbox_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/creatink/vc_login_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/creatink/vc_media_player_block.php');

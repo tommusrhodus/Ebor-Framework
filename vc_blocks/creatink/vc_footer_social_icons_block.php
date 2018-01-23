@@ -28,7 +28,14 @@ function ebor_footer_social_icons_shortcode_vc() {
 			"base" => "creatink_footer_social_icons",
 			"category" => esc_html__('creatink WP Theme', 'creatink'),
 			'description' => 'Show the social icons set by your footer settings',
-			"params" => array()
+			"params" => array(
+				array(
+					"type" => "",
+					"heading" => esc_html__("Notice", 'creatink'),
+					"param_name" => "custom_css_class",
+					"description" => 'This blocks uses the social icons settings in "apperance => customise => footer settings" to populate itself.',
+				),
+			)
 		) 
 	);
 }

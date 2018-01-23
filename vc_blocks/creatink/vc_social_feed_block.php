@@ -7,8 +7,12 @@ function ebor_social_feed_block_shortcode( $atts, $content = null ) {
 	extract( 
 		shortcode_atts( 
 			array(
-				'title' => '',
-				'layout' => 'instagram'
+				'layout'       => 'instagram',
+				'insta_id'     => '1215763826',
+				'insta_access' => '1215763826.f1627ea.512d3a9b334a4c91ac2e83d4f4d9b291',
+				'flickr_id'    => '51789731@N07',
+				'drib_id'      => 'gustavholtz',
+				'drib_access'  => 'f739579ebb235a0e0456abbb6381e7f8a0d92ff198796ae8deed27c64d6debeb'
 			), $atts 
 		) 
 	);
@@ -25,8 +29,8 @@ function ebor_social_feed_block_shortcode( $atts, $content = null ) {
 					    target: \'instafeed\',
 					    get: \'user\',
 					    limit: 6,
-					    userId: 1215763826,
-					    accessToken: \'1215763826.f1627ea.512d3a9b334a4c91ac2e83d4f4d9b291\',
+					    userId: '. $insta_id .',
+					    accessToken: \''. $insta_access .'\',
 					    resolution: \'low_resolution\',
 					    template: \'<div class="item col-xs-6 col-sm-4 col-md-2"><figure class="overlay overlay1"><a href="{{link}}" target="_blank"></a><img src="{{image}}" /><figcaption><i class="et-link from-top icon-xs"></i></figcaption></figure></div>\',
 					    after: function() {
@@ -51,7 +55,7 @@ function ebor_social_feed_block_shortcode( $atts, $content = null ) {
 					jQuery(\'.flickr-feed\').dcFlickr({
 					    limit: 6,
 					    q: {
-					        id: \'51789731@N07\',
+					        id: \''. $flick_id .'\',
 					        lang: \'en-us\',
 					        format: \'json\',
 					        jsoncallback: \'?\'
@@ -74,9 +78,9 @@ function ebor_social_feed_block_shortcode( $atts, $content = null ) {
 				jQuery(document).ready(function() {
 					if( jQuery(\'.dribbble-feed\').length ){
 						
-						jQuery.jribbble.setToken(\'f739579ebb235a0e0456abbb6381e7f8a0d92ff198796ae8deed27c64d6debeb\');
+						jQuery.jribbble.setToken(\''. $drib_access .'\');
 						
-						jQuery.jribbble.users(\'gustavholtz\').shots({per_page: 6}).then(function(shots) {
+						jQuery.jribbble.users(\''. $drib_id .'\').shots({per_page: 6}).then(function(shots) {
 						  var html = [];
 						  
 						  shots.forEach(function(shot) {
@@ -122,6 +126,36 @@ function ebor_social_feed_block_shortcode_vc() {
 						'Flickr'    => 'flickr',
 						'Dribbble'  => 'dribbble'
 					)
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Instagram Numeric User ID", 'malefic'),
+					"param_name" => "insta_id"
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Instagram Access Token", 'malefic'),
+					"param_name" => "insta_access",
+					'description' => 'This is the Instagram block, it will grab your latest Instagram images. For this to work, the block requires you enter a numeric ID in the correct field, and also an access token in the correct field.<br /><br />
+					To set up an access token, please follow <a href="https://tommusrhodus.ticksy.com/article/7566" target="_blank">these instructions</a> carefully<br /><br />
+					Once you have an access token, visit the following URL (replacing ACCESS-TOKEN with your own numeric token) and the last parameter on the resulting screen will be your numeric user ID: <code>https://api.instagram.com/v1/users/self/?access_token=ACCESS-TOKEN</code>'
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Flickr Numeric User ID", 'malefic'),
+					"param_name" => "flickr_id",
+					'description' => '<code>IMPORTANT NOTE:</code> This is the Flickr block, it will grab your latest Flickr images. For this to work, the block requires you enter a numeric ID in the correct field. Please grab your numeric Flickr ID from here: <a href="http://idgettr.com/" target="_blank">http://idgettr.com/</a>'
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Dribbble Numeric User ID", 'malefic'),
+					"param_name" => "drib_id"
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Dribbble Access Token", 'malefic'),
+					"param_name" => "drib_access",
+					'description' => 'To fetch your own Dribbble Shots, first register an application <a href="https://dribbble.com/account/applications/new" target="_blank">here</a>. Then add your ID and access token to the fields above.'
 				),
 			)
 		) 
