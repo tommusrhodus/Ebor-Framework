@@ -87,7 +87,7 @@ function ebor_accordion_shortcode_vc() {
 	vc_map( 
 		array(
 			"icon" => 'creatink-vc-block',
-		    'name'                    => esc_html__( 'accordion' , 'creatink' ),
+		    'name'                    => esc_html__( 'Accordion' , 'creatink' ),
 		    'base'                    => 'creatink_accordion',
 		    'description'             => esc_html__( 'Create Accordion Content', 'creatink' ),
 		    'as_parent'               => array('only' => 'creatink_accordion_content'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)

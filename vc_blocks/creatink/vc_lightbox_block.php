@@ -108,7 +108,7 @@ function ebor_lightbox_block_shortcode_vc() {
 	vc_map( 
 		array(
 			"icon" => 'creatink-vc-block',
-			"name" => esc_html__("lightbox", 'creatink'),
+			"name" => esc_html__("Lightbox", 'creatink'),
 			"base" => "creatink_lightbox_block",
 			"category" => esc_html__('creatink WP Theme', 'creatink'),
 			'description' => 'lightbox elements for lightboxs.',
