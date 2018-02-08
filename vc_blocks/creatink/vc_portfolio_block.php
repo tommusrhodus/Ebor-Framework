@@ -9,21 +9,29 @@ function ebor_portfolio_shortcode( $atts ) {
 	extract( 
 		shortcode_atts( 
 			array(
-				'pppage'       => '6',
-				'filter'       => 'all',
-				'layout'       => 'classic-grid',
-				'filter_align' => 'text-center'
+				'pppage'          => '6',
+				'filter'          => 'all',
+				'layout'          => 'classic-grid',
+				'filter_align'    => 'text-center',
+				'show_pagination' => 'no'
 			), $atts 
 		) 
 	);
+	
+	if( is_front_page() ) { 
+		$paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1; 
+	} else { 
+		$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; 
+	}
 	
 	/**
 	 * Setup post query
 	 */
 	$query_args = array(
-		'post_type' => 'portfolio',
-		'post_status' => 'publish',
-		'posts_per_page' => $pppage
+		'post_type'      => 'portfolio',
+		'post_status'    => 'publish',
+		'posts_per_page' => $pppage,
+		'paged'          => $paged
 	);
 	
 	//Hide current post ID from the loop if we're in a singular view
@@ -52,17 +60,19 @@ function ebor_portfolio_shortcode( $atts ) {
 		$query_args['tax_query'] = array(
 			array(
 				'taxonomy' => 'portfolio_category',
-				'field' => 'slug',
-				'terms' => $filter
+				'field'    => 'slug',
+				'terms'    => $filter
 			)
 		);	
 		
 	}
 	
-	$old_query = $wp_query;
-	$old_post = $post;
-	$wp_query = new WP_Query( $query_args );
+	$old_query                      = $wp_query;
+	$old_post                       = $post;
+	$wp_query                       = new WP_Query( $query_args );
 	$wp_query->{"filter_alignment"} = $filter_align;
+	$wp_query->{"filter"}           = $filter;
+	$wp_query->{"show_pagination"}  = $show_pagination;
 	
 	ob_start();
 	
@@ -73,7 +83,7 @@ function ebor_portfolio_shortcode( $atts ) {
 	
 	wp_reset_postdata();
 	$wp_query = $old_query;
-	$post = $old_post;
+	$post     = $old_post;
 	
 	return $output;
 }
@@ -85,33 +95,42 @@ add_shortcode( 'creatink_portfolio', 'ebor_portfolio_shortcode' );
 function ebor_portfolio_shortcode_vc() {
 	vc_map( 
 		array(
-			"icon" => 'creatink-vc-block',
-			"name" => esc_html__("Portfolio Feeds", 'creatink'),
-			"base" => "creatink_portfolio",
-			"category" => esc_html__('creatink WP Theme', 'creatink'),
+			"icon"        => 'creatink-vc-block',
+			"name"        => esc_html__("Portfolio Feeds", 'creatink'),
+			"base"        => "creatink_portfolio",
+			"category"    => esc_html__('creatink WP Theme', 'creatink'),
 			'description' => 'Show portfolio posts with layout options.',
-			"params" => array(
+			"params"      => array(
 				array(
-					"type" => "textfield",
-					"heading" => esc_html__("Show How Many Posts?", 'creatink'),
+					"type"       => "textfield",
+					"heading"    => esc_html__("Show How Many Posts?", 'creatink'),
 					"param_name" => "pppage",
-					"value" => '6'
+					"value"      => '6'
 				),
 				array(
-					"type" => "dropdown",
-					"heading" => esc_html__("Portfolio Display Type", 'creatink'),
+					"type"       => "dropdown",
+					"heading"    => esc_html__("Portfolio Display Type", 'creatink'),
 					"param_name" => "layout",
-					"value" => ebor_get_portfolio_layouts()
+					"value"      => ebor_get_portfolio_layouts()
 				),
 				array(
-					"type" => "dropdown",
-					"heading" => esc_html__("Filter Alignment/Display", 'creatink'),
+					"type"       => "dropdown",
+					"heading"    => esc_html__("Filter Alignment/Display", 'creatink'),
 					"param_name" => "filter_align",
-					"value" => array(
+					"value"      => array(
 						'Align Center' => 'text-center',
-						'Align Left' => 'text-left',
+						'Align Left'   => 'text-left',
 						'Hide Filters' => 'hidden'
 
+					),
+				),
+				array(
+					"type"       => "dropdown",
+					"heading"    => esc_html__("Show Pagination?", 'creatink'),
+					"param_name" => "show_pagination",
+					"value"      => array(
+						'No'  => 'no',
+						'Yes' => 'yes'
 					),
 				)
 			)
