@@ -21,36 +21,41 @@ if(!( class_exists('ebor_gaze_popular_Widget') )){
 			if($title) {
 				echo  $before_title.$title.$after_title;
 			} ?>
-	
-		    	<ul class="image-list">
-			    	<?php 
-			    		$widget_query = new WP_Query(
-			    			array(
-			    				'post_type' => 'post',
-			    				'orderby' => 'comment_count',
-			    				'order' => 'DESC',
-			    				'posts_per_page' => $instance['amount']
-			    			)
-			    		);
-			    		if( $widget_query->have_posts() ) : while ( $widget_query->have_posts() ): $widget_query->the_post(); 
-			    	?>
-			    	  
-			    		<li>
-			    		  <figure class="overlay icon-overlay small"> 
-			    		  <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a> 
-			    		  </figure>
-			    		  <div class="post-content">
-			    		  	<h6 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
-			    		    <div class="meta"><span class="date"><?php the_time( get_option('date_format') ); ?> </span> </div>			    		    
-			    		  </div>
-			    		</li>
-			    	              
-			    	<?php 
-			    		endwhile; 
-			    		endif; 
-			    		wp_reset_postdata(); 
-			    	?>
-		    	</ul>
+			
+				<div class="entry-list">
+			    	<ul>
+				    	<?php 
+				    		$widget_query = new WP_Query(
+				    			array(
+				    				'post_type' => 'post',
+				    				'orderby' => 'comment_count',
+				    				'order' => 'DESC',
+				    				'posts_per_page' => $instance['amount']
+				    			)
+				    		);
+				    		if( $widget_query->have_posts() ) : while ( $widget_query->have_posts() ): $widget_query->the_post(); 
+				    	?>
+				    	  
+				    		<li class="entry-li">
+								<article class="post-small clearfix">
+									<div class="entry">
+									<h3 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+										<ul class="entry-meta">
+											<li class="entry-date">
+												<span><?php the_time( get_option('date_format') ); ?></span>
+											</li>
+										</ul>
+									</div>
+								</article>
+				    		</li>
+				    	              
+				    	<?php 
+				    		endwhile; 
+				    		endif; 
+				    		wp_reset_postdata(); 
+				    	?>
+		    		</ul>
+		    	</div>
 			
 			<?php echo $after_widget;
 		}
@@ -306,7 +311,7 @@ if(!( class_exists('ebor_creatink_product_Widget') )){
 				echo  $before_title.$title.$after_title;
 			} ?>
 	
-		    	<ul class="image-list">
+		    	<ul class="product-list-widget">
 			    	<?php 
 			    		$widget_query = new WP_Query(
 			    			array(
@@ -315,17 +320,23 @@ if(!( class_exists('ebor_creatink_product_Widget') )){
 			    			)
 			    		);
 			    		if( $widget_query->have_posts() ) : while ( $widget_query->have_posts() ): $widget_query->the_post(); 
+
+			    		global $product;
 			    	?>
-			    	  
-			    		<li>
-			    		  <figure class="overlay icon-overlay small"> 
-			    		  <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a> 
-			    		  </figure>
-			    		  <div class="post-content">
-			    		  	<h6 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
-			    		    <div class="meta"><span class="date"><?php the_time( get_option('date_format') ); ?> </span> </div>			    		    
-			    		  </div>
-			    		</li>
+
+						<li class="clearfix">
+							<a href="<?php the_permalink(); ?>">
+								<?php the_post_thumbnail('thumbnail'); ?>
+								<span class="product-title"><?php the_title(); ?></span>
+							</a>
+							<span class="price">
+								<ins>
+									<?php if ( $price_html = $product->get_price_html() ) : ?>
+										<span class="ammount"><?php echo $price_html; ?></span>
+									<?php endif; ?>
+								</ins>
+							</span>
+						</li>			    
 			    	              
 			    	<?php 
 			    		endwhile; 
