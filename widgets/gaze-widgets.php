@@ -1,13 +1,13 @@
 <?php 
 
-if(!( class_exists('ebor_malefic_popular_Widget') )){
-	class ebor_malefic_popular_Widget extends WP_Widget {
+if(!( class_exists('ebor_gaze_popular_Widget') )){
+	class ebor_gaze_popular_Widget extends WP_Widget {
 		
-		function ebor_malefic_popular_Widget(){
+		function ebor_gaze_popular_Widget(){
 			parent::__construct(
-				'ebor_malefic_popular-widget', // Base ID
-				esc_html__('TommusRhodus: Popular Posts', 'creatink'), // Name
-				array( 'description' => esc_html__( 'Add a simple popular posts widget', 'creatink' ), ) // Args
+				'ebor_gaze_popular-widget', // Base ID
+				esc_html__('TommusRhodus: Popular Posts', 'gaze'), // Name
+				array( 'description' => esc_html__( 'Add a simple popular posts widget', 'gaze' ), ) // Args
 			);
 		}
 		
@@ -85,10 +85,10 @@ if(!( class_exists('ebor_malefic_popular_Widget') )){
 		<?php
 		}
 	}
-	function ebor_framework_register_ebor_malefic_popular(){
-	     register_widget( 'ebor_malefic_popular_Widget' );
+	function ebor_framework_register_ebor_gaze_popular(){
+	     register_widget( 'ebor_gaze_popular_Widget' );
 	}
-	add_action( 'widgets_init', 'ebor_framework_register_ebor_malefic_popular');
+	add_action( 'widgets_init', 'ebor_framework_register_ebor_gaze_popular');
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -100,8 +100,8 @@ if(!( class_exists('ebor_contact_Widget') )){
 		function ebor_contact_Widget(){
 			parent::__construct(
 				'ebor_contact-widget', // Base ID
-				esc_html__('TommusRhodus: Social Icons', 'creatink'), // Name
-				array( 'description' => esc_html__( 'Add a simple social icons widget', 'creatink' ), ) // Args
+				esc_html__('TommusRhodus: Social Icons', 'gaze'), // Name
+				array( 'description' => esc_html__( 'Add a simple social icons widget', 'gaze' ), ) // Args
 			);
 		}
 		
@@ -144,7 +144,7 @@ if(!( class_exists('ebor_contact_Widget') )){
 	    	<ul class="social social-bg social-s">
 	    		<?php
 	    			foreach( $links as $index => $link ){
-	    				echo '<li><a href="'. $link .'" target="_blank"><i class="et-'. $icons[$index] .'"></i></a></li>';
+	    				echo '<li><a href="'. $link .'" target="_blank"><i class="fa fa-'. $icons[$index] .'"></i></a></li>';
 	    			}
 	    		?>
 	
@@ -281,123 +281,6 @@ if(!( class_exists('ebor_contact_Widget') )){
 	add_action( 'widgets_init', 'ebor_framework_register_ebor_contact');
 }
 
-if(!( class_exists('malefic_Instagram_Widget') )){
-	class malefic_Instagram_Widget extends WP_Widget {
-	
-		/**
-		 * Sets up the widgets name etc
-		 */
-		public function __construct(){
-			parent::__construct(
-				'malefic-instagram-widget', // Base ID
-				esc_html__('TommusRhodus: Instagram Widget', 'creatink'), // Name
-				array( 'description' => esc_html__( 'Add a simple Instagram feed widget', 'creatink' ), ) // Args
-			);
-		}
-	
-		/**
-		 * Outputs the content of the widget
-		 *
-		 * @param array $args
-		 * @param array $instance
-		 */
-		public function widget( $args, $instance ) {
-			$defaults = array(
-				'title' => '',
-				'id' => '', 
-				'username' => ''
-			);
-			$instance = wp_parse_args((array) $instance, $defaults);
-			extract($instance);
-			echo $args['before_widget'];
-			
-			if($title)
-				echo  $args['before_title'].$title.$args['after_title'];
-				
-			echo '
-				<div class="tiles tiles-s instagram"><div id="instafeed-widget" class="items row row-offset-0"></div></div><!--/.tiles -->
-				<script type="text/javascript">
-					jQuery(window).load(function($) {
-						var instagramFeed2 = new Instafeed({
-						    target: \'instafeed-widget\',
-						    get: \'user\',
-						    limit: 6,
-						    userId: '. $id .',
-						    accessToken: \''. $username .'\',
-						    resolution: \'thumbnail\',
-						    template: \'<div class="item col-xs-4 col-sm-6 col-md-4"><figure class="overlay icon-overlay instagram"><a href="{{link}}" target="_blank"><img src="{{image}}" /></a></figure></div>\',
-						    after: function() {
-						        jQuery(\'#instafeed-widget figure.overlay a\').prepend(\'<span class="over"><span></span></span>\');
-						    },
-						    success: function(response){
-						    	response.data.forEach(function(e){
-						    		e.images.thumbnail = {
-						    			url: e.images.thumbnail.url.replace(\'150x150\', \'600x600\'),
-						    			width: 600,
-						    			height: 600
-						    		};
-						    	});
-						    }
-						});
-						jQuery(\'#instafeed-widget\').each(function() {
-						    instagramFeed2.run();
-						});
-					});
-				</script>
-			';
-			echo $args['after_widget'];
-		}
-	
-		/**
-		 * Outputs the options form on admin
-		 *
-		 * @param array $instance The widget options
-		 */
-		public function form( $instance ) {
-			
-			$defaults = array(
-				'title' => 'Instagram', 
-				'id' => '',
-				'username' => ''
-			);
-			$instance = wp_parse_args((array) $instance, $defaults);
-			extract($instance);
-		?>
-		
-			<p>
-				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Widget Title', 'creatink' ); ?></label> 
-				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
-			</p>
-			
-			<p>
-				<label for="<?php echo $this->get_field_id( 'id' ); ?>"><?php esc_html_e( 'Numeric User ID', 'creatink' ); ?></label> 
-				<input class="widefat" id="<?php echo $this->get_field_id( 'id' ); ?>" name="<?php echo $this->get_field_name( 'id' ); ?>" type="text" value="<?php echo esc_attr( $id ); ?>">
-			</p>
-			
-			<p>
-				<label for="<?php echo $this->get_field_id( 'username' ); ?>"><?php esc_html_e( 'Access Token', 'creatink' ); ?></label> 
-				<input class="widefat" id="<?php echo $this->get_field_id( 'username' ); ?>" name="<?php echo $this->get_field_name( 'username' ); ?>" type="text" value="<?php echo esc_attr( $username ); ?>">
-			</p>
-			
-		<?php 
-		}
-	
-		/**
-		 * Processing widget options on save
-		 *
-		 * @param array $new_instance The new options
-		 * @param array $old_instance The previous options
-		 */
-		public function update( $new_instance, $old_instance ) {
-			return $new_instance;
-		}
-	}
-	function ebor_framework_register_malefic_instagram(){
-	     register_widget( 'malefic_Instagram_Widget' );
-	}
-	add_action( 'widgets_init', 'ebor_framework_register_malefic_instagram');
-}
-
 /*-----------------------------------------------------------------------------------*/
 /*	PRODUCTS WIDGET
 /*-----------------------------------------------------------------------------------*/
@@ -407,8 +290,8 @@ if(!( class_exists('ebor_creatink_product_Widget') )){
 		function ebor_creatink_product_Widget(){
 			parent::__construct(
 				'ebor_creatink_product-widget', // Base ID
-				esc_html__('TommusRhodus: Recent Products', 'creatink'), // Name
-				array( 'description' => esc_html__( 'Add a simple recent products widget', 'creatink' ), ) // Args
+				esc_html__('TommusRhodus: Recent Products', 'gaze'), // Name
+				array( 'description' => esc_html__( 'Add a simple recent products widget', 'gaze' ), ) // Args
 			);
 		}
 		
