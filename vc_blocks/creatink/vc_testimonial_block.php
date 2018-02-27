@@ -29,7 +29,7 @@ function ebor_testimonial_shortcode( $atts ) {
 		$query_args['tax_query'] = array(
 			array(
 				'taxonomy' => 'testimonial_category',
-				'field' => 'id',
+				'field' => 'slug',
 				'terms' => $filter
 			)
 		);
