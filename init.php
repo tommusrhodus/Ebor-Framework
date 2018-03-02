@@ -66,7 +66,8 @@ $defaults = array(
 	'foundry_vc_shortcodes'    => '0',
 	'griddr_vc_shortcodes'     => '0',
 	'candar_vc_shortcodes'     => '0',
-	'creatink_vc_shortcodes'   => '0'
+	'creatink_vc_shortcodes'   => '0',
+	'gaze_vc_shortcodes'       => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -173,6 +174,9 @@ if( '1' == $framework_options['candar_vc_shortcodes'] ){
 }
 if( '1' == $framework_options['creatink_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/creatink/init.php' );	
+}
+if( '1' == $framework_options['gaze_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/gaze/init.php' );	
 }
 
 /**
