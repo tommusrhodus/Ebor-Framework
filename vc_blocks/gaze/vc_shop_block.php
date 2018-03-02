@@ -94,7 +94,7 @@ function ebor_shop_shortcode( $atts ) {
 	
 	return $output;
 }
-add_shortcode( 'gaze_post', 'ebor_shop_shortcode' );
+add_shortcode( 'gaze_shop', 'ebor_shop_shortcode' );
 
 /**
  * The VC Functions
@@ -104,7 +104,7 @@ function ebor_shop_shortcode_vc() {
 		array(
 			"icon"        => 'gaze-vc-block',
 			"name"        => esc_html__( "Shop Feeds", 'gaze' ),
-			"base"        => "gaze_post",
+			"base"        => "gaze_shop",
 			"category"    => esc_html__( 'Gaze WP Theme', 'gaze' ),
 			'description' => 'Show post posts with layout options.',
 			"params"      => array(
