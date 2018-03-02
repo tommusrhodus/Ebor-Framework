@@ -51,6 +51,7 @@ $defaults = array(
 	'foundry_widgets'          => '0',
 	'malefic_widgets'          => '0',
 	'creatink_widgets'         => '0',
+	'gaze_widgets'			   => '0',
 	'foundry_shortcodes'       => '0',
 	'malory_vc_shortcodes'     => '0',
 	'peekskill_vc_shortcodes'  => '0',
@@ -211,6 +212,9 @@ if( '1' == $framework_options['malefic_widgets'] ){
 }
 if( '1' == $framework_options['creatink_widgets'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'widgets/creatink-widgets.php' );	
+}
+if( '1' == $framework_options['gaze_widgets'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'widgets/gaze-widgets.php' );	
 }
 
 /**
