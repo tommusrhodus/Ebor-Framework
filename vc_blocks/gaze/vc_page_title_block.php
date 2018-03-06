@@ -4,7 +4,9 @@
  * The Shortcode
  */
 function ebor_page_title_shortcode( $atts, $content = null ) {
-
+	
+	global $post;
+	
 	ebor_page_title( 
 		get_the_title(), 
 		get_the_post_thumbnail_url( $post->ID, 'full' ) 
