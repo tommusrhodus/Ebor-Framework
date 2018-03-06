@@ -43,6 +43,20 @@ function ebor_icon_and_text_block_shortcode( $atts, $content = null ) {
 			</div> 
 		';
 		
+	} elseif( 'top-color-centered' == $layout ){
+		
+		$output = '
+			<div class="'. $custom_css_class .' service-item-box style-5 text-center mb-40">
+			
+				<a href="'. esc_url( $link ) .'">
+					<i class="'. esc_attr( $icon ) .'"></i>
+				</a>
+				
+				<div class="service-text">'. do_shortcode( $content ) .'</div>
+			
+			</div> 
+		';
+		
 	} elseif( 'side-background' == $layout ){
 		
 		$output = '
@@ -145,6 +159,7 @@ function ebor_icon_and_text_block_shortcode_vc() {
 					"value"      => array(
 						'Top Icon Grey Background'   => 'top-basic',
 						'Top Icon Color'             => 'top-color',
+						'Top Icon Color Centered'	 => 'top-color-centered',
 						'Side Icon Color Background' => 'side-background',
 						'Side Icon Color'            => 'side-color',
 						'Top Icon Arrow'             => 'top-arrow',
