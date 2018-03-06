@@ -13,6 +13,7 @@ function ebor_framework_register_gaze_blocks(){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/gaze/vc_counter_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/gaze/vc_flip_box_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/gaze/vc_icon_box_block.php');
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/gaze/vc_image_and_text_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/gaze/vc_image_lightbox_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/gaze/vc_modal_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/gaze/vc_modal_video_block.php');
