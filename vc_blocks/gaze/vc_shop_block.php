@@ -39,6 +39,7 @@ function ebor_shop_shortcode( $atts ) {
 	$old_query = $wp_query;
 	$old_post  = $post;
 	$wp_query  = new WP_Query( $query_args );
+	$wp_query->{"is_shortcode"} = 'yes';
 	
 	ob_start();
 	
