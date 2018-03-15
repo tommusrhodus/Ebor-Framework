@@ -91,6 +91,97 @@ if(!( class_exists('ebor_malefic_popular_Widget') )){
 	add_action( 'widgets_init', 'ebor_framework_register_ebor_malefic_popular');
 }
 
+if(!( class_exists('ebor_malefic_recent_Widget') )){
+	class ebor_malefic_recent_Widget extends WP_Widget {
+		
+		function ebor_malefic_recent_Widget(){
+			parent::__construct(
+				'ebor_malefic_recent-widget', // Base ID
+				esc_html__('TommusRhodus: Recent Posts', 'creatink'), // Name
+				array( 'description' => esc_html__( 'Add a simple recent posts widget', 'creatink' ), ) // Args
+			);
+		}
+		
+		function widget($args, $instance)
+		{
+			extract($args);
+			$title = apply_filters('widget_title', $instance['title']);
+	
+			echo $before_widget;
+	
+			if($title) {
+				echo  $before_title.$title.$after_title;
+			} ?>
+	
+		    	<ul class="image-list">
+			    	<?php 
+			    		$widget_query = new WP_Query(
+			    			array(
+			    				'post_type' => 'post',
+			    				'orderby' => 'post_date',
+			    				'order' => 'DESC',
+			    				'posts_per_page' => $instance['amount']
+			    			)
+			    		);
+			    		if( $widget_query->have_posts() ) : while ( $widget_query->have_posts() ): $widget_query->the_post(); 
+			    	?>
+			    	  
+			    		<li>
+			    		  <figure class="overlay icon-overlay small"> 
+			    		  <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a> 
+			    		  </figure>
+			    		  <div class="post-content">
+			    		  	<h6 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
+			    		    <div class="meta"><span class="date"><?php the_time( get_option('date_format') ); ?> </span> </div>			    		    
+			    		  </div>
+			    		</li>
+			    	              
+			    	<?php 
+			    		endwhile; 
+			    		endif; 
+			    		wp_reset_postdata(); 
+			    	?>
+		    	</ul>
+			
+			<?php echo $after_widget;
+		}
+		
+		function update($new_instance, $old_instance)
+		{
+			$instance = $old_instance;
+	
+			$instance['title'] = strip_tags($new_instance['title']);
+			if( is_numeric($new_instance['amount']) ){
+				$instance['amount'] = $new_instance['amount'];
+			} else {
+				$new_instance['amount'] = '3';
+			}
+	
+			return $instance;
+		}
+	
+		function form($instance)
+		{
+			$defaults = array('title' => 'Recent Posts', 'amount' => '3');
+			$instance = wp_parse_args((array) $instance, $defaults); ?>
+			
+			<p>
+				<label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
+				<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $instance['title']; ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id('amount'); ?>">Amount of Posts:</label>
+				<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('amount'); ?>" name="<?php echo $this->get_field_name('amount'); ?>" value="<?php echo $instance['amount']; ?>" />
+			</p>
+		<?php
+		}
+	}
+	function ebor_framework_register_ebor_malefic_recent(){
+	     register_widget( 'ebor_malefic_recent_Widget' );
+	}
+	add_action( 'widgets_init', 'ebor_framework_register_ebor_malefic_recent');
+}
+
 /*-----------------------------------------------------------------------------------*/
 /*	CONTACT WIDGET
 /*-----------------------------------------------------------------------------------*/
