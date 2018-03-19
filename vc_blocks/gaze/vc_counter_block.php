@@ -86,9 +86,10 @@ function ebor_counter_block_shortcode_vc() {
 					'holder'     => 'div'
 				),
 				array(
-					"type"       => "textfield",
+					"type"       => "ebor_icons",
 					"heading"    => esc_html__( "Icon", 'gaze' ),
-					"param_name" => "icon"
+					"param_name" => "icon",
+					"value"      => $icons
 				),
 				array(
 					"type"       => "dropdown",

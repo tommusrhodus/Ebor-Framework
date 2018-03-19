@@ -86,12 +86,6 @@ add_shortcode( 'gaze_pricing_table', 'ebor_pricing_table_shortcode' );
  */
 function ebor_pricing_table_shortcode_vc() {
 	
-	$icons = array_values(array('Install Ebor Framework' => 'Install Ebor Framework'));
-	
-	if( function_exists('ebor_get_icons') ){
-		$icons = array_values(ebor_get_icons());	
-	}
-	
 	vc_map( 
 		array(
 			"icon"        => 'gaze-vc-block',

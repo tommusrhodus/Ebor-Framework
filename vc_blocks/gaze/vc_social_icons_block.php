@@ -3,19 +3,18 @@
 /**
  * The Shortcode
  * 
- * @toDo Actually hook this into the theme options
  */
 function ebor_footer_social_icons_shortcode( $atts ) {
 	
-	$output = '
-		<div class="social-icons rounded transparent large mt-20">
-			<a href="#"><i class="fa fa-twitter"></i></a>
-			<a href="#"><i class="fa fa-facebook"></i></a>
-			<a href="#"><i class="fa fa-google-plus"></i></a>
-			<a href="#"><i class="fa fa-linkedin"></i></a>
-			<a href="#"><i class="fa fa-vimeo"></i></a>
-		</div>
-	';
+	$output = '<div class="social-icons rounded transparent large mt-20">';
+	
+		for( $i = 1; $i < 6; $i++ ){
+			if( $url = get_option("footer_social_url_$i") ) {
+				$output .= '<a href="' . esc_url( $url ) . '" target="_blank"><i class="fa ' . esc_attr( get_option( "footer_social_icon_$i" ) ) . '"></i></a>';
+			}
+		} 
+
+	$output .= '</div>';
 	
 	return $output;
 	

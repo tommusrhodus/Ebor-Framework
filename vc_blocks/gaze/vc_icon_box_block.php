@@ -138,10 +138,10 @@ add_shortcode( 'gaze_icon_and_text_block', 'ebor_icon_and_text_block_shortcode' 
  */
 function ebor_icon_and_text_block_shortcode_vc() {
 	
-	$icons = array_values(array('Install Ebor Framework' => 'Install Ebor Framework'));
+	$icons = array_keys(array('Install Ebor Framework' => 'Install Ebor Framework'));
 	
 	if( function_exists('ebor_get_icons') ){
-		$icons = array_values(ebor_get_icons());	
+		$icons = array_keys(ebor_get_icons());	
 	}
 	
 	vc_map( 
@@ -168,9 +168,10 @@ function ebor_icon_and_text_block_shortcode_vc() {
 					)
 				),
 				array(
-					"type"       => "textfield",
+					"type"       => "ebor_icons",
 					"heading"    => esc_html__( "Icon", 'gaze' ),
-					"param_name" => "icon"
+					"param_name" => "icon",
+					"value"      => $icons
 				),
 				array(
 					"type"       => "textfield",

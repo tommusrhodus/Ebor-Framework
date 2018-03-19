@@ -148,10 +148,10 @@ add_action( 'vc_before_init', 'ebor_tabs_shortcode_vc' );
 // Nested Element
 function ebor_tabs_content_shortcode_vc() {
 	
-	$icons = array_values(array('Install Ebor Framework' => 'Install Ebor Framework'));
+	$icons = array_keys(array('Install Ebor Framework' => 'Install Ebor Framework'));
 	
 	if( function_exists('ebor_get_icons') ){
-		$icons = array_values(ebor_get_icons());	
+		$icons = array_keys(ebor_get_icons());	
 	}
 	
 	vc_map( 
@@ -165,10 +165,10 @@ function ebor_tabs_content_shortcode_vc() {
 		    'as_child'        => array('only' => 'gaze_tabs'),
 		    'params'          => array(
 		    	array(
-		    		"type"       => "textfield",
+		    		"type"       => "ebor_icons",
 		    		"heading"    => esc_html__("Icon", 'gaze'),
 		    		"param_name" => "icon",
-		    		"value"      => ''
+		    		"value"      => $icons
 		    	),
 		    	array(
 		    		"type"       => "textfield",
