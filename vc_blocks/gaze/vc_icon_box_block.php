@@ -141,7 +141,7 @@ function ebor_icon_and_text_block_shortcode_vc() {
 	$icons = array_values(array('Install Ebor Framework' => 'Install Ebor Framework'));
 	
 	if( function_exists('ebor_get_icons') ){
-		$icons = array_values(ebor_get_icons());	
+		$icons = array_values(array_flip(ebor_get_icons()));
 	}
 	
 	vc_map( 
@@ -168,9 +168,10 @@ function ebor_icon_and_text_block_shortcode_vc() {
 					)
 				),
 				array(
-					"type"       => "textfield",
-					"heading"    => esc_html__( "Icon", 'gaze' ),
-					"param_name" => "icon"
+					"type" => "ebor_icons",
+					"heading" => esc_html__("Icon", 'creatink'),
+					"param_name" => "icon",
+					"value" => $icons
 				),
 				array(
 					"type"       => "textfield",
