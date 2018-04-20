@@ -11,6 +11,7 @@ function ebor_post_shortcode( $atts ) {
 			array(
 				'pppage' => '4',
 				'filter' => 'all',
+				'tag'    => 'all',
 				'layout' => 'list',
 				'custom_css_class' => '',
 				'paging' => 'false',
@@ -54,10 +55,10 @@ function ebor_post_shortcode( $atts ) {
 			//WPML recommended, remove filter, then add back after
 			remove_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
 			
-			$filterClass = get_term_by('slug', $filter, 'category');
-			$ID = (int) apply_filters('wpml_object_id', (int) $filterClass->term_id, 'category', true);
+			$filterClass    = get_term_by('slug', $filter, 'category');
+			$ID             = (int) apply_filters('wpml_object_id', (int) $filterClass->term_id, 'category', true);
 			$translatedSlug = get_term_by('id', $ID, 'category');
-			$filter = $translatedSlug->slug;
+			$filter         = $translatedSlug->slug;
 			
 			//Adding filter back
 			add_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
@@ -71,6 +72,16 @@ function ebor_post_shortcode( $atts ) {
 			)
 		);
 		
+	}
+	
+	if(!( $tag == 'all' )){
+		$query_args['tax_query'] = array(
+			array(
+				'taxonomy' => 'post_tag',
+				'field'    => 'slug',
+				'terms'    => $tag
+			)
+		);
 	}
 	
 	$old_query = $wp_query;
