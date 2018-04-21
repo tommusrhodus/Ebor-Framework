@@ -6,13 +6,13 @@
  *
  * @category  WordPress_Plugin
  * @package   CMB2
- * @author    WebDevStudios
+ * @author    CMB2 team
  * @license   GPL-2.0+
- * @link      http://webdevstudios.com
+ * @link      https://cmb2.io
  */
 class CMB2_Type_Text_Date extends CMB2_Type_Picker_Base {
 
-	public function render() {
+	public function render( $args = array() ) {
 		$args = $this->parse_args( 'text_date', array(
 			'class'           => 'cmb2-text-small cmb2-datepicker',
 			'value'           => $this->field->get_timestamp_format(),

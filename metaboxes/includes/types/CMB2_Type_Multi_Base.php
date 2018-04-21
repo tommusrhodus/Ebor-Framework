@@ -6,29 +6,29 @@
  *
  * @category  WordPress_Plugin
  * @package   CMB2
- * @author    WebDevStudios
+ * @author    CMB2 team
  * @license   GPL-2.0+
- * @link      http://webdevstudios.com
+ * @link      https://cmb2.io
  */
 abstract class CMB2_Type_Multi_Base extends CMB2_Type_Base {
 
 	/**
 	 * Generates html for an option element
+	 *
 	 * @since  1.1.0
-	 * @param  array  $args Arguments array containing value, label, and checked boolean
+	 * @param  array $args Arguments array containing value, label, and checked boolean
 	 * @return string       Generated option element html
 	 */
 	public function select_option( $args = array() ) {
-		$args['value'] = ( is_array($args['label']) ) ? $args['label']['value'] : $args['value'];
-		$args['label'] = ( is_array($args['label']) ) ? $args['label']['name'] : $args['label'];
 		return sprintf( "\t" . '<option value="%s" %s>%s</option>', $args['value'], selected( isset( $args['checked'] ) && $args['checked'], true, false ), $args['label'] ) . "\n";
 	}
 
 	/**
 	 * Generates html for list item with input
+	 *
 	 * @since  1.1.0
-	 * @param  array  $args Override arguments
-	 * @param  int    $i    Iterator value
+	 * @param  array $args Override arguments
+	 * @param  int   $i    Iterator value
 	 * @return string       Gnerated list item html
 	 */
 	public function list_input( $args = array(), $i ) {
@@ -46,9 +46,10 @@ abstract class CMB2_Type_Multi_Base extends CMB2_Type_Base {
 
 	/**
 	 * Generates html for list item with checkbox input
+	 *
 	 * @since  1.1.0
-	 * @param  array  $args Override arguments
-	 * @param  int    $i    Iterator value
+	 * @param  array $args Override arguments
+	 * @param  int   $i    Iterator value
 	 * @return string       Gnerated list item html
 	 */
 	public function list_input_checkbox( $args, $i ) {
@@ -62,8 +63,9 @@ abstract class CMB2_Type_Multi_Base extends CMB2_Type_Base {
 
 	/**
 	 * Generates html for concatenated items
+	 *
 	 * @since  1.1.0
-	 * @param  array   $args Optional arguments
+	 * @param  array $args Optional arguments
 	 * @return string        Concatenated html items
 	 */
 	public function concat_items( $args = array() ) {
@@ -72,30 +74,30 @@ abstract class CMB2_Type_Multi_Base extends CMB2_Type_Base {
 		$method = isset( $args['method'] ) ? $args['method'] : 'select_option';
 		unset( $args['method'] );
 
-		$value = $field->escaped_value()
+		$value = null !== $field->escaped_value()
 			? $field->escaped_value()
 			: $field->get_default();
 
-		$concatenated_items = ''; $i = 1;
+		$value = CMB2_Utils::normalize_if_numeric( $value );
+
+		$concatenated_items = '';
+		$i = 1;
 
 		$options = array();
 		if ( $option_none = $field->args( 'show_option_none' ) ) {
-			$options[ '' ] = $option_none;
+			$options[''] = $option_none;
 		}
 		$options = $options + (array) $field->options();
 		foreach ( $options as $opt_value => $opt_label ) {
 
 			// Clone args & modify for just this item
 			$a = $args;
-			
-			$opt_value = ( is_array($opt_label) ) ? $opt_label['value'] : $opt_value;
-			$opt_label = ( is_array($opt_label) ) ? $opt_label['name'] : $opt_label;
 
 			$a['value'] = $opt_value;
 			$a['label'] = $opt_label;
 
 			// Check if this option is the value of the input
-			if ( $value == $opt_value ) {
+			if ( $value === CMB2_Utils::normalize_if_numeric( $opt_value ) ) {
 				$a['checked'] = 'checked';
 			}
 

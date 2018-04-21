@@ -1,6 +1,6 @@
 <?php
 
-if ( ! class_exists( 'CMB2_Bootstrap_2221', false ) ) {
+if ( ! class_exists( 'CMB2_Bootstrap_230_Trunk', false ) ) {
 
 	/**
 	 * Handles checking for and loading the newest version of CMB2
@@ -9,18 +9,19 @@ if ( ! class_exists( 'CMB2_Bootstrap_2221', false ) ) {
 	 *
 	 * @category  WordPress_Plugin
 	 * @package   CMB2
-	 * @author    WebDevStudios
+	 * @author    CMB2 team
 	 * @license   GPL-2.0+
-	 * @link      http://webdevstudios.com
+	 * @link      https://cmb2.io
 	 */
-	class CMB2_Bootstrap_2221 {
+	class CMB2_Bootstrap_230_Trunk {
 
 		/**
 		 * Current version number
+		 *
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		const VERSION = '2.2.2.1';
+		const VERSION = '2.3.0';
 
 		/**
 		 * Current version hook priority.
@@ -29,20 +30,20 @@ if ( ! class_exists( 'CMB2_Bootstrap_2221', false ) ) {
 		 * @var   int
 		 * @since 2.0.0
 		 */
-		const PRIORITY = 9981;
+		const PRIORITY = 9969;
 
 		/**
-		 * Single instance of the CMB2_Bootstrap_2221 object
+		 * Single instance of the CMB2_Bootstrap_230_Trunk object
 		 *
-		 * @var CMB2_Bootstrap_2221
+		 * @var CMB2_Bootstrap_230_Trunk
 		 */
 		public static $single_instance = null;
 
 		/**
-		 * Creates/returns the single instance CMB2_Bootstrap_2221 object
+		 * Creates/returns the single instance CMB2_Bootstrap_230_Trunk object
 		 *
 		 * @since  2.0.0
-		 * @return CMB2_Bootstrap_2221 Single instance object
+		 * @return CMB2_Bootstrap_230_Trunk Single instance object
 		 */
 		public static function initiate() {
 			if ( null === self::$single_instance ) {
@@ -93,20 +94,22 @@ if ( ! class_exists( 'CMB2_Bootstrap_2221', false ) ) {
 
 			$this->l10ni18n();
 
-			// Include helper functions
-			require_once 'includes/CMB2.php';
-			require_once 'includes/helper-functions.php';
+			// Include helper functions.
+			require_once CMB2_DIR . 'includes/CMB2_Base.php';
+			require_once CMB2_DIR . 'includes/CMB2.php';
+			require_once CMB2_DIR . 'includes/helper-functions.php';
 
-			// Now kick off the class autoloader
+			// Now kick off the class autoloader.
 			spl_autoload_register( 'cmb2_autoload_classes' );
 
-			// Kick the whole thing off
-			require_once 'bootstrap.php';
+			// Kick the whole thing off.
+			require_once( cmb2_dir( 'bootstrap.php' ) );
 			cmb2_bootstrap();
 		}
 
 		/**
 		 * Registers CMB2 text domain path
+		 *
 		 * @since  2.0.0
 		 */
 		public function l10ni18n() {
@@ -132,6 +135,6 @@ if ( ! class_exists( 'CMB2_Bootstrap_2221', false ) ) {
 	}
 
 	// Make it so...
-	CMB2_Bootstrap_2221::initiate();
+	CMB2_Bootstrap_230_Trunk::initiate();
 
-}
+}// End if().

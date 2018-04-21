@@ -8,7 +8,7 @@
  *
  * @category  WordPress_Plugin
  * @package   CMB2
- * @author    WebDevStudios
+ * @author    CMB2 team
  * @license   GPL-2.0+
  */
 class CMB2_Ajax {
@@ -22,6 +22,7 @@ class CMB2_Ajax {
 
 	/**
 	 * Instance of this class
+	 *
 	 * @since 2.2.2
 	 * @var object
 	 */
@@ -29,8 +30,9 @@ class CMB2_Ajax {
 
 	/**
 	 * Get the singleton instance of this class
+	 *
 	 * @since 2.2.2
-	 * @return object
+	 * @return CMB2_Ajax
 	 */
 	public static function get_instance() {
 		if ( ! ( self::$instance instanceof self ) ) {
@@ -42,6 +44,7 @@ class CMB2_Ajax {
 
 	/**
 	 * Constructor
+	 *
 	 * @since 2.2.0
 	 */
 	protected function __construct() {
@@ -53,6 +56,7 @@ class CMB2_Ajax {
 
 	/**
 	 * Handles our oEmbed ajax request
+	 *
 	 * @since  0.9.5
 	 * @return object oEmbed embed code | fallback | error message
 	 */
@@ -68,7 +72,7 @@ class CMB2_Ajax {
 
 		// Send back error if empty
 		if ( empty( $oembed_string ) ) {
-			wp_send_json_error( '<p class="ui-state-error-text">' . __( 'Please Try Again', 'cmb2' ) . '</p>' );
+			wp_send_json_error( '<p class="ui-state-error-text">' . esc_html__( 'Please Try Again', 'cmb2' ) . '</p>' );
 		}
 
 		// Set width of embed
@@ -78,7 +82,9 @@ class CMB2_Ajax {
 		$oembed_url = esc_url( $oembed_string );
 
 		// Set args
-		$embed_args = array( 'width' => $embed_width );
+		$embed_args = array(
+			'width' => $embed_width,
+		);
 
 		$this->ajax_update = true;
 
@@ -96,8 +102,9 @@ class CMB2_Ajax {
 
 	/**
 	 * Retrieves oEmbed from url/object ID
+	 *
 	 * @since  0.9.5
-	 * @param  array  $args      Arguments for method
+	 * @param  array $args      Arguments for method
 	 * @return string            html markup with embed or fallback
 	 */
 	public function get_oembed_no_edit( $args ) {
@@ -110,14 +117,14 @@ class CMB2_Ajax {
 
 		$args = wp_parse_args( $args, array(
 			'object_type' => 'post',
-			'oembed_args' => $this->embed_args,
+			'oembed_args' => array(),
 			'field_id'    => false,
 			'wp_error'    => false,
 		) );
 
 		$this->embed_args =& $args;
 
-		/**
+		/*
 		 * Set the post_ID so oEmbed won't fail
 		 * wp-includes/class-wp-embed.php, WP_Embed::shortcode()
 		 */
@@ -161,8 +168,9 @@ class CMB2_Ajax {
 
 	/**
 	 * Retrieves oEmbed from url/object ID
+	 *
 	 * @since  0.9.5
-	 * @param  array  $args      Arguments for method
+	 * @param  array $args      Arguments for method
 	 * @return string            html markup with embed or fallback
 	 */
 	public function get_oembed( $args ) {
@@ -170,11 +178,19 @@ class CMB2_Ajax {
 
 		// Send back our embed
 		if ( $oembed['embed'] && $oembed['embed'] != $oembed['fallback'] ) {
-			return '<div class="cmb2-oembed embed-status">' . $oembed['embed'] . '<p class="cmb2-remove-wrapper"><a href="#" class="cmb2-remove-file-button" rel="' . $oembed['args']['field_id'] . '">' . __( 'Remove Embed', 'cmb2' ) . '</a></p></div>';
+			return '<div class="cmb2-oembed embed-status">' . $oembed['embed'] . '<p class="cmb2-remove-wrapper"><a href="#" class="cmb2-remove-file-button" rel="' . $oembed['args']['field_id'] . '">' . esc_html__( 'Remove Embed', 'cmb2' ) . '</a></p></div>';
 		}
 
 		// Otherwise, send back error info that no oEmbeds were found
-		return '<p class="ui-state-error-text">' . sprintf( __( 'No oEmbed Results Found for %s. View more info at', 'cmb2' ), $oembed['fallback'] ) . ' <a href="http://codex.wordpress.org/Embeds" target="_blank">codex.wordpress.org/Embeds</a>.</p>';
+		return sprintf(
+			'<p class="ui-state-error-text">%s</p>',
+			sprintf(
+				/* translators: 1: results for. 2: link to codex.wordpress.org/Embeds */
+				esc_html__( 'No oEmbed Results Found for %1$s. View more info at %2$s.', 'cmb2' ),
+				$oembed['fallback'],
+				'<a href="https://codex.wordpress.org/Embeds" target="_blank">codex.wordpress.org/Embeds</a>'
+			)
+		);
 	}
 
 	/**
@@ -230,9 +246,8 @@ class CMB2_Ajax {
 	/**
 	 * Gets/updates the cached oEmbed value from/to relevant object metadata (vs postmeta)
 	 *
-	 * @since  1.3.0
-	 * @param  string  $meta_key   Postmeta's key
-	 * @param  mixed   $meta_value (Optional) value of the postmeta to be saved
+	 * @since 1.3.0
+	 * @param string $meta_key Postmeta's key
 	 */
 	protected function cache_action( $meta_key ) {
 		$func_args = func_get_args();
@@ -252,7 +267,7 @@ class CMB2_Ajax {
 		} else {
 
 			$args = array( $this->object_type, $this->object_id, $meta_key );
-			$args[] = 'update' === $action ? $func_args : true;
+			$args[] = 'update' === $action ? $func_args[1] : true;
 
 			// Cache the result to our metadata
 			$status = call_user_func_array( $action . '_metadata', $args );
@@ -264,17 +279,18 @@ class CMB2_Ajax {
 	/**
 	 * Hooks in when options-page data is saved to clean stale
 	 * oembed cache data from the option value.
+	 *
 	 * @since  2.2.0
-	 * @param  string  $option_key The options-page option key
+	 * @param  string $option_key The options-page option key
 	 * @return void
 	 */
 	public static function clean_stale_options_page_oembeds( $option_key ) {
 		$options = cmb2_options( $option_key )->get_options();
+		$modified = false;
 		if ( is_array( $options ) ) {
 
 			$ttl = apply_filters( 'oembed_ttl', DAY_IN_SECONDS, '', array(), 0 );
 			$now = time();
-			$modified = false;
 
 			foreach ( $options as $key => $value ) {
 				// Check for cached oembed data
@@ -287,14 +303,15 @@ class CMB2_Ajax {
 						unset( $options[ $key ] );
 						unset( $options[ str_replace( '_oembed_time_', '_oembed_', $key ) ] );
 					}
-				}
-				// Remove the cached unknown values
+				} // End if().
+				// Remove the cached unknown values.
 				elseif ( '{{unknown}}' === $value ) {
 					$modified = true;
 					unset( $options[ $key ] );
 				}
 			}
 		}
+
 		// Update the option and remove stale cache data
 		if ( $modified ) {
 			$updated = cmb2_options( $option_key )->set( $options );
