@@ -274,7 +274,7 @@ if( $displays['team_slug'] ){ $slug = $displays['team_slug']; } else { $slug = '
         'capability_type' => 'post'
     );
 
-    register_post_type( 'team', apply_filters( 'ebor_cpt_init', $args, "team") ); 
+    register_post_type( 'team', apply_filters( 'ebor_cpt_init', $args, "team" ) ); 
 }
 
 function ebor_framework_create_team_taxonomies(){
