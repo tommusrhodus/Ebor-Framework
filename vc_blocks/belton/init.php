@@ -14,7 +14,8 @@ function ebor_framework_register_belton_blocks(){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/belton/vc_icon_and_text_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/belton/vc_tabs_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/belton/vc_team_feed_block.php');
-	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/belton/vc_pricing_table_block.php');
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/belton/vc_pricing_table_block.php');	
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/belton/vc_image_gallery_block.php');
 }
 
 function ebor_framework_belton_init(){

@@ -16,13 +16,13 @@ function ebor_intro_shortcode( $atts, $content = null ) {
 				'caption' 			=> '',
 				'color' 			=> '',
 				'content_color'		=> 'white-text',
-				'overlay_opacity'	=> '0.6'
+				'overlay_opacity'	=> '0.3'
 			), $atts 
 		) 
 	);
 
 	$bg_image = wp_get_attachment_image_src($image, 'full');
-	$colour_output = ( $color ) ? 'style="background-color: '. $color .'; opacity: 0.6;"' : '';
+	$colour_output = ( $color ) ? 'style="background-color: '. $color .'; opacity: '.$overlay_opacity.'"' : '';
 
 	if($content_placement == 'left') {
 		$column_class = 'col-lg-4 col-md-6 col-md-offset-1';

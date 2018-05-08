@@ -79,9 +79,9 @@ function ebor_tabs_content_shortcode( $atts, $content = null ) {
 	if( 'icon' == $ebor_tab_type ){
 		if($image) {
 			$bg_image = wp_get_attachment_image_src($image, 'full');
-			$output = '<li class="'. $active .'"><a href="#tab'. $rand .'-'. esc_attr($ebor_tabs_count) .'" data-toggle="tab" style="background: url('.esc_url($bg_image[0]).') no-repeat top center;"><h5 class="mb-0">'. htmlspecialchars_decode($title) .'</h5></a></li>';
+			$output = '<li class="'. $active .'"><a href="#tab'. $rand .'-'. esc_attr($ebor_tabs_count) .'" data-toggle="tab" style="background: url('.esc_url($bg_image[0]).') no-repeat top center;">'. htmlspecialchars_decode($title) .'</a></li>';
 		} else {
-			$output = '<li class="'. $active .'"><a href="#tab'. $rand .'-'. esc_attr($ebor_tabs_count) .'" data-toggle="tab"><span class="icon icon-m icon-color mb-10"><i class="fa '. $icon .'"></i></span><h5 class="mb-0">'. htmlspecialchars_decode($title) .'</h5></a></li>';	
+			$output = '<li class="'. $active .'"><a href="#tab'. $rand .'-'. esc_attr($ebor_tabs_count) .'" data-toggle="tab"><span class="icon icon-m icon-color mb-10"><i class="fa '. $icon .'"></i></span>'. htmlspecialchars_decode($title) .'</a></li>';	
 		}
 		
 		
