@@ -7,8 +7,9 @@ if(!( function_exists('ebor_icons_settings_field') )){
 		
 		$output = '<a href="#" id="ebor-icon-toggle" class="button button-primary button-large">Show/Hide Icons</a><div class="ebor-icons"><div class="ebor-icons-wrapper">';
 		foreach( $icons as $icon ){
+			$class = ( strpos($icon, 'fa-') !== false ) ? 'fa' : '';
 			$active = ( $value == $icon) ? ' active' : '';
-			$output .= '<i class="icon '. $icon . $active .'" data-icon-class="'. $icon .'"></i>';
+			$output .= '<i class="'. $icon . $active .' '. $class .'" data-icon-class="'. $icon .'"></i>';
 		}
 		$output .= '</div><input name="' . esc_attr( $settings['param_name'] ) . '" class="wpb_vc_param_value wpb-textinput ebor-icon-value ' .
 		esc_attr( $settings['param_name'] ) . ' ' .
