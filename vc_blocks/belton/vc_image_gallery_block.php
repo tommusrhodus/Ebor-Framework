@@ -33,7 +33,7 @@ function ebor_image_gallery_shortcode( $atts, $content = null ) {
 			  	</ul>
 		  	</div>';
 	  	}
-			$output .= '<div class="clearfix"><div id="container" class="'.esc_attr($caption_size).'">'. do_shortcode($content) .'</div></div>
+			$output .= '<div class="clearfix"><div id="container-'.esc_attr($rand).'" class="'.esc_attr($caption_size).'">'. do_shortcode($content) .'</div></div>
 		</div>
 	';
 

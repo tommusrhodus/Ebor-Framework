@@ -14,7 +14,7 @@ function ebor_intro_shortcode( $atts, $content = null ) {
 				'content_placement' => 'left',
 				'content_vertical_placement' => 'child',
 				'caption' 			=> '',
-				'color' 			=> '',
+				'color' 			=> '#000000',
 				'content_color'		=> 'white-text',
 				'overlay_opacity'	=> '0.3'
 			), $atts 
@@ -56,7 +56,7 @@ function ebor_intro_shortcode( $atts, $content = null ) {
 							</div>
 						</div>
 					</div>
-					<div class="overlay" '.$colour_output.' style="opacity: '.$overlay_opacity.';"></div>
+					<div class="overlay" '.$colour_output.'></div>
 				</div>
 			</div>
 		</div>
