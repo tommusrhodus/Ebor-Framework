@@ -8,7 +8,8 @@ function ebor_image_gallery_shortcode( $atts, $content = null ) {
 		shortcode_atts( 
 			array( 
 				'show_all_text' => 'Show All',
-				'enable_filters' => 'show'
+				'enable_filters' => 'show',
+				'caption_size' => 'regular-captions',
 			), $atts 
 		) 
 	);
@@ -32,7 +33,7 @@ function ebor_image_gallery_shortcode( $atts, $content = null ) {
 			  	</ul>
 		  	</div>';
 	  	}
-			$output .= '<div class="clearfix"><div id="container">'. do_shortcode($content) .'</div></div>
+			$output .= '<div class="clearfix"><div id="container" class="'.esc_attr($caption_size).'">'. do_shortcode($content) .'</div></div>
 		</div>
 	';
 
@@ -119,6 +120,15 @@ function ebor_image_gallery_shortcode_vc() {
 					"value" => array(
 						'Show Filters' => 'show',
 						'Hide Filters' => 'hide',
+					)
+				),
+				array(
+					"type" => "dropdown",
+					"heading" => esc_html__("Title/Caption Size?", 'belton'),
+					"param_name" => "caption_size",
+					"value" => array(
+						'Regular' => 'regular-captions',
+						'Small' => 'small-captions',
 					)
 				),
 		    )
