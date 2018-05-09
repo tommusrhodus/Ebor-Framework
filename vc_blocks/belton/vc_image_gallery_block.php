@@ -8,6 +8,7 @@ function ebor_image_gallery_shortcode( $atts, $content = null ) {
 		shortcode_atts( 
 			array( 
 				'show_all_text' => 'Show All',
+				'enable_filters' => 'show'
 			), $atts 
 		) 
 	);
@@ -21,11 +22,17 @@ function ebor_image_gallery_shortcode( $atts, $content = null ) {
 	$rand = wp_rand(0,10000);
 	
 	$output .= '
-		<div id="image-gallery-'.esc_attr($rand).'">
-			<ul id="options" class="clearfix">
-			    <li> <a href="#home" class="selected">'.wp_kses_post($show_all_text).'</a> </li>
-		  	</ul>
-			<div class="clearfix"><div id="container">'. do_shortcode($content) .'</div></div>
+		<div id="image-gallery-'.esc_attr($rand).'">';
+
+		if($enable_filters == 'show') { 
+			$output .= '
+			<div class="extra-padding-bottom">
+				<ul id="options" class="clearfix">
+				    <li> <a href="#home" class="selected">'.wp_kses_post($show_all_text).'</a> </li>
+			  	</ul>
+		  	</div>';
+	  	}
+			$output .= '<div class="clearfix"><div id="container">'. do_shortcode($content) .'</div></div>
 		</div>
 	';
 
@@ -105,6 +112,15 @@ function ebor_image_gallery_shortcode_vc() {
 		    		"value" => __( "Show All", "belton" ),
 		    		'holder' => 'div'
 		    	),
+		    	array(
+					"type" => "dropdown",
+					"heading" => esc_html__("Show Filters?", 'belton'),
+					"param_name" => "enable_filters",
+					"value" => array(
+						'Show Filters' => 'show',
+						'Hide Filters' => 'hide',
+					)
+				),
 		    )
 		) 
 	);
