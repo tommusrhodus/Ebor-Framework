@@ -149,7 +149,7 @@ function ebor_pricing_table_shortcode_vc() {
 					"type" => "textfield",
 					"heading" => esc_html__("Button Text", 'morello'),
 					"param_name" => "button_text",
-					"value" => 'Select Plan',
+					"value" => 'Sign Up',
 				),
 				array(
 					"type" => "textfield",
