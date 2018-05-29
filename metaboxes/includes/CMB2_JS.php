@@ -37,6 +37,14 @@ class CMB2_JS {
 	);
 
 	/**
+	 * Array of CMB2 fields model data for JS.
+	 *
+	 * @var   array
+	 * @since 2.4.0
+	 */
+	protected static $fields = array();
+
+	/**
 	 * Add a dependency to the array of CMB2 JS dependencies
 	 *
 	 * @since 2.0.7
@@ -49,13 +57,27 @@ class CMB2_JS {
 	}
 
 	/**
+	 * Add field model data to the array for JS.
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param CMB2_Field $field Field object.
+	 */
+	public static function add_field_data( CMB2_Field $field ) {
+		$hash = $field->hash_id();
+		if ( ! isset( self::$fields[ $hash ] ) ) {
+			self::$fields[ $hash ] = $field->js_data();
+		}
+	}
+
+	/**
 	 * Enqueue the CMB2 JS
 	 *
 	 * @since  2.0.7
 	 */
 	public static function enqueue() {
 		// Filter required script dependencies
-		$dependencies = apply_filters( 'cmb2_script_dependencies', self::$dependencies );
+		$dependencies = self::$dependencies = apply_filters( 'cmb2_script_dependencies', self::$dependencies );
 
 		// Only use minified files if SCRIPT_DEBUG is off
 		$debug = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
@@ -160,6 +182,7 @@ class CMB2_JS {
 
 		$localized = true;
 		$l10n = array(
+			'fields'            => self::$fields,
 			'ajax_nonce'        => wp_create_nonce( 'ajax_nonce' ),
 			'ajaxurl'           => admin_url( '/admin-ajax.php' ),
 			'script_debug'      => $debug,
@@ -208,7 +231,7 @@ class CMB2_JS {
 			),
 		);
 
-		if ( function_exists( 'wp_enqueue_code_editor' ) ) {
+		if ( isset( self::$dependencies['code-editor'] ) && function_exists( 'wp_enqueue_code_editor' ) ) {
 			$l10n['defaults']['code_editor'] = wp_enqueue_code_editor( array(
 				'type' => 'text/html',
 			) );

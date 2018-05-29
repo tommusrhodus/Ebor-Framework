@@ -115,6 +115,15 @@ class CMB2_Field extends CMB2_Base {
 	);
 
 	/**
+	 * Represents a unique hash representing this field.
+	 *
+	 * @since  2.2.4
+	 *
+	 * @var string
+	 */
+	protected $hash_id = '';
+
+	/**
 	 * Constructs our field object
 	 *
 	 * @since 1.1.0
@@ -136,7 +145,7 @@ class CMB2_Field extends CMB2_Base {
 			}
 		}
 
-		$this->args = $this->_set_field_defaults( $args['field_args'], $args );
+		$this->args = $this->_set_field_defaults( $args['field_args'] );
 
 		if ( $this->object_id ) {
 			$this->value = $this->get_data();
@@ -156,7 +165,7 @@ class CMB2_Field extends CMB2_Base {
 			return call_user_func_array( array( $this, 'get_string' ), $arguments );
 		}
 
-		$key = isset( $arguments[0] ) ? $arguments[0] : false;
+		$key = isset( $arguments[0] ) ? $arguments[0] : '';
 		return $this->args( $name, $key );
 	}
 
@@ -979,8 +988,6 @@ class CMB2_Field extends CMB2_Base {
 		return apply_filters( 'cmb2_row_classes', implode( ' ', $classes ), $this );
 	}
 
-
-
 	/**
 	 * Get field display callback and render the display value in the column.
 	 *
@@ -1029,7 +1036,7 @@ class CMB2_Field extends CMB2_Base {
 
 		$this->peform_param_callback( 'before_display_wrap' );
 
-		printf( "<div class=\"cmb-column %s\" data-fieldtype=\"%s\">\n", $this->row_classes( 'display' ), $field_type );
+		printf( "<div class=\"cmb-column %s\" data-fieldtype=\"%s\">\n", $this->row_classes(), $field_type );
 
 		$this->peform_param_callback( 'before_display' );
 
@@ -1096,7 +1103,7 @@ class CMB2_Field extends CMB2_Base {
 	 *
 	 * @since  2.0.0
 	 * @param  string $key Specific option to retrieve
-	 * @return array        Array of options
+	 * @return array|mixed Array of options or specific option.
 	 */
 	public function options( $key = '' ) {
 		if ( empty( $this->field_options ) ) {
@@ -1143,6 +1150,67 @@ class CMB2_Field extends CMB2_Base {
 		}
 
 		CMB2_JS::add_dependencies( $dependencies );
+	}
+
+	/**
+	 * Send field data to JS.
+	 *
+	 * @since 2.2.0
+	 */
+	public function register_js_data() {
+		if ( $this->group ) {
+			CMB2_JS::add_field_data( $this->group );
+		}
+
+		return CMB2_JS::add_field_data( $this );
+	}
+
+	/**
+	 * Get an array of some of the field data to be used in the Javascript.
+	 *
+	 * @since  2.2.4
+	 *
+	 * @return array
+	 */
+	public function js_data() {
+		return array(
+			'label'     => $this->args( 'name' ),
+			'id'        => $this->id( true ),
+			'type'      => $this->type(),
+			'hash'      => $this->hash_id(),
+			'box'       => $this->cmb_id,
+			'id_attr'   => $this->id(),
+			'name_attr' => $this->args( '_name' ),
+			'default'   => $this->get_default(),
+			'group'     => $this->group_id(),
+			'index'     => $this->group ? $this->group->index : null,
+		);
+	}
+
+	/**
+	 * Returns a unique hash representing this field.
+	 *
+	 * @since  2.2.4
+	 *
+	 * @return string
+	 */
+	public function hash_id() {
+		if ( '' === $this->hash_id ) {
+			$this->hash_id = CMB2_Utils::generate_hash( $this->cmb_id . '||' . $this->id() );
+		}
+
+		return $this->hash_id;
+	}
+
+	/**
+	 * Gets the id of the group field if this field is part of a group.
+	 *
+	 * @since  2.2.4
+	 *
+	 * @return string
+	 */
+	public function group_id() {
+		return $this->group ? $this->group->id( true ) : '';
 	}
 
 	/**
@@ -1381,9 +1449,9 @@ class CMB2_Field extends CMB2_Base {
 	/**
 	 * Converts deprecated field parameters to the current/proper parameter, and throws a deprecation notice.
 	 *
-	 * @since 2.2.3
-	 * @param array                                   $args Metabox field config array.
-	 * @param array       Modified field config array.
+	 * @since  2.2.3
+	 * @param  array $args Metabox field config array.
+	 * @return array       Modified field config array.
 	 */
 	protected function convert_deprecated_params( $args ) {
 

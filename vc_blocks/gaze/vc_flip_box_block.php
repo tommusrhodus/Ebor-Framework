@@ -10,7 +10,8 @@ function ebor_flip_box_block_shortcode( $atts, $content = null ) {
 				'button_url'       => '#',
 				'button_text'      => '',
 				'icon'             => '',
-				'custom_css_class' => ''
+				'custom_css_class' => '',
+				'price'			   => ''
 			), $atts 
 		) 
 	);
@@ -24,7 +25,7 @@ function ebor_flip_box_block_shortcode( $atts, $content = null ) {
 			</div>
 			
 			<div class="back">
-				<h4 class="uppercase mb-20">From $199</h4>
+				<h4 class="uppercase mb-20">'. $price .'</h4>
 				<a href="'. esc_url( $button_url ) .'" class="btn btn-md btn-color"><span>'. $button_text .'</span></a>
 			</div>
 		
@@ -76,6 +77,12 @@ function ebor_flip_box_block_shortcode_vc() {
 					"type"       => "textfield",
 					"heading"    => esc_html__( "Button Text", 'gaze' ),
 					"param_name" => "button_text"
+				),
+				array(
+					"type"       => "textfield",
+					"heading"    => esc_html__( "Price", 'gaze' ),
+					"param_name" => "price",
+					'value'      => 'From $199'
 				),
 				array(
 					"type"        => "textfield",
