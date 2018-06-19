@@ -14,7 +14,8 @@ function ebor_team_shortcode( $atts ) {
 				'layout' => 'grid-3',
 				'paging' => 'true',
 				'arrows' => 'false',
-				'timing' => 'false'
+				'timing' => 'false',
+				'offset' => '0'
 			), $atts 
 		) 
 	);
@@ -27,9 +28,10 @@ function ebor_team_shortcode( $atts ) {
 	 * Setup post query
 	 */
 	$query_args = array(
-		'post_type' => 'team',
-		'post_status' => 'publish',
-		'posts_per_page' => $pppage
+		'post_type'      => 'team',
+		'post_status'    => 'publish',
+		'posts_per_page' => $pppage,
+		'offset'         => $offset
 	);
 	
 	//Hide current post ID from the loop if we're in a singular view
@@ -113,6 +115,13 @@ function ebor_team_shortcode_vc() {
 					"heading" => esc_html__("Team Display Type", 'stackwordpresstheme'),
 					"param_name" => "layout",
 					"value" => ebor_get_team_layouts()
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Offset Posts?", 'stackwordpresstheme'),
+					"param_name" => "offset",
+					"value" => '0',
+					"description" => '<code>DEVELOPERS ONLY</code> - Offset posts shown, 0 for newest posts, 5 starts at fifth most recent etc.'
 				),
 			)
 		) 

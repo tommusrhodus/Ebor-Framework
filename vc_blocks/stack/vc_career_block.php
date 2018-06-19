@@ -12,7 +12,8 @@ function ebor_career_shortcode( $atts ) {
 				'pppage' => '4',
 				'filter' => 'all',
 				'layout' => 'carousel-1',
-				'custom_css_class' => ''
+				'custom_css_class' => '',
+				'offset' => '0'
 			), $atts 
 		) 
 	);
@@ -26,7 +27,8 @@ function ebor_career_shortcode( $atts ) {
 	 */
 	$query_args = array(
 		'post_type' => 'career',
-		'posts_per_page' => $pppage
+		'posts_per_page' => $pppage,
+		'offset'         => $offset
 	);
 	
 	//Hide current post ID from the loop if we're in a singular view
@@ -86,6 +88,13 @@ function ebor_career_shortcode_vc() {
 					"heading" => esc_html__("Show How Many Posts?", 'stackwordpresstheme'),
 					"param_name" => "pppage",
 					"value" => '4'
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Offset Posts?", 'stackwordpresstheme'),
+					"param_name" => "offset",
+					"value" => '0',
+					"description" => '<code>DEVELOPERS ONLY</code> - Offset posts shown, 0 for newest posts, 5 starts at fifth most recent etc.'
 				),
 				array(
 					"type" => "textfield",
