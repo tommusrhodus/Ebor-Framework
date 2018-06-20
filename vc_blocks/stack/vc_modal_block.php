@@ -83,7 +83,7 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 				<section class="unpad ">
 				    <div class="container modal-container-narrow">
 				        <div class="row">
-				            <div class="col-sm-6 col-xs-12">
+				            <div class="col-xs-12">
 			                    <div class="feature feature-1 text-center">
 			                        '. wp_get_attachment_image( $image, 'full' ) .'
 			                        <div class="feature__body boxed boxed--lg boxed--border">
