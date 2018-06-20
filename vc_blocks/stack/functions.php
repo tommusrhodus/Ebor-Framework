@@ -19,10 +19,12 @@ if( !( function_exists('ebor_icons_settings_field') ) && function_exists('vc_set
 	vc_add_shortcode_param( 'ebor_icons', 'ebor_icons_settings_field' );
 }
 
-function ebor_search_bar_shortcode( $atts, $content = null ) {
-	return get_search_form(false);
+if(!( function_exists('ebor_search_bar_shortcode') )){
+	function ebor_search_bar_shortcode( $atts, $content = null ) {
+		return get_search_form(false);
+	}
+	add_shortcode( 'stack_search_bar', 'ebor_search_bar_shortcode' );
 }
-add_shortcode( 'stack_search_bar', 'ebor_search_bar_shortcode' );
 
 if( function_exists('ebor_breadcrumbs') ){
 	add_shortcode('stack_breadcrumbs_variant', 'ebor_breadcrumbs');	
