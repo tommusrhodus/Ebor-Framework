@@ -3,7 +3,7 @@
 if(!( class_exists('ebor_malefic_popular_Widget') )){
 	class ebor_malefic_popular_Widget extends WP_Widget {
 		
-		function ebor_malefic_popular_Widget(){
+		public function __construct(){
 			parent::__construct(
 				'ebor_malefic_popular-widget', // Base ID
 				esc_html__('TommusRhodus: Popular Posts', 'creatink'), // Name
@@ -11,7 +11,7 @@ if(!( class_exists('ebor_malefic_popular_Widget') )){
 			);
 		}
 		
-		function widget($args, $instance)
+		public function widget($args, $instance)
 		{
 			extract($args);
 			$title = apply_filters('widget_title', $instance['title']);
@@ -55,7 +55,7 @@ if(!( class_exists('ebor_malefic_popular_Widget') )){
 			<?php echo $after_widget;
 		}
 		
-		function update($new_instance, $old_instance)
+		public function update($new_instance, $old_instance)
 		{
 			$instance = $old_instance;
 	
@@ -69,7 +69,7 @@ if(!( class_exists('ebor_malefic_popular_Widget') )){
 			return $instance;
 		}
 	
-		function form($instance)
+		public function form($instance)
 		{
 			$defaults = array('title' => 'Popular Posts', 'amount' => '3');
 			$instance = wp_parse_args((array) $instance, $defaults); ?>
@@ -94,7 +94,7 @@ if(!( class_exists('ebor_malefic_popular_Widget') )){
 if(!( class_exists('ebor_malefic_recent_Widget') )){
 	class ebor_malefic_recent_Widget extends WP_Widget {
 		
-		function ebor_malefic_recent_Widget(){
+		public function __construct(){
 			parent::__construct(
 				'ebor_malefic_recent-widget', // Base ID
 				esc_html__('TommusRhodus: Recent Posts', 'creatink'), // Name
@@ -102,7 +102,7 @@ if(!( class_exists('ebor_malefic_recent_Widget') )){
 			);
 		}
 		
-		function widget($args, $instance)
+		public function widget($args, $instance)
 		{
 			extract($args);
 			$title = apply_filters('widget_title', $instance['title']);
@@ -146,7 +146,7 @@ if(!( class_exists('ebor_malefic_recent_Widget') )){
 			<?php echo $after_widget;
 		}
 		
-		function update($new_instance, $old_instance)
+		public function update($new_instance, $old_instance)
 		{
 			$instance = $old_instance;
 	
@@ -160,7 +160,7 @@ if(!( class_exists('ebor_malefic_recent_Widget') )){
 			return $instance;
 		}
 	
-		function form($instance)
+		public function form($instance)
 		{
 			$defaults = array('title' => 'Recent Posts', 'amount' => '3');
 			$instance = wp_parse_args((array) $instance, $defaults); ?>
@@ -188,7 +188,7 @@ if(!( class_exists('ebor_malefic_recent_Widget') )){
 if(!( class_exists('ebor_contact_Widget') )){
 	class ebor_contact_Widget extends WP_Widget {
 		
-		function ebor_contact_Widget(){
+		public function __construct(){
 			parent::__construct(
 				'ebor_contact-widget', // Base ID
 				esc_html__('TommusRhodus: Social Icons', 'creatink'), // Name
@@ -196,7 +196,7 @@ if(!( class_exists('ebor_contact_Widget') )){
 			);
 		}
 		
-		function widget($args, $instance)
+		public function widget($args, $instance)
 		{
 			extract($args);
 			$title = apply_filters('widget_title', $instance['title']);
@@ -245,7 +245,7 @@ if(!( class_exists('ebor_contact_Widget') )){
 			echo $after_widget;
 		}
 		
-		function update($new_instance, $old_instance)
+		public function update($new_instance, $old_instance)
 		{
 			$instance = $old_instance;
 	
@@ -269,7 +269,7 @@ if(!( class_exists('ebor_contact_Widget') )){
 			return $instance;
 		}
 	
-		function form($instance)
+		public function form($instance)
 		{
 			$defaults = array(
 				'title' => '', 
@@ -495,7 +495,7 @@ if(!( class_exists('malefic_Instagram_Widget') )){
 if(!( class_exists('ebor_creatink_product_Widget') )){
 	class ebor_creatink_product_Widget extends WP_Widget {
 		
-		function ebor_creatink_product_Widget(){
+		public function __construct(){
 			parent::__construct(
 				'ebor_creatink_product-widget', // Base ID
 				esc_html__('TommusRhodus: Recent Products', 'creatink'), // Name
@@ -503,7 +503,7 @@ if(!( class_exists('ebor_creatink_product_Widget') )){
 			);
 		}
 		
-		function widget($args, $instance)
+		public function widget($args, $instance)
 		{
 			extract($args);
 			$title = apply_filters('widget_title', $instance['title']);
@@ -545,7 +545,7 @@ if(!( class_exists('ebor_creatink_product_Widget') )){
 			<?php echo $after_widget;
 		}
 		
-		function update($new_instance, $old_instance)
+		public function update($new_instance, $old_instance)
 		{
 			$instance = $old_instance;
 	
@@ -559,7 +559,7 @@ if(!( class_exists('ebor_creatink_product_Widget') )){
 			return $instance;
 		}
 	
-		function form($instance)
+		public function form($instance)
 		{
 			$defaults = array('title' => 'Recent Products', 'amount' => '3');
 			$instance = wp_parse_args((array) $instance, $defaults); ?>
