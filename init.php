@@ -70,7 +70,8 @@ $defaults = array(
 	'candar_vc_shortcodes'     => '0',
 	'creatink_vc_shortcodes'   => '0',
 	'gaze_vc_shortcodes'       => '0',
-	'belton_vc_shortcodes'     => '0'
+	'belton_vc_shortcodes'     => '0',
+	'brailie_vc_shortcodes'    => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -183,6 +184,9 @@ if( '1' == $framework_options['gaze_vc_shortcodes'] ){
 }
 if( '1' == $framework_options['belton_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/belton/init.php' );	
+}
+if( '1' == $framework_options['brailie_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/brailie/init.php' );	
 }
 
 /**
