@@ -22,7 +22,7 @@ function ebor_counter_block_shortcode( $atts, $content = null ) {
 		$output = '
 			<div class="'. $custom_css_class .' counter text-center">
 				<div class="icon fs-54 icon-color color-dark mb-15"> 
-					<i class="fa '. $icon .'"></i> 
+					<i class="fa '. $icon .'" style="color: '. $color .'"></i> 
 				</div>
 				<h3 class="value">'. $title .'</h3>
 				<p class="text-uppercase">'. $description .'</p>
@@ -51,7 +51,7 @@ function ebor_counter_block_shortcode( $atts, $content = null ) {
 			<div class="'. $custom_css_class .' counter text-center">
 				<div class="box box-border">
 					<div class="icon fs-54 icon-color color-dark mb-15"> 
-						<i class="fa '. $icon .'"></i> 
+						<i class="fa '. $icon .'" style="color: '. $color .'"></i> 
 					</div>
 					<h3 class="value">'. $title .'</h3>
 					<p class="text-uppercase">'. $description .'</p>
