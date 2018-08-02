@@ -68,6 +68,7 @@ function ebor_swiper_gallery_content_shortcode( $atts, $content = null ) {
 			array(
 				'image' => '',
 				'title' => '',
+				'link_to' => '',
 			), $atts 
 		) 
 	);
