@@ -21,7 +21,7 @@ function ebor_services_icon_block_shortcode( $atts, $content = null ) {
 		<div class="'. $boxed .' wpb_content_element icon-block text-'. $align .' '. esc_attr( $custom_css_class ) .'">
 			<span class="icon '. $layout .' mb-20" style="font-size: '. $font_size .';">
 				<i class="fa '. $icon .'"></i>
-			</span>'. do_shortcode( $content ) .'</div>
+			</span><div class="clearfix"></div>'. do_shortcode( $content ) .'</div>
 	';
 	
 	return $output;
