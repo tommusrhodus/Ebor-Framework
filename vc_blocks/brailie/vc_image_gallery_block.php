@@ -180,7 +180,7 @@ function ebor_image_gallery_content_shortcode( $atts, $content = null ) {
 					</a>
 					<figcaption class="d-flex">
 						<div class="align-self-center mx-auto">
-							<h3 class="mb-0 text-uppercase letterspace-4">'.esc_attr($overlay_text).'</h3>
+							<h4 class="mb-0 text-uppercase letterspace-4">'.esc_attr($overlay_text).'</h4>
 						</div> 
 					</figcaption>
 				</figure>

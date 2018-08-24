@@ -40,6 +40,24 @@ function ebor_services_image_block_shortcode( $atts, $content = null ) {
 			</figure>
 		';
 	
+	} elseif( 'standard_lowercase' == $layout ){
+	
+		$output = '
+			<figure class="wpb_content_element overlay-info '. $mask .' '. esc_attr( $custom_css_class ).'">
+				
+				'. $before .'
+					'. wp_get_attachment_image( $image, 'large' ) .'
+				'. $after.'
+				
+				<figcaption class="d-flex">
+					<div class="align-self-center mx-auto">
+						<h3 class="mb-0">'. $title .'</h3>
+					</div>
+				</figcaption>
+				
+			</figure>
+		';
+	
 	} elseif( 'standard_title_and_subtitle' == $layout ){
 	
 		$output = '
@@ -137,6 +155,7 @@ function ebor_services_image_block_shortcode_vc() {
 					"param_name" => "layout",
 					"value"      => array(
 						'Standard' => 'standard',
+						'Standard + Lowercase Title' => 'standard_lowercase',
 						'Standard + Title & Subtitle' => 'standard_title_and_subtitle',
 						'Bordered' => 'bordered',
 						'Gradient' => 'gradient',
