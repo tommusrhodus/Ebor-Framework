@@ -14,6 +14,7 @@ function ebor_tabbed_carousel_shortcode( $atts, $content = null ) {
 	extract( 
 		shortcode_atts( 
 			array(
+				'type' => 'standard',
 				'main_title' => '',
 				'custom_css_class' => ''
 			), $atts 
@@ -22,6 +23,7 @@ function ebor_tabbed_carousel_shortcode( $atts, $content = null ) {
 
 	$output = false;
 	$rand   = wp_rand(0, 10000);
+	$ebor_tab_type = $type;
 	  
 	$output .= '
 		<div class="h-100 d-flex flex-column justify-content-center '. esc_attr( $custom_css_class ).'">
@@ -79,18 +81,34 @@ function ebor_tabbed_carousel_content_shortcode( $atts, $content = null ) {
 		) 
 	);
 
-	$images = explode(',', $images);
-	
+	$images = explode(',', $images);	
+
 	$active = ( 1 == $ebor_tabbed_carousel_count ) ? 'show active' : '';
 	
 	$ebor_tabbed_carousel_content .= '<div class="tab-pane fade '. $active .'" id="tab'. $rand .'-'. esc_attr($ebor_tabbed_carousel_count) .'"><div class="swiper-container-wrapper swiper-auto-tab"><div class="swiper-container text-center"><div class="swiper-wrapper">';
 
 	foreach ($images as $id) {
-		$ebor_tabbed_carousel_content .= '		
-			<div class="swiper-slide">
-				'. wp_get_attachment_image($id, 'full') .'
-			</div>
-		';
+
+		$image_url = wp_get_attachment_url($id);
+
+		if($ebor_tab_type == 'standard') {
+			$ebor_tabbed_carousel_content .= '		
+				<div class="swiper-slide">
+					'. wp_get_attachment_image($id, 'full') .'
+				</div>
+			';
+		} elseif($ebor_tab_type == 'standard_lightbox') {
+			$ebor_tabbed_carousel_content .= '		
+				<div class="swiper-slide light-gallery">
+					'. wp_get_attachment_image($id, 'full') .'
+					<div class="link-wrapper">
+						<div class="link lightbox">
+							<a href="'.esc_html($image_url).'"></a>
+						</div>
+					</div>
+				</div>
+			';
+		} 
 	}
 
 	$ebor_tabbed_carousel_content .= '
@@ -118,6 +136,15 @@ function ebor_tabbed_carousel_shortcode_vc() {
 		    "js_view"         => 'VcColumnView',
 		    "category"        => esc_html__('brailie WP Theme', 'brailie'),
 		    'params'          => array(
+		    	array(
+		    		"type" => "dropdown",
+		    		"heading" => esc_html__("Carousel Type", 'brailie'),
+		    		"param_name" => "type",
+		    		"value" => array(
+		    			'Standard' => 'standard',
+		    			'Standard + Lightbox' => 'standard_lightbox',
+		    		)
+		    	),	
 		    	array(
 		    		"type" => "textfield",
 		    		"heading" => esc_html__("Title", 'brailie'),
