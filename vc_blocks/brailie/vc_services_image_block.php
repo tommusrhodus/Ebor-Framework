@@ -11,6 +11,7 @@ function ebor_services_image_block_shortcode( $atts, $content = null ) {
 				'link'   => '',
 				'image'  => '',
 				'title'  => '',
+				'subtitle'  => '',
 				'mask'   => 'no-mask',
 				'custom_css_class' => ''
 			), $atts 
@@ -33,6 +34,25 @@ function ebor_services_image_block_shortcode( $atts, $content = null ) {
 				<figcaption class="d-flex">
 					<div class="align-self-center mx-auto">
 						<h4 class="mb-0 text-uppercase letterspace-4">'. $title .'</h4>
+					</div>
+				</figcaption>
+				
+			</figure>
+		';
+	
+	} elseif( 'standard_title_and_subtitle' == $layout ){
+	
+		$output = '
+			<figure class="wpb_content_element overlay-info '. $mask .' '. esc_attr( $custom_css_class ).'">
+				
+				'. $before .'
+					'. wp_get_attachment_image( $image, 'large' ) .'
+				'. $after.'
+				
+				<figcaption class="d-flex">
+					<div class="align-self-center mx-auto">
+						<h3 class="mb-5">'. $title .'</h3>
+                  		<p class="mb-0">'. $subtitle .'</p>
 					</div>
 				</figcaption>
 				
@@ -117,6 +137,7 @@ function ebor_services_image_block_shortcode_vc() {
 					"param_name" => "layout",
 					"value"      => array(
 						'Standard' => 'standard',
+						'Standard + Title & Subtitle' => 'standard_title_and_subtitle',
 						'Bordered' => 'bordered',
 						'Gradient' => 'gradient',
 						'Rounded'  => 'rounded'
@@ -136,6 +157,12 @@ function ebor_services_image_block_shortcode_vc() {
 					"type"       => "textfield",
 					"heading"    => esc_html__("Block Title", 'brailie'),
 					"param_name" => "title",
+					'holder'     => 'div'
+				),
+				array(
+					"type"       => "textfield",
+					"heading"    => esc_html__("Block Subtitle (Standard + Title & Subtitle only)", 'brailie'),
+					"param_name" => "subtitle",
 					'holder'     => 'div'
 				),
 				array(
