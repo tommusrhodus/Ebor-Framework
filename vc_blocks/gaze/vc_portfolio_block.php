@@ -5,6 +5,7 @@
  */
 function ebor_portfolio_shortcode( $atts ) {
 	global $wp_query, $post;
+	global $paged;
 	
 	extract( 
 		shortcode_atts( 
@@ -17,13 +18,20 @@ function ebor_portfolio_shortcode( $atts ) {
 		) 
 	);
 	
+	if( is_front_page() ) { 
+		$paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1; 
+	} else { 
+		$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; 
+	}
+	
 	/**
 	 * Setup post query
 	 */
 	$query_args = array(
 		'post_type'      => 'portfolio',
 		'post_status'    => 'publish',
-		'posts_per_page' => $pppage
+		'posts_per_page' => $pppage,
+		'paged'          => $paged
 	);
 	
 	//Hide current post ID from the loop if we're in a singular view
