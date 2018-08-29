@@ -50,12 +50,15 @@ function ebor_accordion_content_shortcode( $atts, $content = null ) {
 	if( 1 == $ebor_accordion_count && 'yes' == $ebor_accordion_open ){
 		$active = 'active';
 		$in = 'show';	
+		$aria_expanded = 'true';
+	} else {
+		$aria_expanded = 'false';
 	}
 	
 	$output = '
 		<div class="card">
 			<div class="card-header">
-				<h3> <a data-toggle="collapse" data-parent="#accordion-'. $rand .'" href="#collapse-'. $rand .'-'. esc_attr($ebor_accordion_count) .'">'. $title .'</a> </h3>
+				<h3> <a data-toggle="collapse" data-parent="#accordion-'. $rand .'" href="#collapse-'. $rand .'-'. esc_attr($ebor_accordion_count) .'" aria-expanded="'. $aria_expanded .'">'. $title .'</a> </h3>
 			</div>
 			<div id="collapse-'. $rand .'-'. esc_attr($ebor_accordion_count) .'" class="collapse '. esc_attr($in) .'">
 				<div class="card-block">'. do_shortcode($content) .'</div>
