@@ -106,7 +106,7 @@ function ebor_services_image_block_shortcode( $atts, $content = null ) {
 				
 				<figcaption class="d-flex">
 					<div class="align-self-end mx-auto">
-						<h4 class="mb-0 text-uppercase letterspace-4">'. $title .'</h4>
+						<h4 class="mb-0">'. $title .'</h4>
 					</div>
 				</figcaption>
 				
