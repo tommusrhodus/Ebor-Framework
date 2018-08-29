@@ -26,7 +26,7 @@ function ebor_progress_bar_block_shortcode( $atts, $content = null ) {
 			$output .= '
 				<style>
 					.progressbar.custom-progressbar-'. $rand .' svg path:last-child {
-					    stroke: '. $background_color.'
+					    stroke: '. $background_color.' !important;
 					}
 					.circle.custom-progressbar-'. $rand .' .progressbar-text {
 					    color: '. $text_color .' !important
@@ -48,7 +48,7 @@ function ebor_progress_bar_block_shortcode( $atts, $content = null ) {
 			$output .= '
 				<style>
 					.progressbar.custom-progressbar-'. $rand .' svg path:last-child {
-					    stroke: '. $background_color .';
+					    stroke: '. $background_color .' !important;
 					}
 				</style>
 			';
@@ -69,7 +69,7 @@ function ebor_progress_bar_block_shortcode( $atts, $content = null ) {
 			$output .= '
 				<style>
 					.progressbar.border.custom-progressbar-'. $rand .' svg path:last-child {
-					    stroke: '. $background_color .';
+					    stroke: '. $background_color .' !important;
 					}
 					.progressbar.border.custom-progressbar-'. $rand .' {
 						border-color: '. $background_color .' !important;
