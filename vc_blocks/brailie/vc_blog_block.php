@@ -11,7 +11,9 @@ function ebor_post_shortcode( $atts ) {
 			array(
 				'pppage' => '4',
 				'filter' => 'all',
-				'layout' => 'classic'
+				'layout' => 'classic',
+				'pagination_style' => 'numeric',
+				'pagination_align' => 'center',
 			), $atts 
 		) 
 	);
@@ -68,6 +70,8 @@ function ebor_post_shortcode( $atts ) {
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
+	$wp_query->{"pagination_style"} = $pagination_style;
+	$wp_query->{"pagination_align"} = $pagination_align;
 	
 	ob_start();
 	
@@ -107,7 +111,27 @@ function ebor_post_shortcode_vc() {
 					"heading" => esc_html__("Post Display Type", 'brailie'),
 					"param_name" => "layout",
 					"value" => ebor_get_blog_layouts(),
-				)
+				),
+				array(
+		    		"type" => "dropdown",
+		    		"heading" => esc_html__("Pagination Style", 'brailie'),
+		    		"param_name" => "pagination_style",
+		    		"value" => array(
+		    			'Numeric' => 'numeric',
+		    			'Numeric Bordered' => 'numeric_bordered',
+		    			'Numeric Solid' => 'numeric_solid',
+		    			'Traditional' => 'traditional',
+		    		)
+		    	),
+		    	array(
+		    		"type" => "dropdown",
+		    		"heading" => esc_html__("Pagination Alignment", 'brailie'),
+		    		"param_name" => "pagination_align",
+		    		"value" => array(
+		    			'Center' => 'center',
+		    			'Left'   => 'left',
+		    		)
+		    	),
 			)
 		) 
 	);
