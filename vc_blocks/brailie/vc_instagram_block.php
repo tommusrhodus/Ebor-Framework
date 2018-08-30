@@ -101,7 +101,7 @@ function ebor_instagram_block_shortcode( $atts, $content = null ) {
 		
 		} elseif( 'carousel' == $layout ){
 		
-			$output .= '<div class="swiper-container-wrapper '. esc_attr( $custom_css_class ).'" data-aos="fade"><div class="swiper-container swiper-instagram"><div id="instafeed3" class="swiper-wrapper">';
+			$output .= '<div class="swiper-container-wrapper '. esc_attr( $custom_css_class ).'"><div class="swiper-container swiper-instagram"><div id="instafeed3" class="swiper-wrapper">';
 			
 			foreach( $result->data as $image ) {
 				$output .= '
@@ -157,7 +157,7 @@ function ebor_instagram_block_shortcode( $atts, $content = null ) {
 		
 		} elseif( 'carousel-banner' == $layout ){
 
-			$output .= '<div class="instagram-wrapper '. esc_attr( $custom_css_class ).'"><div class="swiper-container-wrapper" data-aos="fade"><div class="swiper-container swiper-instagram2"><div id="instafeed4" class="swiper-wrapper">';
+			$output .= '<div class="instagram-wrapper '. esc_attr( $custom_css_class ).'"><div class="swiper-container-wrapper"><div class="swiper-container swiper-instagram2"><div id="instafeed4" class="swiper-wrapper">';
 			
 			foreach( $result->data as $image ) {
 				$output .= '
