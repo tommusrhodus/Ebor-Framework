@@ -580,3 +580,98 @@ if(!( class_exists('ebor_creatink_product_Widget') )){
 	}
 	add_action( 'widgets_init', 'ebor_framework_register_ebor_creatink_product');
 }
+
+if(!( class_exists('Brailie_WP_Widget_Categories') )){
+	class Brailie_WP_Widget_Categories extends WP_Widget {
+
+		public function __construct() {
+			$widget_ops = array(
+				'classname' => 'brailie_widget_categories',
+				'description' => __( 'A list of categories.' ),
+				'customize_selective_refresh' => true,
+			);
+			parent::__construct( 'categories', __( 'TommusRhodus: Categories' ), $widget_ops );
+		}
+
+		public function widget( $args, $instance ) {
+			static $first_dropdown = true;
+
+			/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
+			$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Categories' ) : $instance['title'], $instance, $this->id_base );
+
+			$c = ! empty( $instance['count'] ) ? '1' : '0';
+			$h = ! empty( $instance['hierarchical'] ) ? '1' : '0';
+
+			echo $args['before_widget'];
+			if ( $title ) {
+				echo $args['before_title'] . $title . $args['after_title'];
+			}
+
+			$cat_args = array(
+				'orderby'      => 'name',
+				'show_count'   => $c,
+				'hierarchical' => $h
+			);
+	?>
+			<ul class="list-group simple">
+	<?php
+			$cat_args['title_li'] = '';
+
+			/**
+			 * Filters the arguments for the Categories widget.
+			 *
+			 * @since 2.8.0
+			 *
+			 * @param array $cat_args An array of Categories widget options.
+			 */
+			wp_list_categories( apply_filters( 'widget_categories_args', $cat_args ) );
+	?>
+			</ul>
+	<?php
+			echo $args['after_widget'];
+		}
+
+		public function update( $new_instance, $old_instance ) {
+			$instance = $old_instance;
+			$instance['title'] = sanitize_text_field( $new_instance['title'] );
+			$instance['count'] = !empty($new_instance['count']) ? 1 : 0;
+
+			return $instance;
+		}
+
+		public function form( $instance ) {
+			//Defaults
+			$instance = wp_parse_args( (array) $instance, array( 'title' => '') );
+			$title = sanitize_text_field( $instance['title'] );
+			$count = isset($instance['count']) ? (bool) $instance['count'] :false;
+			?>
+			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e( 'Title:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
+
+			<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>"<?php checked( $count ); ?> />
+			<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Show post counts' ); ?></label><br />
+			<?php
+		}
+
+	}
+	function ebor_framework_register_ebor_brailie_category(){
+	     register_widget( 'Brailie_WP_Widget_Categories' );
+	}
+	add_action( 'widgets_init', 'ebor_framework_register_ebor_brailie_category');
+
+	//Wrap each li in our class
+	function add_category_parent_css($css_classes, $category, $depth, $args){
+	    $css_classes[] = 'list-group-item d-flex justify-content-between align-items-center';
+	    return $css_classes;
+	}
+	add_filter( 'category_css_class', 'add_category_parent_css', 10, 4);
+
+	//Wrap each count in our span	
+	function cat_count_span($links) {
+		$links = str_replace('</a> (', '</a> <span class="badge badge-pill bg-default">', $links);
+		$links = str_replace(')', '</span>', $links);
+		return $links;
+	}
+	add_filter('wp_list_categories', 'cat_count_span', 10, 4);
+}
+
