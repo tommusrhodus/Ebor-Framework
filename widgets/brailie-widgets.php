@@ -405,37 +405,63 @@ if(!( class_exists('malefic_Instagram_Widget') )){
 			if($title)
 				echo  $args['before_title'].$title.$args['after_title'];
 				
-			echo '
-				<div class="tiles tiles-s instagram"><div id="instafeed-widget" class="items row row-offset-0"></div></div><!--/.tiles -->
-				<script type="text/javascript">
-					jQuery(window).load(function($) {
-						var instagramFeed2 = new Instafeed({
-						    target: \'instafeed-widget\',
-						    get: \'user\',
-						    limit: 6,
-						    userId: '. $id .',
-						    accessToken: \''. $username .'\',
-						    resolution: \'thumbnail\',
-						    template: \'<div class="item col-xs-4 col-sm-6 col-md-4"><figure class="overlay icon-overlay instagram"><a href="{{link}}" target="_blank"><img src="{{image}}" /></a></figure></div>\',
-						    after: function() {
-						        jQuery(\'#instafeed-widget figure.overlay a\').prepend(\'<span class="over"><span></span></span>\');
-						    },
-						    success: function(response){
-						    	response.data.forEach(function(e){
-						    		e.images.thumbnail = {
-						    			url: e.images.thumbnail.url.replace(\'150x150\', \'600x600\'),
-						    			width: 600,
-						    			height: 600
-						    		};
-						    	});
-						    }
-						});
-						jQuery(\'#instafeed-widget\').each(function() {
-						    instagramFeed2.run();
-						});
-					});
-				</script>
-			';
+			$output    = '';
+			$cache_key = 'tommus-instagram-' . md5( $token . $count );
+			$result    = get_transient( $cache_key );
+
+			if( false === $result ){
+
+				$request = wp_remote_get( 'https://api.instagram.com/v1/users/self/media/recent/?access_token='. $username .'&count=' . 6 );
+				
+				if( is_wp_error( $request ) ){
+				
+					$ttl    = 300; //300 = 5 mins
+					$result = $request;
+					
+				} else {
+					
+					$body   = $request['body'];
+					$result = json_decode( $body );
+					$ttl    = 3600; //3600 = 1 hour
+					
+				}
+				
+				set_transient( $cache_key, $result, $ttl );
+				
+			}
+
+			if(!( false === $result )){
+				
+				$output .= '<div class="tiles tiles-s"><div id="instafeed-widget" class="items row">';
+				
+				foreach( $result->data as $image ) {
+					$output .= '
+						<div class="item col-6 col-sm-4">
+							<figure class="overlay overlay3">
+								<a href="'. $image->link .'" target="_blank">
+									
+									<span class="bg"></span>
+									
+									<img src="'. $image->images->low_resolution->url.'" alt="'. $image->caption->text .'" />
+									
+									<figcaption class="d-flex">
+										<div class="align-self-center mx-auto">
+											<i class="fa fa-instagram"></i>
+										</div>
+									</figcaption>
+									
+								</a>
+							</figure>
+						</div>
+					';
+				}
+						
+				$output .= '</div></div>';
+				
+			}
+
+			echo wp_kses_post($output);
+
 			echo $args['after_widget'];
 		}
 	
@@ -458,11 +484,6 @@ if(!( class_exists('malefic_Instagram_Widget') )){
 			<p>
 				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Widget Title', 'creatink' ); ?></label> 
 				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
-			</p>
-			
-			<p>
-				<label for="<?php echo $this->get_field_id( 'id' ); ?>"><?php esc_html_e( 'Numeric User ID', 'creatink' ); ?></label> 
-				<input class="widefat" id="<?php echo $this->get_field_id( 'id' ); ?>" name="<?php echo $this->get_field_name( 'id' ); ?>" type="text" value="<?php echo esc_attr( $id ); ?>">
 			</p>
 			
 			<p>
@@ -581,6 +602,10 @@ if(!( class_exists('ebor_creatink_product_Widget') )){
 	add_action( 'widgets_init', 'ebor_framework_register_ebor_creatink_product');
 }
 
+
+/*-----------------------------------------------------------------------------------*/
+/*	CUSTOM CATEGORIES LIST
+/*-----------------------------------------------------------------------------------*/
 if(!( class_exists('Brailie_WP_Widget_Categories') )){
 	class Brailie_WP_Widget_Categories extends WP_Widget {
 
