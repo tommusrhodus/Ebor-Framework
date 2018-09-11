@@ -17,9 +17,13 @@ function ebor_call_to_action_block_shortcode( $atts, $content = null ) {
 	
 	$output = '
 		<div class="row">
-		    <div class="col-sm-12 text-center">
-		        <h3 class="mb0 inline-block p32 p0-xs">'. $title .'</h3>
-		        <a class="btn btn-lg mb0 mt-xs-24" href="'. esc_url($url) .'" target="'. esc_attr($target) .'">'. $button_text.'</a>
+		    <div class="col-sm-12 text-center">';
+
+		    	if($title) {
+		    		$output .= '<h3 class="mb0 inline-block p32 p0-xs">'. $title .'</h3>';
+		    	}		    	
+
+		        $output .= ' <a class="btn btn-lg mb0 mt-xs-24" href="'. esc_url($url) .'" target="'. esc_attr($target) .'">'. $button_text.'</a>
 		    </div>
 		</div>
 	';
