@@ -76,7 +76,8 @@ $defaults = array(
 	'meetup_vc_shortcodes'     => '0',
 	'hygge_vc_shortcodes'      => '0',
 	'somnus_vc_shortcodes'     => '0',
-	'lumos_vc_shortcodes'      => '0'
+	'lumos_vc_shortcodes'      => '0',
+	'huntington_vc_shortcodes' => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -207,6 +208,9 @@ if( '1' == $framework_options['somnus_vc_shortcodes'] ){
 }
 if( '1' == $framework_options['lumos_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/lumos/init.php' );	
+}
+if( '1' == $framework_options['huntington_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/huntington/init.php' );	
 }
 
 /**
