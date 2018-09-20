@@ -4,7 +4,6 @@
  * Custom blocks for visual composer in this theme.
  */
 function ebor_framework_register_padre_blocks(){
-	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/padre/functions.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/padre/vc_section_title_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/padre/vc_menu_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/padre/vc_instagram_block.php');
