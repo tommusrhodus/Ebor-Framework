@@ -80,6 +80,7 @@ $defaults = array(
 	'huntington_vc_shortcodes' => '0',
 	'kwoon_vc_shortcodes'  	   => '0',
 	'padre_vc_shortcodes'  	   => '0',
+	'lydia_vc_shortcodes'  	   => '0',
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -219,6 +220,9 @@ if( '1' == $framework_options['kwoon_vc_shortcodes'] ){
 }
 if( '1' == $framework_options['padre_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/padre/init.php' );	
+}
+if( '1' == $framework_options['lydia_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/lydia/init.php' );	
 }
 
 /**
