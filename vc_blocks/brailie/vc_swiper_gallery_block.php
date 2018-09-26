@@ -34,7 +34,7 @@ function ebor_swiper_gallery_shortcode( $atts, $content = null ) {
 	}
 
 	if($type == 'swiper_gallery' || $type == 'swiper_gallery_lightbox') {
-		$output .= '<div id="swiper-image-gallery-'. $rand .'" class="swiper-container-wrapper swiper-auto-tab" data-aos="fade"><div class="swiper-container text-center"><div class="swiper-wrapper">'. do_shortcode($content) .'</div></div>'. $paging . $nav .'</div>';
+		$output .= '<div id="swiper-image-gallery-'. $rand .'" class="swiper-container-wrapper swiper-auto-tab" data-aos="fade"><div class="swiper-container text-center"><div class="swiper-wrapper light-gallery">'. do_shortcode($content) .'</div></div>'. $paging . $nav .'</div>';
 	}
 
 	if($type == 'swiper_gallery_overlay_caption' || $type == 'swiper_gallery_overlay_caption_bevel') {
@@ -42,7 +42,7 @@ function ebor_swiper_gallery_shortcode( $atts, $content = null ) {
 	}
 
 	if($type == 'swiper_gallery_fullheight_lightbox' || $type == 'swiper_gallery_fullheight') {
-		$output .= '<div id="swiper-image-gallery-'. $rand .'" class="swiper-container-wrapper swiper-auto-full ver1" data-aos="fade"><div class="swiper-container text-center"><div class="swiper-wrapper">'. do_shortcode($content) .'</div></div>'. $paging . $nav .'</div>';
+		$output .= '<div id="swiper-image-gallery-'. $rand .'" class="swiper-container-wrapper swiper-auto-full ver1" data-aos="fade"><div class="swiper-container text-center"><div class="swiper-wrapper light-gallery">'. do_shortcode($content) .'</div></div>'. $paging . $nav .'</div>';
 	}
 
 	if($type == 'swiper_gallery_single') {

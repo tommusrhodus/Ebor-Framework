@@ -85,7 +85,7 @@ function ebor_tabbed_carousel_content_shortcode( $atts, $content = null ) {
 
 	$active = ( 1 == $ebor_tabbed_carousel_count ) ? 'show active' : '';
 	
-	$ebor_tabbed_carousel_content .= '<div class="tab-pane fade '. $active .'" id="tab'. $rand .'-'. esc_attr($ebor_tabbed_carousel_count) .'"><div class="swiper-container-wrapper swiper-auto-tab"><div class="swiper-container text-center"><div class="swiper-wrapper">';
+	$ebor_tabbed_carousel_content .= '<div class="tab-pane fade '. $active .'" id="tab'. $rand .'-'. esc_attr($ebor_tabbed_carousel_count) .'"><div class="swiper-container-wrapper swiper-auto-tab"><div class="swiper-container text-center"><div class="swiper-wrapper light-gallery">';
 
 	foreach ($images as $id) {
 
