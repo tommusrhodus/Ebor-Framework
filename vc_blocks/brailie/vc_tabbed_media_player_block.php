@@ -71,7 +71,7 @@ function ebor_tabbed_media_player_content_shortcode( $atts, $content = null ) {
 		
 		$output = '
 			<div class="item col-lg-6" data-item-tab-filter-id="#'. (str_replace(' ', '-', strtolower($filter))) .'" data-item-tab-filter-name="#'. $filter .'">
-				<div class="wpb_content_element" data-aos="fade">
+				<div class="wpb_content_element">
 					<video class="js-player" poster="'. $src[0] .'" controls>
 						<source src="'. $mp4 .'" type="video/mp4">
 						<source src="'. $webm .'" type="video/webm">

@@ -24,7 +24,7 @@ function ebor_media_player_block_shortcode( $atts, $content = null ) {
 		$src = wp_get_attachment_image_src($media_player_image, 'full');
 		
 		$output = '
-			<div class="wpb_content_element" data-aos="fade">
+			<div class="wpb_content_element">
 				<video class="js-player" poster="'. $src[0] .'" controls>
 					<source src="'. $mp4 .'" type="video/mp4">
 					<source src="'. $webm .'" type="video/webm">
