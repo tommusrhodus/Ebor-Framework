@@ -83,6 +83,7 @@ $defaults = array(
 	'lydia_vc_shortcodes'  	   => '0',
 	'expose_vc_shortcodes'	   => '0',
 	'uber_vc_shortcodes'	   => '0',
+	'fulford_widgets'	   	   => '0',
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -271,6 +272,9 @@ if( '1' == $framework_options['brailie_widgets'] ){
 }
 if( '1' == $framework_options['gaze_widgets'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'widgets/gaze-widgets.php' );	
+}
+if( '1' == $framework_options['fulford_widgets'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'widgets/fulford-widgets.php' );	
 }
 
 /**
