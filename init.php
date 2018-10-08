@@ -84,6 +84,7 @@ $defaults = array(
 	'expose_vc_shortcodes'	   => '0',
 	'uber_vc_shortcodes'	   => '0',
 	'fulford_widgets'	   	   => '0',
+	'acomb_widgets'	   	   	   => '0',
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -275,6 +276,9 @@ if( '1' == $framework_options['gaze_widgets'] ){
 }
 if( '1' == $framework_options['fulford_widgets'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'widgets/fulford-widgets.php' );	
+}
+if( '1' == $framework_options['acomb_widgets'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'widgets/acomb-widgets.php' );	
 }
 
 /**
