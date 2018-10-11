@@ -16,17 +16,19 @@ function ebor_notification_shortcode( $atts, $content = null ) {
 				'animation' => 'from-bottom',
 				'image' => '',
 				'show_trigger' => 'yes',
-				'btn_class' => ''
+				'btn_class' => '',				
+				'cookie' => '',
 			), $atts 
 		) 
 	);
 	
 	$autoshow = ( $autoshow ) ? 'data-autoshow="'. (int) $autoshow .'"' : false;
+	$cookie = ( $cookie ) ? 'data-cookie="'. $cookie .'"' : false;
 	
 	if( 'basic' == $layout ){
 		
 		$notification_content = '
-			<div class="'. esc_attr($custom_css_class) .' notification '. $position .' col-sm-4 col-md-3" data-animation="'. $animation .'" data-notification-link="'. $trigger_name .'" '. $autoshow .'>
+			<div class="'. esc_attr($custom_css_class) .' notification '. $position .' col-sm-4 col-md-3" data-animation="'. $animation .'" data-notification-link="'. $trigger_name .'" '. $autoshow .' '. $cookie .'>
 				<div class="boxed boxed--border border--round box-shadow">
 					'. do_shortcode(htmlspecialchars_decode($content)) .'
 				</div>
@@ -36,7 +38,7 @@ function ebor_notification_shortcode( $atts, $content = null ) {
 	} elseif( 'narrow' == $layout ){
 		
 		$notification_content = '
-			<div class="'. esc_attr($custom_css_class) .' notification '. $position .' col-sm-4 col-md-3" data-animation="'. $animation .'" data-notification-link="'. $trigger_name .'" '. $autoshow .'>
+			<div class="'. esc_attr($custom_css_class) .' notification '. $position .' col-sm-4 col-md-3" data-animation="'. $animation .'" data-notification-link="'. $trigger_name .'" '. $autoshow .' '. $cookie .'>
 				<div class="feature feature-1 text-center">
 				    '. wp_get_attachment_image( $image, 'full' ) .'
 				    <div class="feature__body boxed boxed--lg boxed--border">
@@ -51,7 +53,7 @@ function ebor_notification_shortcode( $atts, $content = null ) {
 	} elseif( 'basic-dark' == $layout ){
 		
 		$notification_content = '
-			<div class="'. esc_attr($custom_css_class) .' notification '. $position .' col-sm-4 col-md-3 bg--dark" data-animation="'. $animation .'" data-notification-link="'. $trigger_name .'" '. $autoshow .'>
+			<div class="'. esc_attr($custom_css_class) .' notification '. $position .' col-sm-4 col-md-3 bg--dark" data-animation="'. $animation .'" data-notification-link="'. $trigger_name .'" '. $autoshow .' '. $cookie .'>
 				<div class="boxed boxed--border border--round box-shadow">
 					'. do_shortcode(htmlspecialchars_decode($content)) .'
 				</div>
@@ -61,7 +63,7 @@ function ebor_notification_shortcode( $atts, $content = null ) {
 	} elseif( 'image-background' == $layout ){
 		
 		$notification_content = '
-			<div class="'. esc_attr($custom_css_class) .' notification '. $position .' col-sm-6 col-md-4 box-shadow-wide" data-animation="'. $animation .'" data-notification-link="'. $trigger_name .'" '. $autoshow .'>
+			<div class="'. esc_attr($custom_css_class) .' notification '. $position .' col-sm-6 col-md-4 box-shadow-wide" data-animation="'. $animation .'" data-notification-link="'. $trigger_name .'" '. $autoshow .' '. $cookie .'>
 				<div class="boxed boxed--lg imagebg text-center" data-overlay="6">
 				    <div class="background-image-holder">
 				        '. wp_get_attachment_image( $image, 'full' ) .'
@@ -175,6 +177,12 @@ function ebor_notification_shortcode_vc() {
 					"heading" => esc_html__("Autoshow Counter", 'stackwordpresstheme'),
 					"param_name" => "autoshow",
 					"description" => 'Autoshow timer, use milliseconds to create a countdown for the notification to show on page load. NUMERIC ONLY. E.g: 5000',
+				),				
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Cookie Name", 'stackwordpresstheme'),
+					"param_name" => "cookie",
+					"description" => 'Leave blank in most cases, set a unique name if you want a modal to show only once per user.',
 				),
 				array(
 					"type" => "textfield",
