@@ -35,21 +35,17 @@ function ebor_post_shortcode( $atts ) {
 	/**
 	 * Setup post query
 	 */
-	if( $offset == '0') {
-		$query_args = array(
-			'post_type' => 'post',
-			'post_status' => 'publish',
-			'posts_per_page' => $pppage,
-			'paged' => $paged
-		);		
-	} else {
-		$query_args = array(
-			'post_type'      => 'post',
-			'post_status'    => 'publish',
-			'posts_per_page' => $pppage,
-			'paged'          => $paged,
-			'offset'         => $offset
-		);
+	$query_args = array(
+		'post_type'      => 'post',
+		'post_status'    => 'publish',
+		'posts_per_page' => $pppage,
+		'paged'          => $paged,
+		'offset'         => $offset
+	); 
+	
+	// Check for and handle offset
+	if( $offset ) {
+		$query_args['offset'] = $offset;	
 	}
 	
 	//Hide current post ID from the loop if we're in a singular view
