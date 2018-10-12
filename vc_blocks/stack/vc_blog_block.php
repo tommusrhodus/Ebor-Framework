@@ -39,8 +39,7 @@ function ebor_post_shortcode( $atts ) {
 		'post_type'      => 'post',
 		'post_status'    => 'publish',
 		'posts_per_page' => $pppage,
-		'paged'          => $paged,
-		'offset'         => $offset
+		'paged'          => $paged
 	); 
 	
 	// Check for and handle offset
