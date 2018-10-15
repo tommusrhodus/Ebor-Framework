@@ -30,7 +30,7 @@ function ebor_image_gallery_shortcode( $atts, $content = null ) {
 	} 
 	elseif($type == 'masonry_2col' || $type == 'masonry_lightbox_2col' || $type == 'classic_grid_overlay_caption_2col') {
 		$grid_size = 'cube-grid-large'; 
-		$filter_id = 'cube-grid-large-filter';
+		$filter_id = 'cube-grid-filter';
 	}
 	elseif($type == 'mosaic' || $type == 'mosaic_lightbox') {
 		$grid_size = 'cube-grid-mosaic'; 
