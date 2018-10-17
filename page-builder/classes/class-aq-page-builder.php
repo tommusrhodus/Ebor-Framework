@@ -167,7 +167,9 @@ if(!class_exists('AQ_Page_Builder')) {
 				register_post_type( 'template', $template_args);
 				
 			} else {
-				add_action('admin_notices', create_function('', "echo '<div id=\"message\" class=\"error\"><p><strong>Ebor Page Builder notice: </strong>'. __('The \"template\" post type already exists, possibly added by the theme or other plugins. Please consult with theme author to resolve this issue', 'ebor-framework') .'</p></div>';"));
+				add_action('admin_notices', function() {
+					echo '<div id="message" class="error"><p><strong>Ebor Page Builder notice: </strong>', __('The "template" post type already exists, possibly added by the theme or other plugins. Please consult with theme author to resolve this issue', 'ebor-framework') ,'</p></div>';	
+				});
 			}
 			
 		}
@@ -638,7 +640,9 @@ if(!class_exists('AQ_Page_Builder')) {
 			if ( !array_key_exists( 'template', $shortcode_tags ) ) {
 				add_shortcode( 'template', array(&$this, 'do_shortcode') );
 			} else {
-				add_action('admin_notices', create_function('', "echo '<div id=\"message\" class=\"error\"><p><strong>Aqua Page Builder notice: </strong>'. __('The \"[template]\" shortcode already exists, possibly added by the theme or other plugins. Please consult with the theme author to consult with this issue', 'ebor-framework') .'</p></div>';"));
+				add_action('admin_notices', function() {
+					echo '<div id="message" class="error"><p><strong>Aqua Page Builder notice: </strong>', __('The "[template]" shortcode already exists, possibly added by the theme or other plugins. Please consult with the theme author to consult with this issue', 'ebor-framework') ,'</p></div>';
+				});
 			}
 			
 		}

@@ -176,7 +176,7 @@ if(!( class_exists('ebor_Twitter_Widget') )){
 if(!( class_exists('ebor_ebor_popular_Widget') )){
 	class ebor_ebor_popular_Widget extends WP_Widget {
 		
-		function ebor_ebor_popular_Widget(){
+		function __construct(){
 			parent::__construct(
 				'ebor_ebor_popular-widget', // Base ID
 				__('Fulford: Popular Posts', 'fulford'), // Name

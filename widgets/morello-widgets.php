@@ -2,7 +2,7 @@
 if(!( class_exists('ebor_keepsake_popular_Widget') )){
 	class ebor_keepsake_popular_Widget extends WP_Widget {
 		
-		function ebor_keepsake_popular_Widget(){
+		function __construct(){
 			parent::__construct(
 				'ebor_keepsake_popular-widget', // Base ID
 				__('TommusRhodus: Popular Posts', 'ebor_framework'), // Name
@@ -99,7 +99,7 @@ if(!( class_exists('ebor_keepsake_popular_Widget') )){
 if(!( class_exists('ebor_contact_Widget') )){
 	class ebor_contact_Widget extends WP_Widget {
 		
-		function ebor_contact_Widget(){
+		function __construct(){
 			parent::__construct(
 				'ebor_contact-widget', // Base ID
 				__('TommusRhodus: Social Icons', 'ebor_framework'), // Name
