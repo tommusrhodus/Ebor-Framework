@@ -110,7 +110,7 @@ function ebor_post_shortcode_vc() {
 					"type" => "dropdown",
 					"heading" => esc_html__("Post Display Type", 'brailie'),
 					"param_name" => "layout",
-					"value" => ebor_get_blog_layouts(),
+					"value" => brailie_get_blog_layouts(),
 				),
 				array(
 		    		"type" => "dropdown",

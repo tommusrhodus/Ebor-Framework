@@ -103,7 +103,7 @@ function ebor_portfolio_shortcode_vc() {
 					"type"       => "dropdown",
 					"heading"    => esc_html__("portfolio Display Type", 'brailie'),
 					"param_name" => "layout",
-					"value"      => ebor_get_portfolio_layouts()
+					"value"      => brailie_get_portfolio_layouts()
 				),
 			)
 		) 

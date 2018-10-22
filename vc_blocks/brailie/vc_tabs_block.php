@@ -136,8 +136,8 @@ function ebor_tabs_content_shortcode_vc() {
 	
 	$icons = array_values(array('Install Ebor Framework' => 'Install Ebor Framework'));
 	
-	if( function_exists('ebor_get_icons') ){
-		$icons = array_values(ebor_get_icons());	
+	if( function_exists('brailie_get_icons') ){
+		$icons = array_values(brailie_get_icons());	
 	}
 	
 	vc_map( 

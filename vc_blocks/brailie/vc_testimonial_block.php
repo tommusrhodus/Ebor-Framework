@@ -84,7 +84,7 @@ function ebor_testimonial_shortcode_vc() {
 					"type"       => "dropdown",
 					"heading"    => esc_html__( "Testimonial Display Type", 'brailie' ),
 					"param_name" => "layout",
-					"value"      => ebor_get_testimonial_layouts()
+					"value"      => brailie_get_testimonial_layouts()
 				),
 			)
 		) 
