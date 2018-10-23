@@ -20,7 +20,8 @@ function ebor_bullet_nav_shortcode( $atts, $content = null ) {
 				
 				$items = explode( ',', $text );
 				foreach ($items as $item) {
-					$item_minus_hash = ucwords(str_replace("-", " ", str_replace("-", " ", str_replace('#', '', $item))));
+					$search  = array( '-', '_' );
+					$item_minus_hash = ucwords(str_replace($search, " ", str_replace('#', '', $item)));
 					$output .= '<li class="nav-item"><a class="nav-link scroll hint--left hint--rounded hint--start" href="'. $item .'" aria-label="'. $item_minus_hash .'"></a></li>';
 				}
 				$output .= '
