@@ -33,6 +33,7 @@ function ebor_framework_register_brailie_blocks(){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/brailie/vc_image_gallery_block.php' );
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/brailie/vc_tabbed_carousel_block.php' );
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/brailie/vc_tabbed_media_player_block.php' );
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/brailie/vc_bullet_nav.php' );
 }
 
 function ebor_framework_brailie_init(){
