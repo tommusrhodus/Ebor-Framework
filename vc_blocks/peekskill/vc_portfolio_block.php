@@ -28,7 +28,7 @@ function ebor_portfolio_shortcode( $atts ) {
 		$query_args['tax_query'] = array(
 			array(
 				'taxonomy' => 'portfolio_category',
-				'field' => 'id',
+				'field' => 'slug',
 				'terms' => $filter
 			)
 		);
