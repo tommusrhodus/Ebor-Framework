@@ -181,3 +181,15 @@ if(!( function_exists('ebor_hex2rgb') )){
 }
 
 add_filter( 'widget_text', 'do_shortcode' );
+
+/* Revolution Slider Error Message Tweak */
+function tommusrhodus_revslider_missing_message( $output, $tag ) {
+	if ( 'rev_slider' !== $tag ) {
+		return $output;
+	}
+	if (strpos($output, 'not found.') !== false) {
+		$output = str_replace('not found.', 'not found. <a style="color: white;" target="_blank" href="'. esc_url('https://www.tommusrhodus.com/how-to-import-revolution-slider-demo-data/') .'"><strong>Click here</strong></a> to learn how to import your demo sliders.', $output);
+	}
+	return $output;
+}
+add_filter('do_shortcode_tag', 'tommusrhodus_revslider_missing_message', 10, 2);
