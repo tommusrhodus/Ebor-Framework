@@ -4,6 +4,7 @@
  * Custom blocks for visual composer in this theme.
  */
 function ebor_framework_register_launchkit_blocks(){
+	require_once('functions.php');
 	require_once('vc_gallery_block.php');
 	require_once('vc_slider_block.php');
 	require_once('vc_hero_video_block.php');
