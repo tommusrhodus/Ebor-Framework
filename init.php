@@ -83,6 +83,7 @@ $defaults = array(
 	'lydia_vc_shortcodes'  	   => '0',
 	'expose_vc_shortcodes'	   => '0',
 	'uber_vc_shortcodes'	   => '0',
+	'launchkit_vc_shortcodes'  => '0',
 	'fulford_widgets'	   	   => '0',
 	'acomb_widgets'	   	   	   => '0',
 	'gallery_widgets'	   	   => '0',
@@ -234,6 +235,9 @@ if( '1' == $framework_options['expose_vc_shortcodes'] ){
 }
 if( '1' == $framework_options['uber_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/uber/init.php' );	
+}
+if( '1' == $framework_options['launchkit_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/launchkit/init.php' );	
 }
 
 /**
