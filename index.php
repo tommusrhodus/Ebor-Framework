@@ -64,11 +64,6 @@ if(!( function_exists('ebor_ajax_import_data') )){
 }
 
 /**
- * Theme updates
- */
-require_once( EBOR_FRAMEWORK_PATH . 'envato-wp-updater/updater-init.php' );
-
-/**
  * Plugin Updates
  * This plugin updates from wp-updates.com
  * I've tried various github updaters, but they all seem to break very simply, this should be quite reliable.
