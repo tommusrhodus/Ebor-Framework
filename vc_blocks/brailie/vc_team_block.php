@@ -103,7 +103,7 @@ function ebor_team_shortcode_vc() {
 					"type"       => "dropdown",
 					"heading"    => esc_html__("Team Display Type", 'brailie'),
 					"param_name" => "layout",
-					"value"      => ebor_get_team_layouts()
+					"value"      => brailie_get_team_layouts()
 				),
 			)
 		) 
