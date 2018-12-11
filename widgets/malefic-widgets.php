@@ -3,7 +3,7 @@
 if(!( class_exists('ebor_malefic_popular_Widget') )){
 	class ebor_malefic_popular_Widget extends WP_Widget {
 		
-		function ebor_malefic_popular_Widget(){
+		function __construct(){
 			parent::__construct(
 				'ebor_malefic_popular-widget', // Base ID
 				esc_html__('TommusRhodus: Popular Posts', 'malefic'), // Name
@@ -97,7 +97,7 @@ if(!( class_exists('ebor_malefic_popular_Widget') )){
 if(!( class_exists('ebor_contact_Widget') )){
 	class ebor_contact_Widget extends WP_Widget {
 		
-		function ebor_contact_Widget(){
+		function __construct(){
 			parent::__construct(
 				'ebor_contact-widget', // Base ID
 				esc_html__('TommusRhodus: Social Icons', 'malefic'), // Name

@@ -3,7 +3,7 @@
 if(!( class_exists('ebor_malefic_popular_Widget') )){
 	class ebor_malefic_popular_Widget extends WP_Widget {
 		
-		function ebor_malefic_popular_Widget(){
+		function __construct(){
 			parent::__construct(
 				'ebor_malefic_popular-widget', // Base ID
 				esc_html__('TommusRhodus: Popular Posts', 'creatink'), // Name
@@ -94,7 +94,7 @@ if(!( class_exists('ebor_malefic_popular_Widget') )){
 if(!( class_exists('ebor_malefic_recent_Widget') )){
 	class ebor_malefic_recent_Widget extends WP_Widget {
 		
-		function ebor_malefic_recent_Widget(){
+		function __construct(){
 			parent::__construct(
 				'ebor_malefic_recent-widget', // Base ID
 				esc_html__('TommusRhodus: Recent Posts', 'creatink'), // Name
@@ -188,7 +188,7 @@ if(!( class_exists('ebor_malefic_recent_Widget') )){
 if(!( class_exists('ebor_contact_Widget') )){
 	class ebor_contact_Widget extends WP_Widget {
 		
-		function ebor_contact_Widget(){
+		function __construct(){
 			parent::__construct(
 				'ebor_contact-widget', // Base ID
 				esc_html__('TommusRhodus: Social Icons', 'creatink'), // Name
@@ -495,7 +495,7 @@ if(!( class_exists('malefic_Instagram_Widget') )){
 if(!( class_exists('ebor_creatink_product_Widget') )){
 	class ebor_creatink_product_Widget extends WP_Widget {
 		
-		function ebor_creatink_product_Widget(){
+		function __construct(){
 			parent::__construct(
 				'ebor_creatink_product-widget', // Base ID
 				esc_html__('TommusRhodus: Recent Products', 'creatink'), // Name

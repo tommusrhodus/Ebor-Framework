@@ -54,7 +54,7 @@ class WP_Import extends WP_Importer {
 	var $fetch_attachments = false;
 	var $url_remap = array();
 	var $featured_images = array();
-
+	
 	function WP_Import() { /* nothing */ }
 
 	/**
