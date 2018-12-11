@@ -33,7 +33,7 @@ function ebor_tabs_content_shortcode( $atts, $content = null ) {
 		) 
 	);
 	
-	$output = '<li class="'. esc_attr($custom_css_class) .'">';
+	$output = '<li class="'. esc_attr($custom_css_class) .'"  id="'. htmlspecialchars_decode(sanitize_title($title)) .'">';
 	
 	if( $icon ){
 		

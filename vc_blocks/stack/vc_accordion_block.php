@@ -34,7 +34,7 @@ function ebor_accordion_content_shortcode( $atts, $content = null ) {
 	
 	$output = '
 		<li class="'. esc_attr($custom_css_class) .'">
-			<div class="accordion__title">
+			<div class="accordion__title" id="'. htmlspecialchars_decode(sanitize_title($title)) .'">
 				<span class="h5">'. htmlspecialchars_decode($title) .'</span>
 			</div>
 			<div class="accordion__content">
