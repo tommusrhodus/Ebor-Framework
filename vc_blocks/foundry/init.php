@@ -44,7 +44,8 @@ function ebor_framework_register_foundry_blocks(){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/foundry/vc_process_carousel_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/foundry/vc_counter_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/foundry/vc_image_tile_block.php');
-	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/foundry/vc_image_caption_block.php');
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/foundry/vc_image_caption_block.php');	
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/foundry/vc_portfolio_nav.php');
 }
 
 function ebor_framework_foundry_init(){
