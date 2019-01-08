@@ -8,7 +8,8 @@ function ebor_accordion_shortcode( $atts, $content = null ) {
 		shortcode_atts( 
 			array(
 				'type' => 'panel-group-bg',
-				'open' => 'yes'
+				'open' => 'yes',
+				'custom_id' => ''
 			), $atts 
 		) 
 	);
@@ -19,7 +20,13 @@ function ebor_accordion_shortcode( $atts, $content = null ) {
 	$ebor_accordion_count = 0;
 	$rand = false;
 	$output = false;
-	$rand = wp_rand(0,10000);
+
+	if(!empty($custom_id)) {
+		$rand = $custom_id;
+	} else {
+		$rand = wp_rand(0,10000);
+	}
+	
 	$ebor_accordion_open = $open;
 	
 	$output .= '
@@ -108,6 +115,12 @@ function ebor_accordion_shortcode_vc() {
 		    			'Yes' => 'yes',
 		    			'No' => 'no'
 		    		)
+		    	),
+		    	array(
+		    		"type" => "textfield",
+		    		"heading" => esc_html__("Custom ID", 'belton'),
+		    		"param_name" => "custom_id",
+		    		'holder' => 'div'
 		    	),
 		    )
 		) 
