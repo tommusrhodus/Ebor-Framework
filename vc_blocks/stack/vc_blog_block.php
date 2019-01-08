@@ -44,7 +44,9 @@ function ebor_post_shortcode( $atts ) {
 	
 	// Check for and handle offset
 	if( $offset ) {
-		$query_args['offset'] = $offset;	
+	    $offset_start         = $offset;
+	    $offset               = ( $paged - 1 ) * $pppage + $offset_start;
+	    $query_args['offset'] = $offset;    
 	}
 	
 	//Hide current post ID from the loop if we're in a singular view
