@@ -9,7 +9,8 @@ function ebor_framework_register_stack_blocks(){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_hero_video_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_hero_gradient_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_hero_slider_block.php');
-	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_hero_slider_alt_block.php');
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_hero_slider_alt_block.php');	
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_hero_slider_alt_two_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_typed_text_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_twitter_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/vc_instagram_block.php');
