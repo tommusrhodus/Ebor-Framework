@@ -87,6 +87,7 @@ $defaults = array(
 	'fulford_widgets'	   	   => '0',
 	'acomb_widgets'	   	   	   => '0',
 	'gallery_widgets'	   	   => '0',
+	'union_vc_shortcodes'      => '0',
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -238,6 +239,9 @@ if( '1' == $framework_options['uber_vc_shortcodes'] ){
 }
 if( '1' == $framework_options['launchkit_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/launchkit/init.php' );	
+}
+if( '1' == $framework_options['union_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/union/init.php' );	
 }
 
 /**
