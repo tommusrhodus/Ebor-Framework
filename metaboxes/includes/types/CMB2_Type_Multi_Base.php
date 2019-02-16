@@ -92,9 +92,6 @@ abstract class CMB2_Type_Multi_Base extends CMB2_Type_Base {
 
 			// Clone args & modify for just this item
 			$a = $args;
-			
-			$opt_value = ( is_array($opt_label) ) ? $opt_label['value'] : $opt_value;
-			$opt_label = ( is_array($opt_label) ) ? $opt_label['name'] : $opt_label;
 
 			$a['value'] = $opt_value;
 			$a['label'] = $opt_label;
