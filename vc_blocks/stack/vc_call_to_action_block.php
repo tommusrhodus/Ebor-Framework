@@ -26,7 +26,7 @@ function ebor_call_to_action_shortcode( $atts, $content = null ) {
 			        <h4>'. $intro .'</h4>  
 			    </div>
 			    <div class="col-sm-5">
-			        <p class="lead">'. $middle .'</p>
+			        <p class="lead">'. do_shortcode( $middle ) .'</p>
 			    </div>
 			    <div class="col-sm-3 text-right text-center-xs">
 			        <a class="btn btn--primary type--uppercase" href="'. esc_url($button_url) .'" target="'. esc_attr( $button_target ) .'"><span class="btn__text">'. $button_text .'</span></a>
@@ -42,7 +42,7 @@ function ebor_call_to_action_shortcode( $atts, $content = null ) {
 			        <h4>'. $intro .'</h4>
 			    </div>
 			    <div class="col-md-4">
-			        <p class="lead">'. $middle .'</p>
+			        <p class="lead">'. do_shortcode( $middle )  .'</p>
 			    </div>
 			    <div class="col-md-4 text-center">
 			        <a class="btn btn--primary type--uppercase" href="'. esc_url($button_url) .'" target="'. esc_attr( $button_target ) .'"><span class="btn__text">'. $button_text .'</span></a>
