@@ -30,7 +30,7 @@ function ebor_hero_video_shortcode( $atts, $content = null ) {
 		$output = '
 			<section class="'. esc_attr($custom_css_class) .' imagebg videobg height-'. $height .' text-center" data-overlay="'. $opacity .'">
 				
-				<video autoplay loop muted>
+				<video autoplay loop muted playsinline>
 					<source src="'. esc_url($webm) .'" type="video/webm">
 					<source src="'. esc_url($mpfour) .'" type="video/mp4">
 				</video>
@@ -99,7 +99,7 @@ function ebor_hero_video_shortcode( $atts, $content = null ) {
 		$output = '
 			<section class="'. esc_attr($custom_css_class) .' cover imagebg videobg height-'. $height .' text-center" data-overlay="'. $opacity .'">
 				
-				<video autoplay loop muted>
+				<video autoplay loop muted playsinline>
 					<source src="'. esc_url($webm) .'" type="video/webm">
 					<source src="'. esc_url($mpfour) .'" type="video/mp4">
 				</video>
