@@ -96,6 +96,103 @@ if(!( class_exists('ebor_keepsake_popular_Widget') )){
 }
 
 /*-----------------------------------------------------------------------------------*/
+/*	RECENT POSTS WIDGET
+/*-----------------------------------------------------------------------------------*/
+if(!( class_exists('ebor_keepsake_recent_posts_Widget') )){
+	class ebor_keepsake_recent_posts_Widget extends WP_Widget {
+		
+		public function __construct(){
+			parent::__construct(
+				'ebor_keepsake_recentposts-widget', // Base ID
+				__('TommusRhodus: Recent Posts', 'ebor_framework'), // Name
+				array( 'description' => __( 'Add a simple recent posts widget', 'ebor_framework' ), ) // Args
+			);
+		}
+		
+		public function widget($args, $instance)
+		{
+			extract($args);
+			$title = apply_filters('widget_title', $instance['title']);
+	
+			echo $before_widget;
+	
+			if($title) {
+				echo  $before_title.$title.$after_title;
+			} ?>
+	
+		    	<ul class="post-list">
+			    	<?php 
+			    		$widget_query = new WP_Query(
+			    			array(
+			    				'post_type' => 'post',
+			    				'posts_per_page' => $instance['amount']
+			    			)
+			    		);
+			    		if( $widget_query->have_posts() ) : while ( $widget_query->have_posts() ): $widget_query->the_post(); 
+			    	?>
+			    	
+				    	  <li>
+				    	    <div class="icon-overlay">
+					    	    <a href="<?php the_permalink(); ?>">
+						    	    <?php the_post_thumbnail('thumbnail'); ?>
+					    	    </a>
+				    	    </div>
+				    	    <div class="meta">
+				    	      <h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+				    	      <em>
+				    	      	<?php the_time( get_option('date_format') ); ?> 
+				    	      	<a href="<?php comments_link(); ?>"><?php comments_number( '0','1','%' ); ?> <i class="icon-chat-1"></i></a>
+				    	      </em>
+				    	    </div>
+				    	  </li>
+			    	              
+			    	<?php 
+			    		endwhile; 
+			    		endif; 
+			    		wp_reset_postdata(); 
+			    	?>
+		    	</ul>
+			
+			<?php echo $after_widget;
+		}
+		
+		public function update($new_instance, $old_instance)
+		{
+			$instance = $old_instance;
+	
+			$instance['title'] = strip_tags($new_instance['title']);
+			if( is_numeric($new_instance['amount']) ){
+				$instance['amount'] = $new_instance['amount'];
+			} else {
+				$new_instance['amount'] = '3';
+			}
+	
+			return $instance;
+		}
+	
+		public function form($instance)
+		{
+			$defaults = array('title' => 'Recent Posts', 'amount' => '3');
+			$instance = wp_parse_args((array) $instance, $defaults); ?>
+			
+			<p>
+				<label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
+				<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $instance['title']; ?>" />
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id('amount'); ?>">Amount of Posts:</label>
+				<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('amount'); ?>" name="<?php echo $this->get_field_name('amount'); ?>" value="<?php echo $instance['amount']; ?>" />
+			</p>
+		<?php
+		}
+	}
+	function ebor_framework_register_ebor_keepsake_recent_posts(){
+	     register_widget( 'ebor_keepsake_recent_posts_Widget' );
+	}
+	add_action( 'widgets_init', 'ebor_framework_register_ebor_keepsake_recent_posts');
+}
+
+/*-----------------------------------------------------------------------------------*/
 /*	CONTACT WIDGET
 /*-----------------------------------------------------------------------------------*/
 if(!( class_exists('ebor_contact_Widget') )){
