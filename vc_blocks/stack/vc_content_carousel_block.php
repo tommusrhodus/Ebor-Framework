@@ -10,6 +10,7 @@ function ebor_content_carousel_shortcode( $atts, $content = null ) {
 				'type'             => 'content_carousel-horizontal',
 				'item_width'       => 'col-sm-4 col-xs-12',
 				'arrows'           => 'false',
+				'timing'           => '7000',
 				'custom_css_class' => ''
 			), $atts 
 		) 
@@ -20,7 +21,7 @@ function ebor_content_carousel_shortcode( $atts, $content = null ) {
 	
 	$content = '<li class="'. esc_attr($item_width) .'">' . implode('</li><li class="'. esc_attr($item_width) .'">', $matches[0]) . '</li>';
 	
-	$output = '<div class="'. $custom_css_class .' row slider" data-arrows="'. $arrows .'" data-paging="true"><ul class="slides">'. do_shortcode($content) .'</ul></div>';
+	$output = '<div class="'. $custom_css_class .' row slider" data-arrows="'. $arrows .'" data-paging="true" data-timing="'. esc_attr($timing) .'"><ul class="slides">'. do_shortcode($content) .'</ul></div>';
 
 	return $output;
 }
@@ -55,6 +56,13 @@ function ebor_content_carousel_shortcode_vc() {
 		    			'No' => 'false',
 		    			'Yes' => 'true'
 		    		)
+		    	),
+		    	array(
+		    		"type" => "textfield",
+		    		"heading" => esc_html__("Transition Time", 'stackwordpresstheme'),
+		    		"param_name" => "timing",
+		    		'value' => '7000',
+		    		"description" => 'Time between slides in miliseconds - default 7000',
 		    	),
 		    	array(
 		    		"type" => "textfield",
