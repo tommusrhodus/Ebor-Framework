@@ -37,7 +37,7 @@ function ebor_instagram_block_shortcode( $atts, $content = null ) {
 					    template: \'<div class="item"><figure class="frame"><img src="{{image}}" /><a href="{{link}}" class="ins-link" target="_blank"><i class="icon-link"></i></a></figure></div>\',
 					    after: function () {
 					        jQuery(\'.ebor-swiper-container.instagram\').each(function(){
-								  jQuery(this).swiper({
+								  var mySwiper = new Swiper (this, {
 								     grabCursor: true,
 								    slidesPerView: \'auto\',
 								    wrapperClass: \'swiper\',
@@ -49,11 +49,11 @@ function ebor_instagram_block_shortcode( $atts, $content = null ) {
 								  var $swipers = jQuery(this);
 								
 								  $swipers.siblings(\'.arrow-left\').click(function(){
-								$swipers.data(\'swiper\').swipeTo($swipers.data(\'swiper\').activeIndex-1);
+									mySwiper.slideTo(mySwiper.activeIndex-1);
 								return false;
 								});
 								$swipers.siblings(\'.arrow-right\').click(function(){
-								$swipers.data(\'swiper\').swipeTo($swipers.data(\'swiper\').activeIndex+1);
+									mySwiper.slideTo(mySwiper.activeIndex+1);
 								return false;
 								});
 							});
