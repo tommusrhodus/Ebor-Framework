@@ -61,6 +61,32 @@ if(!( function_exists('somnus_vc_add_att') )){
 		vc_remove_param('vc_gmaps', 'title');
 		vc_remove_param('vc_gmaps', 'size');
 		vc_remove_param('vc_gmaps', 'el_class');
+
+		/**
+		 * Add class category selectors
+		 */
+		$blog_args = array(
+			'orderby'                  => 'name',
+			'hide_empty'               => 0,
+			'hierarchical'             => 1,
+			'taxonomy'                 => 'class_category'
+		);
+		$blog_cats = get_categories( $blog_args );
+		$final_blog_cats = array( 'Show all categories' => 'all' );
+		
+		if( is_array($blog_cats) ){
+			foreach( $blog_cats as $cat ){
+				$final_blog_cats[$cat->name] = $cat->slug;
+			}
+		}
+		
+		$attributes = array(
+			'type' => 'dropdown',
+			'heading' => "Show Specific Class Category?",
+			'param_name' => 'filter',
+			'value' => $final_blog_cats
+		);
+		vc_add_param('somnus_timetable', $attributes);
 		
 	}
 	add_action('init', 'somnus_vc_add_attr', 999);

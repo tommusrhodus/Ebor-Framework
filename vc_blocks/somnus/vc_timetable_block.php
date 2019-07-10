@@ -4,6 +4,15 @@
  * The Shortcode
  */
 function somnus_timetable_shortcode( $atts ) {
+	global $wp_query;
+
+	extract( 
+		shortcode_atts( 
+			array(
+				'filter' => 'all'
+			), $atts 
+		) 
+	);	
 	
 	/**
 	 * Setup post query
@@ -12,9 +21,39 @@ function somnus_timetable_shortcode( $atts ) {
 		'post_type' => 'class',
 		'posts_per_page' => '-1'
 	);
+
+	if( 'all' !== $filter ){
 	
-	global $wp_query;
+	//Check for WPML
+		if( has_filter( 'wpml_object_id' ) ){
+		
+			global $sitepress;
+			
+			//WPML recommended, remove filter, then add back after
+			remove_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ), 10, 4 );
+			
+			$filterClass    = get_term_by( 'slug', $filter, 'class_category' );
+			$ID             = (int) apply_filters( 'wpml_object_id', (int) $filterClass->term_id, 'class_category', true );
+			$translatedSlug = get_term_by( 'id', $ID, 'class_category' );
+			$filter         = $translatedSlug->slug;
+			
+			//Adding filter back
+			add_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ), 10, 4 );
+			
+		}
+			
+		$query_args['tax_query'] = array(
+			array(
+				'taxonomy' => 'class_category',
+				'field'    => 'slug',
+				'terms'    => $filter
+			)
+		);	
+		
+	}
+
 	$wp_query = new WP_Query( $query_args );
+	$wp_query->{"filter"} = $filter;
 	
 	ob_start();
 	
