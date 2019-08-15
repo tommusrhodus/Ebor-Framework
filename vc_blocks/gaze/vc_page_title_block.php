@@ -7,10 +7,17 @@ function ebor_page_title_shortcode( $atts, $content = null ) {
 	
 	global $post;
 	
+	ob_start();
+
 	ebor_page_title( 
 		get_the_title(), 
 		get_the_post_thumbnail_url( $post->ID, 'full' ) 
 	);
+
+	$output = ob_get_contents();
+	ob_end_clean();
+
+	return $output;
 	
 }
 add_shortcode( 'gaze_page_title', 'ebor_page_title_shortcode' );
