@@ -19,6 +19,9 @@ function ebor_cards_shortcode( $atts, $content = null ) {
 		) 
 	);
 	
+	$before = ( $button_url ) ? '<a href="'. esc_url($button_url) .'">' : false;
+	$after  = ( $button_url ) ? '</a>' : false;
+	
 	if( 'social' == $layout ){
 		
 		$output = '
@@ -131,7 +134,9 @@ function ebor_cards_shortcode( $atts, $content = null ) {
 		
 		$output = '
 			<div class="'. esc_attr($custom_css_class) .' feature feature-1">
+				'. $before .'
 			    '. wp_get_attachment_image( $image, 'large' ) .'
+			    '. $after .'
 			    <div class="feature__body boxed boxed--border">'. do_shortcode(htmlspecialchars_decode($content)) .''. $label .'</div>
 			</div><!--end feature-->
 		';	
