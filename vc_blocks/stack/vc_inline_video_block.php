@@ -53,6 +53,8 @@ function ebor_video_inline_shortcode( $atts ) {
 			set_transient($cache_key, $result, $ttl);
 			
 		}
+
+		$result = str_replace('src="', 'data-src="', $result);
 		
 		$output = '
 			<div class="'. esc_attr($custom_css_class) .' video-cover border--round box-shadow">
