@@ -46,14 +46,14 @@ function ebor_video_slider_content_shortcode( $atts, $content = null ) {
 	$image = wp_get_attachment_image( $image, 'full', 0, array('class' => 'background-image') );
 	
 	$output = '
-		<li class="vid-bg image-bg overlay pt240 pb240" '. $ebor_height .'>
+		<li class="vid-bg image-bg overlay pt240 local pb240" '. $ebor_height .'>
 		
 		    <div class="background-image-holder">
 		        '. $image .'
 		    </div>
 		    
 		    <div class="fs-vid-background">
-		        <video muted loop>
+		        <video muted loop playsinline>
 		            <source src="'. esc_url($webm) .'" type="video/webm">
 		            <source src="'. esc_url($mpfour) .'" type="video/mp4">
 		            <source src="'. esc_url($ogv) .'" type="video/ogg">	

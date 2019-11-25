@@ -18,7 +18,7 @@ function ebor_video_background_shortcode( $atts, $content = null ) {
 		) 
 	);
 	
-	$output = '<section class="image-bg fullscreen overlay bg-dark vid-bg">';
+	$output = '<section class="image-bg fullscreen overlay bg-dark vid-bg '. $local .'">';
 	
 	if( 'embed' == $layout ){		
 		$output .= '<div class="player" data-video-id="'. esc_attr($embed) .'" data-start-at="0"></div>';
@@ -41,7 +41,7 @@ function ebor_video_background_shortcode( $atts, $content = null ) {
 	if( 'local' == $layout ){		    
 		$output .= '
 			<div class="fs-vid-background">
-		        <video autoplay muted loop>
+		        <video autoplay muted loop playsinline>
 		            <source src="'. esc_url($webm) .'" type="video/webm">
 		            <source src="'. esc_url($mpfour) .'" type="video/mp4">
 		            <source src="'. esc_url($ogv) .'" type="video/ogg">	
