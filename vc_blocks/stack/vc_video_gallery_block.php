@@ -67,6 +67,8 @@ function ebor_video_gallery_content_shortcode( $atts, $content = null ) {
 		}
 	
 	}
+	
+	$result = str_replace('src="', 'data-src="', $result);
 
 	$output = '
 		<div class="masonry__item col-sm-6 col-xs-12" data-masonry-filter="'. $class .'">
