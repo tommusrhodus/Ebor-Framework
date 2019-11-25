@@ -18,7 +18,7 @@ function ebor_video_background_shortcode( $atts, $content = null ) {
 		) 
 	);
 	
-	$output = '<section class="image-bg fullscreen overlay bg-dark vid-bg '. $local .'">';
+	$output = '<section class="image-bg fullscreen overlay bg-dark vid-bg '. $layout .'">';
 	
 	if( 'embed' == $layout ){		
 		$output .= '<div class="player" data-video-id="'. esc_attr($embed) .'" data-start-at="0"></div>';
