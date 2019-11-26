@@ -39,3 +39,8 @@ input[type="range"] + input[type="text"] {
 .mce-notification-error {
     display: none !important;
 }
+.fixed .ebor_post_thumb,
+.fixed .column-ebor_post_thumb{
+    min-width: 70px;
+    width: 10%;
+}
