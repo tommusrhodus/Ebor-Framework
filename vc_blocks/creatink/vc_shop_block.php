@@ -25,6 +25,34 @@ function ebor_product_shortcode( $atts ) {
 		'posts_per_page' => $pppage
 	);
 	
+	if(!( $filter == 'all' )) {
+		
+		//Check for WPML
+		if( has_filter('wpml_object_id') ){
+			global $sitepress;
+			
+			//WPML recommended, remove filter, then add back after
+			remove_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
+			
+			$filterClass    = get_term_by('slug', $filter, 'product_cat');
+			$ID             = (int) apply_filters('wpml_object_id', (int) $filterClass->term_id, 'product_cat', true);
+			$translatedSlug = get_term_by('id', $ID, 'product_cat');
+			$filter         = $translatedSlug->slug;
+			
+			//Adding filter back
+			add_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
+		}
+			
+		$query_args['tax_query'] = array(
+			array(
+				'taxonomy' => 'product_cat',
+				'field' => 'slug',
+				'terms' => $filter
+			)
+		);	
+		
+	}
+	
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
