@@ -166,7 +166,7 @@ function ebor_framework_register_portfolio() {
 
 $displays = get_option('ebor_framework_cpt_display_options');
 
-if( $displays['portfolio_slug'] ){ $slug = $displays['portfolio_slug']; } else { $slug = 'portfolio'; }
+if( isset( $displays['portfolio_slug'] ) ){ $slug = $displays['portfolio_slug']; } else { $slug = 'portfolio'; }
 
     $labels = array( 
         'name' => __( 'Portfolio', 'ebor' ),
@@ -237,7 +237,7 @@ function ebor_framework_register_team() {
 
 $displays = get_option('ebor_framework_cpt_display_options');
 
-if( $displays['team_slug'] ){ $slug = $displays['team_slug']; } else { $slug = 'team'; }
+if( isset( $displays['team_slug'] ) ){ $slug = $displays['team_slug']; } else { $slug = 'team'; }
 
     $labels = array( 
         'name' => __( 'Team Members', 'ebor' ),
