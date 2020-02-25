@@ -11,13 +11,14 @@ function ebor_hover_tile_shortcode( $atts, $content = null ) {
 				'type' => 'top,left',
 				'link' => '#',
 				'title' => '',
-				'subtitle' => ''
+				'subtitle' => '',
+				'target' => ''
 			), $atts 
 		) 
 	);
 	
 	$output = '
-		<a href="'. esc_url($link) .'">
+		<a href="'. esc_url($link) .'" target="'. $target .'">
 			<div class="hover-element hover-element-1 bg--primary" data-title-position="'. $type .'">
 				<div class="hover-element__initial">
 					'. wp_get_attachment_image( $image, 'large' ) .'
@@ -77,6 +78,11 @@ function ebor_hover_tile_shortcode_vc() {
 					"heading" => esc_html__("Subtitle", 'pillar'),
 					"param_name" => "subtitle",
 					'holder' => 'div'
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("URL Target", 'pillar'),
+					"param_name" => "target"
 				),
 				array(
 					"type" => "textfield",
