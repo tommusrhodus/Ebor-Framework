@@ -18,35 +18,49 @@ function ebor_pricing_table_shortcode( $atts, $content = null ) {
 	);
 	
 	if( 'basic' == $layout ){
+	
 		$output = '
 			<div class="pricing-table pt-1 text-center">
 		        <H5 class="uppercase">'. htmlspecialchars_decode($title) .'</H5>
 		        <span class="price">'. htmlspecialchars_decode($amount) .'</span>
 		        <p class="lead">'. htmlspecialchars_decode($small) .'</p>
-		        <a class="btn btn-filled btn-lg" href="'. esc_url($button_url) .'">'. htmlspecialchars_decode($button_text) .'</a>
-		        '. wpautop(do_shortcode(htmlspecialchars_decode($content))) .'
-		    </div>
-	    ';
+		 ';
+		 
+		 if( $button_url ){
+		 	$output .= '<a class="btn btn-filled btn-lg" href="'. esc_url($button_url) .'">'. htmlspecialchars_decode($button_text) .'</a>';
+		 }
+		 
+		 $output .= wpautop(do_shortcode(htmlspecialchars_decode($content))) .'</div>';
+		 
 	} elseif( 'boxed' == $layout ) {
+	
 		$output = '
 		    <div class="pricing-table pt-1 text-center boxed">
 		        <H5 class="uppercase">'. htmlspecialchars_decode($title) .'</H5>
 		        <span class="price">'. htmlspecialchars_decode($amount) .'</span>
 		        <p class="lead">'. htmlspecialchars_decode($small) .'</p>
-		        <a class="btn btn-filled btn-lg" href="'. esc_url($button_url) .'">'. htmlspecialchars_decode($button_text) .'</a>
-		        '. wpautop(do_shortcode(htmlspecialchars_decode($content))) .'
-		    </div>
-	    ';
+		';
+		 
+		 if( $button_url ){
+		 	$output .= '<a class="btn btn-filled btn-lg" href="'. esc_url($button_url) .'">'. htmlspecialchars_decode($button_text) .'</a>';
+		 }
+		 
+		 $output .= wpautop(do_shortcode(htmlspecialchars_decode($content))) .'</div>';
+		    
 	} else {
 		$output = '
 			<div class="pricing-table pt-1 text-center emphasis">
 			    <H5 class="uppercase">'. htmlspecialchars_decode($title) .'</H5>
 			    <span class="price">'. htmlspecialchars_decode($amount) .'</span>
 			    <p class="lead">'. htmlspecialchars_decode($small) .'</p>
-			    <a class="btn btn-white btn-lg" href="'. esc_url($button_url) .'">'. htmlspecialchars_decode($button_text) .'</a>
-			    '. wpautop(do_shortcode(htmlspecialchars_decode($content))) .'
-			</div>
 		';
+		 
+		 if( $button_url ){
+			    $output .= '<a class="btn btn-white btn-lg" href="'. esc_url($button_url) .'">'. htmlspecialchars_decode($button_text) .'</a>';
+		 }
+		 
+		 $output .= wpautop(do_shortcode(htmlspecialchars_decode($content))) .'</div>';
+		 
 	}
 	
 	return $output;

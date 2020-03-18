@@ -52,7 +52,7 @@ function ebor_portfolio_shortcode( $atts ) {
 	
 	ob_start();
 	
-	get_template_part('loop/loop', 'portfolio');
+	get_template_part( 'loop/loop', 'portfolio' );
 	
 	$output = ob_get_contents();
 	ob_end_clean();
