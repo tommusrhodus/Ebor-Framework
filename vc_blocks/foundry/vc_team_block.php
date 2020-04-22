@@ -8,7 +8,7 @@ function ebor_team_shortcode( $atts ) {
 		shortcode_atts( 
 			array(
 				'type' => 'large',
-				'pppage' => '999',
+				'pppage' => '8',
 				'filter' => 'all',
 				'layout' => 'grid'
 			), $atts 
