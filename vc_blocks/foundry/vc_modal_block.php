@@ -25,7 +25,7 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 	
 	$id = ( $manual_id ) ? $manual_id : rand(0, 10000);
 	
-	$cookie = ( $cookie ) ? 'data-cookie="'. $cookie .'"' : false;
+	$cookie = ( $cookie ) ? 'data-cookie="'. esc_attr( $cookie ) .'"' : false;
 
 	$classes = ($image) ? 'image-bg overlay' : false;
 	
@@ -46,7 +46,7 @@ function ebor_modal_shortcode( $atts, $content = null ) {
 	if( 'no' == $hide_button )
 		$output .= '<a class="btn btn-lg btn-modal" href="#" modal-link="'. esc_attr($id) .'"><i class="'. $icon .'"></i> '. $button_text .'</a>';
 	
-	$output2 = '<div class="foundry_modal text-center '. $classes .'" '. $delay .' '. esc_attr($cookie) .' modal-link="'. esc_attr($id) .'"><i class="ti-close close-modal"></i>';
+	$output2 = '<div class="foundry_modal text-center '. $classes .'" '. $delay .' '. $cookie .' modal-link="'. esc_attr($id) .'"><i class="ti-close close-modal"></i>';
 	
 	if($image){
 		$output2 .= '
