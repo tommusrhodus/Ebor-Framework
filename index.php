@@ -4,7 +4,7 @@
 Plugin Name: Ebor Framework
 Plugin URI: http://www.tommusrhodus.com/ebor-framework/
 Description: Ebor Framework - The Driving Force Behind TommusRhodus Themes
-Version: 1.5.1
+Version: 1.5.2
 Author: Tom Rhodes
 Author URI: http://www.tommusrhodus.com/
 */	
@@ -62,14 +62,3 @@ if(!( function_exists('ebor_ajax_import_data') )){
 	}
 	add_action('wp_ajax_ebor_ajax_import_data', 'ebor_ajax_import_data');
 }
-
-/**
- * Plugin Updates
- * This plugin updates from wp-updates.com
- * I've tried various github updaters, but they all seem to break very simply, this should be quite reliable.
- * 
- * @author TommusRhodus
- * @since v1.0.0
- */
-require_once(EBOR_FRAMEWORK_PATH . 'wp-updates-plugin.php');
-new WPUpdatesPluginUpdater_745( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__));
