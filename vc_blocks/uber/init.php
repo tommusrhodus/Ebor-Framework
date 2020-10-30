@@ -4,7 +4,7 @@
  * Custom blocks for visual composer in this theme.
  */
 function ebor_framework_register_uber_blocks(){
-	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/expose/functions.php');
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/uber/functions.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/uber/vc_pricing_table_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/uber/vc_portfolio_block.php');
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/uber/vc_blog_block.php');
